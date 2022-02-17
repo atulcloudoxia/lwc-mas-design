@@ -1,0 +1,146 @@
+h1 {
+    color: #000;
+    font-size:30px;
+    font-weight:700;
+}
+
+ul.progress-bar {
+    background: rgb(93,137,255);
+    background: linear-gradient(90deg, rgba(93,137,255,1) 0%, rgba(98,103,216,1) 100%);
+    width:calc(100% + 2rem);
+    height:140px;
+    margin: -1rem -1rem; /* A bit of a hack to remove border */
+    display:flex;
+    list-style:none;
+    padding:0;
+    justify-content:center;
+    align-items:center;
+}
+
+ul.progress-bar li {
+    margin:0 80px;
+    color:#fff;
+    text-align:center;
+    text-transform:uppercase;
+    font-size:10px;
+}
+
+ul.progress-bar li .progress-bar__count {
+    width:40px;
+    height:40px;
+    background:rgba(255,255,255,0.1);
+    border-radius:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 5px auto;
+    font-size:10px;
+    font-weight:700;
+    position:relative;
+}
+
+ul.progress-bar li .progress-bar__count.selected {
+    background:#fff;
+    color: #5D89FF; 
+}
+
+ul.progress-bar li .progress-bar__count::after {
+    content:" ";
+    position:absolute;
+    left:45px;
+    top:20px;
+    height:2px;
+    width:155px; 
+    background:rgba(255,255,255,0.1);
+}
+
+ul.progress-bar li:last-of-type .progress-bar__count::after {
+    display:none;
+}
+
+.heading {
+    display:flex;
+    align-items:center;
+    font-family: Helvetica, Arial, sans-serif;
+    width:100%;
+}
+
+.heading .heading__subtitle {
+    font-size:18px;
+    color: #97A9B5;
+    margin-left:30px;
+    margin-top:5px;
+} 
+
+.heading .heading__actions {
+    margin-left:auto;
+}
+
+.heading + .table__container {
+    margin-top:30px;
+}
+
+button {
+    border:0;
+    height:40px;
+    width:200px;
+    border-radius:6px;
+    color:#fff;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight:600;
+    font-size:14px;
+}
+
+.button-primary {
+    background: #5D89FF;
+}
+
+footer {
+    position:fixed;
+    bottom:0px;
+    background:#434C52;
+    height:120px;
+    left:0;
+    right:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:18px;
+    padding:20px 60px;
+    box-sizing:border-box;
+}
+
+footer .footer__ls {
+    margin-right:auto;
+}
+
+footer .footer__ls button {
+    background: #5A6267
+}
+
+footer .footer__rs button {
+    background: #7FD589
+}
+
+footer .footer__rs {
+    margin-left:auto;
+}
+
+p {
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    color: rgb(62, 62, 60);
+}
+.app__container {
+    background: #fff;
+    height: 100vh;
+    overflow: scroll;
+    margin:0;
+    padding:20px 60px;
+    margin: -1rem -1rem; /* A bit of a hack to remove border */
+    padding-bottom:140px;
+}
+
+div.story_padded {
+    padding:0;
+}

@@ -1,0 +1,67 @@
+<template>
+
+	<!-- Progress Bar -->
+	<ul class="progress-bar">
+		<li>
+			<div class="progress-bar__count selected">1</div>Contact
+		</li>
+		<li>
+			<div class="progress-bar__count">2</div>Asset
+		</li>
+		<li>
+			<div class="progress-bar__count">3</div>Deposit
+		</li>
+		<li>
+			<div class="progress-bar__count">4</div>Varia
+		</li>
+		<li>
+			<div class="progress-bar__count">5</div>Files
+		</li>
+	</ul>
+
+	<div class="app__container">
+
+		<!-- Heading -->
+		<div class="heading">
+			<h1>Contacts</h1>
+			<span class="heading__subtitle">You have 3 contacts for this profile.</span>
+			<div class="heading__actions">
+				<button class="button-primary">Add Contact</button>
+			</div>
+		</div>
+
+		<!-- Data Table -->
+		<div class="table__container">
+			<lightning-datatable key-field="id" data={data} columns={columns}>
+			</lightning-datatable>
+		</div>
+
+		<!-- Using an if statement -->
+		<template if:true={showFeatures}>
+			<div class="slds-p-top_large">
+				<h2 class="slds-text-heading_medium">Features</h2>
+
+				<!-- Using a for statement -->
+				<template for:each={features} for:item='feature'>
+					<c-child label={feature.label} key={feature.label}>
+
+						<!-- Specifying the 'icon' slot for c-child -->
+						<lightning-icon icon-name={feature.icon} size="x-small" slot="icon"></lightning-icon>
+					</c-child>
+				</template>
+			</div>
+		</template>
+
+		<!-- Footer -->
+		<footer>
+			<div class="footer__ls">
+				<button class="button-primary">Add Contact</button>
+			</div>
+			<div>This profile is 20% complete</div>
+			<div class="footer__rs">
+				<button class="button-primary">Add Contact</button>
+			</div>
+		</footer>
+
+	</div>
+</template>
