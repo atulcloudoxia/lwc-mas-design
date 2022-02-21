@@ -1,0 +1,18 @@
+<template>
+
+  <!-- Heading -->
+  <div class="heading">
+    <h1>Contacts</h1>
+    <span class="heading__subtitle">You have 3 contacts for this profile.</span>
+    <div class="heading__actions">
+      <button class="button-primary">Add Contact</button>
+    </div>
+  </div>
+
+  <!-- Data Table -->
+  <div class="table__container">
+    <lightning-datatable key-field="id" data={data} columns={columns}>
+    </lightning-datatable>
+  </div>
+
+</template>
