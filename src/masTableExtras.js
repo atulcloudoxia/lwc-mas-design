@@ -2,7 +2,7 @@ import { LightningElement } from 'lwc';
 import fetchDataHelper from './fetchDataHelper';
 
 const columns = [
-    { label: 'Quantity', fieldName: 'name' },
+    { label: 'Quantity', fieldName: 'quantity' },
     { label: 'Name', fieldName: 'website', type: 'url' },
     { label: 'Description', fieldName: 'phone', type: 'phone' }
 ]; 

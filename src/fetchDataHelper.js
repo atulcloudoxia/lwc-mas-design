@@ -1,5 +1,6 @@
 const recordMetadata = {
     name: 'name',
+    quantity: 'quantity',
     email: 'email',
     website: 'url',
     amount: 'currency',

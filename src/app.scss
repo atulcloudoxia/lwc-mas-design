@@ -9,8 +9,6 @@ h1 {
     align-items:center;
     font-family: Helvetica, Arial, sans-serif;
     width:100%;
-    margin-bottom:30px;
-    margin-top:20px;
 }
 
 .heading .heading__subtitle {
@@ -24,7 +22,11 @@ h1 {
     margin-left:auto;
 }
 
-button { 
+.heading + .table__container {
+    margin-top:30px;
+}
+
+button {
     border:0;
     height:40px;
     width:200px;
@@ -37,6 +39,18 @@ button {
 
 .button-primary {
     background: #5D89FF;
+}
+
+.button-secondary {
+    background: #fff;
+    border: 1px #DDDADA solid;
+    color:#5D89FF;
+}
+
+.button-small {
+    height:30px;
+    width:150px;
+    font-size:12px;
 }
 
 p {
@@ -55,4 +69,12 @@ p {
 
 div.story_padded {
     padding:0;
+}
+
+.mt-10 {
+    margin-top:10px;
+}
+
+.mt-20 {
+    margin-top:20px;
 }
