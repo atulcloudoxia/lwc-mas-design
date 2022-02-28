@@ -12,7 +12,7 @@ ul.progress-bar {
 }
 
 ul.progress-bar li {
-    margin:0 80px;
+    margin:0 60px;
     color:#fff;
     text-align:center;
     text-transform:uppercase;
@@ -31,6 +31,21 @@ ul.progress-bar li .progress-bar__count {
     font-size:10px;
     font-weight:700;
     position:relative;
+    transition: all 0.3s ease;
+    cursor:pointer;
+
+    &:hover {
+        background:rgba(255,255,255,0.3);
+
+        + span {
+            opacity:1;
+        }
+    }
+}
+
+ul.progress-bar li span {
+    transition: all 0.3s ease;
+    opacity:0.8;
 }
 
 ul.progress-bar li .progress-bar__count.selected {
@@ -44,7 +59,7 @@ ul.progress-bar li .progress-bar__count::after {
     left:45px;
     top:20px;
     height:2px;
-    width:155px; 
+    width:110px; 
     background:rgba(255,255,255,0.1);
 }
 

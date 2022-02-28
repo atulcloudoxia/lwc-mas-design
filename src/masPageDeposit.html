@@ -1,0 +1,40 @@
+<template>
+  <div class="page-container">
+    <div class="heading">
+      <h1>Kingsway Crescent 401</h1>
+    </div>
+
+    <div class="table__items mt-10">
+      <div>
+        Kingsway Crescent - 705
+      </div>
+      <div>
+        Parking Standard
+      </div>
+      <div>
+        Total
+      </div>
+    </div>
+
+    <div class="mt-30">
+      <label>Select Deposit Schedule</label>
+      <hr />
+      <div>
+        <lightning-combobox name="Price_Format_Setting__c" variant="label-hidden">
+        </lightning-combobox>
+      </div>
+    </div>
+
+    <div class="mt-30">
+      <div class="sub-heading">
+        <label>Deposit</label>
+        <div class="sub-heading__actions">
+          <button class="button-primary">Reload Schedule</button>
+        </div>
+      </div>
+      <div class="mt-10">
+        <c-mas-table-deposit></c-mas-table-deposit>
+      </div>
+    </div>
+  </div>
+</template>
