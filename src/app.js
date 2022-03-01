@@ -69,6 +69,7 @@ export default class Mas extends LightningElement {
     let changeToPage = e.detail.page;
 
     this.navigation.currentPage=changeToPage;
+    this.navigation = Object.assign(this.navigation, {});
     this.showContact = this.navigation.currentPage === 'contact';
     this.showAsset = this.navigation.currentPage === 'asset';
     this.showDeposit = this.navigation.currentPage === 'deposit';
