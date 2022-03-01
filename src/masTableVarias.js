@@ -1,4 +1,4 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, api, track } from 'lwc';
 import fetchDataHelper from './fetchDataHelper';
 
 const rowActions = [
@@ -27,6 +27,8 @@ export default class Varias extends LightningElement {
   columns = columns;
   record = {};
 
+  @track addVaria = false;
+
   async connectedCallback() {
     this.data = await fetchDataHelper({ amountOfRecords: 10 });
   }
@@ -48,6 +50,7 @@ export default class Varias extends LightningElement {
    * Add
    */
   handleAdd() {
+    this.addVaria=true;
     // Nhan, handle "add" logic here
   }
 

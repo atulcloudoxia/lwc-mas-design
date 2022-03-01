@@ -12,4 +12,22 @@
       </lightning-button>
     </div>
   </div>
+  <template if:true={addVaria}>
+    <div id="add-variant" class="modal">
+      <div class="modal__container">
+        <div class="modal__container__title">
+          Add Varia
+        </div>
+        <lightning-textarea name="description" label="Description" variant="label-hidden"></lightning-textarea>
+        <div class="modal__container__actions">
+          <div>
+            Cancel
+          </div>
+          <div>
+            <button class="button-primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
 </template>
