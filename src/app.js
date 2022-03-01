@@ -34,6 +34,12 @@ export default class Mas extends LightningElement {
         step: 5,
         label: "Files",
         selected:false
+      },
+      {
+        id: "review",
+        step: 6,
+        label: "Review",
+        selected:false
       }
     ],
     get title() {

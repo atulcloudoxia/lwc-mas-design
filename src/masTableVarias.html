@@ -1,0 +1,15 @@
+<template>
+  <div>
+    <lightning-input name="enter-search" label="Search" type="search" variant="label-hidden">
+    </lightning-input>
+    <div class="mt-10">
+      <lightning-datatable key-field="id" data={data} columns={columns} onrowaction={handleSearch} hide-checkbox-column>
+      </lightning-datatable>
+    </div>
+    <div class="mt-10">
+      <lightning-button label="Add Varia" title="Begins the task" icon-name="utility:add" icon-position="left"
+        onclick={handleAdd}>
+      </lightning-button>
+    </div>
+  </div>
+</template>
