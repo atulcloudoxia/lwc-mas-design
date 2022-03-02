@@ -2,7 +2,8 @@
 
   <!-- Data Table -->
   <div class="table__container">
-    <lightning-datatable key-field="id" data={data} columns={columns}>
+    <lightning-datatable key-field="id" data={data} columns={columns} onrowaction={handleRowAction}
+      hide-checkbox-column>
     </lightning-datatable>
   </div>
 

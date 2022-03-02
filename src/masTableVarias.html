@@ -3,7 +3,8 @@
     <lightning-input name="enter-search" label="Search" type="search" variant="label-hidden">
     </lightning-input>
     <div class="mt-10">
-      <lightning-datatable key-field="id" data={data} columns={columns} onrowaction={handleSearch} hide-checkbox-column>
+      <lightning-datatable key-field="id" data={data} columns={columns} onrowaction={handleRowAction}
+        hide-checkbox-column>
       </lightning-datatable>
     </div>
     <div class="mt-10">
@@ -18,15 +19,17 @@
         <div class="modal__container__title">
           Add Varia
         </div>
-        <lightning-textarea name="description" label="Description" variant="label-hidden"></lightning-textarea>
-        <div class="modal__container__actions">
-          <div>
-            Cancel
+        <form onsubmit={handleFormSubmit}>
+          <lightning-textarea name="description" label="Description" variant="label-hidden"></lightning-textarea>
+          <div class="modal__container__actions">
+            <div class="modal__container__cancel">
+              Cancel
+            </div>
+            <div>
+              <button class="button-primary">Save</button>
+            </div>
           </div>
-          <div>
-            <button class="button-primary">Save</button>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   </template>

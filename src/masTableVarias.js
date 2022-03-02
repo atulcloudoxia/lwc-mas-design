@@ -1,4 +1,5 @@
 import { LightningElement, api, track } from 'lwc';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import fetchDataHelper from './fetchDataHelper';
 
 const rowActions = [
@@ -49,8 +50,16 @@ export default class Varias extends LightningElement {
   /**
    * Add
    */
-  handleAdd() {
+  handleAdd(e) {
     this.addVaria=true;
+    
+  }
+
+  handleFormSubmit(event) {
+    event.preventDefault();
+
+    // OnSuccess
+    this.addVaria=false;
     // Nhan, handle "add" logic here
   }
 
