@@ -1,37 +1,54 @@
 <template>
   <div class="page-container">
     <div class="heading">
-      <h1>Kingsway Crescent 401</h1>
+      <h1><span>Deposit /</span> Kingsway Crescent 401</h1>
     </div>
 
-    <div class="table__items mt-10">
-      <div>
-        Kingsway Crescent - 705
+    <div class="table__items columns mt-10">
+      <div class="line_item">
+        <div>
+          Kingsway Crescent - 705
+        </div>
+        <div>
+          $1,394,900.00
+        </div>
       </div>
-      <div>
-        Parking Standard
+      <div class="line_item">
+        <div>
+          Parking Standard
+        </div>
+        <div>
+          $59,500.00
+        </div>
       </div>
-      <div>
-        Total
+      <div class="line_item total">
+        <div>
+          Total
+        </div>
+        <div>
+          $1,454,400.00
+        </div>
       </div>
     </div>
 
     <div class="mt-30">
-      <label>Select Deposit Schedule</label>
+      <h2>Select Deposit Schedule</h2>
       <hr />
       <div>
-        <lightning-combobox name="Price_Format_Setting__c" variant="label-hidden">
+        <lightning-combobox name="progress" label="Status" placeholder="Select Schedule" variant="label-hidden"
+          onchange={handleChange}>
         </lightning-combobox>
       </div>
     </div>
 
     <div class="mt-30">
       <div class="sub-heading">
-        <label>Deposit</label>
+        <h2>Deposit</h2>
         <div class="sub-heading__actions">
-          <button class="button-primary">Reload Schedule</button>
+          <button class="button-tertiary">Reload Schedule</button>
         </div>
       </div>
+      <hr />
       <div class="mt-10">
         <c-mas-table-deposit></c-mas-table-deposit>
       </div>
