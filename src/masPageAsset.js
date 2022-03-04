@@ -1,6 +1,27 @@
-import { LightningElement } from 'lwc';
+import { track, LightningElement } from 'lwc';
 
-export default class AssetPage extends LightningElement {
+export default class PageAsset extends LightningElement {
+
+  @track addAsset = false;
+
+  handleEditAsset() {
+    this.addAsset=true;
+  }
+
+  /**
+   * Add
+   */
+  handleAdd(e) {
+    this.addAsset=true;
+  }
+
+
+  handleFormSubmit(event) {
+    event.preventDefault();
+
+    // OnSuccess
+    this.addAsset=false;
+    // Nhan, handle "add" logic here
+  }
 
 }
-

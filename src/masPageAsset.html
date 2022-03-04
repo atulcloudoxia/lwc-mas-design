@@ -22,11 +22,8 @@
          Yes
         </span>
         <div class="table__items__actions">
-          <lightning-button-menu alternative-text="Show menu" variant="border">
-            <lightning-menu-item value="MenuItemOne" label="Menu Item One"></lightning-menu-item>
-            <lightning-menu-item value="MenuItemTwo" label="Menu Item Two"></lightning-menu-item>
-            <lightning-menu-item value="MenuItemThree" label="Menu Item Three"></lightning-menu-item>
-            <lightning-menu-item value="MenuItemFour" label="Menu Item Four"></lightning-menu-item>
+          <lightning-button-menu alternative-text="Show menu" variant="border" onselect={handleEditAsset}>
+            <lightning-menu-item value="MenuItemOne" label="Edit"></lightning-menu-item>
           </lightning-button-menu>
         </div>
       </div>
@@ -47,4 +44,63 @@
       </lightning-tabset>
     </div>
   </div>
+
+
+  <template if:true={addAsset}>
+    <form onsubmit={handleFormSubmit}>
+      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+          <div class="slds-modal__header">
+            <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Edit Asset</h1>
+          </div>
+          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+            <div>
+              <label>Asset</label>
+              <div>
+                <lightning-input name="search-contact" label="Search Contact" variant="label-hidden"
+                  value="Kingsway Crescent">
+                </lightning-input>
+              </div>
+              <div class="mt-10">
+                <lightning-input name="search-contact" label="Search Contact" variant="label-hidden"
+                  value="Kingsway Crescent #211">
+                </lightning-input>
+              </div>
+            </div>
+            <div class="mt-20">
+              <label>Contract Date</label>
+              <div class="mt-10">
+                <lightning-input type="date" name="contract-date" variant="label-hidden" label="Date"
+                  value="2020-09-07"></lightning-input>
+              </div>
+            </div>
+            <div class="mt-20">
+              <label>Sales Representative</label>
+              <div class="mt-10">
+                <lightning-input name="sales-rep" label="Sales Rep" variant="label-hidden" value="Baker Real Estate">
+                </lightning-input>
+              </div>
+            </div>
+            <div class="mt-20">
+              <label>Is this a developer sale?</label>
+              <div class="mt-10">
+                <lightning-input name="dev-sale" label="Developer Sale" variant="label-hidden" value="Yes">
+                </lightning-input>
+              </div>
+            </div>
+          </div>
+          <div class="slds-modal__footer slds-modal__footer_directional">
+            <div class="modal__container__actions">
+              <div class="modal__container__cancel">
+                Cancel
+              </div>
+              <button class="button-primary">Continue</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </form>
+  </template>
 </template>

@@ -1,20 +1,23 @@
-import { LightningElement } from 'lwc';
-import fetchDataHelper from './fetchDataHelper';
+import { track, LightningElement } from 'lwc';
 
-const columns = [
-    { label: 'Name', fieldName: 'name' },
-    { label: 'Company', fieldName: 'company', },
-    { label: 'Role', fieldName: 'phone', type: 'phone' },
-    { label: 'Status', fieldName: 'amount', type: 'currency' }
-]; 
+export default class PageContact extends LightningElement {
 
-export default class BasicDatatable extends LightningElement {
-    data = [];
-    columns = columns;
+  @track addContact = false;
 
-    // eslint-disable-next-line @lwc/lwc/no-async-await
-    async connectedCallback() {
-        const data = await fetchDataHelper({ amountOfRecords: 10 });
-        this.data = data;
-    }
+  /**
+   * Add
+   */
+  handleAdd(e) {
+    this.addContact=true;
+  }
+
+
+  handleFormSubmit(event) {
+    event.preventDefault();
+
+    // OnSuccess
+    this.addContact=false;
+    // Nhan, handle "add" logic here
+  }
+
 }
