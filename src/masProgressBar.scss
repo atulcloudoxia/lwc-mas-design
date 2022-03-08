@@ -1,0 +1,68 @@
+ul.progress-bar {
+    background: rgb(93,137,255);
+    background: linear-gradient(90deg, rgba(93,137,255,1) 0%, rgba(98,103,216,1) 100%);
+    width:calc(100% + 2rem);
+    height:140px;
+    margin: -1rem -1rem; /* A bit of a hack to remove border */
+    display:flex;
+    list-style:none;
+    padding:0;
+    justify-content:center;
+    align-items:center;
+}
+
+ul.progress-bar li {
+    margin:0 50px;
+    color:#fff;
+    text-align:center;
+    text-transform:uppercase;
+    font-size:10px;
+}
+
+ul.progress-bar li .progress-bar__count {
+    width:40px;
+    height:40px;
+    background:rgba(255,255,255,0.1);
+    border-radius:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 5px auto;
+    font-size:10px;
+    font-weight:700;
+    position:relative;
+    transition: all 0.3s ease;
+    cursor:pointer;
+
+    &:hover {
+        background:rgba(255,255,255,0.3);
+
+        + span {
+            opacity:1;
+        }
+    }
+}
+
+ul.progress-bar li span {
+    transition: all 0.3s ease;
+    opacity:0.8;
+}
+
+ul.progress-bar li .progress-bar__count.selected {
+    background:#fff;
+    color: #5D89FF; 
+}
+
+ul.progress-bar li .progress-bar__count::after {
+    content:" ";
+    position:absolute;
+    left:45px;
+    top:20px;
+    height:2px;
+    width:90px; 
+    background:rgba(255,255,255,0.1);
+}
+
+ul.progress-bar li:last-of-type .progress-bar__count::after {
+    display:none;
+}
