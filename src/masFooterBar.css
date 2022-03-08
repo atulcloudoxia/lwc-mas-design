@@ -23,7 +23,7 @@ footer .footer__ls button {
 }
 
 footer .footer__rs button {
-    background: #7FD589
+    background: #4ec3a1
 }
 
 footer .footer__rs {
@@ -36,11 +36,11 @@ button {
     width:200px;
     border-radius:6px;
     color:#fff;
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight:600;
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-weight:500;
     font-size:14px;
 }
 
 .button-primary {
-    background: #5D89FF;
+    background: #4ec3a1;
 }
