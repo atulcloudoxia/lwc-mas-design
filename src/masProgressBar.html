@@ -1,0 +1,16 @@
+<!-- Progress Bar -->
+<template>
+  <ul class="progress-bar">
+    <template for:each={nav} for:item="item" for:index="index">
+      <li key={item.id} data-page={index} onclick={onItemClick}>
+        <template if:true={item.selected}>
+          <div class="progress-bar__count selected">{item.step}</div>
+        </template>
+        <template if:false={item.selected}>
+          <div class="progress-bar__count">{item.step}</div>
+        </template>
+        <span>{item.label}</span>
+      </li>
+    </template>
+  </ul>
+</template>

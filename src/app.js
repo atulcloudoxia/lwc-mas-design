@@ -1,21 +1,82 @@
-import { LightningElement } from 'lwc';
-import fetchDataHelper from './fetchDataHelper';
+import { LightningElement, api, track } from 'lwc';
 
-const columns = [
-    { label: 'Label', fieldName: 'name' },
-    { label: 'Website', fieldName: 'website', type: 'url' },
-    { label: 'Phone', fieldName: 'phone', type: 'phone' },
-    { label: 'Balance', fieldName: 'amount', type: 'currency' },
-    { label: 'CloseAt', fieldName: 'closeAt', type: 'date' },
-];
+export default class Mas extends LightningElement {
 
-export default class BasicDatatable extends LightningElement {
-    data = [];
-    columns = columns;
-
-    // eslint-disable-next-line @lwc/lwc/no-async-await
-    async connectedCallback() {
-        const data = await fetchDataHelper({ amountOfRecords: 100 });
-        this.data = data;
+  @track navigation = {
+    pageIndex:0,
+    pages: [
+      {
+        id: "contact",
+        step: 1,
+        label: "Contact",
+        selected:true
+      },
+      {
+        id: "asset",
+        step: 2,
+        label: "Asset",
+        selected:false
+      },
+      {
+        id: "deposit",
+        step: 3,
+        label: "Deposit",
+        selected:false
+      },
+      {
+        id: "varia",
+        step: 4,
+        label: "Varia",
+        selected:false
+      },
+      {
+        id: "files",
+        step: 5,
+        label: "Files",
+        selected:false
+      },
+      {
+        id: "review",
+        step: 6,
+        label: "Review",
+        selected:false
+      }
+    ],
+    get title() {
+      return this.pages[this.pageIndex].label;
+    },
+    get currentPage() {
+      return this.pages[this.pageIndex].id;
+    },
+    set currentPage(index) {
+      this.pageIndex=index;
+      this.pages[index].selected=true;
+      this.pages.forEach((item, idx) => this.pages[idx].selected = idx === parseInt(index))
+    },
+    get showPages() {
+      return this.pages;
     }
+  }
+
+  @track showContact = true;
+  @track showAsset = false;
+  @track showDeposit = false;
+  @track showVaria = false;
+  @track showFiles = false;
+  @track showReview = false;
+
+  handleStepChange(e) {
+    let changeToPage = e.detail.page;
+
+    this.navigation.currentPage=changeToPage;
+    this.navigation = Object.assign(this.navigation, {});
+    this.showContact = this.navigation.currentPage === 'contact';
+    this.showAsset = this.navigation.currentPage === 'asset';
+    this.showDeposit = this.navigation.currentPage === 'deposit';
+    this.showVaria = this.navigation.currentPage === 'varia';
+    this.showFiles = this.navigation.currentPage === 'files';
+    this.showReview = this.navigation.currentPage === 'review';
+  }
+
+
 }
