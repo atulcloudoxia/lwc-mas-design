@@ -10,7 +10,14 @@ const columns = [
     { label: 'Name', fieldName: 'name' },
     { label: 'Email', fieldName: 'email', type: 'email' },
     { label: 'Phone', fieldName: 'phone', },
-    { label: 'Status', fieldName: 'amount', type: 'currency' },
+    { 
+        label: 'Status', 
+        fieldName: 'status', 
+        type: 'customStatus',
+        typeAttributes: {
+            status: { fieldName: 'isComplete' }
+        },
+    },
     {
         type: 'action',
         typeAttributes: { 
@@ -31,21 +38,24 @@ export default class TableContacts extends LightningElement {
             role: 'Buyer 1',
             email: 'andrew@lucidlive.com',
             phone: '514-555-5555',
-            status: 'Complete'
+            status: 'Complete',
+            isComplete: true,
         },
         { 
             name: 'Tao-Nhan Nguyen',
             role: 'Buyer 2',
             email: 'tao@onyxtech.ca',
             phone: '514-555-5555',
-            status: 'Complete'
+            status: 'Missing Information',
+            isComplete: false,
         },
         { 
             name: 'Chuck Norris',
             role: 'Buyer 3',
             email: 'chuck@norris.ca',
             phone: '514-555-5555',
-            status: 'Complete'
+            status: 'Complete',
+            isComplete: true,
         }
     ];
 
@@ -54,7 +64,7 @@ export default class TableContacts extends LightningElement {
      */
     handleRowAction(event) {
         const { action, row } = event.detail;
-
+   
         switch (action.name) {
             case 'edit':
                 this.editRow(row);
@@ -94,6 +104,13 @@ export default class TableContacts extends LightningElement {
         }
     }
 
+    /**
+     *  handleFormSubmit
+     */
+    handleFormSubmit() {
+        
+    }
+
     findRowById(id) {
         let ret = -1;
         this.data.some((row, index) => {
@@ -105,4 +122,7 @@ export default class TableContacts extends LightningElement {
         });
         return ret;
     }
+
+
+
 }
