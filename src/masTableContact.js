@@ -47,6 +47,10 @@ export default class TableContacts extends LightningElement {
             role: 'Buyer 1',
             email: 'andrew@lucidlive.com',
             phone: '514-555-5555',
+            address: '123 Main Street',
+            city: 'Montreal',
+            province: 'qc',
+            country: 'ca',
             status: 'Complete',
             isComplete: true,
         },
@@ -170,8 +174,9 @@ export default class TableContacts extends LightningElement {
     /**
      *  handleFormSubmit
      */
-    handleFormSubmit() {
-        
+    handleFormSubmit(event) {
+        event.preventDefault();
+        this.editContact=false;
     }
 
     findRowById(id) {
