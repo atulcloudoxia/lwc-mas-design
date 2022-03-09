@@ -1,9 +1,7 @@
 <template>
 
   <!-- Parking Table -->
-  <lightning-input name="enter-search" label="Search" type="search" variant="label-hidden">
-  </lightning-input>
-  <div class="mt-10">
+  <div>
     <lightning-datatable key-field="id" data={data} columns={columns} onrowaction={handleRowAction}
       hide-checkbox-column>
     </lightning-datatable>

@@ -224,10 +224,7 @@ div.story_padded {
 .slds-modal__content {
     padding: 0 2rem 2rem 2rem !important;
     
-    > div:first-of-type > * {
-        margin-top:0 !important;
-    }
-    
+
     label {
         margin-left: -3rem;
         padding-left: 3rem;

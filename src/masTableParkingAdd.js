@@ -1,5 +1,4 @@
-import { LightningElement } from 'lwc';
-import fetchDataHelper from './fetchDataHelper';
+import { LightningElement, track } from 'lwc';
 
 const rowActions = [
   { 
@@ -9,9 +8,9 @@ const rowActions = [
 ];
 
 const columns = [
-    { label: 'Type', fieldName: 'name' },
-    { label: 'Assigned Spot', fieldName: 'website', type: 'url' },
-    { label: 'Asset Price', fieldName: 'phone', type: 'phone' },
+    { label: 'Type', fieldName: 'type'},
+    { label: 'Assigned Spot', fieldName: 'assigned' },
+    { label: 'Asset Price', fieldName: 'price', type: 'currency'},
     {
       cellAttributes: {
           iconName: 'utility:add',
@@ -20,12 +19,48 @@ const columns = [
 ]; 
 
 export default class masTableParkingAdd extends LightningElement {
-    data = [];
     columns = columns;
 
-    // eslint-disable-next-line @lwc/lwc/no-async-await
-    async connectedCallback() {
-        const data = await fetchDataHelper({ amountOfRecords: 3 });
-        this.data = data;
-    }
+    @track data = [
+    { 
+        type: 'Locker Standard',
+        assigned: 'Side by Side',
+        price: '30933',
+    },
+    { 
+        type: 'Locker Standard',
+        assigned: 'Side by Side',
+        price: '30933',
+    },
+    { 
+        type: 'Locker Standard',
+        assigned: 'Side by Side',
+        price: '30933',
+    },
+    { 
+        type: 'Locker Standard',
+        assigned: 'Side by Side',
+        price: '30933',
+    },
+    { 
+        type: 'Locker Standard',
+        assigned: 'Side by Side',
+        price: '30933',
+    },
+    { 
+        type: 'Parking Standard',
+        assigned: 'Side by Side',
+        price: '36933',
+    },
+    { 
+        type: 'Parking Standard',
+        assigned: 'Side by Side',
+        price: '36933',
+    },
+    { 
+        type: 'Parking Standard',
+        assigned: 'Side by Side',
+        price: '36933',
+    },
+  ]
 }

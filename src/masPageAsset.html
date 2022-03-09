@@ -7,19 +7,19 @@
       <div>
         <span>
          <b>Sales Representative</b><br/>
-         Baker Real Estate
+         {salesRep}
         </span>
         <span>
          <b>Contract Date</b><br/>
-         November 23, 2021
+         {contractDate}
         </span>
         <span>
          <b>Asset Price</b><br/>
-         $1,309,000
+         {assetPrice}
         </span>
         <span>
          <b>Developer Sale</b><br/>
-         Yes
+         {developerSale}
         </span>
         <div class="table__items__actions">
           <lightning-button-menu alternative-text="Show menu" variant="border" onselect={handleEditAsset}>
@@ -72,20 +72,20 @@
               <label>Contract Date</label>
               <div class="mt-10">
                 <lightning-input type="date" name="contract-date" variant="label-hidden" label="Date"
-                  value="2020-09-07"></lightning-input>
+                  value={contractDate}></lightning-input>
               </div>
             </div>
             <div class="mt-20">
               <label>Sales Representative</label>
               <div class="mt-10">
-                <lightning-input name="sales-rep" label="Sales Rep" variant="label-hidden" value="Baker Real Estate">
+                <lightning-input name="sales-rep" label="Sales Rep" variant="label-hidden" value={salesRep}>
                 </lightning-input>
               </div>
             </div>
             <div class="mt-20">
               <label>Is this a developer sale?</label>
               <div class="mt-10">
-                <lightning-input name="dev-sale" label="Developer Sale" variant="label-hidden" value="Yes">
+                <lightning-input name="dev-sale" label="Developer Sale" variant="label-hidden" value={developerSale}>
                 </lightning-input>
               </div>
             </div>
