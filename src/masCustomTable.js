@@ -6,8 +6,8 @@ export default class masCustomTable extends LightningDatatable {
         customStatus: {
             template: masTableTypeStatus,
             standardCellLayout: true,
-            typeAttributes: ['status'],
-        },
+            typeAttributes: ['removeable'],
+        }
         // Other types here
     }
 }
