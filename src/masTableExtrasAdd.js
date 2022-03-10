@@ -49,12 +49,16 @@ const columns = [
         title: 'Remove',
         disabled: false,
         value: 'delete',
-        iconName: 'utility:delete'
+        iconPosition: 'left',
+        iconName: 'utility:add',
+        variant: 'success',
+        class:'addbutton',
+        iconClass: 'addbutton__icon'
       },
       cellAttributes: {
         alignment: 'right',
-      },
-    },
+      }
+    }
 ];
 
 export default class BasicDatatable extends LightningElement {
@@ -70,7 +74,7 @@ export default class BasicDatatable extends LightningElement {
           price: '87272'
       },
       {
-          id: 2,
+          id: 1,
           quantity: 3,
           name: 'Extra 1',
           description: 'lorem ipsum',
@@ -78,7 +82,7 @@ export default class BasicDatatable extends LightningElement {
           price: '87272'
       },
       {
-          id: 3,
+          id: 1,
           quantity: 3,
           name: 'Extra 1',
           description: 'lorem ipsum',

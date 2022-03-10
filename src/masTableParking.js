@@ -1,12 +1,5 @@
 import { LightningElement, track } from 'lwc';
 
-const rowActions = [
-  {
-    label: 'Delete Parking',
-    name: 'delete'
-  }
-];
-
 const columns = [
   {
     label: 'Type',
