@@ -6,13 +6,34 @@ const rowActions = [
 ];
 
 const columns = [
-    { label: 'Role', fieldName: 'role' },
-    { label: 'Name', fieldName: 'name' },
-    { label: 'Email', fieldName: 'email', type: 'email' },
-    { label: 'Phone', fieldName: 'phone', },
-    { 
-        label: 'Status', 
-        fieldName: 'status', 
+    {
+      label: 'Role',
+      fieldName: 'role',
+      hideDefaultActions:true,
+      sortable:true
+    },
+    {
+      label: 'Name',
+      fieldName: 'name',
+      hideDefaultActions:true,
+      sortable:true
+    },
+    {
+      label: 'Email',
+      fieldName: 'email',
+      type: 'email',
+      hideDefaultActions:true,
+      sortable:true
+    },
+    {
+      label: 'Phone',
+      fieldName: 'phone',
+      hideDefaultActions:true,
+      sortable:true
+    },
+    {
+        label: 'Status',
+        fieldName: 'status',
         type: 'customStatus',
         typeAttributes: {
             status: { fieldName: 'isComplete' }
@@ -20,11 +41,11 @@ const columns = [
     },
     {
         type: 'action',
-        typeAttributes: { 
-            rowActions 
+        typeAttributes: {
+            rowActions
         }
     }
-]; 
+];
 
 export default class TableContacts extends LightningElement {
 
@@ -35,7 +56,7 @@ export default class TableContacts extends LightningElement {
     columns = columns;
 
     @track data = [
-        { 
+        {
             id: 1,
             name: 'Andrew Hamilton',
             firstname: 'Andrew',
@@ -54,7 +75,7 @@ export default class TableContacts extends LightningElement {
             status: 'Complete',
             isComplete: true,
         },
-        { 
+        {
             id: 2,
             name: 'Tao-Nhan Nguyen',
             firstname: 'Tao-Nhan',
@@ -69,7 +90,7 @@ export default class TableContacts extends LightningElement {
             status: 'Missing Information',
             isComplete: false,
         },
-        { 
+        {
             id: 3,
             name: 'Chuck Norris',
             firstname: 'Chuck',
@@ -122,13 +143,13 @@ export default class TableContacts extends LightningElement {
         this.isCorporation = role === 'corporation';
         this.selectedRow.role = role;
     }
-   
+
     /**
      * Row actions
      */
     handleRowAction(event) {
         const { action, row } = event.detail;
-   
+
         switch (action.name) {
             case 'edit':
                 this.editRow(row);
@@ -148,7 +169,7 @@ export default class TableContacts extends LightningElement {
     editRow(row) {
         const { id } = row;
         //const index = this.findRowById(id);
-        
+
         this.selectedRow = row;
         //this.selectedRow = Object.assign(row, {});
         this.isCorporation = row.role === 'corporation';
@@ -161,12 +182,12 @@ export default class TableContacts extends LightningElement {
     deleteRow(row) {
         const { id } = row;
         const index = this.findRowById(id);
-        
+
         if (index !== -1) {
         this.data = this.data
             .slice(0, index)
             .concat(this.data.slice(index + 1));
-        
+
         // Nhan, handle delete logic here
         }
     }

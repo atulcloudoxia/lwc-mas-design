@@ -3,9 +3,8 @@
     <lightning-input name="enter-search" label="Search" type="search" variant="label-hidden">
     </lightning-input>
     <div class="mt-10">
-      <lightning-datatable key-field="id" data={data} columns={columns} onrowaction={handleRowAction}
-        hide-checkbox-column>
-      </lightning-datatable>
+      <c-mas-custom-table key-field="id" data={data} columns={columns} onrowaction={handleRowAction} hide-checkbox-column max-column-width="2000">
+      </c-mas-custom-table>
     </div>
     <div class="mt-10">
       <lightning-button label="Add Varia" title="Begins the task" icon-name="utility:add" icon-position="left"
@@ -24,7 +23,9 @@
             <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Add Varia</h1>
           </div>
           <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-            <lightning-textarea name="description" label="Description" variant="label-hidden"></lightning-textarea>
+            <div class="mt-10">
+              <lightning-textarea name="description" label="Description" variant="label-hidden"></lightning-textarea>
+            </div>
           </div>
           <div class="slds-modal__footer slds-modal__footer_directional">
             <div class="modal__container__actions">

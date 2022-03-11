@@ -3,36 +3,50 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import fetchDataHelper from './fetchDataHelper';
 
 const rowActions = [
-  { 
-    label: 'Delete Varia', 
-    name: 'delete' 
+  {
+    label: 'Delete Varia',
+    name: 'delete'
   }
 ];
 
 const columns = [
-  { 
-    label: 'Name', 
-    fieldName: 'name',
-    editable: true
+  {
+    label: 'Description',
+    fieldName: 'description',
+    editable: true,
+    hideDefaultActions:true,
   },
   {
     type: 'action',
-    typeAttributes: { 
-      rowActions 
+    hideDefaultActions:true,
+    typeAttributes: {
+      rowActions
     },
   },
 ];
 
 export default class Varias extends LightningElement {
-  data = [];
   columns = columns;
   record = {};
 
-  @track addVaria = false;
-
-  async connectedCallback() {
-    this.data = await fetchDataHelper({ amountOfRecords: 10 });
-  }
+  @track data = [
+    {
+      id: 1,
+      description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. ",
+    },
+    {
+      id: 2,
+      description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. ",
+    },
+    {
+      id: 3,
+      description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. ",
+    },
+    {
+      id: 4,
+      description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. ",
+    }
+  ]
 
   /**
    * Search
@@ -42,7 +56,7 @@ export default class Varias extends LightningElement {
     const searchTerm = evt.target.value;
 
     if (isEnterKey) {
-      
+
       // Nhan, handle "search" logic here
     }
   }
@@ -52,7 +66,7 @@ export default class Varias extends LightningElement {
    */
   handleAdd(e) {
     this.addVaria=true;
-    
+
   }
 
   handleFormSubmit(event) {
@@ -84,12 +98,12 @@ export default class Varias extends LightningElement {
   deleteRow(row) {
     const { id } = row;
     const index = this.findRowById(id);
-    
+
     if (index !== -1) {
       this.data = this.data
         .slice(0, index)
         .concat(this.data.slice(index + 1));
-      
+
       // Nhan, handle delete logic here
     }
   }
@@ -106,4 +120,3 @@ export default class Varias extends LightningElement {
     return ret;
   }
 }
-

@@ -77,5 +77,55 @@ export default class DepositTable extends LightningElement {
           percent: "0.01",
           received: false
       },
+      {
+          id: 2,
+          number: 2,
+          date: '10/01/2022',
+          deposit_to: 'notary',
+          deposit_for: 'cashdown',
+          amount: "100000",
+          percent: "0.01",
+          received: false
+      },
+      {
+          id: 3,
+          number: 3,
+          date: '11/01/2022',
+          deposit_to: 'notary',
+          deposit_for: 'cashdown',
+          amount: "100000",
+          percent: "0.01",
+          received: false
+      },
+      {
+          id: 4,
+          number: 4,
+          date: '11/01/2022',
+          deposit_to: 'notary',
+          deposit_for: 'cashdown',
+          amount: "100000",
+          percent: "0.01",
+          received: false
+      },
+      {
+          id: 5,
+          number: 5,
+          date: '11/01/2022',
+          deposit_to: 'notary',
+          deposit_for: 'cashdown',
+          amount: "100000",
+          percent: "0.01",
+          received: false
+      },
+      {
+          id: 6,
+          number: 6,
+          date: '11/01/2022',
+          deposit_to: 'notary',
+          deposit_for: 'cashdown',
+          amount: "100000",
+          percent: "0.01",
+          received: false
+      },
     ];
 }
