@@ -1,23 +1,319 @@
-import { track, LightningElement } from 'lwc';
+import { LightningElement, track } from 'lwc';
 
-export default class PageContact extends LightningElement {
+const rowActions = [
+  {
+    label: 'Edit Contact',
+    name: 'edit'
+  },
+  {
+    label: 'Delete Contact',
+    name: 'delete'
+  }
+];
 
+const columns = [
+  {
+    label: 'Role',
+    fieldName: 'role',
+    hideDefaultActions: true,
+    sortable: true
+  },
+  {
+    label: 'Name',
+    fieldName: 'name',
+    hideDefaultActions: true,
+    sortable: true
+  },
+  {
+    label: 'Email',
+    fieldName: 'email',
+    type: 'email',
+    hideDefaultActions: true,
+    sortable: true
+  },
+  {
+    label: 'Phone',
+    fieldName: 'phone',
+    hideDefaultActions: true,
+    sortable: true
+  },
+  {
+    label: 'Status',
+    fieldName: 'status',
+    type: 'customStatus',
+    typeAttributes: {
+      status: {
+        fieldName: 'isComplete'
+      }
+    },
+  },
+  {
+    type: 'action',
+    typeAttributes: {
+      rowActions
+    }
+  }
+];
+
+const data = [{
+    id: 1,
+    name: 'Andrew Hamilton',
+    firstname: 'Andrew',
+    lastname: 'Hamilton',
+    language: 'en',
+    dob: '1978-10-29',
+    salutation: 'mr',
+    sin: '123123123',
+    role: 'Buyer 1',
+    email: 'andrew@lucidlive.com',
+    phone: '514-555-5555',
+    address: '123 Main Street',
+    city: 'Montreal',
+    province: 'qc',
+    country: 'ca',
+    status: 'Complete',
+    isComplete: true,
+  },
+  {
+    id: 2,
+    name: 'Tao-Nhan Nguyen',
+    firstname: 'Tao-Nhan',
+    lastname: 'Nguyen',
+    language: 'fr',
+    dob: '1942-10-09',
+    salutation: 'mr',
+    sin: '123123123',
+    role: 'Buyer 2',
+    email: 'tao@onyxtech.ca',
+    phone: '514-555-5555',
+    status: 'Missing Information',
+    isComplete: false,
+  },
+  {
+    id: 3,
+    name: 'Chuck Norris',
+    firstname: 'Chuck',
+    lastname: 'Norris',
+    language: 'ch',
+    dob: '1852-10-09',
+    salutation: 'mr',
+    sin: '123123123',
+    role: 'corporation',
+    email: 'chuck@norris.ca',
+    phone: '514-555-5555',
+    status: 'Complete',
+    isComplete: true,
+  }
+];
+
+const roleOptions = [{
+    label: 'Buyer 1',
+    value: 'buyer-1'
+  },
+  {
+    label: 'Buyer 2',
+    value: 'buyer-2'
+  },
+  {
+    label: 'Buyer 3',
+    value: 'buyer-3'
+  },
+  {
+    label: 'Buyer 4',
+    value: 'buyer-4'
+  },
+  {
+    label: 'Realtor',
+    value: 'realtor'
+  },
+  {
+    label: '3rd Party',
+    value: '3rd-party'
+  },
+  {
+    label: 'Former Buyer 1',
+    value: 'former-buyer-1'
+  },
+  {
+    label: 'Former Buyer 2',
+    value: 'former-buyer-2'
+  },
+  {
+    label: 'Former Buyer 3',
+    value: 'former-buyer-3'
+  },
+  {
+    label: 'Former Buyer 4',
+    value: 'former-buyer-4'
+  },
+  {
+    label: 'Witness',
+    value: 'witness'
+  },
+  {
+    label: 'Corporation',
+    value: 'corporation'
+  },
+  {
+    label: 'Referred by Client',
+    value: 'referred-by-client'
+  },
+];
+
+const salutationOptions = [{
+    label: 'Mr.',
+    value: 'mr'
+  },
+  {
+    label: 'Ms.',
+    value: 'ms'
+  },
+  {
+    label: 'Mrs.',
+    value: 'mrs'
+  },
+  {
+    label: 'Dr.',
+    value: 'dr'
+  },
+  {
+    label: 'Prof.',
+    value: 'prof'
+  },
+];
+
+const languageOptions = [{
+    label: 'English',
+    value: 'en'
+  },
+  {
+    label: 'French',
+    value: 'fr'
+  },
+  {
+    label: 'Chinese.',
+    value: 'ch'
+  },
+];
+
+export default class ContactPage extends LightningElement {
+
+  @track editContact = false;
+  @track selectedRow = {};
+  @track isCorporation = false;
   @track addContact = false;
+  @track errorMessage = "";
+  @track hasError = false;
+  @track data = data;
+
+  columns = columns;
+  languageOptions = languageOptions;
+  salutationOptions = salutationOptions;
+  roleOptions = roleOptions;
 
   /**
-   * Add
+   * Add contact
    */
-  handleAdd(e) {
-    this.addContact=true;
+  handleAddContact(e) {
+    this.addContact = true;
   }
 
-
-  handleFormSubmit(event) {
+  /**
+   * Handle add contact form
+   */
+  handleAddContactForm(event) {
     event.preventDefault();
 
+    // Handle add contact logic here
+
+    // OnError
+    this.hasError = true;
+    this.errorMessage = "This page has incomplete information";
+
     // OnSuccess
-    this.addContact=false;
-    // Nhan, handle "add" logic here
+    this.addContact = false;
   }
 
+  /**
+   *  handleFormSubmit
+   */
+  handleEditContactForm(event) {
+    event.preventDefault();
+
+    // Handle edit contact logic here
+
+    this.editContact = false;
+  }
+
+
+  /**
+   * Handle role change
+   */
+  handleRoleChange(event) {
+    let role = event.detail.value;
+
+    this.isCorporation = role === 'corporation';
+    this.selectedRow.role = role;
+  }
+
+  /**
+   * Parse row actions
+   */
+  handleRowAction(event) {
+    const { action, row } = event.detail;
+
+    switch (action.name) {
+      case 'edit':
+        this.editRow(row);
+        break;
+
+      case 'delete':
+        this.deleteRow(row);
+        break;
+
+      return;
+    }
+  }
+
+  /**
+   * Edit row
+   */
+  editRow(row) {
+    const { id } = row;
+
+    this.selectedRow = row;
+    this.isCorporation = row.role === 'corporation';
+    this.editContact = true;
+  }
+
+  /**
+   * Delete row
+   */
+  deleteRow(row) {
+    const { id } = row;
+    const index = this.findRowById(id);
+
+    if (index !== -1) {
+      this.data = this.data
+        .slice(0, index)
+        .concat(this.data.slice(index + 1));
+
+      // Nhan, handle delete logic here
+    }
+  }
+
+  findRowById(id) {
+    let ret = -1;
+
+    this.data.some((row, index) => {
+      if (row.id === id) {
+        ret = index;
+        return true;
+      }
+
+      return false;
+    });
+    
+    return ret;
+  }
 }
