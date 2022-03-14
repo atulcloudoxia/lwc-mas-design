@@ -58,6 +58,46 @@ export default class Mas extends LightningElement {
     }
   }
 
+  @track
+  pages = [
+    {
+      id: "contact",
+      step: 1,
+      label: "Contact22",
+      selected:true
+    },
+    {
+      id: "asset",
+      step: 2,
+      label: "Asset",
+      selected:false
+    },
+    {
+      id: "deposit",
+      step: 3,
+      label: "Deposit",
+      selected:false
+    },
+    {
+      id: "varia",
+      step: 4,
+      label: "Varia",
+      selected:false
+    },
+    {
+      id: "files",
+      step: 5,
+      label: "Files",
+      selected:false
+    },
+    {
+      id: "review",
+      step: 6,
+      label: "Review",
+      selected:false
+    }
+  ];
+
   @track showContact = true;
   @track showAsset = false;
   @track showDeposit = false;
@@ -68,14 +108,16 @@ export default class Mas extends LightningElement {
   handleStepChange(e) {
     let changeToPage = e.detail.page;
 
-    this.navigation.currentPage=changeToPage;
-    this.navigation = Object.assign(this.navigation, {});
-    this.showContact = this.navigation.currentPage === 'contact';
-    this.showAsset = this.navigation.currentPage === 'asset';
-    this.showDeposit = this.navigation.currentPage === 'deposit';
-    this.showVaria = this.navigation.currentPage === 'varia';
-    this.showFiles = this.navigation.currentPage === 'files';
-    this.showReview = this.navigation.currentPage === 'review';
+    for(let i=0; i < this.pages.length; i++) {
+      this.pages[i].selected = i === parseInt(changeToPage);
+    }
+
+    this.showContact = this.pages[0].selected;
+    this.showAsset = this.pages[1].selected;
+    this.showDeposit = this.pages[2].selected;
+    this.showVaria = this.pages[3].selected;
+    this.showFiles = this.pages[4].selected;
+    this.showReview = this.pages[5].selected;
   }
 
 
