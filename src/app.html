@@ -1,22 +1,28 @@
 <template>
 	<c-mas-progress-bar onpage={handleStepChange} nav={pages}></c-mas-progress-bar>
 	<div class="app__container">
-		<template if:true={showContact}>
-			<c-mas-page-contact></c-mas-page-contact>
+		<template if:true={pageWarning}>
+			<c-mas-page-warning message={pageMessage}></c-mas-page-warning>
 		</template>
-		<template if:true={showAsset}>
+		<template if:true={pageError}>
+			<c-mas-page-error message={pageMessage}></c-mas-page-error>
+		</template>
+		<template if:true={showContactPage}>
+			<c-mas-page-contact onupdate={handlePageUpdate}></c-mas-page-contact>
+		</template>
+		<template if:true={showAssetPage}>
 			<c-mas-page-asset></c-mas-page-asset>
 		</template>
-		<template if:true={showDeposit}>
+		<template if:true={showDepositPage}>
 			<c-mas-page-deposit></c-mas-page-deposit>
 		</template>
-		<template if:true={showVaria}>
+		<template if:true={showVariaPage}>
 			<c-mas-page-varia></c-mas-page-varia>
 		</template>
-		<template if:true={showFiles}>
+		<template if:true={showFilesPage}>
 			<c-mas-page-files></c-mas-page-files>
 		</template>
-		<template if:true={showReview}>
+		<template if:true={showReviewPage}>
 			<c-mas-page-review></c-mas-page-review>
 		</template>
 		<c-mas-footer-bar></c-mas-footer-bar>

@@ -224,13 +224,20 @@ export default class ContactPage extends LightningElement {
   handleAddContactForm(event) {
     event.preventDefault();
 
-    // Handle add contact logic here
+    // Example dispatch event
+    this.dispatchEvent(
+      new CustomEvent("update", {
+        detail: {
+          pageIdx: 0,
+          completed: false,
+          warning: true,
+          error: false,
+          message: "This page has incomplete information"
+        }
+      })
+    );
 
-    // OnError
-    this.hasError = true;
-    this.errorMessage = "This page has incomplete information";
-
-    // OnSuccess
+    // Close modal
     this.addContact = false;
   }
 
@@ -240,8 +247,20 @@ export default class ContactPage extends LightningElement {
   handleEditContactForm(event) {
     event.preventDefault();
 
-    // Handle edit contact logic here
+    // Example dispatch event
+    this.dispatchEvent(
+      new CustomEvent("update", {
+        detail: {
+          page: 'contact',
+          completed: false,
+          warning: true,
+          error: false,
+          message: "This page has incomplete information"
+        }
+      })
+    );
 
+    // Close modal
     this.editContact = false;
   }
 
@@ -313,7 +332,7 @@ export default class ContactPage extends LightningElement {
 
       return false;
     });
-    
+
     return ret;
   }
 }

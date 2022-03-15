@@ -5,10 +5,7 @@ export default class ProgressBar extends LightningElement {
 
   @api isContact=false;
   @api isAsset=false;
-
   @api nav={};
-
-
 
   onItemClick(event) {
     this.dispatchEvent(
