@@ -9,6 +9,39 @@
         <template if:false={item.selected}>
           <div class="progress-bar__count">{item.step}</div>
         </template>
+        <template if:true={item.completed}>
+          <div class="progress-bar__message">
+            <svg version="1.1" baseProfile="full" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+              <circle fill="#4EC3A1" cx="8" cy="8" r="8"></circle>
+              <path d="M8.1,7.5"></path>
+              <path fill="#ffffff" d="M7.3,11.9l4.9-6.5C12.4,5,12.3,4.5,12,4.2s-0.7-0.1-1,0.1L6.8,9.7L4.9,7.8c-0.3-0.3-0.7-0.3-1,0
+              	c-0.3,0.3-0.3,0.7,0,1L7.3,11.9z"></path>
+            </svg>
+          </div>
+        </template>
+        <template if:true={item.warning}>
+          <div class="progress-bar__message">
+            <svg version="1.1" baseProfile="full" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+              <circle fill="#F9BC35" cx="8" cy="8" r="8"></circle>
+              <path d="M8.1,7.5"></path>
+              <path fill="#fff" d="M8.1,9.5H7.9C7.4,9.5,7,9.1,7,8.6V3.7c0-0.5,0.4-0.9,0.9-0.9h0.2C8.6,2.9,9,3.3,9,3.7v4.9
+              	C9,9.1,8.6,9.5,8.1,9.5z"></path>
+              <circle fill="#fff" cx="8" cy="11.8" r="1.4"></circle>
+            </svg>
+          </div>
+        </template>
+        <template if:true={item.error}>
+          <div class="progress-bar__message">
+            <svg version="1.1" baseProfile="full" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+              <circle fill="#F74037" cx="8" cy="8" r="8"></circle>
+              <path d="M8.1,7.5"></path>
+              <path fill="#ffffff" d="M11,10.9L10.9,11c-0.3,0.3-0.9,0.3-1.2,0L4.9,6.3c-0.3-0.3-0.3-0.9,0-1.2l0.1-0.1c0.3-0.3,0.9-0.3,1.2,0L11,9.7
+              	C11.4,10,11.4,10.6,11,10.9z"></path>
+              <path fill="#ffffff" d="M5.1,11l-0.1-0.1c-0.3-0.3-0.3-0.9,0-1.2l4.8-4.8c0.3-0.3,0.9-0.3,1.2,0L11,5.1c0.3,0.3,0.3,0.9,0,1.2L6.3,11
+              	C5.9,11.4,5.4,11.4,5.1,11z"></path>
+            </svg>
+          </div>
+        </template>
         <span>{item.label}</span>
       </li>
     </template>
