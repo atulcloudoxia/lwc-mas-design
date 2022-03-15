@@ -35,6 +35,16 @@ masState : {
 // this function should be called whenever a change occurs in a screen already visited. It will introspect masState object amd perform automatice update of data
 // it will also be able to perform the update of elements in the proper order to avoid conflicts, and will keep calling itself until all steps are udpated
 function updateState() {
+    if masState.contact_screen.should_recompute == true {
+        recomputeContact().then {
+            updateState();
+        }
+
+    }
+    else masState.asset_screen.should_recompute == true {
+        recomputeAsset()
+    }
+
     // loop over masState object and update each section with "should_recompute" : "true". call itself when complete and it will stop calling when all recompute are done
     // e.g. if (asset_screen.is_completed && should_recompute) { // recomputeAsset() and then updateState() }
 }
@@ -43,8 +53,16 @@ function updateState() {
 
 // screens : contact, asset, deposit, file, review
 // only reload partial data for current screen. Should be done in precise order to avoid conflicts
-function recomputeContact() {} // probably unneeded because it is the first screen
+function recomputeContact() {
+    makeASaleContactHelper.doRecompute()
+} // probably unneeded because it is the first screen
 function recomputeAsset() {} // probably unneeded because changing contact will have no effect on this
-function recomputeDeposit() {} // triggered if buyer1 and asset (parkign, locker) changes
+
+import makeASaleDepositHelper.recomputeMe()
+function recomputeDeposit() {
+    recomputeMe(data, ...arguments.)
+
+
+} // triggered if buyer1 and asset (parkign, locker) changes
 function recomputeFile() { // fetch all files for objects}
 function recomputeReview() { // probably nothing to do since it is jsut loading objects in parent data
