@@ -1,12 +1,22 @@
 <template>
 	<c-mas-progress-bar onpage={handleStepChange} nav={pages}></c-mas-progress-bar>
+
 	<div class="app__container">
-		<template if:true={pageWarning}>
-			<c-mas-page-warning message={pageMessage}></c-mas-page-warning>
-		</template>
-		<template if:true={pageError}>
-			<c-mas-page-error message={pageMessage}></c-mas-page-error>
-		</template>
+
+		<!-- Messages -->
+		<div>
+			<template if:true={pageWarning}>
+				<c-mas-message-warning message={pageMessage}></c-mas-message-warning>
+			</template>
+			<template if:true={pageError}>
+				<c-mas-message-error message={pageMessage}></c-mas-message-error>
+			</template>
+			<template if:true={pageProcessing}>
+				<c-mas-message-processing></c-mas-message-processing>
+			</template>
+		</div>
+
+		<!-- Pages -->
 		<template if:true={showContactPage}>
 			<c-mas-page-contact onupdate={handlePageUpdate}></c-mas-page-contact>
 		</template>
@@ -25,6 +35,7 @@
 		<template if:true={showReviewPage}>
 			<c-mas-page-review></c-mas-page-review>
 		</template>
+
 		<c-mas-footer-bar></c-mas-footer-bar>
 	</div>
 </template>

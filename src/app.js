@@ -25,12 +25,14 @@ export default class Mas extends LightningElement {
       step: 2,
       label: "Asset",
       ...defaults,
+      completed:true
     },
     {
       id: "deposit",
       step: 3,
       label: "Deposit",
       ...defaults,
+      processing:true
     },
     {
       id: "varia",
@@ -84,6 +86,11 @@ export default class Mas extends LightningElement {
   get pageError() {
     let currentPage = this.currentPage()[0];
     return currentPage.error;
+  }
+
+  get pageProcessing() {
+    let currentPage = this.currentPage()[0];
+    return currentPage.processing;
   }
 
   get pageMessage() {
