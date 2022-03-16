@@ -198,13 +198,26 @@ const languageOptions = [{
 
 export default class ContactPage extends LightningElement {
 
-  @track editContact = false;
-  @track selectedRow = {};
-  @track isCorporation = false;
-  @track addContact = false;
-  @track errorMessage = "";
-  @track hasError = false;
-  @track data = data;
+  @track
+  editContact = false;
+
+  @track
+  selectedRow = {};
+
+  @track
+  isCorporation = false;
+
+  @track
+  addContact = false;
+
+  @track
+  errorMessage = "";
+
+  @track
+  hasError = false;
+
+  @track
+  data = data;
 
   columns = columns;
   languageOptions = languageOptions;
@@ -213,6 +226,8 @@ export default class ContactPage extends LightningElement {
 
   /**
    * Add contact
+   *
+   * @param (Event) e
    */
   handleAddContact(e) {
     this.addContact = true;
@@ -220,9 +235,11 @@ export default class ContactPage extends LightningElement {
 
   /**
    * Handle add contact form
+   *
+   * @param (Event) e
    */
-  handleAddContactForm(event) {
-    event.preventDefault();
+  handleAddContactForm(e) {
+    e.preventDefault();
 
     // Example dispatch event
     this.dispatchEvent(
@@ -242,10 +259,12 @@ export default class ContactPage extends LightningElement {
   }
 
   /**
-   *  handleFormSubmit
+   * Handle edit contact form
+   *
+   * @param (Event) e
    */
-  handleEditContactForm(event) {
-    event.preventDefault();
+  handleEditContactForm(e) {
+    e.preventDefault();
 
     // Example dispatch event
     this.dispatchEvent(
@@ -264,12 +283,13 @@ export default class ContactPage extends LightningElement {
     this.editContact = false;
   }
 
-
   /**
    * Handle role change
+   *
+   * @param (Event) e
    */
-  handleRoleChange(event) {
-    let role = event.detail.value;
+  handleRoleChange(e) {
+    let role = e.detail.value;
 
     this.isCorporation = role === 'corporation';
     this.selectedRow.role = role;
@@ -277,22 +297,26 @@ export default class ContactPage extends LightningElement {
 
   /**
    * Parse row actions
+   *
+   * @param (Event) e
    */
-  handleRowAction(event) {
-    const { action, row } = event.detail;
+   handleRowAction(e) {
+     const { action, row } = e.detail;
 
-    switch (action.name) {
-      case 'edit':
-        this.editRow(row);
-        break;
+     switch (action.name) {
+       case 'edit':
+         this.editRow(row);
+         break;
 
-      case 'delete':
-        this.deleteRow(row);
-        break;
+       case 'delete':
+         this.data = this.deleteRow(row, this.data);
+         // deleteId - Handle delete logic
+         break;
 
-      return;
-    }
-  }
+       // No other actions but delete for now
+       default:
+     }
+   }
 
   /**
    * Edit row
@@ -306,30 +330,35 @@ export default class ContactPage extends LightningElement {
   }
 
   /**
-   * Delete row
+   * Delete
+   *
+   * @param (Object)  row
+   * @param (Array)   data
    */
-  deleteRow(row) {
+  deleteRow(row, data) {
     const { id } = row;
-    const index = this.findRowById(id);
+    const index = this.findRowById(id, data);
 
     if (index !== -1) {
-      this.data = this.data
+      return data
         .slice(0, index)
-        .concat(this.data.slice(index + 1));
-
-      // Nhan, handle delete logic here
+        .concat(data.slice(index + 1));
     }
   }
 
-  findRowById(id) {
+  /**
+   * Find row by id
+   *
+   * @param (Number)  id
+   * @param (Array)   data
+   */
+  findRowById(id, data) {
     let ret = -1;
-
-    this.data.some((row, index) => {
+    data.some((row, index) => {
       if (row.id === id) {
         ret = index;
         return true;
       }
-
       return false;
     });
 

@@ -168,6 +168,7 @@ export default class DepositTable extends LightningElement {
     addDiscount = false;
 
     optionsSchedule = [{ }]; // Options for "Select Deposit Schedule"
+    optionsDiscounts = [{ }]; // Options for discounts
 
     /**
      * Get the schedule amount summary
