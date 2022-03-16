@@ -71,12 +71,22 @@
           <h2>Select Deposit Schedule</h2>
         </div>
         <div>
-          <lightning-input type="checkbox" label="Eligible for tax rebate" name="tax-rebate"></lightning-input>
+          <lightning-input
+            type="checkbox"
+            label="Eligible for tax rebate"
+            name="tax-rebate"
+            >
+          </lightning-input>
         </div>
       </div>
       <hr />
       <div>
-        <lightning-combobox name="progress" label="Status" placeholder="Select Schedule" variant="label-hidden"
+        <lightning-combobox
+          name="progress"
+          label="Status"
+          placeholder="Select Schedule"
+          variant="label-hidden"
+          options={optionsSchedule}
           onchange={handleScheduleChange}>
         </lightning-combobox>
       </div>
@@ -117,6 +127,7 @@
                  name="discount"
                  label="Discount"
                  placeholder="Select Discount"
+                 options={optionsDiscounts}
                  variant="label-hidden">
                </lightning-combobox>
             </div>
