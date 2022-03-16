@@ -89,6 +89,16 @@ h2 {
     }
 }
 
+.table-footer {
+  text-align:center;
+  margin-top:20px;
+  font-size:16px;
+
+  .table-footer__total {
+    font-weight:700;
+  }
+}
+
 .line_item {
     display:flex;
     width:100%;
@@ -101,6 +111,20 @@ h2 {
     &.total {
         font-weight:600;
         font-size:17px;
+    }
+
+    .line_item__discount_button {
+      display:flex;
+      align-items:center;
+
+      > * + * {
+        margin-left:10px;
+      }
+    }
+
+    .line_item__discount_amount {
+      color: #F74037;
+      font-weight:600;
     }
 }
 

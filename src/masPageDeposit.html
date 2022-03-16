@@ -1,7 +1,17 @@
 <template>
   <div class="page-container">
+
     <div class="heading">
       <h1><span>Deposit /</span> Kingsway Crescent 401</h1>
+      <div class="heading__actions">
+        <lightning-button-icon
+          icon-name="utility:settings"
+          alternative-text="Settings"
+          class="slds-m-left_xx-small"
+          onclick={handleAddDiscount}
+          title="Settings">
+        </lightning-button-icon>
+      </div>
     </div>
 
     <div class="table__items columns mt-10">
@@ -21,6 +31,30 @@
           $59,500.00
         </div>
       </div>
+
+      <!-- Discounts Start -->
+      <template for:each={discounts} for:item="item" for:index="index">
+        <div key={item.id} class="line_item">
+          <div class="line_item__discount_button">
+            <lightning-button-icon
+              icon-name="utility:delete"
+              alternative-text="Delete"
+              class="slds-m-left_xx-small"
+              data-discount-id={item.id}
+              onclick={handleRemoveDiscount}
+              title="Delete">
+            </lightning-button-icon>
+            <div>
+              Discount: {item.name}
+            </div>
+          </div>
+          <div class="line_item__discount_amount">
+            (${item.discount})
+          </div>
+        </div>
+      </template>
+      <!-- Discounts End -->
+
       <div class="line_item total">
         <div>
           Total
@@ -34,7 +68,7 @@
     <div class="mt-30">
       <div class="line_item">
         <div>
-          <h2>Select Deposit2 Schedule</h2>
+          <h2>Select Deposit Schedule</h2>
         </div>
         <div>
           <lightning-input type="checkbox" label="Eligible for tax rebate" name="tax-rebate"></lightning-input>
@@ -43,7 +77,7 @@
       <hr />
       <div>
         <lightning-combobox name="progress" label="Status" placeholder="Select Schedule" variant="label-hidden"
-          onchange={handleChange}>
+          onchange={handleScheduleChange}>
         </lightning-combobox>
       </div>
     </div>
@@ -52,15 +86,54 @@
       <div class="sub-heading">
         <h2>Deposit</h2>
         <div class="sub-heading__actions">
-          <button class="button-tertiary">Reload Schedule</button>
-          <button class="button-primary">+ Add Deposit</button>
+          <button class="button-tertiary" onclick={handleReloadSchedule}>Reload Schedule</button>
+          <button class="button-primary" onclick={handleAddDeposit}>+ Add Deposit</button>
         </div>
       </div>
       <hr />
       <div class="mt-10">
-        <lightning-datatable key-field="id" data={data} columns={columns} hide-checkbox-column>
-        </lightning-datatable>
+        <c-mas-custom-table key-field="id" data={data} columns={columns} onrowaction={handleRowAction} hide-checkbox-column>
+        </c-mas-custom-table>
+      </div>
+      <div class="table-footer">
+        Summary: <span class="table-footer__total">${amountTotal} ({percentTotal}%)</span>
       </div>
     </div>
+
   </div>
+
+  <!-- Add Discount Window Start -->
+  <template if:true={addDiscount}>
+    <form onsubmit={handleDiscountFormSubmit}>
+      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+          <div class="slds-modal__header">
+            <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Settings</h1>
+          </div>
+          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+            <div class="mt-30">
+              <lightning-combobox
+                 name="discount"
+                 label="Discount"
+                 placeholder="Select Discount"
+                 variant="label-hidden">
+               </lightning-combobox>
+            </div>
+          </div>
+          <div class="slds-modal__footer slds-modal__footer_directional">
+            <div class="modal__container__actions">
+              <div class="modal__container__cancel">
+                Cancel
+              </div>
+              <button class="button-primary">Save</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </form>
+  </template>
+  <!-- Add Discount Window End -->
+
 </template>

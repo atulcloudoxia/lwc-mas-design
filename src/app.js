@@ -32,7 +32,8 @@ export default class Mas extends LightningElement {
       step: 3,
       label: "Deposit",
       ...defaults,
-      processing:true
+      warning:true,
+      "message": "The selected deposit schedule is not compliant."
     },
     {
       id: "varia",
@@ -51,6 +52,7 @@ export default class Mas extends LightningElement {
       step: 6,
       label: "Review",
       ...defaults,
+      processing:true
     }
   ];
 
