@@ -1,8 +1,15 @@
 <template>
   <div class="page-container">
+
+    <!-- Heading -->
     <div class="heading">
       <h1><span>Asset /</span> Kingsway Crescent 401</h1>
+      <div class="heading__actions">
+        <button class="button-secondary" onclick={handleEditAsset}>Edit</button>
+      </div>
     </div>
+
+    <!-- Summary Table -->
     <div class="table__items mt-10">
       <div>
         <span>
@@ -21,13 +28,9 @@
          <b>Developer Sale</b><br/>
          {developerSale}
         </span>
-        <div class="table__items__actions">
-          <lightning-button-menu alternative-text="Show menu" variant="border" onselect={handleEditAsset}>
-            <lightning-menu-item value="MenuItemOne" label="Edit"></lightning-menu-item>
-          </lightning-button-menu>
-        </div>
       </div>
     </div>
+
     <div class="mt-30">
       <lightning-tabset active-tab-value="parking">
         <lightning-tab label="Parking" value="parking">
@@ -50,7 +53,7 @@
     </div>
   </div>
 
-
+  <!-- Add/Edit Asset Start -->
   <template if:true={addAsset}>
     <form onsubmit={handleFormSubmit}>
       <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
@@ -94,6 +97,13 @@
                 </lightning-input>
               </div>
             </div>
+            <div class="mt-20">
+              <label>Is this a reservation?</label>
+              <div class="mt-10">
+                <lightning-input name="dev-sale" label="Developer Sale" variant="label-hidden" value={developerSale}>
+                </lightning-input>
+              </div>
+            </div>
           </div>
           <div class="slds-modal__footer slds-modal__footer_directional">
             <div class="modal__container__actions">
@@ -108,4 +118,6 @@
       <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
     </form>
   </template>
+  <!-- Add/Edit Asset Start -->
+
 </template>
