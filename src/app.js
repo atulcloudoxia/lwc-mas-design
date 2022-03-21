@@ -6,8 +6,8 @@ const defaults = {
   completed:false,        // Page is completed
   warning: false,         // Page has warning
   error: false,           // Page has error
-  processing: false,      // Page is procesing
-  message: ""             // Status message
+  processing: false,      // Page is processing
+  message: ""             // Status message for page
 };
 
 export default class Mas extends LightningElement {
@@ -81,21 +81,6 @@ export default class Mas extends LightningElement {
     return this.pages[5].selected;
   };
 
-  get pageWarning() {
-    let currentPage = this.currentPage()[0];
-    return currentPage.warning;
-  }
-
-  get pageError() {
-    let currentPage = this.currentPage()[0];
-    return currentPage.error;
-  }
-
-  get pageProcessing() {
-    let currentPage = this.currentPage()[0];
-    return currentPage.processing;
-  }
-
   get hasPageMessage() {
     let currentPage = this.currentPage()[0];
 
@@ -104,6 +89,7 @@ export default class Mas extends LightningElement {
 
   get pageMessage() {
     let currentPage = this.currentPage()[0];
+    
     return currentPage.message;
   }
 
