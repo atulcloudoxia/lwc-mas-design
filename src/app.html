@@ -5,15 +5,10 @@
 
 		<!-- Messages -->
 		<div>
-			<template if:true={pageWarning}>
-				<c-mas-message-warning message={pageMessage}></c-mas-message-warning>
+			<template if:true={hasPageMessage}>
+				<c-mas-message message={pageMessage} type={pageMessageType}></c-mas-message>
 			</template>
-			<template if:true={pageError}>
-				<c-mas-message-error message={pageMessage}></c-mas-message-error>
-			</template>
-			<template if:true={pageProcessing}>
-				<c-mas-message-processing></c-mas-message-processing>
-			</template>
+
 		</div>
 
 		<!-- Pages -->

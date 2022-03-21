@@ -1,4 +1,5 @@
 import { LightningElement, api, track } from 'lwc';
+import { ERROR, WARNING, PROCESSING } from './constants';
 
 const defaults = {
   selected:false,         // Page is in view
@@ -95,9 +96,29 @@ export default class Mas extends LightningElement {
     return currentPage.processing;
   }
 
+  get hasPageMessage() {
+    let currentPage = this.currentPage()[0];
+
+    return currentPage.warning || currentPage.error || currentPage.processing;
+  }
+
   get pageMessage() {
     let currentPage = this.currentPage()[0];
     return currentPage.message;
+  }
+
+  get pageMessageType() {
+    let currentPage = this.currentPage()[0];
+
+    if (currentPage.warning) {
+      return WARNING;
+
+    } else if (currentPage.error) {
+      return ERROR;
+
+    } else if (currentPage.processing) {
+      return PROCESSING;
+    }
   }
 
   currentPage() {

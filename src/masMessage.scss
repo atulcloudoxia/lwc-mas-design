@@ -5,13 +5,28 @@
   align-items: center;
   justify-content: center;
   padding: 10px 5px;
-  background: #F74037;
-  color: #fff;
   border-radius: 6px;
   width: 100%;
   box-sizing: border-box;
   font-weight: 600;
-  border: 1px #F74037 solid;
+
+  &__error {
+    color: #fff;
+    background: #F74037;
+    border: 1px #F74037 solid;
+  }
+
+  &__processing {
+    color: #fff;
+    background: #ff8b57;
+    border: 1px #ff8b57 solid;
+  }
+
+  &__warning {
+    background: #ffb75d;
+    color: #000;
+    border: 1px #ffb75d solid;
+  }
 
   > * + * {
     margin-left:10px;
