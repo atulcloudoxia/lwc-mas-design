@@ -8,7 +8,6 @@
 			<template if:true={hasPageMessage}>
 				<c-mas-message message={pageMessage} type={pageMessageType}></c-mas-message>
 			</template>
-
 		</div>
 
 		<!-- Pages -->
@@ -31,6 +30,6 @@
 			<c-mas-page-review onpage={handleStepChange}></c-mas-page-review>
 		</template>
 
-		<c-mas-footer-bar></c-mas-footer-bar>
+		<c-mas-footer-bar ondelete={handleDeleteSale}></c-mas-footer-bar>
 	</div>
 </template>

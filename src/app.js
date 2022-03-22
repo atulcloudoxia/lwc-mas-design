@@ -118,6 +118,15 @@ export default class Mas extends LightningElement {
   }
 
   /**
+   * When a user confirms they wish to delete sale
+   *
+   * @param (Event) e
+   */
+  handleDeleteSale(e) {
+    // Add logic for deleting sale
+  }
+
+  /**
    * Page/Step Change Listener
    *
    * @param (Event) e

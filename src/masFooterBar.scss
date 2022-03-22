@@ -1,3 +1,5 @@
+@import 'app';
+
 footer {
   position:fixed;
   bottom:0px;
@@ -37,11 +39,15 @@ footer .footer__ls {
 }
 
 footer .footer__ls button {
-  background: #5A6267
+  background: #5A6267;
+  outline:none;
+  border:0;
 }
 
 footer .footer__rs button {
-  background: #4ec3a1
+  background: #4ec3a1;
+  outline:none;
+  border:0;
 }
 
 footer .footer__rs {
@@ -57,6 +63,7 @@ button {
   font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight:500;
   font-size:14px;
+  outline:none;
 }
 
 .button-primary {
