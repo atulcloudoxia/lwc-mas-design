@@ -15,7 +15,7 @@
 			<c-mas-page-contact onupdate={handlePageUpdate}></c-mas-page-contact>
 		</template>
 		<template if:true={showAssetPage}>
-			<c-mas-page-asset></c-mas-page-asset>
+			<c-mas-page-asset parkingdata={parkingData} extradata={extraData} asset={asset}></c-mas-page-asset>
 		</template>
 		<template if:true={showDepositPage}>
 			<c-mas-page-deposit></c-mas-page-deposit>

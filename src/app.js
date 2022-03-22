@@ -1,5 +1,5 @@
 import { LightningElement, api, track } from 'lwc';
-import { ERROR, WARNING, PROCESSING } from './constants';
+import { ERROR, WARNING, PROCESSING, MOCK_PARKING, MOCK_ASSET, MOCK_EXTRAS } from './constants';
 
 const defaults = {
   selected:false,         // Page is in view
@@ -11,6 +11,15 @@ const defaults = {
 };
 
 export default class Mas extends LightningElement {
+
+  @track
+  parkingData = MOCK_PARKING;
+
+  @track
+  extraData = MOCK_EXTRAS;
+
+  @track
+  asset = MOCK_ASSET;
 
   @track
   pages = [

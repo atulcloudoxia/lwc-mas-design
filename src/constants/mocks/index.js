@@ -49,4 +49,57 @@ const MOCK_CONTACTS = [{
   }
 ];
 
-export { MOCK_CONTACTS };
+const MOCK_PARKING = [
+  {
+    id: 1,
+    type: 'Locker Standard',
+    assigned: 'Side by Side',
+    price: '30933'
+  },
+  {
+    id: 2,
+    type: 'Parking Standard',
+    assigned: 'Side by Side',
+    price: '36933'
+  },
+];
+
+const MOCK_EXTRAS = [
+  {
+    id: 1,
+    quantity: 3,
+    name: 'Extra 1',
+    description: 'lorem ipsum',
+    type: 'Upper',
+    price: '87272'
+  },
+  {
+    id: 2,
+    quantity: 3,
+    name: 'Extra 1',
+    description: 'lorem ipsum',
+    type: 'Bathroom',
+    price: '87272'
+  },
+  {
+    id: 3,
+    quantity: 3,
+    name: 'Extra 1',
+    description: 'lorem ipsum',
+    type: 'Ground',
+    price: '87272'
+  },
+];
+
+const MOCK_ASSET = {
+  id: 1,
+  name: 'Kingsway Crescent 401',
+  salesRep: 'Baker Real Estate',
+  contractDate: '2020-09-07',
+  price: '1309000.00',
+  developerSale: true,
+};
+
+
+
+export { MOCK_CONTACTS, MOCK_PARKING, MOCK_ASSET, MOCK_EXTRAS };

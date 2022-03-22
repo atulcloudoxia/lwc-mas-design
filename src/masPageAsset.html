@@ -3,7 +3,7 @@
 
     <!-- Heading -->
     <div class="heading">
-      <h1><span>Asset /</span> Kingsway Crescent 401</h1>
+      <h1><span>Asset /</span> {asset.name}</h1>
       <div class="heading__actions">
         <button class="button-secondary" onclick={handleEditAsset}>Edit</button>
       </div>
@@ -14,19 +14,19 @@
       <div>
         <span>
          <b>Sales Representative</b><br/>
-         {salesRep}
+         {asset.salesRep}
         </span>
         <span>
          <b>Contract Date</b><br/>
-         {contractDate}
+         {asset.contractDate}
         </span>
         <span>
          <b>Asset Price</b><br/>
-         {assetPrice}
+         {asset.price}
         </span>
         <span>
          <b>Developer Sale</b><br/>
-         {developerSale}
+         {asset.developerSale}
         </span>
       </div>
     </div>
@@ -34,7 +34,13 @@
     <div class="mt-30">
       <lightning-tabset active-tab-value="parking">
         <lightning-tab label="Parking" value="parking">
-          <c-mas-table-parking></c-mas-table-parking>
+          <c-mas-custom-table
+            key-field="id"
+            data={parkingdata}
+            columns={columns}
+            onrowaction={handleRowAction}
+            hide-checkbox-column>
+          </c-mas-custom-table>
           <div class="mt-30">
             <h2>Add Parking</h2>
             <hr />
@@ -42,7 +48,13 @@
           </div>
         </lightning-tab>
         <lightning-tab label="Extras" value="extras">
-          <c-mas-table-extras></c-mas-table-extras>
+          <c-mas-custom-table
+            key-field="id"
+            data={extradata}
+            columns={columnsExtras}
+            onrowaction={handleRowAction}
+            hide-checkbox-column>
+          </c-mas-custom-table>
           <div class="mt-30">
             <h2>Add Extra</h2>
             <hr />
@@ -67,12 +79,12 @@
               <label>Asset</label>
               <div>
                 <lightning-input name="search-contact" label="Search Contact" variant="label-hidden"
-                  value="Kingsway Crescent">
+                  value={asset.name}>
                 </lightning-input>
               </div>
               <div class="mt-10">
                 <lightning-input name="search-contact" label="Search Contact" variant="label-hidden"
-                  value="Kingsway Crescent #211">
+                  value={asset.name}>
                 </lightning-input>
               </div>
             </div>
@@ -80,13 +92,13 @@
               <label>Contract Date</label>
               <div class="mt-10">
                 <lightning-input type="date" name="contract-date" variant="label-hidden" label="Date"
-                  value={contractDate}></lightning-input>
+                  value={asset.contractDate}></lightning-input>
               </div>
             </div>
             <div class="mt-20">
               <label>Sales Representative</label>
               <div class="mt-10">
-                <lightning-input name="sales-rep" label="Sales Rep" variant="label-hidden" value={salesRep}>
+                <lightning-input name="sales-rep" label="Sales Rep" variant="label-hidden" value={asset.salesRep}>
                 </lightning-input>
               </div>
             </div>
