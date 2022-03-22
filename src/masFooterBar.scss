@@ -1,8 +1,26 @@
 footer {
   position:fixed;
   bottom:0px;
+  left:0px;
+  right:0px;
   background:#434C52;
-  height:120px;
+}
+
+footer .cancel-bar {
+  background: #343c41;
+  padding: 10px 10px;
+  color: #fff;
+  text-align: center;
+
+  &__button {
+    height: 30px;
+    width: 110px;
+    background: #fa604a;
+  }
+}
+
+footer .footer-bar {
+  height:80px;
   left:0;
   right:0;
   display:flex;

@@ -7,13 +7,18 @@ export default class ProgressBar extends LightningElement {
   @api isAsset=false;
   @api nav={};
 
-  onItemClick(event) {
-    this.dispatchEvent(
-      new CustomEvent("page", {
-        detail: {
-          page: event.currentTarget.getAttribute("data-page")
-        }
-      })
-    )
+  onItemClick(e) {
+    const page = event.currentTarget.getAttribute("data-page");
+    const enabled = String(event.currentTarget.getAttribute("data-enabled")) === 'true';
+
+    if (enabled) {
+      this.dispatchEvent(
+        new CustomEvent("page", {
+          detail: {
+            page
+          }
+        })
+      )
+    }
   }
 }

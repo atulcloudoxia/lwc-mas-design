@@ -18,6 +18,7 @@ export default class Mas extends LightningElement {
       id: "contact",
       step: 1,
       label: "Contact",
+      enabled: true,
       ...defaults,
       selected:true,
     },
@@ -25,6 +26,7 @@ export default class Mas extends LightningElement {
       id: "asset",
       step: 2,
       label: "Asset",
+      enabled: true,
       ...defaults,
       completed:true
     },
@@ -32,6 +34,7 @@ export default class Mas extends LightningElement {
       id: "deposit",
       step: 3,
       label: "Deposit",
+      enabled: true,
       ...defaults,
       warning:true,
       "message": "The selected deposit schedule is not compliant."
@@ -40,18 +43,21 @@ export default class Mas extends LightningElement {
       id: "varia",
       step: 4,
       label: "Varia",
+      enabled: true,
       ...defaults,
     },
     {
       id: "files",
       step: 5,
       label: "Files",
+      enabled: true,
       ...defaults,
     },
     {
       id: "review",
       step: 6,
       label: "Review",
+      enabled: true,
       ...defaults,
       processing:true
     }
@@ -89,7 +95,7 @@ export default class Mas extends LightningElement {
 
   get pageMessage() {
     let currentPage = this.currentPage()[0];
-    
+
     return currentPage.message;
   }
 

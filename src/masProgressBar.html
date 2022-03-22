@@ -2,12 +2,23 @@
 <template>
   <ul class="progress-bar">
     <template for:each={nav} for:item="item" for:index="index">
-      <li key={item.id} data-page={index} onclick={onItemClick}>
+      <li key={item.id} data-page={index} data-enabled={item.enabled} onclick={onItemClick}>
         <template if:true={item.selected}>
-          <div class="progress-bar__count selected">{item.step}</div>
+          <div class="progress-bar__count selected">
+            {item.step}
+          </div>
         </template>
         <template if:false={item.selected}>
-          <div class="progress-bar__count">{item.step}</div>
+          <template if:true={item.enabled}>
+            <div class="progress-bar__count">
+                {item.step}
+            </div>
+          </template>
+          <template if:false={item.enabled}>
+            <div class="progress-bar__count disabled">
+                {item.step}
+            </div>
+          </template>
         </template>
         <template if:true={item.completed}>
           <div class="progress-bar__message">
@@ -53,7 +64,12 @@
             </svg>
           </div>
         </template>
-        <span>{item.label}</span>
+        <template if:false={item.enabled}>
+          <span class="disabled">{item.label}</span>
+        </template>
+        <template if:true={item.enabled}>
+          <span>{item.label}</span>
+        </template>
       </li>
     </template>
   </ul>
