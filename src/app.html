@@ -1,6 +1,10 @@
 <template>
 	<c-mas-progress-bar onpage={handleStepChange} nav={pages}></c-mas-progress-bar>
 
+	<template if:true={isLoading}>
+  	<lightning-spinner size='large' variant='base'></lightning-spinner>
+	</template>
+
 	<div class="app__container">
 
 		<!-- Messages -->

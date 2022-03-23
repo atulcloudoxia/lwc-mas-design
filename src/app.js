@@ -44,6 +44,8 @@ export default class Mas extends LightningElement {
   @track
   changeOrderData = MOCK_CHANGE_ORDERS;
 
+  @track
+  isLoading=false;
 
   @track
   pages = [
