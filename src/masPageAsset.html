@@ -65,71 +65,9 @@
     </div>
   </div>
 
-  <!-- Add/Edit Asset Start -->
+  <!-- Add/Edit Asset Form -->
   <template if:true={addAsset}>
-    <form onsubmit={handleFormSubmit}>
-      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
-        class="slds-modal slds-fade-in-open">
-        <div class="slds-modal__container">
-          <div class="slds-modal__header">
-            <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Edit Asset</h1>
-          </div>
-          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-            <div>
-              <label>Asset</label>
-              <div>
-                <lightning-input name="search-contact" label="Search Contact" variant="label-hidden"
-                  value={asset.name}>
-                </lightning-input>
-              </div>
-              <div class="mt-10">
-                <lightning-input name="search-contact" label="Search Contact" variant="label-hidden"
-                  value={asset.name}>
-                </lightning-input>
-              </div>
-            </div>
-            <div class="mt-20">
-              <label>Contract Date</label>
-              <div class="mt-10">
-                <lightning-input type="date" name="contract-date" variant="label-hidden" label="Date"
-                  value={asset.contractDate}></lightning-input>
-              </div>
-            </div>
-            <div class="mt-20">
-              <label>Sales Representative</label>
-              <div class="mt-10">
-                <lightning-input name="sales-rep" label="Sales Rep" variant="label-hidden" value={asset.salesRep}>
-                </lightning-input>
-              </div>
-            </div>
-            <div class="mt-20">
-              <label>Is this a developer sale?</label>
-              <div class="mt-10">
-                <lightning-input name="dev-sale" label="Developer Sale" variant="label-hidden" value={developerSale}>
-                </lightning-input>
-              </div>
-            </div>
-            <div class="mt-20">
-              <label>Is this a reservation?</label>
-              <div class="mt-10">
-                <lightning-input name="dev-sale" label="Developer Sale" variant="label-hidden" value={developerSale}>
-                </lightning-input>
-              </div>
-            </div>
-          </div>
-          <div class="slds-modal__footer slds-modal__footer_directional">
-            <div class="modal__container__actions">
-              <div class="modal__container__cancel" onclick={handleCancel}>
-                Cancel
-              </div>
-              <button class="button-primary">Continue</button>
-            </div>
-          </div>
-        </div>
-      </section>
-      <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
-    </form>
+    <c-mas-form-asset asset={asset}></c-mas-form-asset>
   </template>
-  <!-- Add/Edit Asset Start -->
 
 </template>
