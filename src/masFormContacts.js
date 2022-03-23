@@ -9,8 +9,9 @@ import {
 export default class ContactForm extends LightningElement {
 
   @api data;
+  @api iscorporation;
 
-  @track isCorporation = false;
+  @track isCorporation = this.iscorporation;
 
   languageOptions = OPTIONS_LANGUAGES;
   salutationOptions = OPTIONS_SALUTATIONS;
@@ -28,6 +29,17 @@ export default class ContactForm extends LightningElement {
   }
 
   /**
+   * Handle cancel
+   *
+   * @param (Event) e
+   */
+  handleCancel(e) {
+    e.preventDefault();
+
+    // Cancel logic
+  }
+
+  /**
    * Handle role change
    *
    * @param (Event) e
@@ -36,6 +48,5 @@ export default class ContactForm extends LightningElement {
     let role = e.detail.value;
 
     this.isCorporation = role === 'corporation';
-    this.data.role = role;
   }
 }

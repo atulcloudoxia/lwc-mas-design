@@ -1,4 +1,3 @@
-<!-- Form Start -->
 <template>
   <form onsubmit={handleFormSubmit}>
     <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
@@ -176,7 +175,7 @@
 
         <div class="slds-modal__footer slds-modal__footer_directional">
           <div class="modal__container__actions">
-            <div class="modal__container__cancel">
+            <div class="modal__container__cancel" onclick={handleCancel}>
               Cancel
             </div>
             <button class="button-primary">Save</button>
@@ -187,4 +186,3 @@
     <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
   </form>
 </template>
-<!-- Form End -->

@@ -1,4 +1,5 @@
 import { LightningElement, track, api } from 'lwc';
+import { findRowById } from './utils';
 import {
   COLUMNS_CONTACTS,
   OPTIONS_ROLES,
@@ -31,31 +32,6 @@ export default class ContactPage extends LightningElement {
   }
 
   /**
-   * Handle add contact form
-   *
-   * @param (Event) e
-   */
-  handleAddContactForm(e) {
-    e.preventDefault();
-
-    // Example dispatch event
-    this.dispatchEvent(
-      new CustomEvent("update", {
-        detail: {
-          pageIdx: 0,
-          completed: false,
-          warning: true,
-          error: false,
-          message: "This page has incomplete information"
-        }
-      })
-    );
-
-    // Close modal
-    this.addContact = false;
-  }
-
-  /**
    * Parse row actions
    *
    * @param (Event) e
@@ -80,6 +56,8 @@ export default class ContactPage extends LightningElement {
 
   /**
    * Edit row
+   *
+   * @param (Object) row
    */
   editRow(row) {
     const { id } = row;
@@ -97,31 +75,12 @@ export default class ContactPage extends LightningElement {
    */
   deleteRow(row, data) {
     const { id } = row;
-    const index = this.findRowById(id, data);
+    const index = findRowById(id, data);
 
     if (index !== -1) {
       return data
         .slice(0, index)
         .concat(data.slice(index + 1));
     }
-  }
-
-  /**
-   * Find row by id
-   *
-   * @param (Number)  id
-   * @param (Array)   data
-   */
-  findRowById(id, data) {
-    let ret = -1;
-    data.some((row, index) => {
-      if (row.id === id) {
-        ret = index;
-        return true;
-      }
-      return false;
-    });
-
-    return ret;
   }
 }
