@@ -21,7 +21,7 @@
 			<c-mas-page-deposit data={depositData} asset={asset}></c-mas-page-deposit>
 		</template>
 		<template if:true={showVariaPage}>
-			<c-mas-page-varia></c-mas-page-varia>
+			<c-mas-page-varia variadata={variaData} changeorderdata={changeOrderData}></c-mas-page-varia>
 		</template>
 		<template if:true={showFilesPage}>
 			<c-mas-page-files></c-mas-page-files>

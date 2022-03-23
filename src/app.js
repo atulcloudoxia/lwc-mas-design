@@ -6,7 +6,9 @@ import {
   MOCK_PARKING,
   MOCK_ASSET,
   MOCK_EXTRAS,
-  MOCK_DEPOSIT
+  MOCK_DEPOSIT,
+  MOCK_VARIA,
+  MOCK_CHANGE_ORDERS
 } from './constants';
 
 const defaults = {
@@ -31,6 +33,12 @@ export default class Mas extends LightningElement {
 
   @track
   depositData = MOCK_DEPOSIT;
+
+  @track
+  variaData = MOCK_VARIA;
+
+  @track
+  changeOrderData = MOCK_CHANGE_ORDERS;
 
 
   @track

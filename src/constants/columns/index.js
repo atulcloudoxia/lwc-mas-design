@@ -225,4 +225,45 @@ const COLUMNS_DEPOSIT = [
   },
 ];
 
-export { COLUMNS_CONTACTS, COLUMNS_PARKING, COLUMNS_EXTRAS, COLUMNS_DEPOSIT };
+const COLUMNS_VARIA = [
+  {
+    label: 'Description',
+    fieldName: 'description',
+    editable: true,
+    hideDefaultActions:true,
+  },
+  {
+    type: 'action',
+    hideDefaultActions:true,
+    typeAttributes: {
+      rowActions: [
+        {
+          label: 'Delete Varia',
+          name: 'delete'
+        }
+      ]
+    },
+  },
+];
+
+const COLUMNS_CHANGE_ORDERS = [
+  {
+    label: 'Description',
+    fieldName: 'description',
+    editable: true,
+    hideDefaultActions:true,
+  },
+  {
+    type: 'action',
+    hideDefaultActions:true,
+    typeAttributes: {
+      rowActions: [
+        {
+          label: 'Delete Varia',
+          name: 'delete'
+        }
+      ]
+    },
+  },
+];
+export { COLUMNS_CONTACTS, COLUMNS_PARKING, COLUMNS_EXTRAS, COLUMNS_DEPOSIT, COLUMNS_VARIA, COLUMNS_CHANGE_ORDERS };

@@ -84,6 +84,16 @@ export default class DepositPage extends LightningElement {
     }
 
     /**
+     * Close/cancel the discount form
+     *
+     * @param (Event) e
+     */
+    cancelDiscountForm(e) {
+      e.preventDefault();
+      this.addDiscount = false;
+    }
+
+    /**
      * Handle schedule change
      *
      * @param (Event) e
