@@ -1,4 +1,4 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement, track, api } from 'lwc';
 import {
   COLUMNS_CONTACTS,
   OPTIONS_ROLES,
@@ -9,6 +9,8 @@ import {
 
 
 export default class ContactPage extends LightningElement {
+
+  @api data;
 
   @track
   editContact = false;
@@ -27,9 +29,6 @@ export default class ContactPage extends LightningElement {
 
   @track
   hasError = false;
-
-  @track
-  data = MOCK_CONTACTS;
 
   columns = COLUMNS_CONTACTS;
   languageOptions = OPTIONS_LANGUAGES;

@@ -46,7 +46,7 @@
       <div>
         <c-mas-custom-table
           key-field="id"
-          data={contactsData}
+          data={contactsdata}
           columns={contactsColumns}
           hide-checkbox-column>
         </c-mas-custom-table>
@@ -65,7 +65,7 @@
       <div class="mt-10">
         <c-mas-custom-table
           key-field="id"
-          data={depositsData}
+          data={depositsdata}
           columns={depositsColumns}
           hide-checkbox-column>
         </c-mas-custom-table>
@@ -75,7 +75,7 @@
     <div class="mt-30">
       <div class="sub-heading">
         <div class="sub-heading__actions">
-          <button class="button-primary" onclick={handleModifyContacts}>Complete</button>
+          <button class="button-primary" onclick={handleComplete}>Complete</button>
         </div>
       </div>
     </div>

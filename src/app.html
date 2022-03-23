@@ -12,7 +12,7 @@
 
 		<!-- Pages -->
 		<template if:true={showContactPage}>
-			<c-mas-page-contact onupdate={handlePageUpdate}></c-mas-page-contact>
+			<c-mas-page-contact data={contactsData} onupdate={handlePageUpdate}></c-mas-page-contact>
 		</template>
 		<template if:true={showAssetPage}>
 			<c-mas-page-asset parkingdata={parkingData} extradata={extraData} asset={asset}></c-mas-page-asset>
@@ -27,7 +27,7 @@
 			<c-mas-page-files></c-mas-page-files>
 		</template>
 		<template if:true={showReviewPage}>
-			<c-mas-page-review onpage={handleStepChange}></c-mas-page-review>
+			<c-mas-page-review contactsdata={contactsData} depositsdata={depositData} onpage={handleStepChange}></c-mas-page-review>
 		</template>
 
 		<c-mas-footer-bar ondelete={handleDeleteSale}></c-mas-footer-bar>

@@ -266,4 +266,107 @@ const COLUMNS_CHANGE_ORDERS = [
     },
   },
 ];
-export { COLUMNS_CONTACTS, COLUMNS_PARKING, COLUMNS_EXTRAS, COLUMNS_DEPOSIT, COLUMNS_VARIA, COLUMNS_CHANGE_ORDERS };
+
+
+
+const REVIEW_CONTACTS_COLUMNS = [
+  {
+    label: 'Role',
+    fieldName: 'role',
+    hideDefaultActions: true,
+    sortable: false
+  },
+  {
+    label: 'Name',
+    fieldName: 'name',
+    hideDefaultActions: true,
+    sortable: false
+  },
+  {
+    label: 'Email',
+    fieldName: 'email',
+    type: 'email',
+    hideDefaultActions: true,
+    sortable: false
+  },
+  {
+    label: 'Phone',
+    fieldName: 'phone',
+    hideDefaultActions: true,
+    sortable: false
+  },
+  {
+    label: 'Status',
+    fieldName: 'status',
+    type: 'customStatus',
+    typeAttributes: {
+      status: {
+        fieldName: 'isComplete'
+      }
+    },
+  }
+];
+
+const REVIEW_DEPOSITS_COLUMNS = [
+  {
+    label: 'Payment Number',
+    fieldName: 'number',
+    type: 'number',
+    editable: false,
+    hideDefaultActions:true,
+    fixedWidth: 150,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
+  {
+    label: 'Date',
+    fieldName: 'date',
+    type: 'date',
+    editable: false,
+    hideDefaultActions:true,
+  },
+  {
+    label: 'Deposit To',
+    fieldName: 'deposit_to',
+    type:'select',
+    editable: false
+  },
+  {
+    label: 'Deposit For',
+    fieldName: 'deposit_for',
+    editable: false
+  },
+  {
+    label: 'Amount',
+    fieldName: 'amount',
+    editable: false
+  },
+  {
+    label: 'Percent',
+    fieldName: 'percent',
+    type: 'percent',
+    editable: false,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
+  {
+    label: 'Received',
+    fieldName: 'received',
+    type: 'boolean',
+    editable: false
+  },
+];
+
+
+export {
+  COLUMNS_CONTACTS,
+  COLUMNS_PARKING,
+  COLUMNS_EXTRAS,
+  COLUMNS_DEPOSIT,
+  COLUMNS_VARIA,
+  COLUMNS_CHANGE_ORDERS,
+  REVIEW_CONTACTS_COLUMNS,
+  REVIEW_DEPOSITS_COLUMNS
+};
