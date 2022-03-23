@@ -12,28 +12,14 @@ export default class ContactPage extends LightningElement {
 
   @api data;
 
-  @track
-  editContact = false;
-
-  @track
-  selectedRow = {};
-
-  @track
-  isCorporation = false;
-
-  @track
-  addContact = false;
-
-  @track
-  errorMessage = "";
-
-  @track
-  hasError = false;
+  @track editContact = false;
+  @track selectedRow = {};
+  @track isCorporation = false;
+  @track addContact = false;
+  @track errorMessage = "";
+  @track hasError = false;
 
   columns = COLUMNS_CONTACTS;
-  languageOptions = OPTIONS_LANGUAGES;
-  salutationOptions = OPTIONS_SALUTATIONS;
-  roleOptions = OPTIONS_ROLES;
 
   /**
    * Add contact
@@ -67,43 +53,6 @@ export default class ContactPage extends LightningElement {
 
     // Close modal
     this.addContact = false;
-  }
-
-  /**
-   * Handle edit contact form
-   *
-   * @param (Event) e
-   */
-  handleEditContactForm(e) {
-    e.preventDefault();
-
-    // Example dispatch event
-    this.dispatchEvent(
-      new CustomEvent("update", {
-        detail: {
-          page: 'contact',
-          completed: false,
-          warning: true,
-          error: false,
-          message: "This page has incomplete information"
-        }
-      })
-    );
-
-    // Close modal
-    this.editContact = false;
-  }
-
-  /**
-   * Handle role change
-   *
-   * @param (Event) e
-   */
-  handleRoleChange(e) {
-    let role = e.detail.value;
-
-    this.isCorporation = role === 'corporation';
-    this.selectedRow.role = role;
   }
 
   /**
