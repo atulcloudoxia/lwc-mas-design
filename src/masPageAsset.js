@@ -31,7 +31,18 @@ export default class PageAsset extends LightningElement {
     e.preventDefault();
 
     this.addAsset=false;
-    // Nhan, handle "add" logic here
+    // Nhan, handle "edit" logic here
+  }
+
+  /**
+   * Assets form submit
+   *
+   * @param (Event) e
+   */
+  handleCancel(e) {
+    e.preventDefault();
+
+    this.addAsset=false;
   }
 
   /**
@@ -44,8 +55,9 @@ export default class PageAsset extends LightningElement {
 
     switch (action.name) {
       case 'delete':
-        this.deleteRow(row);
+        // handle delete logic here
         break;
+        
       // No other actions but delete for now
       default:
     }

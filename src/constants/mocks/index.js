@@ -97,9 +97,72 @@ const MOCK_ASSET = {
   salesRep: 'Baker Real Estate',
   contractDate: '2020-09-07',
   price: '1309000.00',
+  total: '1454400.00',
   developerSale: true,
 };
 
+const MOCK_DEPOSIT = [
+ {
+     id: 1,
+     number: 1,
+     date: '09/01/2022',
+     deposit_to: 'notary',
+     deposit_for: 'cashdown',
+     amount: "2000",
+     percent: "1",
+     received: false
+ },
+ {
+     id: 2,
+     number: 2,
+     date: '10/01/2022',
+     deposit_to: 'notary',
+     deposit_for: 'cashdown',
+     amount: "2000",
+     percent: "1",
+     received: false
+ },
+ {
+     id: 3,
+     number: 3,
+     date: '11/01/2022',
+     deposit_to: 'notary',
+     deposit_for: 'cashdown',
+     amount: "2000",
+     percent: "1",
+     received: false
+ },
+ {
+     id: 4,
+     number: 4,
+     date: '11/01/2022',
+     deposit_to: 'notary',
+     deposit_for: 'cashdown',
+     amount: "2000",
+     percent: "1",
+     received: false
+ },
+ {
+     id: 5,
+     number: 5,
+     date: '11/01/2022',
+     deposit_to: 'notary',
+     deposit_for: 'cashdown',
+     amount: "2000",
+     percent: "1",
+     received: false
+ },
+ {
+     id: 6,
+     number: 6,
+     date: '11/01/2022',
+     deposit_to: 'notary',
+     deposit_for: 'cashdown',
+     amount: "2000",
+     percent: "1",
+     received: false
+ },
+];
 
 
-export { MOCK_CONTACTS, MOCK_PARKING, MOCK_ASSET, MOCK_EXTRAS };
+export { MOCK_CONTACTS, MOCK_PARKING, MOCK_ASSET, MOCK_EXTRAS, MOCK_DEPOSIT };

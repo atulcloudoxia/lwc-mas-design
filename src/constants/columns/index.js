@@ -147,5 +147,82 @@ const COLUMNS_EXTRAS = [
   },
 ];
 
+const COLUMNS_DEPOSIT = [
+  {
+    label: 'Payment Number',
+    fieldName: 'number',
+    type: 'number',
+    editable: true,
+    hideDefaultActions:true,
+  },
+  {
+    label: 'Date',
+    fieldName: 'date',
+    type: 'date',
+    editable: true,
+    hideDefaultActions:true,
+  },
+  {
+    label: 'Deposit To',
+    fieldName: 'deposit_to',
+    type:'select',
+    editable: true
+  },
+  {
+    label: 'Deposit For',
+    fieldName: 'deposit_for',
+    editable: true
+  },
+  {
+    label: 'Amount',
+    fieldName: 'amount',
+    editable: true
+  },
+  {
+    label: 'Percent',
+    fieldName: 'percent',
+    type: 'percent',
+    editable: true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
+  {
+    label: 'Received',
+    fieldName: 'received',
+    type: 'boolean',
+    editable: true
+  },
+  {
+    type: "button-icon",
+    fixedWidth: 40,
+    typeAttributes: {
+      label: 'Image',
+      name: 'image',
+      title: 'Image',
+      disabled: false,
+      value: 'image',
+      iconName: 'utility:image'
+    },
+    cellAttributes: {
+      alignment: 'right',
+    },
+  },
+  {
+    type: "button-icon",
+    fixedWidth: 40,
+    typeAttributes: {
+      label: 'Remove',
+      name: 'delete',
+      title: 'Remove',
+      disabled: false,
+      value: 'delete',
+      iconName: 'utility:delete'
+    },
+    cellAttributes: {
+      alignment: 'right',
+    },
+  },
+];
 
-export { COLUMNS_CONTACTS, COLUMNS_PARKING, COLUMNS_EXTRAS };
+export { COLUMNS_CONTACTS, COLUMNS_PARKING, COLUMNS_EXTRAS, COLUMNS_DEPOSIT };

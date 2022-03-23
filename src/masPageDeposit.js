@@ -1,145 +1,6 @@
-import { LightningElement, track } from 'lwc';
-
-const columns = [
-  {
-    label: 'Payment Number',
-    fieldName: 'number',
-    type: 'number',
-    editable: true,
-    hideDefaultActions:true,
-  },
-  {
-    label: 'Date',
-    fieldName: 'date',
-    type: 'date',
-    editable: true,
-    hideDefaultActions:true,
-  },
-  {
-    label: 'Deposit To',
-    fieldName: 'deposit_to',
-    type:'select',
-    editable: true
-  },
-  {
-    label: 'Deposit For',
-    fieldName: 'deposit_for',
-    editable: true
-  },
-  {
-    label: 'Amount',
-    fieldName: 'amount',
-    editable: true
-  },
-  {
-    label: 'Percent',
-    fieldName: 'percent',
-    type: 'percent',
-    editable: true,
-    cellAttributes: {
-      alignment: 'left',
-    },
-  },
-  {
-    label: 'Received',
-    fieldName: 'received',
-    type: 'boolean',
-    editable: true
-  },
-  {
-    type: "button-icon",
-    fixedWidth: 40,
-    typeAttributes: {
-      label: 'Image',
-      name: 'image',
-      title: 'Image',
-      disabled: false,
-      value: 'image',
-      iconName: 'utility:image'
-    },
-    cellAttributes: {
-      alignment: 'right',
-    },
-  },
-  {
-    type: "button-icon",
-    fixedWidth: 40,
-    typeAttributes: {
-      label: 'Remove',
-      name: 'delete',
-      title: 'Remove',
-      disabled: false,
-      value: 'delete',
-      iconName: 'utility:delete'
-    },
-    cellAttributes: {
-      alignment: 'right',
-    },
-  },
-];
-
- const data = [
-  {
-      id: 1,
-      number: 1,
-      date: '09/01/2022',
-      deposit_to: 'notary',
-      deposit_for: 'cashdown',
-      amount: "2000",
-      percent: "1",
-      received: false
-  },
-  {
-      id: 2,
-      number: 2,
-      date: '10/01/2022',
-      deposit_to: 'notary',
-      deposit_for: 'cashdown',
-      amount: "2000",
-      percent: "1",
-      received: false
-  },
-  {
-      id: 3,
-      number: 3,
-      date: '11/01/2022',
-      deposit_to: 'notary',
-      deposit_for: 'cashdown',
-      amount: "2000",
-      percent: "1",
-      received: false
-  },
-  {
-      id: 4,
-      number: 4,
-      date: '11/01/2022',
-      deposit_to: 'notary',
-      deposit_for: 'cashdown',
-      amount: "2000",
-      percent: "1",
-      received: false
-  },
-  {
-      id: 5,
-      number: 5,
-      date: '11/01/2022',
-      deposit_to: 'notary',
-      deposit_for: 'cashdown',
-      amount: "2000",
-      percent: "1",
-      received: false
-  },
-  {
-      id: 6,
-      number: 6,
-      date: '11/01/2022',
-      deposit_to: 'notary',
-      deposit_for: 'cashdown',
-      amount: "2000",
-      percent: "1",
-      received: false
-  },
-];
+import { LightningElement, track, api } from 'lwc';
+import { COLUMNS_DEPOSIT } from './constants';
+import { findRowById } from './utils';
 
 const discounts = [
   {
@@ -155,17 +16,14 @@ const discounts = [
 ];
 
 
-export default class DepositTable extends LightningElement {
-    columns = columns;
+export default class DepositPage extends LightningElement {
 
-    @track
-    data = data;
+    columns = COLUMNS_DEPOSIT;
 
-    @track
-    discounts = discounts;
-
-    @track
-    addDiscount = false;
+    @api data;
+    @api asset;
+    @track discounts = discounts;
+    @track addDiscount = false;
 
     optionsSchedule = [{ }]; // Options for "Select Deposit Schedule"
     optionsDiscounts = [{ }]; // Options for discounts
@@ -296,31 +154,12 @@ export default class DepositTable extends LightningElement {
      */
     deleteRow(row, data) {
       const { id } = row;
-      const index = this.findRowById(id, data);
+      const index = findRowById(id, data);
 
       if (index !== -1) {
         return data
           .slice(0, index)
           .concat(data.slice(index + 1));
       }
-    }
-
-    /**
-     * Find row by id
-     *
-     * @param (Number)  id
-     * @param (Array)   data
-     */
-    findRowById(id, data) {
-      let ret = -1;
-      data.some((row, index) => {
-        if (row.id === id) {
-          ret = index;
-          return true;
-        }
-        return false;
-      });
-
-      return ret;
     }
 }

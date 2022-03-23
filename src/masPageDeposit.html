@@ -17,12 +17,14 @@
     <div class="table__items columns mt-10">
       <div class="line_item">
         <div>
-          Kingsway Crescent - 705
+          {asset.name}
         </div>
         <div>
-          $1,394,900.00
+          {asset.price}
         </div>
       </div>
+
+      <!-- Example line-item start -->
       <div class="line_item">
         <div>
           Parking Standard
@@ -31,6 +33,7 @@
           $59,500.00
         </div>
       </div>
+      <!-- Example line-item end -->
 
       <!-- Discounts Start -->
       <template for:each={discounts} for:item="item" for:index="index">
@@ -60,7 +63,7 @@
           Total
         </div>
         <div>
-          $1,454,400.00
+          {asset.total}
         </div>
       </div>
     </div>
