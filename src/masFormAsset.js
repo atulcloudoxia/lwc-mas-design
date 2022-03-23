@@ -24,6 +24,8 @@ export default class PageAsset extends LightningElement {
   handleCancel(e) {
     e.preventDefault();
 
-    // Cancel logic
+    this.dispatchEvent(
+      new CustomEvent("close")
+    );
   }
 }

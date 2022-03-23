@@ -23,6 +23,16 @@ export default class PageAsset extends LightningElement {
   }
 
   /**
+   * Handle close form
+   *
+   * @param (Event) e
+   */
+  handleCloseForm(e) {
+    this.addAsset = false;
+  }
+
+
+  /**
    * Row actions
    *
    * @param (Event) e

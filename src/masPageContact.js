@@ -32,6 +32,16 @@ export default class ContactPage extends LightningElement {
   }
 
   /**
+   * Handle close form
+   *
+   * @param (Event) e
+   */
+  handleCloseForm(e) {
+    this.addContact = false;
+    this.editContact = false;
+  }
+
+  /**
    * Parse row actions
    *
    * @param (Event) e

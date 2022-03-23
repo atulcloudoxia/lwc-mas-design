@@ -2,31 +2,15 @@ import { LightningElement, track, api } from 'lwc';
 import { COLUMNS_DEPOSIT } from './constants';
 import { findRowById } from './utils';
 
-const discounts = [
-  {
-    id: 1,
-    name: "Free Locker",
-    discount: 5000
-  },
-  {
-    id: 2,
-    name: "Free Parking",
-    discount: 15000
-  },
-];
-
-
 export default class DepositPage extends LightningElement {
 
     columns = COLUMNS_DEPOSIT;
 
     @api data;
     @api asset;
-    @track discounts = discounts;
     @track addDiscount = false;
 
     optionsSchedule = [{ }]; // Options for "Select Deposit Schedule"
-    optionsDiscounts = [{ }]; // Options for discounts
 
     /**
      * Get the schedule amount summary
@@ -74,22 +58,11 @@ export default class DepositPage extends LightningElement {
     }
 
     /**
-     * Handle Submit Discount Form
+     * Handle close discount window
      *
      * @param (Event) e
      */
-    handleDiscountFormSubmit(e) {
-      e.preventDefault();
-      this.addDiscount = false;
-    }
-
-    /**
-     * Close/cancel the discount form
-     *
-     * @param (Event) e
-     */
-    cancelDiscountForm(e) {
-      e.preventDefault();
+    handleDiscountClose(e) {
       this.addDiscount = false;
     }
 
