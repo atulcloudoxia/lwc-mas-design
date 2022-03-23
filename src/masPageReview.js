@@ -1,10 +1,11 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, track } from 'lwc';
 import { REVIEW_CONTACTS_COLUMNS, REVIEW_DEPOSITS_COLUMNS } from './constants';
 
 export default class ReviewPage extends LightningElement {
 
   @api contactsdata;
   @api depositsdata;
+  @api asset;
 
   contactsColumns = REVIEW_CONTACTS_COLUMNS;
   depositsColumns = REVIEW_DEPOSITS_COLUMNS;

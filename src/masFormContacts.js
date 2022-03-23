@@ -22,7 +22,7 @@ export default class ContactForm extends LightningElement {
    *
    * @param (Event) e
    */
-  handleFormSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
 
     // Submit logic

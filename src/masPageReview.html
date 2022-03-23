@@ -3,19 +3,20 @@
 
     <!-- Heading -->
     <div class="heading">
-      <h1><span>Review /</span> Kingsway Crescent 401</h1>
+      <h1><span>Review /</span> {asset.name}</h1>
     </div>
 
     <!-- Summary -->
     <div class="table__items columns mt-10">
       <div class="line_item">
         <div>
-          Kingsway Crescent - 705
+          {asset.name}
         </div>
         <div>
-          $1,394,900.00
+          {asset.price}
         </div>
       </div>
+      <!-- Example line-item start (not sure how data is managed)-->
       <div class="line_item">
         <div>
           Parking Standard
@@ -29,10 +30,11 @@
           Total
         </div>
         <div>
-          $1,454,400.00
+          {asset.total}
         </div>
       </div>
     </div>
+
 
     <!-- Contacts Summary -->
     <div class="mt-30">

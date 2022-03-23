@@ -4,8 +4,7 @@ import {
   COLUMNS_CONTACTS,
   OPTIONS_ROLES,
   OPTIONS_LANGUAGES,
-  OPTIONS_SALUTATIONS,
-  MOCK_CONTACTS
+  OPTIONS_SALUTATIONS
 } from './constants';
 
 
@@ -17,8 +16,6 @@ export default class ContactPage extends LightningElement {
   @track selectedRow = {};
   @track isCorporation = false;
   @track addContact = false;
-  @track errorMessage = "";
-  @track hasError = false;
 
   columns = COLUMNS_CONTACTS;
 

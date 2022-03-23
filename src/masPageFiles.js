@@ -1,6 +1,8 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, track } from 'lwc';
 
 export default class PageFiles extends LightningElement {
+
+  @api asset;
 
   get acceptedFormats() {
     return ['.pdf', '.png'];
@@ -8,9 +10,8 @@ export default class PageFiles extends LightningElement {
 
   handleUploadFinished(event) {
     const uploadedFiles = event.detail.files;
-    
+
     alert('Files : ' + uploadedFiles.length);
   }
 
 }
-

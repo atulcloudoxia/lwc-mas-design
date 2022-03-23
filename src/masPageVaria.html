@@ -1,7 +1,7 @@
 <template>
   <div class="page-container">
     <div class="heading">
-      <h1><span>Varia /</span> Kingsway Crescent 401</h1>
+      <h1><span>Varia /</span> {asset.name}</h1>
     </div>
     <hr />
     <div class="mt-30">
@@ -59,61 +59,14 @@
     </div>
   </div>
 
-  <!-- Modal Add Varia Start -->
+  <!-- Add Varia Form -->
   <template if:true={addVaria}>
-    <form onsubmit={handleVariaFormSubmit}>
-      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
-        class="slds-modal_small slds-modal slds-fade-in-open">
-        <div class="slds-modal__container">
-          <div class="slds-modal__header">
-            <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Add Varia</h1>
-          </div>
-          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-            <div class="mt-10">
-              <lightning-textarea name="description" label="Description" variant="label-hidden"></lightning-textarea>
-            </div>
-          </div>
-          <div class="slds-modal__footer slds-modal__footer_directional">
-            <div class="modal__container__actions">
-              <div class="modal__container__cancel" onclick={cancelVariaForm}>
-                Cancel
-              </div>
-              <button class="button-primary">Save</button>
-            </div>
-          </div>
-        </div>
-      </section>
-      <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
-    </form>
+    <c-mas-form-varia onclose={handleCloseForm}></c-mas-form-varia>
   </template>
-  <!-- Modal Add Varia End -->
 
   <!-- Modal Add Varia Start -->
   <template if:true={addChangeOrder}>
-    <form onsubmit={handleChangeOrderFormSubmit}>
-      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-02" aria-modal="true"
-        class="slds-modal_small slds-modal slds-fade-in-open">
-        <div class="slds-modal__container">
-          <div class="slds-modal__header">
-            <h1 id="modal-heading-02" class="slds-modal__title slds-hyphenate">Add Varia</h1>
-          </div>
-          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
-            <div class="mt-10">
-              <lightning-textarea name="description" label="Description" variant="label-hidden"></lightning-textarea>
-            </div>
-          </div>
-          <div class="slds-modal__footer slds-modal__footer_directional">
-            <div class="modal__container__actions">
-              <div class="modal__container__cancel" onclick={cancelChangeOrderForm}>
-                Cancel
-              </div>
-              <button class="button-primary">Save</button>
-            </div>
-          </div>
-        </div>
-      </section>
-      <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
-    </form>
+    <c-mas-form-change-order onclose={handleCloseForm}></c-mas-form-change-order>
   </template>
   <!-- Modal Add Varia End -->
 

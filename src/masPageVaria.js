@@ -10,6 +10,7 @@ export default class VariaPage extends LightningElement {
 
   @api variadata;
   @api changeorderdata;
+  @api asset;
 
   @track addVaria=false;
   @track addChangeOrder=false;
@@ -61,50 +62,15 @@ export default class VariaPage extends LightningElement {
   }
 
   /**
-   * Add
+   * Close forms
    *
    * @param (Event) e
    */
-  handleVariaFormSubmit(e) {
+  handleCloseForm(e) {
     e.preventDefault();
 
     // OnSuccess
     this.addVaria=false;
-    // Nhan, handle "add" logic here
-  }
-
-  /**
-   * Add (Change order)
-   *
-   * @param (Event) e
-   */
-  handleChangeOrderFormSubmit(e) {
-    e.preventDefault();
-
-    // OnSuccess
-    this.addChangeOrder=false;
-    // Nhan, handle "add" logic here
-  }
-
-  /**
-   * Cancel/Close add varia
-   *
-   * @param (Event) e
-   */
-  cancelVariaForm(e) {
-    e.preventDefault();
-
-    this.addVaria=false;
-  }
-
-  /**
-   * Cancel/Close Change Order
-   *
-   * @param (Event) e
-   */
-  cancelChangeOrderForm(e) {
-    e.preventDefault();
-
     this.addChangeOrder=false;
   }
 

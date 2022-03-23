@@ -31,7 +31,6 @@ export default class PageAsset extends LightningElement {
     this.addAsset = false;
   }
 
-
   /**
    * Row actions
    *
@@ -67,5 +66,4 @@ export default class PageAsset extends LightningElement {
       // Nhan, handle delete logic here
     }
   }
-
 }

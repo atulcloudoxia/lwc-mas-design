@@ -25,13 +25,13 @@
 			<c-mas-page-deposit data={depositData} asset={asset}></c-mas-page-deposit>
 		</template>
 		<template if:true={showVariaPage}>
-			<c-mas-page-varia variadata={variaData} changeorderdata={changeOrderData}></c-mas-page-varia>
+			<c-mas-page-varia variadata={variaData} changeorderdata={changeOrderData} asset={asset}></c-mas-page-varia>
 		</template>
 		<template if:true={showFilesPage}>
-			<c-mas-page-files></c-mas-page-files>
+			<c-mas-page-files asset={asset}></c-mas-page-files>
 		</template>
 		<template if:true={showReviewPage}>
-			<c-mas-page-review contactsdata={contactsData} depositsdata={depositData} onpage={handleStepChange}></c-mas-page-review>
+			<c-mas-page-review contactsdata={contactsData} depositsdata={depositData} onpage={handleStepChange} asset={asset}></c-mas-page-review>
 		</template>
 
 		<c-mas-footer-bar ondelete={handleDeleteSale}></c-mas-footer-bar>
