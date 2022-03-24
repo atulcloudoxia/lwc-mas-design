@@ -1,6 +1,4 @@
 import { track, api, LightningElement } from 'lwc';
-import { COLUMNS_PARKING, COLUMNS_EXTRAS } from './constants';
-import { findRowById } from './utils';
 
 export default class PageAsset extends LightningElement {
 
