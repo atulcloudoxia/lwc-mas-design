@@ -11,3 +11,4 @@ export default class masCustomTable extends LightningDatatable {
     // Other types to come...
   }
 }
+ 
