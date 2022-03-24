@@ -20,8 +20,10 @@ export default class FooterBar extends LightningElement {
    * @param (Event) e
    */
   handleConfirm(e) {
+    console.log('The event: ', e.payload) // Not sure why this is undefined
+
     this.dispatchEvent(
-      new CustomEvent("delete")
+      new CustomEvent("delete", { payload: e.payload })
     );
   }
 

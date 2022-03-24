@@ -196,6 +196,8 @@ export default class Mas extends LightningElement {
    * @param (Event) e
    */
   handleDeleteSale(e) {
+    console.log('The final destination: ', e.payload)
+    alert('Delete The Sale')
     // Add logic for deleting sale
   }
 

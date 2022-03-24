@@ -88,8 +88,20 @@ const OPTIONS_LANGUAGES = [{
   },
 ];
 
+const OPTIONS_DELETE_SALE = [
+  {
+    label: 'No response from Prospect',
+    value: 0
+  },
+  {
+    label: 'Prospect starting research',
+    value: 1
+  }
+];
+
 export {
   OPTIONS_LANGUAGES,
   OPTIONS_SALUTATIONS,
-  OPTIONS_ROLES
+  OPTIONS_ROLES,
+  OPTIONS_DELETE_SALE
 };
