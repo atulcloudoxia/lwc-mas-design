@@ -33,4 +33,27 @@ export default class FooterBar extends LightningElement {
   handleCancel(e) {
     this.showDeletePrompt=false;
   }
+
+  /**
+   * On next page
+   *
+   * @param (Event) e
+   */
+  handleNext(e) {
+    this.dispatchEvent(
+      new CustomEvent("next")
+    );
+  }
+
+  /**
+   * On previous page
+   *
+   * @param (Event) e
+   */
+  handlePrevious(e) {
+    this.dispatchEvent(
+      new CustomEvent("previous")
+    );
+  }
+
 }

@@ -152,6 +152,44 @@ export default class Mas extends LightningElement {
     return this.pages.filter((page) => page.selected == true);
   }
 
+  currentPageIndex() {
+    for(let i=0; i < this.pages.length; i++) {
+      if (this.pages[i].selected) {
+        return i;
+      }
+    }
+  }
+
+  /**
+   * Previous Page
+   *
+   * @param (Event) e
+   */
+  handlePreviousPage(e) {
+    let currentPageIndex = this.currentPageIndex();
+
+    if (currentPageIndex === 0) return;
+
+    for(let i=0; i < this.pages.length; i++) {
+      this.pages[i].selected = i === (currentPageIndex - 1);
+    }
+  }
+
+  /**
+   * Next Page
+   *
+   * @param (Event) e
+   */
+  handleNextPage(e) {
+    let currentPageIndex = this.currentPageIndex();
+
+    if (currentPageIndex === (this.pages.length -1)) return;
+
+    for(let i=0; i < this.pages.length; i++) {
+      this.pages[i].selected = i === (currentPageIndex + 1);
+    }
+  }
+
   /**
    * When a user confirms they wish to delete sale
    *
