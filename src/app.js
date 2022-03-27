@@ -21,6 +21,59 @@ const defaults = {
   message: ""             // Status message for page
 };
 
+const pageContact = {
+  id: "contact",
+  step: 1,
+  label: "Contact",
+  enabled: true,
+  ...defaults,
+  selected:true,
+};
+
+const pageAsset = {
+  id: "asset",
+  step: 2,
+  label: "Asset",
+  enabled: true,
+  ...defaults,
+  completed:true
+};
+
+const pageDeposit = {
+  id: "deposit",
+  step: 3,
+  label: "Deposit",
+  enabled: true,
+  ...defaults,
+  warning:true,
+  "message": "The selected deposit schedule is not compliant."
+};
+
+const pageVaria = {
+  id: "varia",
+  step: 4,
+  label: "Varia",
+  enabled: true,
+  ...defaults,
+}
+
+const pageFiles = {
+  id: "files",
+  step: 5,
+  label: "Files",
+  enabled: true,
+  ...defaults,
+}
+
+const pageReview = {
+  id: "review",
+  step: 6,
+  label: "Review",
+  enabled: true,
+  ...defaults,
+  processing:true
+}
+
 export default class Mas extends LightningElement {
 
   @track
@@ -49,77 +102,69 @@ export default class Mas extends LightningElement {
 
   @track
   pages = [
-    {
-      id: "contact",
-      step: 1,
-      label: "Contact",
-      enabled: true,
-      ...defaults,
-      selected:true,
-    },
-    {
-      id: "asset",
-      step: 2,
-      label: "Asset",
-      enabled: true,
-      ...defaults,
-      completed:true
-    },
-    {
-      id: "deposit",
-      step: 3,
-      label: "Deposit",
-      enabled: true,
-      ...defaults,
-      warning:true,
-      "message": "The selected deposit schedule is not compliant."
-    },
-    {
-      id: "varia",
-      step: 4,
-      label: "Varia",
-      enabled: true,
-      ...defaults,
-    },
-    {
-      id: "files",
-      step: 5,
-      label: "Files",
-      enabled: true,
-      ...defaults,
-    },
-    {
-      id: "review",
-      step: 6,
-      label: "Review",
-      enabled: true,
-      ...defaults,
-      processing:true
-    }
+    pageContact,
+    pageAsset,
+    pageDeposit,
+    pageVaria,
+    pageFiles,
+    pageReview
   ];
 
+  /**
+   * Reservation mode
+   *
+   * @param (Boolean) isReservation
+   */
+  setReservation(isReservation) {
+    if (isReservation) {
+      this.pages = [
+        {
+          ...pageAsset,
+          ...{
+            selected:true
+          }
+        },
+        pageDeposit,
+        pageReview
+      ];
+    } else {
+      this.pages = [
+        pageContact,
+        pageAsset,
+        pageDeposit,
+        pageVaria,
+        pageFiles,
+        pageReview
+      ];
+    }
+
+    for (let i=0; i < this.pages.length; i++) {
+      this.pages[i].step = i + 1;
+    }
+  }
+
   get showContactPage() {
-    return this.pages[0].selected;
+    return this.findSelectedById('contact');
   };
 
   get showAssetPage() {
-    return this.pages[1].selected;
+    return this.findSelectedById('asset');
   };
 
   get showDepositPage() {
-    return this.pages[2].selected;
+    return this.findSelectedById('deposit');
   };
 
   get showVariaPage() {
-    return this.pages[3].selected;
+    return this.findSelectedById('varia');
   };
 
   get showFilesPage() {
-    return this.pages[4].selected;
+    return this.findSelectedById('files');
   };
 
   get showReviewPage() {
-    return this.pages[5].selected;
+    return this.findSelectedById('review');
   };
 
   get hasPageMessage() {
@@ -156,6 +201,19 @@ export default class Mas extends LightningElement {
     for(let i=0; i < this.pages.length; i++) {
       if (this.pages[i].selected) {
         return i;
+      }
+    }
+  }
+
+  /**
+   * Find selected page by string/id
+   *
+   * @param (String) id
+   */
+  findSelectedById(id) {
+    for(let i=0; i < this.pages.length; i++) {
+      if (this.pages[i].id === id) {
+        return this.pages[i].selected;
       }
     }
   }
