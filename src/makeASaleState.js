@@ -35,7 +35,7 @@ masState : {
 // this function should be called whenever a change occurs in a screen already visited. It will introspect masState object amd perform automatice update of data
 // it will also be able to perform the update of elements in the proper order to avoid conflicts, and will keep calling itself until all steps are udpated
 function updateState() {
-    if masState.contact_screen.should_recompute == true {
+    if pageContact.should_recompute == true {
         recomputeContact().then {
             updateState();
         }

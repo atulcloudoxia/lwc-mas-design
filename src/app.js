@@ -12,6 +12,7 @@ import {
   MOCK_CONTACTS
 } from './constants';
 
+// State machine
 const defaults = {
   selected:false,         // Page is in view
   completed:false,        // Page is completed
@@ -21,13 +22,14 @@ const defaults = {
   message: ""             // Status message for page
 };
 
-const pageContact = {
+let pageContact = {
   id: "contact",
   step: 1,
   label: "Contact",
   enabled: true,
   ...defaults,
   selected:true,
+  should_recompute: false
 };
 
 const pageAsset = {
@@ -76,29 +78,29 @@ const pageReview = {
 
 export default class Mas extends LightningElement {
 
-  @track
-  contactsData = MOCK_CONTACTS;
+  // @api recordId;
 
-  @track
-  parkingData = MOCK_PARKING;
+  // Common Data
+  @track opportunity = {};
+  @track contactsData = MOCK_CONTACTS;
+  @track asset = MOCK_ASSET;
+  @track salesRep = {};
 
-  @track
-  extraData = MOCK_EXTRAS;
+  // MAS Data
+  @track parkingData = MOCK_PARKING;
+  @track extraData = MOCK_EXTRAS;
+  @track depositData = MOCK_DEPOSIT;
+  @track variaData = MOCK_VARIA;
+  @track changeOrderData = MOCK_CHANGE_ORDERS;
+  @track closingDetail = {};
 
-  @track
-  asset = MOCK_ASSET;
+  // MAR Data
+  @track rentalDetail = {};
+  @track inclusionsList = [];
+  @track servicesList = [];
 
-  @track
-  depositData = MOCK_DEPOSIT;
-
-  @track
-  variaData = MOCK_VARIA;
-
-  @track
-  changeOrderData = MOCK_CHANGE_ORDERS;
-
-  @track
-  isLoading=false;
+  // Other
+  @track isLoading=false;
 
   @track
   pages = [
