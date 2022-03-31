@@ -1,106 +1,78 @@
 <template>
   <div class="page-container">
+
+    <!-- Heading -->
     <div class="heading">
-      <h1><span>Asset /</span> Kingsway Crescent 401</h1>
+      <h1><span>Asset /</span> {asset.name}</h1>
+      <div class="heading__actions">
+        <button class="button-secondary" onclick={handleEditAsset}>Edit</button>
+      </div>
     </div>
+
+    <!-- Summary Table -->
     <div class="table__items mt-10">
       <div>
         <span>
          <b>Sales Representative</b><br/>
-         Baker Real Estate
+         {asset.salesRep}
         </span>
         <span>
          <b>Contract Date</b><br/>
-         November 23, 2021
+         {asset.contractDate}
         </span>
         <span>
          <b>Asset Price</b><br/>
-         $1,309,000
+         {asset.price}
         </span>
         <span>
          <b>Developer Sale</b><br/>
-         Yes
+         {asset.developerSale}
         </span>
-        <div class="table__items__actions">
-          <lightning-button-menu alternative-text="Show menu" variant="border" onselect={handleEditAsset}>
-            <lightning-menu-item value="MenuItemOne" label="Edit"></lightning-menu-item>
-          </lightning-button-menu>
-        </div>
       </div>
     </div>
+
     <div class="mt-30">
       <lightning-tabset active-tab-value="parking">
+
+        <!-- Parking Table -->
         <lightning-tab label="Parking" value="parking">
-          <c-mas-table-parking></c-mas-table-parking>
+          <c-mas-custom-table
+            key-field="id"
+            data={parkingdata}
+            columns={columns}
+            onrowaction={handleRowAction}
+            hide-checkbox-column>
+          </c-mas-custom-table>
           <div class="mt-30">
             <h2>Add Parking</h2>
             <hr />
             <c-mas-table-parking-add></c-mas-table-parking-add>
           </div>
         </lightning-tab>
+
+        <!-- Extras Table -->
         <lightning-tab label="Extras" value="extras">
-          <c-mas-table-extras></c-mas-table-extras>
+          <c-mas-custom-table
+            key-field="id"
+            data={extradata}
+            columns={columnsExtras}
+            onrowaction={handleRowAction}
+            hide-checkbox-column>
+          </c-mas-custom-table>
+          <div class="mt-30">
+            <h2>Add Extra</h2>
+            <hr />
+            <c-mas-table-extras-add></c-mas-table-extras-add>
+          </div>
         </lightning-tab>
       </lightning-tabset>
+
     </div>
   </div>
 
-
+  <!-- Add/Edit Asset Form -->
   <template if:true={addAsset}>
-    <form onsubmit={handleFormSubmit}>
-      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
-        class="slds-modal slds-fade-in-open">
-        <div class="slds-modal__container">
-          <div class="slds-modal__header">
-            <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Edit Asset</h1>
-          </div>
-          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-            <div>
-              <label>Asset</label>
-              <div>
-                <lightning-input name="search-contact" label="Search Contact" variant="label-hidden"
-                  value="Kingsway Crescent">
-                </lightning-input>
-              </div>
-              <div class="mt-10">
-                <lightning-input name="search-contact" label="Search Contact" variant="label-hidden"
-                  value="Kingsway Crescent #211">
-                </lightning-input>
-              </div>
-            </div>
-            <div class="mt-20">
-              <label>Contract Date</label>
-              <div class="mt-10">
-                <lightning-input type="date" name="contract-date" variant="label-hidden" label="Date"
-                  value="2020-09-07"></lightning-input>
-              </div>
-            </div>
-            <div class="mt-20">
-              <label>Sales Representative</label>
-              <div class="mt-10">
-                <lightning-input name="sales-rep" label="Sales Rep" variant="label-hidden" value="Baker Real Estate">
-                </lightning-input>
-              </div>
-            </div>
-            <div class="mt-20">
-              <label>Is this a developer sale?</label>
-              <div class="mt-10">
-                <lightning-input name="dev-sale" label="Developer Sale" variant="label-hidden" value="Yes">
-                </lightning-input>
-              </div>
-            </div>
-          </div>
-          <div class="slds-modal__footer slds-modal__footer_directional">
-            <div class="modal__container__actions">
-              <div class="modal__container__cancel">
-                Cancel
-              </div>
-              <button class="button-primary">Continue</button>
-            </div>
-          </div>
-        </div>
-      </section>
-      <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
-    </form>
+    <c-mas-form-asset asset={asset} onclose={handleCloseForm}></c-mas-form-asset>
   </template>
+
 </template>

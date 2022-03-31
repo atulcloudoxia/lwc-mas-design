@@ -1,82 +1,293 @@
 import { LightningElement, api, track } from 'lwc';
+import {
+  ERROR,
+  WARNING,
+  PROCESSING,
+  MOCK_PARKING,
+  MOCK_ASSET,
+  MOCK_EXTRAS,
+  MOCK_DEPOSIT,
+  MOCK_VARIA,
+  MOCK_CHANGE_ORDERS,
+  MOCK_CONTACTS
+} from './constants';
+
+const defaults = {
+  selected:false,         // Page is in view
+  completed:false,        // Page is completed
+  warning: false,         // Page has warning
+  error: false,           // Page has error
+  processing: false,      // Page is processing
+  message: ""             // Status message for page
+};
+
+const pageContact = {
+  id: "contact",
+  step: 1,
+  label: "Contact",
+  enabled: true,
+  ...defaults,
+  selected:true,
+};
+
+const pageAsset = {
+  id: "asset",
+  step: 2,
+  label: "Asset",
+  enabled: true,
+  ...defaults,
+  completed:true
+};
+
+const pageDeposit = {
+  id: "deposit",
+  step: 3,
+  label: "Deposit",
+  enabled: true,
+  ...defaults,
+  warning:true,
+  "message": "The selected deposit schedule is not compliant."
+};
+
+const pageVaria = {
+  id: "varia",
+  step: 4,
+  label: "Varia",
+  enabled: true,
+  ...defaults,
+}
+
+const pageFiles = {
+  id: "files",
+  step: 5,
+  label: "Files",
+  enabled: true,
+  ...defaults,
+}
+
+const pageReview = {
+  id: "review",
+  step: 6,
+  label: "Review",
+  enabled: true,
+  ...defaults,
+  processing:true
+}
 
 export default class Mas extends LightningElement {
 
-  @track navigation = {
-    pageIndex:0,
-    pages: [
-      {
-        id: "contact",
-        step: 1,
-        label: "Contact",
-        selected:true
-      },
-      {
-        id: "asset",
-        step: 2,
-        label: "Asset",
-        selected:false
-      },
-      {
-        id: "deposit",
-        step: 3,
-        label: "Deposit",
-        selected:false
-      },
-      {
-        id: "varia",
-        step: 4,
-        label: "Varia",
-        selected:false
-      },
-      {
-        id: "files",
-        step: 5,
-        label: "Files",
-        selected:false
-      },
-      {
-        id: "review",
-        step: 6,
-        label: "Review",
-        selected:false
-      }
-    ],
-    get title() {
-      return this.pages[this.pageIndex].label;
-    },
-    get currentPage() {
-      return this.pages[this.pageIndex].id;
-    },
-    set currentPage(index) {
-      this.pageIndex=index;
-      this.pages[index].selected=true;
-      this.pages.forEach((item, idx) => this.pages[idx].selected = idx === parseInt(index))
-    },
-    get showPages() {
-      return this.pages;
+  @track
+  contactsData = MOCK_CONTACTS;
+
+  @track
+  parkingData = MOCK_PARKING;
+
+  @track
+  extraData = MOCK_EXTRAS;
+
+  @track
+  asset = MOCK_ASSET;
+
+  @track
+  depositData = MOCK_DEPOSIT;
+
+  @track
+  variaData = MOCK_VARIA;
+
+  @track
+  changeOrderData = MOCK_CHANGE_ORDERS;
+
+  @track
+  isLoading=false;
+
+  @track
+  pages = [
+    pageContact,
+    pageAsset,
+    pageDeposit,
+    pageVaria,
+    pageFiles,
+    pageReview
+  ];
+
+  /**
+   * Reservation mode
+   *
+   * @param (Boolean) isReservation
+   */
+  setReservation(isReservation) {
+    if (isReservation) {
+      this.pages = [
+        {
+          ...pageAsset,
+          ...{
+            selected:true
+          }
+        },
+        pageDeposit,
+        pageReview
+      ];
+    } else {
+      this.pages = [
+        pageContact,
+        pageAsset,
+        pageDeposit,
+        pageVaria,
+        pageFiles,
+        pageReview
+      ];
+    }
+
+    for (let i=0; i < this.pages.length; i++) {
+      this.pages[i].step = i + 1;
     }
   }
 
-  @track showContact = true;
-  @track showAsset = false;
-  @track showDeposit = false;
-  @track showVaria = false;
-  @track showFiles = false;
-  @track showReview = false;
+  get showContactPage() {
+    return this.findSelectedById('contact');
+  };
 
+  get showAssetPage() {
+    return this.findSelectedById('asset');
+  };
+
+  get showDepositPage() {
+    return this.findSelectedById('deposit');
+  };
+
+  get showVariaPage() {
+    return this.findSelectedById('varia');
+  };
+
+  get showFilesPage() {
+    return this.findSelectedById('files');
+  };
+
+  get showReviewPage() {
+    return this.findSelectedById('review');
+  };
+
+  get hasPageMessage() {
+    let currentPage = this.currentPage()[0];
+
+    return currentPage.warning || currentPage.error || currentPage.processing;
+  }
+
+  get pageMessage() {
+    let currentPage = this.currentPage()[0];
+
+    return currentPage.message;
+  }
+
+  get pageMessageType() {
+    let currentPage = this.currentPage()[0];
+
+    if (currentPage.warning) {
+      return WARNING;
+
+    } else if (currentPage.error) {
+      return ERROR;
+
+    } else if (currentPage.processing) {
+      return PROCESSING;
+    }
+  }
+
+  currentPage() {
+    return this.pages.filter((page) => page.selected == true);
+  }
+
+  currentPageIndex() {
+    for(let i=0; i < this.pages.length; i++) {
+      if (this.pages[i].selected) {
+        return i;
+      }
+    }
+  }
+
+  /**
+   * Find selected page by string/id
+   *
+   * @param (String) id
+   */
+  findSelectedById(id) {
+    for(let i=0; i < this.pages.length; i++) {
+      if (this.pages[i].id === id) {
+        return this.pages[i].selected;
+      }
+    }
+  }
+
+  /**
+   * Previous Page
+   *
+   * @param (Event) e
+   */
+  handlePreviousPage(e) {
+    let currentPageIndex = this.currentPageIndex();
+
+    if (currentPageIndex === 0) return;
+
+    for(let i=0; i < this.pages.length; i++) {
+      this.pages[i].selected = i === (currentPageIndex - 1);
+    }
+  }
+
+  /**
+   * Next Page
+   *
+   * @param (Event) e
+   */
+  handleNextPage(e) {
+    let currentPageIndex = this.currentPageIndex();
+
+    if (currentPageIndex === (this.pages.length -1)) return;
+
+    for(let i=0; i < this.pages.length; i++) {
+      this.pages[i].selected = i === (currentPageIndex + 1);
+    }
+  }
+
+  /**
+   * When a user confirms they wish to delete sale
+   *
+   * @param (Event) e
+   */
+  handleDeleteSale(e) {
+    console.log('The final destination: ', e.payload)
+    alert('Delete The Sale')
+    // Add logic for deleting sale
+  }
+
+  /**
+   * Page/Step Change Listener
+   *
+   * @param (Event) e
+   */
   handleStepChange(e) {
     let changeToPage = e.detail.page;
 
-    this.navigation.currentPage=changeToPage;
-    this.navigation = Object.assign(this.navigation, {});
-    this.showContact = this.navigation.currentPage === 'contact';
-    this.showAsset = this.navigation.currentPage === 'asset';
-    this.showDeposit = this.navigation.currentPage === 'deposit';
-    this.showVaria = this.navigation.currentPage === 'varia';
-    this.showFiles = this.navigation.currentPage === 'files';
-    this.showReview = this.navigation.currentPage === 'review';
+    for(let i=0; i < this.pages.length; i++) {
+      this.pages[i].selected = i === parseInt(changeToPage);
+    }
   }
 
+  /**
+   * Page Updated Listener
+   *
+   * @param (Event) e
+   */
+  handlePageUpdate(e) {
+    const { pageIdx, error, completed, warning, message } = e.detail;
 
+    if (pageIdx || pageIdx === 0) {
+      this.pages[pageIdx] = {
+        ...this.pages[pageIdx],
+        error,
+        completed,
+        warning,
+        message
+      };
+    }
+  }
 }

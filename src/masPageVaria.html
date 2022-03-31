@@ -1,18 +1,73 @@
 <template>
   <div class="page-container">
     <div class="heading">
-      <h1>Kingsway Crescent 401</h1>
+      <h1><span>Varia /</span> {asset.name}</h1>
     </div>
     <hr />
     <div class="mt-30">
       <lightning-tabset active-tab-value="varias">
+
+        <!-- Varia Tab Start -->
         <lightning-tab label="Varias" value="varias">
-          <c-mas-table-varias></c-mas-table-varias>
+          <div>
+            <lightning-input
+            name="enter-search" label="Search" type="search" variant="label-hidden">
+            </lightning-input>
+            <div class="mt-10">
+              <c-mas-custom-table
+                key-field="id"
+                data={variadata}
+                columns={columnsVaria}
+                onrowaction={handleRowAction}
+                hide-checkbox-column
+                max-column-width="2000">
+              </c-mas-custom-table>
+            </div>
+            <div class="mt-10">
+              <lightning-button label="Add Varia" title="Begins the task" icon-name="utility:add" icon-position="left"
+                onclick={handleAdd}>
+              </lightning-button>
+            </div>
+          </div>
         </lightning-tab>
+        <!-- Varia Tab End -->
+
+        <!-- Change Order Tab Start -->
         <lightning-tab label="Change Orders" value="change-orders">
-          <c-mas-table-change-orders></c-mas-table-change-orders>
+          <div>
+            <lightning-input name="enter-search" label="Search" type="search" variant="label-hidden">
+            </lightning-input>
+            <div class="mt-10">
+              <lightning-datatable
+                key-field="id"
+                data={changeorderdata}
+                columns={columnsChangeOrders}
+                onrowaction={handleRowAction}
+                hide-checkbox-column
+                max-column-width="2000">
+              </lightning-datatable>
+            </div>
+            <div class="mt-10">
+              <lightning-button label="Add Change Order" icon-name="utility:add" icon-position="left" onclick={handleAddChangeOrder}>
+              </lightning-button>
+            </div>
+          </div>
         </lightning-tab>
+        <!-- Change Order Tab End -->
+
       </lightning-tabset>
     </div>
   </div>
+
+  <!-- Add Varia Form -->
+  <template if:true={addVaria}>
+    <c-mas-form-varia onclose={handleCloseForm}></c-mas-form-varia>
+  </template>
+
+  <!-- Modal Add Varia Start -->
+  <template if:true={addChangeOrder}>
+    <c-mas-form-change-order onclose={handleCloseForm}></c-mas-form-change-order>
+  </template>
+  <!-- Modal Add Varia End -->
+
 </template>

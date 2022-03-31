@@ -1,18 +1,30 @@
 <template>
   <div class="page-container">
+
     <div class="heading">
-      <h1><span>Deposit /</span> Kingsway Crescent 401</h1>
+      <h1><span>Deposit /</span> {asset.name}</h1>
+      <div class="heading__actions">
+        <lightning-button-icon
+          icon-name="utility:settings"
+          alternative-text="Settings"
+          class="slds-m-left_xx-small"
+          onclick={handleAddDiscount}
+          title="Settings">
+        </lightning-button-icon>
+      </div>
     </div>
 
     <div class="table__items columns mt-10">
       <div class="line_item">
         <div>
-          Kingsway Crescent - 705
+          {asset.name}
         </div>
         <div>
-          $1,394,900.00
+          {asset.price}
         </div>
       </div>
+
+      <!-- Example line-item start (not sure how data is managed)-->
       <div class="line_item">
         <div>
           Parking Standard
@@ -21,22 +33,64 @@
           $59,500.00
         </div>
       </div>
+      <!-- Example line-item end -->
+
+      <!-- Discounts Start -->
+      <template for:each={discounts} for:item="item" for:index="index">
+        <div key={item.id} class="line_item">
+          <div class="line_item__discount_button">
+            <lightning-button-icon
+              icon-name="utility:delete"
+              alternative-text="Delete"
+              class="slds-m-left_xx-small"
+              data-discount-id={item.id}
+              onclick={handleRemoveDiscount}
+              title="Delete">
+            </lightning-button-icon>
+            <div>
+              Discount: {item.name}
+            </div>
+          </div>
+          <div class="line_item__discount_amount">
+            (${item.discount})
+          </div>
+        </div>
+      </template>
+      <!-- Discounts End -->
+
       <div class="line_item total">
         <div>
           Total
         </div>
         <div>
-          $1,454,400.00
+          {asset.total}
         </div>
       </div>
     </div>
 
     <div class="mt-30">
-      <h2>Select Deposit Schedule</h2>
+      <div class="line_item">
+        <div>
+          <h2>Select Deposit Schedule</h2>
+        </div>
+        <div>
+          <lightning-input
+            type="checkbox"
+            label="Eligible for tax rebate"
+            name="tax-rebate"
+            >
+          </lightning-input>
+        </div>
+      </div>
       <hr />
       <div>
-        <lightning-combobox name="progress" label="Status" placeholder="Select Schedule" variant="label-hidden"
-          onchange={handleChange}>
+        <lightning-combobox
+          name="progress"
+          label="Status"
+          placeholder="Select Schedule"
+          variant="label-hidden"
+          options={optionsSchedule}
+          onchange={handleScheduleChange}>
         </lightning-combobox>
       </div>
     </div>
@@ -45,14 +99,25 @@
       <div class="sub-heading">
         <h2>Deposit</h2>
         <div class="sub-heading__actions">
-          <button class="button-tertiary">Reload Schedule</button>
-          <button class="button-primary">+ Add Deposit</button>
+          <button class="button-tertiary" onclick={handleReloadSchedule}>Reload Schedule</button>
+          <button class="button-primary" onclick={handleAddDeposit}>+ Add Deposit</button>
         </div>
       </div>
       <hr />
       <div class="mt-10">
-        <c-mas-table-deposit></c-mas-table-deposit>
+        <c-mas-custom-table key-field="id" data={data} columns={columns} onrowaction={handleRowAction} hide-checkbox-column>
+        </c-mas-custom-table>
+      </div>
+      <div class="table-footer">
+        Summary: <span class="table-footer__total">${amountTotal} ({percentTotal}%)</span>
       </div>
     </div>
+
   </div>
+
+  <!-- Add Discount Form-->
+  <template if:true={addDiscount}>
+    <c-mas-form-discount onclose={handleDiscountClose}></c-mas-form-discount>
+  </template>
+
 </template>

@@ -1,55 +1,36 @@
 <template>
-
   <div class="page-container">
+
+    <!-- Heading -->
     <div class="heading">
       <h1>Contacts</h1>
       <div class="heading__actions">
-        <button class="button-primary" onclick={handleAdd}>+ Add Contact</button>
+        <button class="button-primary" onclick={handleAddContact}>+ Add Contact</button>
       </div>
     </div>
+    <hr />
 
-    <!-- Data Table -->
-    <div class="table__container">
-      <c-mas-table-contact>
-      </c-mas-table-contact>
+    <div class="mt-30">
+      <div class="table__container">
+
+        <!-- Contacts Data Table -->
+        <div class="table__container">
+          <c-mas-custom-table key-field="id" data={data} columns={columns} onrowaction={handleRowAction} hide-checkbox-column>
+          </c-mas-custom-table>
+        </div>
+
+        <!-- Edit Contact Form -->
+        <template if:true={editContact}>
+          <c-mas-form-contacts data={selectedRow} onclose={handleCloseForm}></c-mas-form-contacts>
+        </template>
+
+      </div>
     </div>
   </div>
 
+  <!-- Add Contact Form -->
   <template if:true={addContact}>
-    <form onsubmit={handleFormSubmit}>
-      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
-        class="slds-modal slds-fade-in-open">
-        <div class="slds-modal__container">
-          <div class="slds-modal__header">
-            <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Add Contact</h1>
-          </div>
-          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-            <div>
-              <lightning-input name="search-contact" label="Search Contact" type="search" variant="label-hidden"
-                placeholder="Search for contact...">
-              </lightning-input>
-            </div>
-            <div class="mt-10">
-              <lightning-input name="progress" label="Status" placeholder="Role" variant="label-hidden">
-              </lightning-input>
-            </div>
-            <div class="mt-10">
-              <lightning-input name="search-corpo" label="Search Corporation" type="search" variant="label-hidden"
-                placeholder="Search corporations...">
-              </lightning-input>
-            </div>
-          </div>
-          <div class="slds-modal__footer slds-modal__footer_directional">
-            <div class="modal__container__actions">
-              <div class="modal__container__cancel">
-                Cancel
-              </div>
-              <button class="button-primary">Continue</button>
-            </div>
-          </div>
-        </div>
-      </section>
-      <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
-    </form>
+    <c-mas-form-add-contact onclose={handleCloseForm}></c-mas-form-add-contact>
   </template>
+
 </template>

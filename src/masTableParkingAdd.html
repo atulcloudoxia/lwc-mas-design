@@ -4,8 +4,8 @@
   <lightning-input name="enter-search" label="Search" type="search" variant="label-hidden">
   </lightning-input>
   <div class="mt-10">
-    <lightning-datatable key-field="id" data={data} columns={columns} hide-checkbox-column>
-    </lightning-datatable>
+    <c-mas-custom-table key-field="id" data={data} columns={columns} onrowaction={handleRowAction} hide-checkbox-column>
+    </c-mas-custom-table>
   </div>
 
 </template>

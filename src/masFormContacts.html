@@ -1,0 +1,188 @@
+<template>
+  <form onsubmit={handleSubmit}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+      class="slds-modal_medium slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+        <div class="slds-modal__header">
+          <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Contact</h1>
+        </div>
+        <div class="slds-modal__content slds-p-around_medium grid" id="modal-content-id-1">
+
+          <!-- Personal Information -->
+          <div class="grid__span4">
+            <label>Personal Information</label>
+          </div>
+          <div class="grid__span2">
+            <div class="mt-10">
+              <lightning-combobox name="role" label="Role" placeholder="Select Role" options={roleOptions}
+                onchange={handleRoleChange} value={data.role}></lightning-combobox>
+            </div>
+            <div class="mt-10">
+              <lightning-combobox name="salutation" label="Saluation" placeholder="Select Salutation"
+                options={salutationOptions} value={data.salutation}></lightning-combobox>
+            </div>
+            <div class="mt-10">
+              <lightning-input value={data.firstname} name="firstname" label="First Name">
+              </lightning-input>
+            </div>
+            <div class="mt-10">
+              <lightning-input value={data.lastname} name="lastname" label="Last Name">
+              </lightning-input>
+            </div>
+            <div class="mt-10">
+              <lightning-input value={data.dob} type="date" name="dob" label="Date of Birth"></lightning-input>
+            </div>
+            <div class="mt-10">
+              <lightning-combobox name="language" label="Language" placeholder="Select Language"
+                options={languageOptions} value={data.language}></lightning-combobox>
+            </div>
+            <div class="mt-10">
+              <lightning-input value={data.sin} name="sin" label="Social Insurance Number">
+              </lightning-input>
+            </div>
+          </div>
+          <div class="grid__span2">
+            <div class="mt-10 upload-container">
+              <lightning-button-group>
+                <lightning-button label="Upload"></lightning-button>
+                <lightning-button label="Remove"></lightning-button>
+              </lightning-button-group>
+            </div>
+          </div>
+
+          <!-- Corporation Information -->
+          <template if:true={isCorporation}>
+            <div class="grid__span4 mt-30">
+              <label>Corporate Information</label>
+            </div>
+            <div class="grid__span2 mt-10">
+              <lightning-input name="corporation-name" label="Corporation Name">
+              </lightning-input>
+            </div>
+            <div class="mt-10">
+              <lightning-input name="corporation-gst" label="GST Number">
+              </lightning-input>
+            </div>
+            <div class="mt-10">
+              <lightning-input name="corporation-pst" label="PST Number">
+              </lightning-input>
+            </div>
+            <div class="grid__span2 mt-10">
+              <lightning-input name="corporation-address" label="Address">
+              </lightning-input>
+            </div>
+            <div class="grid__span2 mt-10">
+              <lightning-input name="corporation-city" label="City">
+              </lightning-input>
+            </div>
+            <div class="mt-10">
+              <lightning-input name="corporation-province-state" label="Province / State">
+              </lightning-input>
+            </div>
+            <div class="mt-10">
+              <lightning-input name="corporation-country" label="Country">
+              </lightning-input>
+            </div>
+            <div class="grid__span2 mt-10">
+              <lightning-input name="corporation-nature" label="Nature of principal business">
+              </lightning-input>
+            </div>
+            <div class="grid__span2 mt-10">
+              <lightning-input name="corporation-source" label="Source of verification records">
+              </lightning-input>
+            </div>
+            <div class="grid__span2 mt-10">
+              <lightning-input name="corporation-number" label="Corporation registration number">
+              </lightning-input>
+            </div>
+            <div class="grid__span2 mt-10">
+              <lightning-input name="corporation-fintrac" label="Fintrac Notes">
+              </lightning-input>
+            </div>
+          </template>
+
+          <!-- Contact Information -->
+          <div class="grid__span4 mt-30">
+            <label>Contact Information</label>
+          </div>
+          <div class="mt-10">
+            <lightning-input value={data.email} name="email" label="Email " type="email">
+            </lightning-input>
+          </div>
+          <div class="mt-10">
+            <lightning-input value={data.phone} name="phone" label="Phone" type="tel">
+            </lightning-input>
+          </div>
+          <div class="mt-10">
+            <lightning-input value={data.phone_ext} name="phone-ext" label="Phone ext.">
+            </lightning-input>
+          </div>
+          <div class="mt-10">
+            <lightning-input value={data.mobile} name="mobile" label="Mobile" type="tel">
+            </lightning-input>
+          </div>
+
+          <!-- Address Information -->
+          <div class="grid__span4 mt-30">
+            <label>Address</label>
+          </div>
+          <div class="grid__span2 mt-10">
+            <lightning-input value={data.address} name="Address" label="Address">
+            </lightning-input>
+          </div>
+          <div class="grid__span2 mt-10">
+            <lightning-input value={data.city} name="city" label="City">
+            </lightning-input>
+          </div>
+          <div class="mt-10">
+            <lightning-input value={data.province_state} name="province-state" label="Province / State">
+            </lightning-input>
+          </div>
+          <div class="mt-10">
+            <lightning-input value={data.postal_zip} name="postal-zip" label="Postal / Zip Code">
+            </lightning-input>
+          </div>
+          <div class="mt-10">
+            <lightning-input value={data.address} name="coutnry" label="Country">
+            </lightning-input>
+          </div>
+
+          <!-- Details Information -->
+          <div class="grid__span4 mt-30">
+            <label>Details</label>
+          </div>
+          <div class="mt-10">
+            <lightning-input name="id" label="ID">
+            </lightning-input>
+          </div>
+          <div class="mt-10">
+            <lightning-input name="id-expiration-date" label="ID Expiration Date">
+            </lightning-input>
+          </div>
+          <div class="mt-10">
+            <lightning-input name="id-country" label="ID Country">
+            </lightning-input>
+          </div>
+          <div class="mt-10">
+            <lightning-input name="id-province" label="ID Province">
+            </lightning-input>
+          </div>
+          <div class="mt-10">
+            <lightning-input name="type" label="Type">
+            </lightning-input>
+          </div>
+        </div>
+
+        <div class="slds-modal__footer slds-modal__footer_directional">
+          <div class="modal__container__actions">
+            <div class="modal__container__cancel" onclick={handleCancel}>
+              Cancel
+            </div>
+            <button class="button-primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+  </form>
+</template>

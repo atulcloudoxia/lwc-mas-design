@@ -29,7 +29,7 @@ h2 {
         color: #97A9B5;
         margin-left:30px;
         margin-top:5px;
-    } 
+    }
 
     &__actions {
         margin-left:auto;
@@ -38,6 +38,14 @@ h2 {
             margin-left:10px;
         }
     }
+}
+
+.addbutton {
+  color:#4ec3a1;
+
+  .addbutton__icon {
+    color:#fff;
+  }
 }
 
 .page-container {
@@ -59,7 +67,7 @@ h2 {
     &.columns {
         flex-direction:column;
     }
-    
+
     > div {
         border-bottom:1px #E3E3E3 solid;
         padding:10px 0;
@@ -70,15 +78,25 @@ h2 {
         b {
             color:#000;
         }
-     
+
         > * + * {
             margin-left:40px;
         }
 
         .table__items__actions {
             margin-left:auto;
-        }  
+        }
     }
+}
+
+.table-footer {
+  text-align:center;
+  margin-top:20px;
+  font-size:16px;
+
+  .table-footer__total {
+    font-weight:700;
+  }
 }
 
 .line_item {
@@ -94,6 +112,20 @@ h2 {
         font-weight:600;
         font-size:17px;
     }
+
+    .line_item__discount_button {
+      display:flex;
+      align-items:center;
+
+      > * + * {
+        margin-left:10px;
+      }
+    }
+
+    .line_item__discount_amount {
+      color: #F74037;
+      font-weight:600;
+    }
 }
 
 button {
@@ -102,12 +134,12 @@ button {
 
 .button-primary {
     border:0;
-    height:36px;
+    height:40px;
     width:150px;
-    border-radius:6px;
+    border-radius:8px;
     color:#fff;
     font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    font-weight:400;
+    font-weight:600;
     font-size:13px;
     background: #5D70FF;
     border: 2px #5D70FF solid;
@@ -125,16 +157,20 @@ button {
 
 .button-secondary {
     border:0;
-    height:36px;
+    height:40px;
     width:150px;
-    border-radius:6px;
-    color:#fff;
+    border-radius:8px;
     font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    font-weight:400;
+    font-weight:600;
     font-size:13px;
     background: #fff;
-    border: 1px #DDDADA solid;
-    color:#5D89FF;
+    border: 1px #5D70FF solid;
+    color:#5D70FF;
+
+    &:hover {
+      background: #5D70FF;
+      color:#fff;
+    }
 }
 
 .button-tertiary {
@@ -173,8 +209,12 @@ p {
 
 label {
     font-size:16px;
-    font-weight:700;
-    margin-bottom:10px;
+    border-top: 1px #f4f0f0 solid;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    display: block;
+    font-weight: 500;
 }
 
 hr {
@@ -188,27 +228,108 @@ div.story_padded {
     padding:0;
 }
 
+.upload-container {
+    border:1px #ddd solid;
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    padding:10px;
+    border-radius:5px;
+}
+
 .slds-modal {
 
 }
 .slds-modal__header {
-    border-radius: 20px 20px 0 0;
-    border-bottom-width:0 !important;
-    padding: 2rem 0 2rem 0;
+    border-radius: 14px 14px 0 0;
+    border-bottom-width:0px !important;
+    padding: 1rem 2rem 1rem 2rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    .slds-modal__title {
+        font-weight: 600;
+        text-align: left;
+    }
 }
 
 .slds-p-around_medium,
 .slds-modal__content {
-    padding: 0 3rem 2rem 3rem !important;
+    padding: 0 2rem 2rem 2rem !important;
+
+
+    label {
+        margin-left: -3rem;
+        padding-left: 3rem;
+        width: calc(100% + 6rem);
+    }
+
+    &.grid {
+        display: grid;
+        column-gap: 30px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+
+        .grid__span2 {
+            grid-area: span 1 / span 2;
+        }
+        .grid__span3 {
+            grid-area: span 1 / span 2;
+        }
+        .grid__span4 {
+            grid-area: span 1 / span 4;
+        }
+        .grid__span5 {
+            grid-area: span 1 / span 5;
+        }
+        .grid__span6 {
+            grid-area: span 1 / span 6;
+        }
+    }
 }
 
 .slds-modal__footer,
 .slds-modal__footer_directional {
     border-width: 0px !important;
-    padding: 1rem 3rem 1rem 3rem !important;
-    border-radius: 0 0 20px 20px;
+    padding: 1rem 2rem 1rem 2rem !important;
+    border-radius: 0 0 14px 14px;
 
+    background:#f1f3f6;
+
+    .button-primary {
+        width:auto;
+        min-width:80px;
+    }
+
+    .modal__container__cancel {
+        display:inline-block;
+        border:1px #e5e6e9 solid;
+        background:#fff;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        height:40px;
+        min-width:80px;
+        border-radius:8px;
+        color:#2d3138;
+        font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+        font-weight:400;
+        font-size:13px;
+        cursor:pointer;
+
+        &:hover {
+            background: #f5f5f5;
+            box-shadow: 0 0 5px #D0DCFF;
+        }
+
+        &:focus {
+            border-color: #ccced5;
+        }
+    }
 }
+
 
 .modal {
     position:fixed;
@@ -241,20 +362,9 @@ div.story_padded {
             justify-content: flex-end;
 
             > * + * {
-                margin-left:20px;
+                margin-left:10px;
             }
         }
-
-       &__cancel {
-           color:#666;
-           font-weight:500;
-           font-size:12px;
-           cursor:pointer;
-
-           &:hover {
-               color:#000;
-           }
-       }
     }
 }
 
@@ -268,4 +378,16 @@ div.story_padded {
 
 .mt-30 {
     margin-top:30px;
+}
+
+.mb-10 {
+    margin-bottom:10px;
+}
+
+.mb-20 {
+    margin-bottom:20px;
+}
+
+.mb-30 {
+    margin-bottom:30px;
 }
