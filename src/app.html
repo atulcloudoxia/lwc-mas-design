@@ -1,0 +1,24 @@
+<template>
+	<c-mas-progress-bar onpage={handleStepChange} nav={navigation.pages}></c-mas-progress-bar>
+	<div class="app__container">
+		<template if:true={showContact}>
+			<c-mas-page-contact></c-mas-page-contact>
+		</template>
+		<template if:true={showAsset}>
+			<c-mas-page-asset></c-mas-page-asset>
+		</template>
+		<template if:true={showDeposit}>
+			<c-mas-page-deposit></c-mas-page-deposit>
+		</template>
+		<template if:true={showVaria}>
+			<c-mas-page-varia></c-mas-page-varia>
+		</template>
+		<template if:true={showFiles}>
+			<c-mas-page-files></c-mas-page-files>
+		</template>
+		<template if:true={showReview}>
+			<c-mas-page-review></c-mas-page-review>
+		</template>
+		<c-mas-footer-bar></c-mas-footer-bar>
+	</div>
+</template>

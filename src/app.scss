@@ -1,0 +1,271 @@
+body {
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+h1 {
+    color: #000;
+    font-size:30px;
+    font-weight:600;
+
+    > span {
+        font-weight:300;
+        color:#828b8e;
+    }
+}
+
+h2 {
+    font-size:18px;
+    font-weight:600;
+}
+
+.sub-heading,
+.heading {
+    display:flex;
+    align-items:center;
+    width:100%;
+
+    .heading__subtitle {
+        font-size:18px;
+        color: #97A9B5;
+        margin-left:30px;
+        margin-top:5px;
+    } 
+
+    &__actions {
+        margin-left:auto;
+
+        > * + * {
+            margin-left:10px;
+        }
+    }
+}
+
+.page-container {
+    margin-top:10px;
+}
+
+.table__container {
+    margin-top:30px;
+}
+
+.table__items {
+    display:flex;
+    align-items:center;
+    width:100%;
+    border-top:1px #E3E3E3 solid;
+    border-bottom:1px #E3E3E3 solid;
+    font-size:14px;
+
+    &.columns {
+        flex-direction:column;
+    }
+    
+    > div {
+        border-bottom:1px #E3E3E3 solid;
+        padding:10px 0;
+        display:flex;
+        width:100%;
+        color:#828b8e;
+
+        b {
+            color:#000;
+        }
+     
+        > * + * {
+            margin-left:40px;
+        }
+
+        .table__items__actions {
+            margin-left:auto;
+        }  
+    }
+}
+
+.line_item {
+    display:flex;
+    width:100%;
+
+    > * + * {
+        margin-left:auto !important;
+        color:#000;
+    }
+
+    &.total {
+        font-weight:600;
+        font-size:17px;
+    }
+}
+
+button {
+
+}
+
+.button-primary {
+    border:0;
+    height:36px;
+    width:150px;
+    border-radius:6px;
+    color:#fff;
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-weight:400;
+    font-size:13px;
+    background: #5D70FF;
+    border: 2px #5D70FF solid;
+    outline: #2755D1;
+
+    &:hover {
+        background: #4055F8;
+        box-shadow: 0 0 5px #D0DCFF;
+    }
+
+    &:focus {
+        border-color: #2755D1;
+    }
+}
+
+.button-secondary {
+    border:0;
+    height:36px;
+    width:150px;
+    border-radius:6px;
+    color:#fff;
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-weight:400;
+    font-size:13px;
+    background: #fff;
+    border: 1px #DDDADA solid;
+    color:#5D89FF;
+}
+
+.button-tertiary {
+    border:0;
+    height:36px;
+    width:150px;
+    border-radius:6px;
+    color:#fff;
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-weight:400;
+    font-size:13px;
+    background: #FFD35D;
+    border: 1px #FFD35D solid;
+    color:#000;
+}
+
+.button-small {
+    height:30px;
+    width:150px;
+    font-size:12px;
+}
+
+p {
+    color: rgb(62, 62, 60);
+}
+
+.app__container {
+    background: #fff;
+    height: 100vh;
+    overflow: scroll;
+    margin:0;
+    padding:20px 60px;
+    margin: -1rem -1rem; /* A bit of a hack to remove border */
+    padding-bottom:140px;
+}
+
+label {
+    font-size:16px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+hr {
+    border:0;
+    height:1px;
+    background:#E3E3E3;
+    margin:10px 0 15px 0;
+}
+
+div.story_padded {
+    padding:0;
+}
+
+.slds-modal {
+
+}
+.slds-modal__header {
+    border-radius: 20px 20px 0 0;
+    border-bottom-width:0 !important;
+    padding: 2rem 0 2rem 0;
+}
+
+.slds-p-around_medium,
+.slds-modal__content {
+    padding: 0 3rem 2rem 3rem !important;
+}
+
+.slds-modal__footer,
+.slds-modal__footer_directional {
+    border-width: 0px !important;
+    padding: 1rem 3rem 1rem 3rem !important;
+    border-radius: 0 0 20px 20px;
+
+}
+
+.modal {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: rgba(0,0,0,0.5);
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    background: 0 30px 60px rgba(0,0,0,0.15);
+
+    &__container {
+        background:#fff;
+        border-radius:20px;
+        width:500px;
+        padding:40px;
+
+        &__title {
+            font-size:16px;
+            font-weight:700;
+            margin-bottom:10px;
+        }
+
+        &__actions {
+            display:flex;
+            align-items:center;
+            width:100%;
+            justify-content: flex-end;
+
+            > * + * {
+                margin-left:20px;
+            }
+        }
+
+       &__cancel {
+           color:#666;
+           font-weight:500;
+           font-size:12px;
+           cursor:pointer;
+
+           &:hover {
+               color:#000;
+           }
+       }
+    }
+}
+
+.mt-10 {
+    margin-top:10px;
+}
+
+.mt-20 {
+    margin-top:20px;
+}
+
+.mt-30 {
+    margin-top:30px;
+}
