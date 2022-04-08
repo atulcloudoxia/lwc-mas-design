@@ -20,4 +20,7 @@ export default class PageContact extends LightningElement {
     // Nhan, handle "add" logic here
   }
 
+  handleContactSelect(event){
+
+  }
 }
