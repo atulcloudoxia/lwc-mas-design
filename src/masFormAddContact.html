@@ -7,9 +7,20 @@
         </div>
         <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
           <div>
-            <lightning-input name="search-contact" label="Search Contact" type="search" variant="label-hidden"
-              placeholder="Search for contact...">
-            </lightning-input>
+            <!--<lightning-input name="search-contact" label="Search Contact" type="search" variant="label-hidden"
+                placeholder="Search for contact..."> 
+              </lightning-input>-->
+              <c-mas-custom-lookup 
+                  placeholder="Search Contacts"
+                  iconname="standard:lead" 
+                  object-name="Contact" 
+                  searchfield="Name" 
+                  fieldstoquery="Email, Phone" 
+                  data-index={index} 
+                  onselectedrec={handleContactSelect}
+                  filter-conditions=""
+                  blank="true">
+              </c-mas-custom-lookup>
           </div>
           <div class="mt-10">
             <lightning-input name="progress" label="Status" placeholder="Role" variant="label-hidden">

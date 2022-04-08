@@ -25,4 +25,7 @@ export default class AddContactForm extends LightningElement {
       new CustomEvent("close")
     );
   }
+  handleContactSelect(event){
+
+  }
 }
