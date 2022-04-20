@@ -19,7 +19,7 @@ export default class DepositPage extends LightningElement {
       let total=0;
 
       this.data.forEach((item) => {
-        total += parseFloat(item.amount);
+        total += parseFloat(item.Deposit_Amount__c);
       });
 
       return Number((total).toFixed(2)).toLocaleString();
@@ -32,7 +32,7 @@ export default class DepositPage extends LightningElement {
       let total=0;
 
       this.data.forEach((item) => {
-        total += parseFloat(item.percent);
+        total += parseFloat(item.Percent__c);
       });
 
       return Number(total).toFixed(2);
@@ -98,13 +98,13 @@ export default class DepositPage extends LightningElement {
         ...this.data,
         {
           id,
-          number: id,
-          date: '11/01/2022',
-          deposit_to: 'notary',
-          deposit_for: 'cashdown',
-          amount: "2000",
-          percent: "1",
-          received: false
+          Deposit_Number__c: id,
+          Reception_Date__c: '11/01/2022',
+          Deposit_To__c: 'notary',
+          Deposit_For__c: 'cashdown',
+          Deposit_Amount__c: "2000",
+          Percent__c: "1",
+          Deposit_Received__c: false
         }
       ]
     }

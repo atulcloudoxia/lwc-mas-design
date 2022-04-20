@@ -3,17 +3,18 @@ const MOCK_CONTACTS = [{
     name: 'Andrew Hamilton',
     firstname: 'Andrew',
     lastname: 'Hamilton',
-    language: 'en',
-    dob: '1978-10-29',
+    language__c: 'en',
+    birthdate: '1978-10-29',
     salutation: 'mr',
     sin: '123123123',
     role: 'Buyer 1',
     email: 'andrew@lucidlive.com',
     phone: '514-555-5555',
-    address: '123 Main Street',
-    city: 'Montreal',
-    province: 'qc',
-    country: 'ca',
+    mailingaddress: '123 Main Street',
+    mailingcity: 'Montreal',
+    mailingstate: 'qc',
+    mailingpostalcode: '221002',
+    mailingcountry: 'ca',
     status: 'Complete',
     isComplete: true,
   },
@@ -22,8 +23,8 @@ const MOCK_CONTACTS = [{
     name: 'Tao-Nhan Nguyen',
     firstname: 'Tao-Nhan',
     lastname: 'Nguyen',
-    language: 'fr',
-    dob: '1942-10-09',
+    language__c: 'fr',
+    birthdate: '1942-10-09',
     salutation: 'mr',
     sin: '123123123',
     role: 'Buyer 2',
@@ -37,8 +38,8 @@ const MOCK_CONTACTS = [{
     name: 'Chuck Norris',
     firstname: 'Chuck',
     lastname: 'Norris',
-    language: 'ch',
-    dob: '1852-10-09',
+    language__c: 'ch',
+    birthdate: '1852-10-09',
     salutation: 'mr',
     sin: '123123123',
     role: 'corporation',
@@ -52,115 +53,122 @@ const MOCK_CONTACTS = [{
 const MOCK_PARKING = [
   {
     id: 1,
-    type: 'Locker Standard',
-    assigned: 'Side by Side',
-    price: '30933'
+    Type__c: 'Locker Standard',
+    Assigned_Spot__c: 'Side by Side',
+    Price__c: '30933'
   },
   {
     id: 2,
-    type: 'Parking Standard',
-    assigned: 'Side by Side',
-    price: '36933'
+    Type__c: 'Parking Standard',
+    Assigned_Spot__c: 'Side by Side',
+    Price__c: '36933'
   },
 ];
 
 const MOCK_EXTRAS = [
   {
     id: 1,
-    quantity: 3,
+    Quantity__c: 3,
     name: 'Extra 1',
-    description: 'lorem ipsum',
-    type: 'Upper',
-    price: '87272'
+    Description_ENG__c: 'lorem ipsum',
+    Room_Type__c: 'Upper',
+    Price__c: '87272'
   },
   {
     id: 2,
-    quantity: 3,
+    Quantity__c: 3,
     name: 'Extra 1',
-    description: 'lorem ipsum',
-    type: 'Bathroom',
-    price: '87272'
+    Description_ENG__c: 'lorem ipsum',
+    Room_Type__c: 'Bathroom',
+    Price__c: '87272'
   },
   {
     id: 3,
-    quantity: 3,
+    Quantity__c: 3,
     name: 'Extra 1',
-    description: 'lorem ipsum',
-    type: 'Ground',
-    price: '87272'
+    Description_ENG__c: 'lorem ipsum',
+    Room_Type__c: 'Ground',
+    Price__c: '87272'
   },
 ];
 
 const MOCK_ASSET = {
   id: 1,
-  name: 'Kingsway Crescent 401',
-  salesRep: 'Baker Real Estate',
-  contractDate: '2020-09-07',
-  price: '1309000.00',
-  total: '1454400.00',
-  developerSale: true,
+  Name: 'Kingsway Crescent 401',
+  Condo_Price__c: '1309001.00',
+  Total_Price__c: '1454400.00',
+   
+};
+
+const MOCK_CLOSING_DETAIL = {
+
+  id: 1,
+  Name: 'CCD-0145',
+  Sales_Representative__r:{Id:"005AAAAAAAAAAAA", Name:"Tao Nhan"},
+  Preliminary_Contract_Signed_D__c: '2020-09-07',
+  Developer_Deal__c: true,
 };
 
 const MOCK_DEPOSIT = [
  {
      id: 1,
-     number: 1,
-     date: '09/01/2022',
-     deposit_to: 'notary',
-     deposit_for: 'cashdown',
-     amount: "2000",
-     percent: "1",
-     received: false
+     Deposit_Number__c: 1,
+     Reception_Date__c: '09/01/2022',
+     Deposit_To__c: 'notary',
+     Deposit_For__c: 'cashdown',
+     Deposit_Amount__c: "2000",
+     Percent__c: "1",
+     Deposit_Received__c: true
  },
  {
      id: 2,
-     number: 2,
-     date: '10/01/2022',
-     deposit_to: 'notary',
-     deposit_for: 'cashdown',
-     amount: "2000",
-     percent: "1",
-     received: false
+     Deposit_Number__c: 2,
+     Reception_Date__c: '10/01/2022',
+     Deposit_To__c: 'notary',
+     Deposit_For__c: 'cashdown',
+     Deposit_Amount__c: "2000",
+     Percent__c: "1",
+     Deposit_Received__c: false
  },
  {
      id: 3,
-     number: 3,
-     date: '11/01/2022',
-     deposit_to: 'notary',
-     deposit_for: 'cashdown',
-     amount: "2000",
-     percent: "1",
-     received: false
+     Deposit_Number__c: 3,
+     Reception_Date__c: '11/01/2022',
+     Deposit_To__c: 'notary',
+     Deposit_For__c: 'cashdown',
+     Deposit_Amount__c: "2000",
+     Percent__c: "1",
+     Deposit_Received__c: false
  },
  {
      id: 4,
-     number: 4,
-     date: '11/01/2022',
-     deposit_to: 'notary',
-     deposit_for: 'cashdown',
-     amount: "2000",
-     percent: "1",
-     received: false
+     Deposit_Number__c: 4,
+     Reception_Date__c: '11/01/2022',
+     Deposit_To__c: 'notary',
+     Deposit_For__c: 'cashdown',
+     Deposit_Amount__c: "2000",
+     Percent__c: "1",
+     Deposit_Received__c: false
  },
  {
      id: 5,
-     number: 5,
-     date: '11/01/2022',
-     deposit_to: 'notary',
-     deposit_for: 'cashdown',
-     amount: "2000",
-     percent: "1",
-     received: false
+     Deposit_Number__c: 5,
+     Reception_Date__c: '11/01/2022',
+     Deposit_To__c: 'notary',
+     Deposit_For__c: 'cashdown',
+     Deposit_Amount__c: "2000",
+     Percent__c: "1",
+     Deposit_Received__c: false
  },
  {
      id: 6,
-     number: 6,
-     date: '11/01/2022',
-     deposit_to: 'notary',
-     deposit_for: 'cashdown',
-     amount: "2000",
-     percent: "1",
-     received: false
+     Deposit_Number__c: 6,
+     Reception_Date__c: '11/01/2022',
+     Deposit_To__c: 'notary',
+     Deposit_For__c: 'cashdown',
+     Deposit_Amount__c: "2000",
+     Percent__c: "1",
+     Deposit_Received__c: false
  },
 ];
 
@@ -202,4 +210,4 @@ const MOCK_CHANGE_ORDERS = [
   }
 ];
 
-export { MOCK_CONTACTS, MOCK_PARKING, MOCK_ASSET, MOCK_EXTRAS, MOCK_DEPOSIT, MOCK_VARIA, MOCK_CHANGE_ORDERS };
+export { MOCK_CONTACTS, MOCK_PARKING, MOCK_ASSET, MOCK_CLOSING_DETAIL, MOCK_EXTRAS, MOCK_DEPOSIT, MOCK_VARIA, MOCK_CHANGE_ORDERS };

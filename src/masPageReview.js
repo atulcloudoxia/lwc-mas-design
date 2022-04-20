@@ -3,7 +3,7 @@ import { REVIEW_CONTACTS_COLUMNS, REVIEW_DEPOSITS_COLUMNS } from './constants';
 
 export default class ReviewPage extends LightningElement {
 
-  @api contactsdata;
+  @api contactslist;
   @api depositsdata;
   @api asset;
 

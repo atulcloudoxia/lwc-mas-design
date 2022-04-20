@@ -3,7 +3,7 @@ import { LightningElement, track } from 'lwc';
 const columns = [
     {
       label: 'Quantity',
-      fieldName: 'quantity',
+      fieldName: 'Quantity__c',
       type: 'number',
       editable: false,
       hideDefaultActions:true,
@@ -21,21 +21,21 @@ const columns = [
     },
     {
       label: 'Description',
-      fieldName: 'description',
+      fieldName: 'Description_ENG__c',
       editable: false,
       hideDefaultActions:true,
       sortable:true
     },
     {
       label: 'Type',
-      fieldName: 'type',
+      fieldName: 'Room_Type__c',
       editable: false,
       hideDefaultActions:true,
       sortable:true
     },
     {
       label: 'Price',
-      fieldName: 'price',
+      fieldName: 'Price__c',
       type: 'currency',
       editable: false,
       hideDefaultActions:true,
@@ -67,27 +67,27 @@ export default class BasicDatatable extends LightningElement {
     @track data = [
       {
           id: 1,
-          quantity: 3,
+          Quantity__c: 3,
           name: 'Extra 1',
-          description: 'lorem ipsum',
-          type: 'Upper',
-          price: '87272'
+          Description_ENG__c: 'lorem ipsum',
+          Room_Type__c: 'Upper',
+          Price__c: '87272'
       },
       {
           id: 1,
-          quantity: 3,
+          Quantity__c: 3,
           name: 'Extra 1',
-          description: 'lorem ipsum',
-          type: 'Bathroom',
-          price: '87272'
+          Description_ENG__c: 'lorem ipsum',
+          Room_Type__c: 'Bathroom',
+          Price__c: '87272'
       },
       {
           id: 1,
-          quantity: 3,
+          Quantity__c: 3,
           name: 'Extra 1',
-          description: 'lorem ipsum',
-          type: 'Ground',
-          price: '87272'
+          Description_ENG__c: 'lorem ipsum',
+          Room_Type__c: 'Ground',
+          Price__c: '87272'
       },
     ];
 

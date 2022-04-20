@@ -7,6 +7,7 @@ export default class PageAsset extends LightningElement {
   @api parkingdata;
   @api extradata;
   @api asset;
+  @api closingdetail;
 
   columns = COLUMNS_PARKING;
   columnsExtras = COLUMNS_EXTRAS;

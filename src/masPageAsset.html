@@ -3,7 +3,7 @@
 
     <!-- Heading -->
     <div class="heading">
-      <h1><span>Asset /</span> {asset.name}</h1>
+      <h1><span>Asset /</span> {asset.Name}</h1>
       <div class="heading__actions">
         <button class="button-secondary" onclick={handleEditAsset}>Edit</button>
       </div>
@@ -14,19 +14,20 @@
       <div>
         <span>
          <b>Sales Representative</b><br/>
-         {asset.salesRep}
+         
+         {closingdetail.Sales_Representative__r.Name}
         </span>
         <span>
          <b>Contract Date</b><br/>
-         {asset.contractDate}
+         {closingdetail.Preliminary_Contract_Signed_D__c}
         </span>
         <span>
          <b>Asset Price</b><br/>
-         {asset.price}
+         {asset.Condo_Price__c}
         </span>
         <span>
          <b>Developer Sale</b><br/>
-         {asset.developerSale}
+         {closingdetail.Developer_Deal__c}
         </span>
       </div>
     </div>

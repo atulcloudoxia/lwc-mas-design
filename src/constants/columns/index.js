@@ -54,21 +54,21 @@ const COLUMNS_CONTACTS = [
 const COLUMNS_PARKING = [
   {
     label: 'Type',
-    fieldName: 'type',
+    fieldName: 'Type__c',
     editable: false,
     hideDefaultActions:true,
     sortable:true
   },
   {
     label: 'Assigned Spot',
-    fieldName: 'assigned',
+    fieldName: 'Assigned_Spot__c',
     editable: true,
     hideDefaultActions:true,
     sortable:true
   },
   {
     label: 'Asset Price',
-    fieldName: 'price',
+    fieldName: 'Price__c',
     type: 'currency',
     editable: true,
     hideDefaultActions:true,
@@ -93,7 +93,7 @@ const COLUMNS_PARKING = [
 const COLUMNS_EXTRAS = [
   {
     label: 'Quantity',
-    fieldName: 'quantity',
+    fieldName: 'Quantity__c',
     type: 'number',
     editable: false,
     hideDefaultActions:true,
@@ -111,21 +111,21 @@ const COLUMNS_EXTRAS = [
   },
   {
     label: 'Description',
-    fieldName: 'description',
+    fieldName: 'Description_ENG__c',
     editable: false,
     hideDefaultActions:true,
     sortable:true
   },
   {
     label: 'Type',
-    fieldName: 'type',
+    fieldName: 'Room_Type__c',
     editable: false,
     hideDefaultActions:true,
     sortable:true
   },
   {
     label: 'Price',
-    fieldName: 'price',
+    fieldName: 'Price__c',
     type: 'currency',
     editable: false,
     hideDefaultActions:true,
@@ -150,37 +150,37 @@ const COLUMNS_EXTRAS = [
 const COLUMNS_DEPOSIT = [
   {
     label: 'Payment Number',
-    fieldName: 'number',
+    fieldName: 'Deposit_Number__c',
     type: 'number',
     editable: true,
     hideDefaultActions:true,
   },
   {
     label: 'Date',
-    fieldName: 'date',
+    fieldName: 'Reception_Date__c',
     type: 'date',
     editable: true,
     hideDefaultActions:true,
   },
   {
     label: 'Deposit To',
-    fieldName: 'deposit_to',
+    fieldName: 'Deposit_To__c',
     type:'select',
     editable: true
   },
   {
     label: 'Deposit For',
-    fieldName: 'deposit_for',
+    fieldName: 'Deposit_For__c',
     editable: true
   },
   {
     label: 'Amount',
-    fieldName: 'amount',
+    fieldName: 'Deposit_Amount__c',
     editable: true
   },
   {
     label: 'Percent',
-    fieldName: 'percent',
+    fieldName: 'Percent__c',
     type: 'percent',
     editable: true,
     cellAttributes: {
@@ -189,7 +189,7 @@ const COLUMNS_DEPOSIT = [
   },
   {
     label: 'Received',
-    fieldName: 'received',
+    fieldName: 'Deposit_Received__c',
     type: 'boolean',
     editable: true
   },
@@ -310,7 +310,7 @@ const REVIEW_CONTACTS_COLUMNS = [
 const REVIEW_DEPOSITS_COLUMNS = [
   {
     label: 'Payment Number',
-    fieldName: 'number',
+    fieldName: 'Deposit_Number__c',
     type: 'number',
     editable: false,
     hideDefaultActions:true,
@@ -321,30 +321,30 @@ const REVIEW_DEPOSITS_COLUMNS = [
   },
   {
     label: 'Date',
-    fieldName: 'date',
+    fieldName: 'Reception_Date__c',
     type: 'date',
     editable: false,
     hideDefaultActions:true,
   },
   {
     label: 'Deposit To',
-    fieldName: 'deposit_to',
+    fieldName: 'Deposit_To__c',
     type:'select',
     editable: false
   },
   {
     label: 'Deposit For',
-    fieldName: 'deposit_for',
+    fieldName: 'Deposit_For__c',
     editable: false
   },
   {
     label: 'Amount',
-    fieldName: 'amount',
+    fieldName: 'Deposit_Amount__c',
     editable: false
   },
   {
     label: 'Percent',
-    fieldName: 'percent',
+    fieldName: 'Percent__c',
     type: 'percent',
     editable: false,
     cellAttributes: {
@@ -353,7 +353,7 @@ const REVIEW_DEPOSITS_COLUMNS = [
   },
   {
     label: 'Received',
-    fieldName: 'received',
+    fieldName: 'Deposit_Received__c',
     type: 'boolean',
     editable: false
   },

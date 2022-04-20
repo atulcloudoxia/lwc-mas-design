@@ -21,7 +21,7 @@
     
         <template if:false={selectedRecord}>
             <template if:true={records}>
-                <div class="slds-border_left slds-border_right slds-border_bottom" style="background-color: white;overflow:auto; max-height:250px; width:85%;position:absolute; z-index:10;">
+                <div class="slds-border_left slds-border_right slds-border_bottom" style="background-color: white;overflow:auto; max-height:250px; width: calc(100% - 64px);position:absolute; z-index:10;">
                 <template for:each={records} for:item="record">
                     <c-mas-custom-lookup-record-list key={record.Id} record={record}
                         onselect={handleSelect} iconname={iconname}

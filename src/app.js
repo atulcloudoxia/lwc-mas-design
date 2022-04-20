@@ -5,6 +5,7 @@ import {
   PROCESSING,
   MOCK_PARKING,
   MOCK_ASSET,
+  MOCK_CLOSING_DETAIL,
   MOCK_EXTRAS,
   MOCK_DEPOSIT,
   MOCK_VARIA,
@@ -82,8 +83,9 @@ export default class Mas extends LightningElement {
 
   // Common Data
   @track opportunity = {};
-  @track contactsData = MOCK_CONTACTS;
+  @track contactList = MOCK_CONTACTS;
   @track asset = MOCK_ASSET;
+  @track closingdetail = MOCK_CLOSING_DETAIL;
   @track salesRep = {};
 
   // MAS Data

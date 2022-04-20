@@ -30,11 +30,11 @@
               </lightning-input>
             </div>
             <div class="mt-10">
-              <lightning-input value={data.dob} type="date" name="dob" label="Date of Birth"></lightning-input>
+              <lightning-input value={data.birthdate} type="date" name="dob" label="Date of Birth"></lightning-input>
             </div>
             <div class="mt-10">
               <lightning-combobox name="language" label="Language" placeholder="Select Language"
-                options={languageOptions} value={data.language}></lightning-combobox>
+                options={languageOptions} value={data.language__c}></lightning-combobox>
             </div>
             <div class="mt-10">
               <lightning-input value={data.sin} name="sin" label="Social Insurance Number">
@@ -127,23 +127,23 @@
             <label>Address</label>
           </div>
           <div class="grid__span2 mt-10">
-            <lightning-input value={data.address} name="Address" label="Address">
+            <lightning-input value={data.mailingaddress} name="Address" label="Address">
             </lightning-input>
           </div>
           <div class="grid__span2 mt-10">
-            <lightning-input value={data.city} name="city" label="City">
+            <lightning-input value={data.mailingcity} name="city" label="City">
             </lightning-input>
           </div>
           <div class="mt-10">
-            <lightning-input value={data.province_state} name="province-state" label="Province / State">
+            <lightning-input value={data.mailingstate} name="province-state" label="Province / State">
             </lightning-input>
           </div>
           <div class="mt-10">
-            <lightning-input value={data.postal_zip} name="postal-zip" label="Postal / Zip Code">
+            <lightning-input value={data.mailingpostalcode} name="postal-zip" label="Postal / Zip Code">
             </lightning-input>
           </div>
           <div class="mt-10">
-            <lightning-input value={data.address} name="coutnry" label="Country">
+            <lightning-input value={data.mailingcountry} name="country" label="Country">
             </lightning-input>
           </div>
 
