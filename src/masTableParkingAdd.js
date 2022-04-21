@@ -8,9 +8,13 @@ const rowActions = [
 ];
 
 const columns = [
-  { label: 'Type', fieldName: 'type'},
-  { label: 'Assigned Spot', fieldName: 'assigned' },
-  { label: 'Asset Price', fieldName: 'price', type: 'currency'},
+  { label: 'Type', fieldName: 'type', hideDefaultActions:true },
+  { label: 'Assigned Spot', fieldName: 'assigned', hideDefaultActions:true },
+  { label: 'Price', fieldName: 'price', type: 'currency', hideDefaultActions:true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
   {
     type: "button-icon",
     typeAttributes: {

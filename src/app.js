@@ -130,6 +130,9 @@ export default class Mas extends LightningElement {
   }
 
   @track
+  type; // rental or sale
+
+  @track
   contactsData = MOCK_CONTACTS;
 
   @track
@@ -231,6 +234,12 @@ export default class Mas extends LightningElement {
     for (let i=0; i < this.pages.length; i++) {
       this.pages[i].step = i + 1;
     }
+
+    this.type = type;
+  }
+
+  get assetData() {
+    return this.type === 'rental' ? this.rentalAsset : this.asset;
   }
 
   get showContactPage() {

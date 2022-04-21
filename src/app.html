@@ -19,22 +19,25 @@
 			<c-mas-page-contact data={contactsData} onupdate={handlePageUpdate}></c-mas-page-contact>
 		</template>
 		<template if:true={showAssetPage}>
-			<c-mas-page-asset parkingdata={parkingData} extradata={extraData} asset={asset}></c-mas-page-asset>
+			<c-mas-page-asset parkingdata={parkingData} extradata={extraData} asset={assetData}></c-mas-page-asset>
 		</template>
 		<template if:true={showRentalAssetPage}>
-			<c-mas-page-rental-asset parkingdata={parkingData} extradata={extraData} asset={rentalAsset}></c-mas-page-rental-asset>
+			<c-mas-page-rental-asset parkingdata={parkingData} extradata={extraData} asset={assetData}></c-mas-page-rental-asset>
+		</template>
+		<template if:true={showInclusionsPage}>
+			<c-mas-page-inclusions data={parkingData} asset={assetData}></c-mas-page-inclusions>
 		</template>
 		<template if:true={showDepositPage}>
-			<c-mas-page-deposit data={depositData} asset={asset}></c-mas-page-deposit>
+			<c-mas-page-deposit data={depositData} asset={assetData}></c-mas-page-deposit>
 		</template>
 		<template if:true={showVariaPage}>
-			<c-mas-page-varia variadata={variaData} changeorderdata={changeOrderData} asset={asset}></c-mas-page-varia>
+			<c-mas-page-varia variadata={variaData} changeorderdata={changeOrderData} asset={assetData}></c-mas-page-varia>
 		</template>
 		<template if:true={showFilesPage}>
-			<c-mas-page-files asset={asset}></c-mas-page-files>
+			<c-mas-page-files asset={assetData}></c-mas-page-files>
 		</template>
 		<template if:true={showReviewPage}>
-			<c-mas-page-review contactsdata={contactsData} depositsdata={depositData} onpage={handleStepChange} asset={asset}></c-mas-page-review>
+			<c-mas-page-review contactsdata={contactsData} depositsdata={depositData} onpage={handleStepChange} asset={assetData}></c-mas-page-review>
 		</template>
 
 		<c-mas-footer-bar ondelete={handleDeleteSale} onnext={handleNextPage} onprevious={handlePreviousPage}></c-mas-footer-bar>

@@ -72,7 +72,52 @@ const COLUMNS_PARKING = [
     type: 'currency',
     editable: true,
     hideDefaultActions:true,
+    sortable:true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
+  {
+    type: "button-icon",
+    typeAttributes: { 
+      label: 'Remove',
+      name: 'delete',
+      title: 'Remove',
+      disabled: false,
+      value: 'delete',
+      iconName: 'utility:delete'
+    },
+    cellAttributes: {
+      alignment: 'right',
+    },
+  },
+];
+
+const COLUMNS_INCLUSIONS = [
+  {
+    label: 'Type',
+    fieldName: 'type',
+    editable: false,
+    hideDefaultActions:true,
     sortable:true
+  },
+  {
+    label: 'Assigned Spot',
+    fieldName: 'assigned',
+    editable: true,
+    hideDefaultActions:true,
+    sortable:true
+  },
+  {
+    label: 'Monthly Rent',
+    fieldName: 'price',
+    type: 'currency',
+    editable: true,
+    hideDefaultActions:true,
+    sortable:true,
+    cellAttributes: {
+      alignment: 'left',
+    },
   },
   {
     type: "button-icon",
@@ -363,6 +408,7 @@ const REVIEW_DEPOSITS_COLUMNS = [
 export {
   COLUMNS_CONTACTS,
   COLUMNS_PARKING,
+  COLUMNS_INCLUSIONS,
   COLUMNS_EXTRAS,
   COLUMNS_DEPOSIT,
   COLUMNS_VARIA,

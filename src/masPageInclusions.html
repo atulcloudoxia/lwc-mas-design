@@ -1,0 +1,27 @@
+<template>
+  <div class="page-container">
+
+    <!-- Heading -->
+    <div class="heading">
+      <h1><span>Inclusions /</span> {asset.name}</h1>
+    </div>
+
+    <div class="mt-30">
+
+      <!-- Inclusions Table -->
+      <c-mas-custom-table
+        key-field="id"
+        data={data}
+        columns={columns}
+        onrowaction={handleRowAction}
+        hide-checkbox-column>
+      </c-mas-custom-table>
+
+      <div class="mt-30">
+        <h2>Add Inclusion</h2>
+        <hr />
+        <c-mas-table-parking-add></c-mas-table-parking-add>
+      </div>
+    </div>
+  </div>
+</template>
