@@ -1,12 +1,5 @@
 import { LightningElement, track } from 'lwc';
 
-const rowActions = [
-  {
-    label: 'Delete Varia',
-    name: 'delete'
-  }
-];
-
 const columns = [
   { label: 'Type', fieldName: 'type', hideDefaultActions:true },
   { label: 'Assigned Spot', fieldName: 'assigned', hideDefaultActions:true },

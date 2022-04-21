@@ -39,6 +39,7 @@ export default class PageAsset extends LightningElement {
 
     switch (action.name) {
       case 'delete':
+        this.deleteRow(row);
         // handle delete logic here
         break;
 

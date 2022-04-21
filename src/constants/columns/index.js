@@ -79,7 +79,7 @@ const COLUMNS_PARKING = [
   },
   {
     type: "button-icon",
-    typeAttributes: { 
+    typeAttributes: {
       label: 'Remove',
       name: 'delete',
       title: 'Remove',
@@ -133,6 +133,46 @@ const COLUMNS_INCLUSIONS = [
       alignment: 'right',
     },
   },
+];
+
+const COLUMNS_ADD_INCLUSION = [
+  {
+    label: 'Type',
+    fieldName: 'type',
+    hideDefaultActions:true
+  },
+  {
+    label: 'Assigned Spot',
+    fieldName: 'assigned',
+    hideDefaultActions:true
+  },
+  {
+    label: 'Monthly Rent',
+    fieldName: 'price',
+    type: 'currency',
+    hideDefaultActions:true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
+  {
+    type: "button-icon",
+    typeAttributes: {
+      label: 'Add',
+      name: 'add',
+      title: 'Add',
+      disabled: false,
+      value: 'add',
+      iconPosition: 'left',
+      iconName: 'utility:add',
+      variant: 'success',
+      class:'addbutton',
+      iconClass: 'addbutton__icon'
+    },
+    cellAttributes: {
+      alignment: 'right',
+    },
+  }
 ];
 
 const COLUMNS_EXTRAS = [
@@ -409,6 +449,7 @@ export {
   COLUMNS_CONTACTS,
   COLUMNS_PARKING,
   COLUMNS_INCLUSIONS,
+  COLUMNS_ADD_INCLUSION,
   COLUMNS_EXTRAS,
   COLUMNS_DEPOSIT,
   COLUMNS_VARIA,
