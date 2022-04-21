@@ -5,6 +5,7 @@ import {
   PROCESSING,
   MOCK_PARKING,
   MOCK_ASSET,
+  MOCK_RENTAL_ASSET,
   MOCK_EXTRAS,
   MOCK_DEPOSIT,
   MOCK_VARIA,
@@ -20,6 +21,7 @@ const defaults = {
   processing: false,      // Page is processing
   message: ""             // Status message for page
 };
+
 
 const pageContact = {
   id: "contact",
@@ -37,6 +39,43 @@ const pageAsset = {
   enabled: true,
   ...defaults,
   completed:true
+};
+
+const pageRentalAsset = {
+  id: "rental_asset",
+  step: 2,
+  label: "Asset",
+  enabled: true,
+  ...defaults,
+  completed:true
+};
+
+const pageInclusions = {
+  id: "inclusions",
+  step: 4,
+  label: "Inclusions",
+  enabled: true,
+  ...defaults,
+  completed:true
+};
+
+const pageServices = {
+  id: "services",
+  step: 5,
+  label: "Services",
+  enabled: true,
+  ...defaults,
+  completed:true
+};
+
+
+const pageRentalDeposit = {
+  id: "rental_deposit",
+  step: 6,
+  label: "Deposit",
+  enabled: true,
+  ...defaults,
+  warning:false,
 };
 
 const pageDeposit = {
@@ -74,7 +113,21 @@ const pageReview = {
   processing:true
 }
 
+const pageRentalReview = {
+  id: "rental_review",
+  step: 8,
+  label: "Review",
+  enabled: true,
+  ...defaults,
+  processing:true
+}
+
 export default class Mas extends LightningElement {
+
+  constructor() {
+    super();
+    this.setType("rental");
+  }
 
   @track
   contactsData = MOCK_CONTACTS;
@@ -87,6 +140,9 @@ export default class Mas extends LightningElement {
 
   @track
   asset = MOCK_ASSET;
+
+  @track
+  rentalAsset = MOCK_RENTAL_ASSET;
 
   @track
   depositData = MOCK_DEPOSIT;
@@ -143,12 +199,66 @@ export default class Mas extends LightningElement {
     }
   }
 
+  /**
+   * Swap between rental pages and sale pages
+   *
+   * @param (String) type
+   */
+  setType(type) {
+    if (type === 'sale') {
+      this.pages = [
+        { ...pageContact, ...{ selected:true } },
+        pageAsset,
+        pageDeposit,
+        pageVaria,
+        pageFiles,
+        pageReview
+      ];
+
+    } else if (type === 'rental') {
+      this.pages = [
+        { ...pageContact, ...{ selected:true } },
+        pageRentalAsset,
+        pageVaria,
+        pageInclusions,
+        pageServices,
+        pageRentalDeposit,
+        pageFiles,
+        pageRentalReview
+      ];
+    }
+
+    for (let i=0; i < this.pages.length; i++) {
+      this.pages[i].step = i + 1;
+    }
+  }
+
   get showContactPage() {
     return this.findSelectedById('contact');
   };
 
   get showAssetPage() {
     return this.findSelectedById('asset');
+  };
+
+  get showRentalAssetPage() {
+    return this.findSelectedById('rental_asset');
+  };
+
+  get showInclusionsPage() {
+    return this.findSelectedById('inclusions');
+  };
+
+  get showServicesPage() {
+    return this.findSelectedById('services');
+  };
+
+  get showRentalDepositPage() {
+    return this.findSelectedById('rental_deposit');
+  };
+
+  get showRentalReviewPage() {
+    return this.findSelectedById('rental_review');
   };
 
   get showDepositPage() {

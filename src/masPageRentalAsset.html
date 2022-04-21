@@ -1,0 +1,41 @@
+<template>
+  <div class="page-container">
+
+    <!-- Heading -->
+    <div class="heading">
+      <h1><span>Asset /</span> {asset.name}</h1>
+      <div class="heading__actions">
+        <button class="button-secondary" onclick={handleEditAsset}>Edit</button>
+      </div>
+    </div>
+
+    <!-- Summary Table -->
+    <div class="table__items mt-10">
+      <div>
+        <span>
+         <b>Sales Representative</b><br/>
+         {asset.salesRep}
+        </span>
+        <span>
+         <b>Lease Start Date</b><br/>
+         {asset.leastStartDate}
+        </span>
+        <span>
+         <b>Term (months)</b><br/>
+         {asset.term}
+        </span>
+        <span>
+         <b>Monthly Rate</b><br/>
+         {asset.rate}
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Add/Edit Asset Form -->
+  <template if:true={addAsset}>
+    <c-mas-form-rental-asset asset={asset} onclose={handleCloseForm}></c-mas-form-rental-asset>
+  </template>
+
+</template>

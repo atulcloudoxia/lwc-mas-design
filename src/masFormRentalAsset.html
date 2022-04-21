@@ -1,0 +1,57 @@
+<template>
+  <form onsubmit={handleSubmit}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+      class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+        <div class="slds-modal__header">
+          <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Edit Asset</h1>
+        </div>
+        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+          <div class="mt-10">
+            <label>Sales Representative</label>
+            <div class="mt-10">
+              <lightning-input name="sales-rep" label="Sales Rep" variant="label-hidden" value={asset.salesRep}>
+              </lightning-input>
+            </div>
+          </div>
+          <div class="mt-20">
+            <label>Lease Details</label>
+            <div class="mt-10">
+              <lightning-input type="date" name="lease-start-date" label="Start Date"
+                value={asset.leastStartDate}></lightning-input>
+            </div>
+            <div class="mt-10">
+              <lightning-input type="number" name="term" label="Term (months)"
+                value={asset.term}></lightning-input>
+            </div>
+            <div class="mt-10">
+              <lightning-input type="text" name="rate" label="Monthly Rate"
+                value={asset.rate}></lightning-input>
+            </div>
+            <div class="mt-10">
+              <lightning-input type="number" name="rate-increase-percent" label="Rate Increase (percent)"
+                value={asset.rentalIncreasePercent}></lightning-input>
+            </div>
+            <div class="mt-10">
+              <lightning-input type="number" name="rate-increase-frequency" label="Rate Increase Frequency (months)"
+                value={asset.rentalIncreaseFrequencyMonths}></lightning-input>
+            </div>
+            <div class="mt-10">
+              <lightning-input type="text" name="security-deposit" label="Security Deposit"
+                value={asset.securityDeposit}></lightning-input>
+            </div>
+          </div>
+        </div>
+        <div class="slds-modal__footer slds-modal__footer_directional">
+          <div class="modal__container__actions">
+            <div class="modal__container__cancel" onclick={handleCancel}>
+              Cancel
+            </div>
+            <button class="button-primary">Continue</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+  </form>
+</template>

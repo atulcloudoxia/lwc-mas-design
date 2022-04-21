@@ -101,6 +101,18 @@ const MOCK_ASSET = {
   developerSale: true,
 };
 
+const MOCK_RENTAL_ASSET = {
+  id: 1,
+  name: 'Kingsway Crescent 401',
+  salesRep: 'Baker Real Estate',
+  leastStartDate: '2020-09-07',
+  term: 12,
+  rate: '1309000.00',
+  rentalIncreasePercent: 5,
+  rentalIncreaseFrequencyMonths: 12,
+  securityDeposit: '5000.00'
+};
+
 const MOCK_DEPOSIT = [
  {
      id: 1,
@@ -202,4 +214,4 @@ const MOCK_CHANGE_ORDERS = [
   }
 ];
 
-export { MOCK_CONTACTS, MOCK_PARKING, MOCK_ASSET, MOCK_EXTRAS, MOCK_DEPOSIT, MOCK_VARIA, MOCK_CHANGE_ORDERS };
+export { MOCK_CONTACTS, MOCK_PARKING, MOCK_ASSET, MOCK_RENTAL_ASSET, MOCK_EXTRAS, MOCK_DEPOSIT, MOCK_VARIA, MOCK_CHANGE_ORDERS };

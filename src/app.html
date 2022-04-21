@@ -21,6 +21,9 @@
 		<template if:true={showAssetPage}>
 			<c-mas-page-asset parkingdata={parkingData} extradata={extraData} asset={asset}></c-mas-page-asset>
 		</template>
+		<template if:true={showRentalAssetPage}>
+			<c-mas-page-rental-asset parkingdata={parkingData} extradata={extraData} asset={rentalAsset}></c-mas-page-rental-asset>
+		</template>
 		<template if:true={showDepositPage}>
 			<c-mas-page-deposit data={depositData} asset={asset}></c-mas-page-deposit>
 		</template>
