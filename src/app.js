@@ -15,6 +15,11 @@ import {
   MOCK_CONTACTS
 } from './constants';
 
+const TYPES = {
+  sale: 'sale',
+  rental: 'rental'
+};
+
 const defaults = {
   selected:false,         // Page is in view
   completed:false,        // Page is completed
@@ -23,7 +28,6 @@ const defaults = {
   processing: false,      // Page is processing
   message: ""             // Status message for page
 };
-
 
 const pageContact = {
   id: "contact",
@@ -134,47 +138,22 @@ export default class Mas extends LightningElement {
 
   constructor() {
     super();
-    this.setType("rental");
+    this.setType(TYPES.rental);
   }
 
-  @track
-  type; // rental or sale
-
-  @track
-  contactsData = MOCK_CONTACTS;
-
-  @track
-  parkingData = MOCK_PARKING;
-
-  @track
-  extraData = MOCK_EXTRAS;
-
-  @track
-  asset = MOCK_ASSET;
-
-  @track
-  rentalAsset = MOCK_RENTAL_ASSET;
-
-  @track
-  servicesData = MOCK_SERVICES;
-
-  @track
-  depositData = MOCK_DEPOSIT;
-
-  @track
-  rentalDepositData = MOCK_RENTAL_DEPOSIT;
-
-  @track
-  variaData = MOCK_VARIA;
-
-  @track
-  changeOrderData = MOCK_CHANGE_ORDERS;
-
-  @track
-  isLoading=false;
-
-  @track
-  pages = [
+  @track type; // rental or sale
+  @track contactsData = MOCK_CONTACTS;
+  @track parkingData = MOCK_PARKING;
+  @track extraData = MOCK_EXTRAS;
+  @track asset = MOCK_ASSET;
+  @track rentalAsset = MOCK_RENTAL_ASSET;
+  @track servicesData = MOCK_SERVICES;
+  @track depositData = MOCK_DEPOSIT;
+  @track rentalDepositData = MOCK_RENTAL_DEPOSIT;
+  @track variaData = MOCK_VARIA;
+  @track changeOrderData = MOCK_CHANGE_ORDERS;
+  @track isLoading=false;
+  @track pages = [
     pageContact,
     pageAsset,
     pageDeposit,
@@ -191,15 +170,11 @@ export default class Mas extends LightningElement {
   setReservation(isReservation) {
     if (isReservation) {
       this.pages = [
-        {
-          ...pageAsset,
-          ...{
-            selected:true
-          }
-        },
+        { ...pageAsset, ...{ selected:true } },
         pageDeposit,
         pageReview
       ];
+
     } else {
       this.pages = [
         pageContact,
@@ -211,9 +186,7 @@ export default class Mas extends LightningElement {
       ];
     }
 
-    for (let i=0; i < this.pages.length; i++) {
-      this.pages[i].step = i + 1;
-    }
+    this.reorderSteps();
   }
 
   /**
@@ -222,7 +195,7 @@ export default class Mas extends LightningElement {
    * @param (String) type
    */
   setType(type) {
-    if (type === 'sale') {
+    if (type === TYPES.sale) {
       this.pages = [
         { ...pageContact, ...{ selected:true } },
         pageAsset,
@@ -232,7 +205,7 @@ export default class Mas extends LightningElement {
         pageReview
       ];
 
-    } else if (type === 'rental') {
+    } else if (TYPES.rental) {
       this.pages = [
         { ...pageContact, ...{ selected:true } },
         pageRentalAsset,
@@ -245,11 +218,14 @@ export default class Mas extends LightningElement {
       ];
     }
 
+    this.type = type;
+    this.reorderSteps();
+  }
+
+  reorderSteps() {
     for (let i=0; i < this.pages.length; i++) {
       this.pages[i].step = i + 1;
     }
-
-    this.type = type;
   }
 
   get assetData() {
