@@ -33,6 +33,9 @@
 		<template if:true={showRentalDepositPage}>
 			<c-mas-page-rental-deposit data={rentalDepositData} asset={assetData}></c-mas-page-rental-deposit>
 		</template>
+		<template if:true={showRentalReviewPage}>
+			<c-mas-page-rental-review inclusionsdata={parkingData} servicesdata={servicesData} asset={assetData} onpage={handleStepChange}></c-mas-page-rental-review>
+		</template>
 		<template if:true={showServicesPage}>
 			<c-mas-page-services data={servicesData}  asset={assetData}></c-mas-page-services>
 		</template>

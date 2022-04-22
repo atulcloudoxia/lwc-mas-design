@@ -138,6 +138,37 @@ const COLUMNS_SERVICES = [
   },
 ];
 
+const REVIEW_SERVICES_COLUMNS = [
+  {
+    label: 'Name',
+    fieldName: 'name',
+    editable: true,
+    hideDefaultActions:true
+  },
+  {
+    label: 'Contact Name',
+    fieldName: 'contact_name',
+    editable: true,
+    hideDefaultActions:true
+  },
+  {
+    label: 'Description',
+    fieldName: 'description',
+    editable: true,
+    hideDefaultActions:true
+  },
+  {
+    label: 'Monthly Fee',
+    fieldName: 'fee',
+    type: 'currency',
+    hideDefaultActions:true,
+    editable: true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  }
+];
+
 const COLUMNS_ADD_SERVICE = [
   {
     label: 'Name',
@@ -179,6 +210,34 @@ const COLUMNS_ADD_SERVICE = [
     },
     cellAttributes: {
       alignment: 'right',
+    },
+  }
+];
+
+const REVIEW_INCLUSIONS_COLUMNS = [
+  {
+    label: 'Type',
+    fieldName: 'type',
+    editable: false,
+    hideDefaultActions:true,
+    sortable:true
+  },
+  {
+    label: 'Assigned Spot',
+    fieldName: 'assigned',
+    editable: true,
+    hideDefaultActions:true,
+    sortable:true
+  },
+  {
+    label: 'Monthly Rent',
+    fieldName: 'price',
+    type: 'currency',
+    editable: true,
+    hideDefaultActions:true,
+    sortable:true,
+    cellAttributes: {
+      alignment: 'left',
     },
   }
 ];
@@ -567,6 +626,8 @@ export {
   COLUMNS_RENTAL_DEPOSIT,
   COLUMNS_VARIA,
   COLUMNS_CHANGE_ORDERS,
+  REVIEW_INCLUSIONS_COLUMNS,
+  REVIEW_SERVICES_COLUMNS,
   REVIEW_CONTACTS_COLUMNS,
   REVIEW_DEPOSITS_COLUMNS
 };

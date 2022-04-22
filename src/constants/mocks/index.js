@@ -106,6 +106,7 @@ const MOCK_RENTAL_ASSET = {
   name: 'Kingsway Crescent 401',
   salesRep: 'Baker Real Estate',
   leastStartDate: '2020-09-07',
+  leastEndDate: '2021-09-07',
   term: 12,
   rate: '1309000.00',
   rentalIncreasePercent: 5,

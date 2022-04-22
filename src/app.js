@@ -81,7 +81,7 @@ const pageServices = {
 const pageRentalDeposit = {
   id: "rental_deposit",
   step: 6,
-  label: "Deposit",
+  label: "Rent",
   enabled: true,
   ...defaults,
   warning:false,
@@ -128,7 +128,6 @@ const pageRentalReview = {
   label: "Review",
   enabled: true,
   ...defaults,
-  processing:true
 }
 
 export default class Mas extends LightningElement {
