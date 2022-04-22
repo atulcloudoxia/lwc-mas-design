@@ -8,7 +8,7 @@ import {
 } from './constants';
 
 
-export default class ContactPage extends LightningElement {
+export default class PageContact extends LightningElement {
 
   @api data;
 

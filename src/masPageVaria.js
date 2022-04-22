@@ -3,7 +3,7 @@ import { COLUMNS_VARIA, COLUMNS_CHANGE_ORDERS } from './constants';
 import { findRowById } from './utils';
 
 
-export default class VariaPage extends LightningElement {
+export default class PageVaria extends LightningElement {
 
   columnsVaria = COLUMNS_VARIA;
   columnsChangeOrders = COLUMNS_CHANGE_ORDERS;

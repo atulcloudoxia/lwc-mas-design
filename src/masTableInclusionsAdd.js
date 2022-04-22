@@ -1,7 +1,7 @@
 import { LightningElement, track } from 'lwc';
 import { COLUMNS_ADD_INCLUSION } from './constants';
 
-export default class AddInclusion extends LightningElement {
+export default class TableInclusionsAdd extends LightningElement {
 
     columns = COLUMNS_ADD_INCLUSION;
 

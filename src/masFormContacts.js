@@ -6,7 +6,7 @@ import {
 } from './constants';
 
 
-export default class ContactForm extends LightningElement {
+export default class FormContact extends LightningElement {
 
   @api data;
   @api iscorporation;

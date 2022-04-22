@@ -28,7 +28,7 @@ const columns = [
   }
 ];
 
-export default class masTableParkingAdd extends LightningElement {
+export default class TableParkingAdd extends LightningElement {
     columns = columns;
 
     @track data = [
