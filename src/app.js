@@ -162,72 +162,6 @@ export default class Mas extends LightningElement {
     pageReview
   ];
 
-  /**
-   * Reservation mode
-   *
-   * @param (Boolean) isReservation
-   */
-  setReservation(isReservation) {
-    if (isReservation) {
-      this.pages = [
-        { ...pageAsset, ...{ selected:true } },
-        pageDeposit,
-        pageReview
-      ];
-
-    } else {
-      this.pages = [
-        pageContact,
-        pageAsset,
-        pageDeposit,
-        pageVaria,
-        pageFiles,
-        pageReview
-      ];
-    }
-
-    this.reorderSteps();
-  }
-
-  /**
-   * Swap between rental pages and sale pages
-   *
-   * @param (String) type
-   */
-  setType(type) {
-    if (type === TYPES.sale) {
-      this.pages = [
-        { ...pageContact, ...{ selected:true } },
-        pageAsset,
-        pageDeposit,
-        pageVaria,
-        pageFiles,
-        pageReview
-      ];
-
-    } else if (TYPES.rental) {
-      this.pages = [
-        { ...pageContact, ...{ selected:true } },
-        pageRentalAsset,
-        pageRentalVaria,
-        pageInclusions,
-        pageServices,
-        pageRentalDeposit,
-        pageFiles,
-        pageRentalReview
-      ];
-    }
-
-    this.type = type;
-    this.reorderSteps();
-  }
-
-  reorderSteps() {
-    for (let i=0; i < this.pages.length; i++) {
-      this.pages[i].step = i + 1;
-    }
-  }
-
   get assetData() {
     return this.type === 'rental' ? this.rentalAsset : this.asset;
   }
@@ -306,10 +240,85 @@ export default class Mas extends LightningElement {
     }
   }
 
+  /**
+   * Reservation mode
+   *
+   * @param (Boolean) isReservation
+   */
+  setReservation(isReservation) {
+    if (isReservation) {
+      this.pages = [
+        { ...pageAsset, ...{ selected:true } },
+        pageDeposit,
+        pageReview
+      ];
+
+    } else {
+      this.pages = [
+        pageContact,
+        pageAsset,
+        pageDeposit,
+        pageVaria,
+        pageFiles,
+        pageReview
+      ];
+    }
+
+    this.reorderSteps();
+  }
+
+  /**
+   * Swap between rental pages and sale pages
+   *
+   * @param (String) type
+   */
+  setType(type) {
+    if (type === TYPES.sale) {
+      this.pages = [
+        { ...pageContact, ...{ selected:true } },
+        pageAsset,
+        pageDeposit,
+        pageVaria,
+        pageFiles,
+        pageReview
+      ];
+
+    } else if (TYPES.rental) {
+      this.pages = [
+        { ...pageContact, ...{ selected:true } },
+        pageRentalAsset,
+        pageRentalVaria,
+        pageInclusions,
+        pageServices,
+        pageRentalDeposit,
+        pageFiles,
+        pageRentalReview
+      ];
+    }
+
+    this.type = type;
+    this.reorderSteps();
+  }
+  
+  /**
+   * Re-assign page step numbers
+   */
+  reorderSteps() {
+    for (let i=0; i < this.pages.length; i++) {
+      this.pages[i].step = i + 1;
+    }
+  }
+
+  /**
+   * Get current page
+   */
   currentPage() {
     return this.pages.filter((page) => page.selected == true);
   }
 
+  /**
+   * Get current page index
+   */
   currentPageIndex() {
     for(let i=0; i < this.pages.length; i++) {
       if (this.pages[i].selected) {
