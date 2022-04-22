@@ -1,32 +1,52 @@
-import { track, api, LightningElement } from 'lwc';
-import { COLUMNS_INCLUSIONS } from './constants';
+import { LightningElement, api, track } from 'lwc';
+import { COLUMNS_VARIA } from './constants';
 import { findRowById } from './utils';
 
-export default class PageInclusions extends LightningElement {
+
+export default class PageRentalVaria extends LightningElement {
+
+  columnsVaria = COLUMNS_VARIA;
 
   @api data;
   @api asset;
 
-  columns = COLUMNS_INCLUSIONS;
-
-  @track addAsset=false;
+  @track addVaria=false;
 
   /**
-   * Shows modal to edit asset details
+   * Search varia
    *
    * @param (Event) e
    */
-  handleEditAsset(e) {
-    this.addAsset=true;
+  handleSearch(e) {
+    const isEnterKey = e.keyCode === 13;
+    const searchTerm = e.target.value;
+
+    if (isEnterKey) {
+      // Nhan, handle "search" logic here
+    }
   }
 
   /**
-   * Handle close form
+   * Add varia
+   *
+   * @param (Event) e
+   */
+  handleAdd(e) {
+    this.addVaria=true;
+  }
+
+
+  /**
+   * Close forms
    *
    * @param (Event) e
    */
   handleCloseForm(e) {
-    this.addAsset = false;
+    e.preventDefault();
+
+    // OnSuccess
+    this.addVaria=false;
+    this.addChangeOrder=false;
   }
 
   /**
@@ -40,9 +60,7 @@ export default class PageInclusions extends LightningElement {
     switch (action.name) {
       case 'delete':
         this.deleteRow(row);
-        // handle delete logic here
         break;
-
       // No other actions but delete for now
       default:
     }
@@ -51,11 +69,11 @@ export default class PageInclusions extends LightningElement {
   /**
    * Delete
    *
-   * @param (object) row
+   * @param (Object) row
    */
   deleteRow(row) {
     const { id } = row;
-    const index = findRowById(id, this.data);
+    const index = findRowById(id);
 
     if (index !== -1) {
       this.data = this.data

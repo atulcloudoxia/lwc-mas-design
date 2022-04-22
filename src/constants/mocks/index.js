@@ -176,6 +176,37 @@ const MOCK_DEPOSIT = [
  },
 ];
 
+const MOCK_SERVICES = [
+ {
+     id: 1,
+     name: 'SERV-0000232',
+     contact_name: 'Andrew Hamilton',
+     description: 'My test asset',
+     fee: '400.99',
+ },
+ {
+     id: 2,
+     name: 'SERV-0000233',
+     contact_name: 'Andrew Hamilton',
+     description: 'My test asset',
+     fee: '400.99',
+ },
+ {
+     id: 3,
+     name: 'SERV-0000234',
+     contact_name: 'Andrew Hamilton',
+     description: 'My test asset',
+     fee: '400.99',
+ },
+ {
+     id: 4,
+     name: 'SERV-0000235',
+     contact_name: 'Andrew Hamilton',
+     description: 'My test asset',
+     fee: '400.99',
+ },
+];
+
 const MOCK_VARIA = [
   {
     id: 1,
@@ -214,4 +245,14 @@ const MOCK_CHANGE_ORDERS = [
   }
 ];
 
-export { MOCK_CONTACTS, MOCK_PARKING, MOCK_ASSET, MOCK_RENTAL_ASSET, MOCK_EXTRAS, MOCK_DEPOSIT, MOCK_VARIA, MOCK_CHANGE_ORDERS };
+export {
+  MOCK_CONTACTS,
+  MOCK_PARKING,
+  MOCK_ASSET,
+  MOCK_RENTAL_ASSET,
+  MOCK_SERVICES,
+  MOCK_EXTRAS,
+  MOCK_DEPOSIT,
+  MOCK_VARIA,
+  MOCK_CHANGE_ORDERS
+};

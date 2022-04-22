@@ -27,6 +27,12 @@
 		<template if:true={showInclusionsPage}>
 			<c-mas-page-inclusions data={parkingData} asset={assetData}></c-mas-page-inclusions>
 		</template>
+		<template if:true={showRentalVariaPage}>
+			<c-mas-page-rental-varia data={variaData}  asset={assetData}></c-mas-page-rental-varia>
+		</template>
+		<template if:true={showServicesPage}>
+			<c-mas-page-services data={servicesData}  asset={assetData}></c-mas-page-services>
+		</template>
 		<template if:true={showDepositPage}>
 			<c-mas-page-deposit data={depositData} asset={assetData}></c-mas-page-deposit>
 		</template>

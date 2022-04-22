@@ -1,35 +1,13 @@
 import { track, api, LightningElement } from 'lwc';
-import { COLUMNS_PARKING, COLUMNS_EXTRAS } from './constants';
+import { COLUMNS_SERVICES } from './constants';
 import { findRowById } from './utils';
 
-export default class PageRentalAsset extends LightningElement {
+export default class PageServices extends LightningElement {
 
-  @api parkingdata;
-  @api extradata;
+  @api data;
   @api asset;
 
-  columns = COLUMNS_PARKING;
-  columnsExtras = COLUMNS_EXTRAS;
-
-  @track addAsset=false;
-
-  /**
-   * Shows modal to edit asset details
-   *
-   * @param (Event) e
-   */
-  handleEditAsset(e) {
-    this.addAsset=true;
-  }
-
-  /**
-   * Handle close form
-   *
-   * @param (Event) e
-   */
-  handleCloseForm(e) {
-    this.addAsset = false;
-  }
+  columns = COLUMNS_SERVICES;
 
   /**
    * Row actions
@@ -41,6 +19,7 @@ export default class PageRentalAsset extends LightningElement {
 
     switch (action.name) {
       case 'delete':
+        this.deleteRow(row);
         // handle delete logic here
         break;
 

@@ -7,6 +7,7 @@ import {
   MOCK_ASSET,
   MOCK_RENTAL_ASSET,
   MOCK_EXTRAS,
+  MOCK_SERVICES,
   MOCK_DEPOSIT,
   MOCK_VARIA,
   MOCK_CHANGE_ORDERS,
@@ -50,6 +51,14 @@ const pageRentalAsset = {
   completed:true
 };
 
+const pageRentalVaria = {
+  id: "rental_varia",
+  step: 2,
+  label: "Varia",
+  enabled: true,
+  ...defaults,
+}
+
 const pageInclusions = {
   id: "inclusions",
   step: 4,
@@ -67,7 +76,6 @@ const pageServices = {
   ...defaults,
   completed:true
 };
-
 
 const pageRentalDeposit = {
   id: "rental_deposit",
@@ -148,6 +156,9 @@ export default class Mas extends LightningElement {
   rentalAsset = MOCK_RENTAL_ASSET;
 
   @track
+  servicesData = MOCK_SERVICES;
+
+  @track
   depositData = MOCK_DEPOSIT;
 
   @track
@@ -222,7 +233,7 @@ export default class Mas extends LightningElement {
       this.pages = [
         { ...pageContact, ...{ selected:true } },
         pageRentalAsset,
-        pageVaria,
+        pageRentalVaria,
         pageInclusions,
         pageServices,
         pageRentalDeposit,
@@ -264,6 +275,10 @@ export default class Mas extends LightningElement {
 
   get showRentalDepositPage() {
     return this.findSelectedById('rental_deposit');
+  };
+
+  get showRentalVariaPage() {
+    return this.findSelectedById('rental_varia');
   };
 
   get showRentalReviewPage() {

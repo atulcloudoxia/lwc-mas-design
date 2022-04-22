@@ -93,6 +93,96 @@ const COLUMNS_PARKING = [
   },
 ];
 
+const COLUMNS_SERVICES = [
+  {
+    label: 'Name',
+    fieldName: 'name',
+    editable: true,
+    hideDefaultActions:true
+  },
+  {
+    label: 'Contact Name',
+    fieldName: 'contact_name',
+    editable: true,
+    hideDefaultActions:true
+  },
+  {
+    label: 'Description',
+    fieldName: 'description',
+    editable: true,
+    hideDefaultActions:true
+  },
+  {
+    label: 'Monthly Fee',
+    fieldName: 'fee',
+    type: 'currency',
+    hideDefaultActions:true,
+    editable: true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
+  {
+    type: "button-icon",
+    typeAttributes: {
+      label: 'Remove',
+      name: 'delete',
+      title: 'Remove',
+      disabled: false,
+      value: 'delete',
+      iconName: 'utility:delete'
+    },
+    cellAttributes: {
+      alignment: 'right',
+    },
+  },
+];
+
+const COLUMNS_ADD_SERVICE = [
+  {
+    label: 'Name',
+    fieldName: 'name',
+    hideDefaultActions:true
+  },
+  {
+    label: 'Contact Name',
+    fieldName: 'contact_name',
+    hideDefaultActions:true
+  },
+  {
+    label: 'Description',
+    fieldName: 'description',
+    hideDefaultActions:true
+  },
+  {
+    label: 'Monthly Fee',
+    fieldName: 'fee',
+    type: 'currency',
+    hideDefaultActions:true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
+  {
+    type: "button-icon",
+    typeAttributes: {
+      label: 'Add',
+      name: 'add',
+      title: 'Add',
+      disabled: false,
+      value: 'add',
+      iconPosition: 'left',
+      iconName: 'utility:add',
+      variant: 'success',
+      class:'addbutton',
+      iconClass: 'addbutton__icon'
+    },
+    cellAttributes: {
+      alignment: 'right',
+    },
+  }
+];
+
 const COLUMNS_INCLUSIONS = [
   {
     label: 'Type',
@@ -448,6 +538,8 @@ const REVIEW_DEPOSITS_COLUMNS = [
 export {
   COLUMNS_CONTACTS,
   COLUMNS_PARKING,
+  COLUMNS_SERVICES,
+  COLUMNS_ADD_SERVICE,
   COLUMNS_INCLUSIONS,
   COLUMNS_ADD_INCLUSION,
   COLUMNS_EXTRAS,
