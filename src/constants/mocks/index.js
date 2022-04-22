@@ -113,6 +113,49 @@ const MOCK_RENTAL_ASSET = {
   securityDeposit: '5000.00'
 };
 
+const MOCK_RENTAL_DEPOSIT = [
+ {
+     id: 1,
+     date: '01/01/2022',
+     amount: "2000",
+ },
+ {
+     id: 2,
+     date: '02/01/2022',
+     amount: "2000",
+ },
+ {
+     id: 3,
+     date: '03/01/2022',
+     amount: "2000",
+ },
+ {
+     id: 4,
+     date: '04/01/2022',
+     amount: "2000",
+ },
+ {
+     id: 5,
+     date: '05/01/2022',
+     amount: "2000",
+ },
+ {
+     id: 6,
+     date: '06/01/2022',
+     amount: "2000",
+ },
+ {
+     id: 7,
+     date: '07/01/2022',
+     amount: "2000",
+ },
+ {
+     id: 8,
+     date: '08/01/2022',
+     amount: "2000",
+ },
+];
+
 const MOCK_DEPOSIT = [
  {
      id: 1,
@@ -253,6 +296,7 @@ export {
   MOCK_SERVICES,
   MOCK_EXTRAS,
   MOCK_DEPOSIT,
+  MOCK_RENTAL_DEPOSIT,
   MOCK_VARIA,
   MOCK_CHANGE_ORDERS
 };

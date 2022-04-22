@@ -322,6 +322,26 @@ const COLUMNS_EXTRAS = [
   },
 ];
 
+const COLUMNS_RENTAL_DEPOSIT = [
+  {
+    label: 'Due Date',
+    fieldName: 'date',
+    type: 'date',
+    editable: true,
+    hideDefaultActions:true,
+  },
+  {
+    label: 'Amount',
+    fieldName: 'amount',
+    type: 'currency',
+    editable: true,
+    hideDefaultActions:true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
+];
+
 const COLUMNS_DEPOSIT = [
   {
     label: 'Payment Number',
@@ -544,6 +564,7 @@ export {
   COLUMNS_ADD_INCLUSION,
   COLUMNS_EXTRAS,
   COLUMNS_DEPOSIT,
+  COLUMNS_RENTAL_DEPOSIT,
   COLUMNS_VARIA,
   COLUMNS_CHANGE_ORDERS,
   REVIEW_CONTACTS_COLUMNS,

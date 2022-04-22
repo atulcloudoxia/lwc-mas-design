@@ -30,6 +30,9 @@
 		<template if:true={showRentalVariaPage}>
 			<c-mas-page-rental-varia data={variaData}  asset={assetData}></c-mas-page-rental-varia>
 		</template>
+		<template if:true={showRentalDepositPage}>
+			<c-mas-page-rental-deposit data={rentalDepositData} asset={assetData}></c-mas-page-rental-deposit>
+		</template>
 		<template if:true={showServicesPage}>
 			<c-mas-page-services data={servicesData}  asset={assetData}></c-mas-page-services>
 		</template>

@@ -9,6 +9,7 @@ import {
   MOCK_EXTRAS,
   MOCK_SERVICES,
   MOCK_DEPOSIT,
+  MOCK_RENTAL_DEPOSIT,
   MOCK_VARIA,
   MOCK_CHANGE_ORDERS,
   MOCK_CONTACTS
@@ -160,6 +161,9 @@ export default class Mas extends LightningElement {
 
   @track
   depositData = MOCK_DEPOSIT;
+
+  @track
+  rentalDepositData = MOCK_RENTAL_DEPOSIT;
 
   @track
   variaData = MOCK_VARIA;
