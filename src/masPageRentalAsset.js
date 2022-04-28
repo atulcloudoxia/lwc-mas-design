@@ -1,15 +1,17 @@
 import { track, api, LightningElement } from 'lwc';
-import { COLUMNS_PARKING, COLUMNS_EXTRAS } from './constants';
+import { COLUMNS_PARKING, COLUMNS_INCLUSIONS, COLUMNS_SERVICES } from './constants';
 import { findRowById } from './utils';
 
 export default class PageRentalAsset extends LightningElement {
 
   @api parkingdata;
-  @api extradata;
+  @api servicesdata;
+  @api inclusionsdata;
   @api asset;
 
   columns = COLUMNS_PARKING;
-  columnsExtras = COLUMNS_EXTRAS;
+  columnsServices = COLUMNS_SERVICES;
+  columnsInclusions = COLUMNS_INCLUSIONS;
 
   @track addAsset=false;
 

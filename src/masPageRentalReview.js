@@ -18,7 +18,7 @@ export default class PageRentalReview extends LightningElement {
   handleModifyAsset(e) {
     /**
      * Nhan, we could probably just attach a "data-page-index=1" and have a generic function
-     * like "handlePageChange" but I'm not sure if you wanted any custom logic for each button 
+     * like "handlePageChange" but I'm not sure if you wanted any custom logic for each button
      */
     this.dispatchEvent(
       new CustomEvent("page", {
@@ -38,7 +38,7 @@ export default class PageRentalReview extends LightningElement {
     this.dispatchEvent(
       new CustomEvent("page", {
         detail: {
-          page: 3   // Index page number
+          page: 1   // Index page number
         }
       })
     )
@@ -53,7 +53,7 @@ export default class PageRentalReview extends LightningElement {
     this.dispatchEvent(
       new CustomEvent("page", {
         detail: {
-          page: 4     // Index page number
+          page: 1     // Index page number
         }
       })
     )

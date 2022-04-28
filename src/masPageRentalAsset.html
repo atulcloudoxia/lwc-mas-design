@@ -51,18 +51,35 @@
         </lightning-tab>
 
         <!-- Extras Table -->
-        <lightning-tab label="Extras" value="extras">
+        <lightning-tab label="Inclusions" value="inclusions">
           <c-mas-custom-table
             key-field="id"
-            data={extradata}
-            columns={columnsExtras}
+            data={inclusionsdata}
+            columns={columnsInclusions}
             onrowaction={handleRowAction}
             hide-checkbox-column>
           </c-mas-custom-table>
           <div class="mt-30">
-            <h2>Add Extra</h2>
+            <h2>Add Inclusion</h2>
             <hr />
-            <c-mas-table-extras-add></c-mas-table-extras-add>
+            <c-mas-table-inclusions-add></c-mas-table-inclusions-add>
+          </div>
+        </lightning-tab>
+
+
+        <!-- Extras Table -->
+        <lightning-tab label="Services" value="services">
+          <c-mas-custom-table
+            key-field="id"
+            data={servicesdata}
+            columns={columnsServices}
+            onrowaction={handleRowAction}
+            hide-checkbox-column>
+          </c-mas-custom-table>
+          <div class="mt-30">
+            <h2>Add Service</h2>
+            <hr />
+            <c-mas-table-services-add></c-mas-table-services-add>
           </div>
         </lightning-tab>
       </lightning-tabset>

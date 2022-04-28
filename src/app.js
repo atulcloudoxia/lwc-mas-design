@@ -4,6 +4,7 @@ import {
   WARNING,
   PROCESSING,
   MOCK_PARKING,
+  MOCK_INCLUSIONS,
   MOCK_ASSET,
   MOCK_RENTAL_ASSET,
   MOCK_EXTRAS,
@@ -148,6 +149,7 @@ export default class Mas extends LightningElement {
   @track asset = MOCK_ASSET;
   @track rentalAsset = MOCK_RENTAL_ASSET;
   @track servicesData = MOCK_SERVICES;
+  @track inclusionsData = MOCK_INCLUSIONS;
   @track depositData = MOCK_DEPOSIT;
   @track rentalDepositData = MOCK_RENTAL_DEPOSIT;
   @track variaData = MOCK_VARIA;
@@ -168,51 +170,51 @@ export default class Mas extends LightningElement {
 
   get showContactPage() {
     return this.findSelectedById('contact');
-  };
+  }
 
   get showAssetPage() {
     return this.findSelectedById('asset');
-  };
+  }
 
   get showRentalAssetPage() {
     return this.findSelectedById('rental_asset');
-  };
+  }
 
   get showInclusionsPage() {
     return this.findSelectedById('inclusions');
-  };
+  }
 
   get showServicesPage() {
     return this.findSelectedById('services');
-  };
+  }
 
   get showRentalDepositPage() {
     return this.findSelectedById('rental_deposit');
-  };
+  }
 
   get showRentalVariaPage() {
     return this.findSelectedById('rental_varia');
-  };
+  }
 
   get showRentalReviewPage() {
     return this.findSelectedById('rental_review');
-  };
+  }
 
   get showDepositPage() {
     return this.findSelectedById('deposit');
-  };
+  }
 
   get showVariaPage() {
     return this.findSelectedById('varia');
-  };
+  }
 
   get showFilesPage() {
     return this.findSelectedById('files');
-  };
+  }
 
   get showReviewPage() {
     return this.findSelectedById('review');
-  };
+  }
 
   get hasPageMessage() {
     let currentPage = this.currentPage()[0];
@@ -287,9 +289,7 @@ export default class Mas extends LightningElement {
       this.pages = [
         { ...pageContact, ...{ selected:true } },
         pageRentalAsset,
-        pageRentalVaria,
-        pageInclusions,
-        pageServices,
+        pageVaria,
         pageRentalDeposit,
         pageFiles,
         pageRentalReview
@@ -299,7 +299,7 @@ export default class Mas extends LightningElement {
     this.type = type;
     this.reorderSteps();
   }
-  
+
   /**
    * Re-assign page step numbers
    */

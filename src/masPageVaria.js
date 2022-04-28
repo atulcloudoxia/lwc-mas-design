@@ -11,9 +11,14 @@ export default class PageVaria extends LightningElement {
   @api variadata;
   @api changeorderdata;
   @api asset;
+  @api type;
 
   @track addVaria=false;
   @track addChangeOrder=false;
+
+  get isRental() {
+    return this.type === 'rental';
+  }
 
   /**
    * Search varia

@@ -22,13 +22,15 @@
 			<c-mas-page-asset parkingdata={parkingData} extradata={extraData} asset={assetData}></c-mas-page-asset>
 		</template>
 		<template if:true={showRentalAssetPage}>
-			<c-mas-page-rental-asset parkingdata={parkingData} extradata={extraData} asset={assetData}></c-mas-page-rental-asset>
+			<c-mas-page-rental-asset
+				parkingdata={parkingData}
+				servicesdata={servicesData}
+				inclusionsdata={inclusionsData}
+				asset={assetData}>
+			</c-mas-page-rental-asset>
 		</template>
 		<template if:true={showInclusionsPage}>
 			<c-mas-page-inclusions data={parkingData} asset={assetData}></c-mas-page-inclusions>
-		</template>
-		<template if:true={showRentalVariaPage}>
-			<c-mas-page-rental-varia data={variaData}  asset={assetData}></c-mas-page-rental-varia>
 		</template>
 		<template if:true={showRentalDepositPage}>
 			<c-mas-page-rental-deposit data={rentalDepositData} asset={assetData}></c-mas-page-rental-deposit>
@@ -43,7 +45,7 @@
 			<c-mas-page-deposit data={depositData} asset={assetData}></c-mas-page-deposit>
 		</template>
 		<template if:true={showVariaPage}>
-			<c-mas-page-varia variadata={variaData} changeorderdata={changeOrderData} asset={assetData}></c-mas-page-varia>
+			<c-mas-page-varia type={type} variadata={variaData} changeorderdata={changeOrderData} asset={assetData}></c-mas-page-varia>
 		</template>
 		<template if:true={showFilesPage}>
 			<c-mas-page-files asset={assetData}></c-mas-page-files>

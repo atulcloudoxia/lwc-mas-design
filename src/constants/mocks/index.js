@@ -49,6 +49,21 @@ const MOCK_CONTACTS = [{
   }
 ];
 
+const MOCK_INCLUSIONS = [
+  {
+    id: 1,
+    type: 'Locker Standard',
+    assigned: 'Side by Side',
+    price: '30933'
+  },
+  {
+    id: 2,
+    type: 'Parking Standard',
+    assigned: 'Side by Side',
+    price: '36933'
+  },
+];
+
 const MOCK_PARKING = [
   {
     id: 1,
@@ -292,6 +307,7 @@ const MOCK_CHANGE_ORDERS = [
 export {
   MOCK_CONTACTS,
   MOCK_PARKING,
+  MOCK_INCLUSIONS,
   MOCK_ASSET,
   MOCK_RENTAL_ASSET,
   MOCK_SERVICES,
