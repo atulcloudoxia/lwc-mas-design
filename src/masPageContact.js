@@ -1,6 +1,7 @@
 import { LightningElement, track, api } from 'lwc';
 import { findRowById } from './utils';
 import {
+  MOCK_CONTACTS_DATA,
   COLUMNS_CONTACTS,
   OPTIONS_ROLES,
   OPTIONS_LANGUAGES,
@@ -89,5 +90,18 @@ export default class ContactPage extends LightningElement {
         .slice(0, index)
         .concat(data.slice(index + 1));
     }
+  }
+
+  handleAddContactSubmitForm(event){
+    console.log(JSON.stringify(event.detail.selectedContact));
+    this.addContact = false;
+    if(event.detail.selectedContact!=null){
+      var contact = event.detail.selectedContact;
+      contact.role = event.detail.role;
+      var data = [...this.data];
+      data.splice(this.data.length+1,0,contact);
+      this.data = data;
+    }
+   
   }
 }

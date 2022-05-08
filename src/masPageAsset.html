@@ -34,10 +34,11 @@
 
     <div class="mt-30">
       <lightning-tabset active-tab-value="parking">
-
+ 
         <!-- Parking Table -->
-        <lightning-tab label="Parking" value="parking">
+        <lightning-tab label="Parking" value="parking" onactive={handleActive}>
           <c-mas-custom-table
+            data-id = "parkingTable"
             key-field="id"
             data={parkingdata}
             columns={columns}
@@ -47,13 +48,14 @@
           <div class="mt-30">
             <h2>Add Parking</h2>
             <hr />
-            <c-mas-table-parking-add></c-mas-table-parking-add>
+            <c-mas-table-parking-add onrowadd={handleParkingRowAdd}></c-mas-table-parking-add>
           </div>
         </lightning-tab>
 
         <!-- Extras Table -->
-        <lightning-tab label="Extras" value="extras">
+        <lightning-tab label="Extras" value="extras" onactive={handleActive}>
           <c-mas-custom-table
+            data-id = "extrasTable"
             key-field="id"
             data={extradata}
             columns={columnsExtras}
@@ -63,7 +65,7 @@
           <div class="mt-30">
             <h2>Add Extra</h2>
             <hr />
-            <c-mas-table-extras-add></c-mas-table-extras-add>
+            <c-mas-table-extras-add onrowadd={handleExtraRowAdd}></c-mas-table-extras-add>
           </div>
         </lightning-tab>
       </lightning-tabset>

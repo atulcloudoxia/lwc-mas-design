@@ -22,7 +22,7 @@
 			<c-mas-page-asset parkingdata={parkingData} extradata={extraData} asset={asset} closingdetail={closingdetail}></c-mas-page-asset>
 		</template>
 		<template if:true={showDepositPage}>
-			<c-mas-page-deposit data={depositData} asset={asset}></c-mas-page-deposit>
+			<c-mas-page-deposit data={depositData} asset={asset} extradata={extraData} parkingdata={parkingData}></c-mas-page-deposit>
 		</template>
 		<template if:true={showVariaPage}>
 			<c-mas-page-varia variadata={variaData} changeorderdata={changeOrderData} asset={asset}></c-mas-page-varia>

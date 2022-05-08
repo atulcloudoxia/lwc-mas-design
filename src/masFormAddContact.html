@@ -23,8 +23,10 @@
               </c-mas-custom-lookup>
           </div>
           <div class="mt-10">
-            <lightning-input name="progress" label="Status" placeholder="Role" variant="label-hidden">
-            </lightning-input>
+            <!--<lightning-input name="role" label="Role" placeholder="Role" variant="label-hidden" value  >
+            </lightning-input>-->
+            <lightning-combobox name="role" label="Role" placeholder="Select Role" options={roleOptions}
+                onchange={handleRoleChange} value={role}></lightning-combobox>
           </div>
           <div class="mt-10">
             <lightning-input name="search-corpo" label="Search Corporation" type="search" variant="label-hidden"
@@ -37,7 +39,7 @@
             <div class="modal__container__cancel" onclick={handleCancel}>
               Cancel
             </div>
-            <button class="button-primary">Continue</button>
+            <button class="button-primary" onclick={handleFormSubmit}>Continue</button>
           </div>
         </div>
       </div>

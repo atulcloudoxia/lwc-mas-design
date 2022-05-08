@@ -8,6 +8,8 @@ export default class DepositPage extends LightningElement {
 
     @api data;
     @api asset;
+    @api extradata;
+    @api parkingdata;
     @track addDiscount = false;
 
     optionsSchedule = [{ }]; // Options for "Select Deposit Schedule"

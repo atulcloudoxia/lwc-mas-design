@@ -1,4 +1,4 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement, track, api } from 'lwc';
 
 const columns = [
     {
@@ -45,10 +45,10 @@ const columns = [
       type: "button-icon",
       typeAttributes: {
         label: 'Remove',
-        name: 'delete',
+        name: 'add',
         title: 'Remove',
         disabled: false,
-        value: 'delete',
+        value: 'add',
         iconPosition: 'left',
         iconName: 'utility:add',
         variant: 'success',
@@ -90,7 +90,11 @@ export default class BasicDatatable extends LightningElement {
           Price__c: '87272'
       },
     ];
-
+    @api
+    addRowAfterDelete() {
+      console.log('addRowAfterDelete');
+      //this.data;
+    }
     /**
      * Row actions
      */
@@ -98,14 +102,30 @@ export default class BasicDatatable extends LightningElement {
       const { action, row } = event.detail;
 
       switch (action.name) {
-        case 'delete':
-          this.deleteRow(row);
+        case 'add':
+          this.addRow(row);
+          this.deleteRow(row); //delete after it got added to the parent
           break;
         // No other actions but delete for now
         default:
       }
     }
-
+    addRow(row){
+      const { id } = row;
+      const index = this.findRowById(id);
+      if (index !== -1) {
+        console.log('// '+this.data[index]);
+        let rowAddEvent = new CustomEvent('rowadd',{
+          detail: {
+            row:this.data[index]
+          },
+          bubbles: true,
+          composed: false
+        });
+        this.dispatchEvent(rowAddEvent);
+        // Nhan, handle delete logic here
+      }
+    }
     /**
      * Delete
      */

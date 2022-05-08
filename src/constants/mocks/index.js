@@ -1,6 +1,134 @@
-const MOCK_CONTACTS = [{
+var MOCK_CONTACTS_DATA = [{
+  id: "0035x000005BMvoAAG",
+  name: 'Andrew Hamilton',
+  firstname: 'Andrew',
+  lastname: 'Hamilton',
+  language__c: 'en',
+  birthdate: '1978-10-29',
+  salutation: 'mr',
+  email: 'andrew@lucidlive.com',
+  phone: '514-555-5555',
+  mailingaddress: '123 Main Street',
+  mailingcity: 'Montreal',
+  mailingstate: 'qc',
+  mailingpostalcode: '221002',
+  mailingcountry: 'ca'
+},
+{
+  id: "0035x000005BMsfAAG",
+  name: 'Tao Nguyen',
+  firstname: 'Tao',
+  lastname: 'Nguyen',
+  language__c: 'fr',
+  birthdate: '1942-10-09',
+  salutation: 'mr',
+  email: 'tao@onyxtech.ca',
+  phone: '514-555-5555',
+},
+{
+  id: "0035x000005BModAAG",
+  name: 'Test Contact 1',
+  firstname: 'Test',
+  lastname: 'Contact 1',
+  language__c: 'ch',
+  birthdate: '1852-10-09',
+  salutation: 'mr',
+  email: 'chuck@norris.ca',
+  phone: '514-555-5555'
+},
+{
+  id: "0035x000005BMqtAAG",
+  name: 'a1s5x000005BMqt',
+  firstname: '',
+  lastname: 'a1s5x000005BMqt',
+  language__c: 'ch',
+  birthdate: '1852-10-09',
+  salutation: 'mr',
+  email: 'chuck@norris.ca',
+  phone: '514-555-5555'
+},
+{
+  id: "0035x000005BNa8AAG",
+  name: 'Contact Test 2',
+  firstname: 'Contact',
+  lastname: 'Test 2',
+  language__c: 'ch',
+  birthdate: '1852-10-09',
+  salutation: 'mr',
+  email: 'chuck@norris.ca',
+  phone: '514-555-5555'
+},
+{
+  id: "0035x000005BNa9AAG",
+  name: 'Test 3',
+  firstname: 'Test',
+  lastname: '3',
+  language__c: 'ch',
+  birthdate: '1852-10-09',
+  salutation: 'mr',
+  email: 'chuck@norris.ca',
+  phone: '514-555-5555'
+},
+{
+  id: "0035x000005BNsWAAW",
+  name: 'Contact1',
+  firstname: 'Contact1',
+  lastname: 'Test 2',
+  language__c: 'ch',
+  birthdate: '1852-10-09',
+  salutation: 'mr',
+  email: 'chuck@norris.ca',
+  phone: '514-555-5555'
+},
+{
+  id: "0035x000005BNslAAG",
+  name: 'Andrew',
+  firstname: '',
+  lastname: 'Andrew',
+  language__c: 'ch',
+  birthdate: '1852-10-09',
+  salutation: 'mr',
+  email: 'chuck@norris.ca',
+  phone: '514-555-5555'
+},
+{
+  id: "0035x000005BNuXAAW",
+  name: 'Testing 123',
+  firstname: 'Test',
+  lastname: '123',
+  language__c: 'ch',
+  birthdate: '1852-10-09',
+  salutation: 'mr',
+  email: 'chuck@norris.ca',
+  phone: '514-555-5555'
+},
+{
+  id: "0035x000004hboRAAQ",
+  name: 'Test',
+  firstname: 'Test',
+  lastname: 'POST 2',
+  language__c: 'ch',
+  birthdate: '1852-10-09',
+  salutation: 'mr',
+  email: 'chuck@norris.ca',
+  phone: '514-555-5555'
+},
+{
+  id: "0035x000005BLejAAG",
+  name: 'Contact 1',
+  firstname: 'Contact',
+  lastname: '1',
+  language__c: 'ch',
+  birthdate: '1852-10-09',
+  salutation: 'mr',
+  email: 'chuck@norris.ca',
+  phone: '514-555-5555'
+}
+
+];
+var MOCK_CONTACTS = [{
     id: 1,
-    name: 'Andrew Hamilton',
+    name: 'Andrew Hamilton Static',
     firstname: 'Andrew',
     lastname: 'Hamilton',
     language__c: 'en',
@@ -210,4 +338,4 @@ const MOCK_CHANGE_ORDERS = [
   }
 ];
 
-export { MOCK_CONTACTS, MOCK_PARKING, MOCK_ASSET, MOCK_CLOSING_DETAIL, MOCK_EXTRAS, MOCK_DEPOSIT, MOCK_VARIA, MOCK_CHANGE_ORDERS };
+export { MOCK_CONTACTS_DATA, MOCK_CONTACTS, MOCK_PARKING, MOCK_ASSET, MOCK_CLOSING_DETAIL, MOCK_EXTRAS, MOCK_DEPOSIT, MOCK_VARIA, MOCK_CHANGE_ORDERS };

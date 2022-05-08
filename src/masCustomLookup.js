@@ -3,7 +3,7 @@ import { LightningElement, track, api } from 'lwc';
 export default class CustomLookup extends LightningElement {
     
     @track records;
-    @track result=[{"Id":"0035x000005BMvoAAG","Name":"Andrew Hamilton"},{"Id":"0035x000005BMsfAAG","Name":"Tao"},{"Id":"0035x000005BModAAG","Name":"Test Contact 1"},{"Id":"0035x000005BMqtAAG","Name":"a1s5x000005BMqt"},{"Id":"0035x000005BNa8AAG","Name":"Contact Test 2"},{"Id":"0035x000005BNa9AAG","Name":"Test 3"},{"Id":"0035x000005BNsWAAW","Name":"Contact1"},{"Id":"0035x000005BNslAAG","Name":"Andrew"},{"Id":"0035x000005BNuXAAW","Name":"Testing 123"},{"Id":"0035x000004hboRAAQ","Name":"Test POST 2"},{"Id":"0035x000005BLejAAG","Name":"Contact 1"}];
+    @track result=[{"Id":"0035x000005BMvoAAG","Name":"Andrew Hamilton"},{"Id":"0035x000005BMsfAAG","Name":"Tao Nguyen"},{"Id":"0035x000005BModAAG","Name":"Test Contact 1"},{"Id":"0035x000005BMqtAAG","Name":"a1s5x000005BMqt"},{"Id":"0035x000005BNa8AAG","Name":"Contact Test 2"},{"Id":"0035x000005BNa9AAG","Name":"Test 3"},{"Id":"0035x000005BNsWAAW","Name":"Contact1"},{"Id":"0035x000005BNslAAG","Name":"Andrew"},{"Id":"0035x000005BNuXAAW","Name":"Testing 123"},{"Id":"0035x000004hboRAAQ","Name":"Test POST 2"},{"Id":"0035x000005BLejAAG","Name":"Contact 1"}];
     @track error;
     @track selectedRecord;
     @api displayOnLoad;
@@ -164,6 +164,7 @@ export default class CustomLookup extends LightningElement {
         const selectedRecordId = event.detail;
         /* eslint-disable no-console*/
         this.selectedRecord = this.records.find( record => record.Id === selectedRecordId);
+        console.log('//'+selectedRecordId);
         /* fire the event with the value of RecordId for the Selected RecordId */
         const selectedRecordEvent = new CustomEvent(
             "selectedrec",

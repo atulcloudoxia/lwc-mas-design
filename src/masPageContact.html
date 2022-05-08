@@ -30,7 +30,7 @@
 
   <!-- Add Contact Form -->
   <template if:true={addContact}>
-    <c-mas-form-add-contact onclose={handleCloseForm}></c-mas-form-add-contact>
+    <c-mas-form-add-contact onclose={handleCloseForm} oncontinue={handleAddContactSubmitForm}></c-mas-form-add-contact>
   </template>
 
 </template>
