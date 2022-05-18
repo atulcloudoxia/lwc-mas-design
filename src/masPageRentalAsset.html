@@ -32,23 +32,7 @@
     </div>
 
     <div class="mt-30">
-      <lightning-tabset active-tab-value="parking">
-
-        <!-- Parking Table -->
-        <lightning-tab label="Parking" value="parking">
-          <c-mas-custom-table
-            key-field="id"
-            data={parkingdata}
-            columns={columns}
-            onrowaction={handleRowAction}
-            hide-checkbox-column>
-          </c-mas-custom-table>
-          <div class="mt-30">
-            <h2>Add Parking</h2>
-            <hr />
-            <c-mas-table-parking-add></c-mas-table-parking-add>
-          </div>
-        </lightning-tab>
+      <lightning-tabset active-tab-value="inclusions">
 
         <!-- Extras Table -->
         <lightning-tab label="Inclusions" value="inclusions">

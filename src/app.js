@@ -37,6 +37,8 @@ const pageContact = {
   enabled: true,
   ...defaults,
   selected:true,
+  warning: true,
+  message: "There is no bank approval."
 };
 
 const pageAsset = {
