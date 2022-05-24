@@ -390,8 +390,8 @@ const COLUMNS_RENTAL_DEPOSIT = [
     hideDefaultActions:true,
   },
   {
-    label: 'Amount',
-    fieldName: 'amount',
+    label: 'Rent',
+    fieldName: 'subtotal',
     type: 'currency',
     editable: true,
     hideDefaultActions:true,
@@ -399,6 +399,27 @@ const COLUMNS_RENTAL_DEPOSIT = [
       alignment: 'left',
     },
   },
+  {
+    label: 'Discount',
+    fieldName: 'discount',
+    type: 'currency',
+    editable: true,
+    hideDefaultActions:true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
+  {
+    label: 'Total',
+    fieldName: 'total',
+    type: 'currency',
+    editable: true,
+    hideDefaultActions:true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
+
 ];
 
 const COLUMNS_DEPOSIT = [
