@@ -14,7 +14,7 @@ export default class VariaPage extends LightningElement {
 
   @track addVaria=false;
   @track addChangeOrder=false;
-
+  @track activeTab;
   /**
    * Search varia
    *
@@ -98,14 +98,57 @@ export default class VariaPage extends LightningElement {
    */
   deleteRow(row) {
     const { id } = row;
-    const index = findRowById(id);
+    var index;
+    if(this.activeTab=='varias'){
+          index = findRowById(id, this.variadata);
+          if (index !== -1) {
+            let variadata= this.variadata;
+            console.log(index);
+            this.variadata = variadata.slice(0, index).concat(variadata.slice(index + 1));
+             
+            // Nhan, handle delete logic here
+          }
+      }else if(this.activeTab=='change-orders'){
+          index = findRowById(id, this.changeorderdata);
+          if (index !== -1) {
+            this.changeorderdata = this.changeorderdata
+              .slice(0, index)
+              .concat(this.changeorderdata.slice(index + 1));
+             
+            // Nhan, handle delete logic here
+          }
+      }   
+      this.handleDataUpdate();
+  }
 
-    if (index !== -1) {
-      this.data = this.data
-        .slice(0, index)
-        .concat(this.data.slice(index + 1));
-
-      // Nhan, handle delete logic here
+  handleSaveForm(event){
+    if(event.detail.variatext){
+      var variadata = [...this.variadata];
+      variadata.push({ description: event.detail.variatext});
+      this.variadata = variadata;
     }
+    if(event.detail.changeordertext){
+      var changeorderdata = [...this.changeorderdata];
+      changeorderdata.push({ description: event.detail.changeordertext});
+      this.changeorderdata = changeorderdata;
+    }
+    this.handleCloseForm(event);
+    this.handleDataUpdate();
+  }
+  
+  handleDataUpdate(){
+    let rowAddEvent = new CustomEvent('updatedata',{
+      detail: {
+        changeorderdata: this.changeorderdata,
+        variadata: this.variadata 
+      },
+      bubbles: true,
+      composed: false
+    });
+    this.dispatchEvent(rowAddEvent);
+  }
+  handleActive(event) {
+    const tab = event.target;
+    this.activeTab = event.target.value;
   }
 }

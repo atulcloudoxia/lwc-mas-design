@@ -15,6 +15,24 @@ export default class DepositPage extends LightningElement {
     optionsSchedule = [{ }]; // Options for "Select Deposit Schedule"
 
     /**
+     * Get the total line item
+     */
+     get amountTotalLineItem() {
+      let total= parseFloat(this.asset.Condo_Price__c);
+      
+      console.log(total);
+      this.parkingdata.forEach((item) => {
+        total += parseFloat(item.Price__c);
+      });
+      console.log(total);
+      this.extradata.forEach((item) => {
+        total += parseFloat(item.Price__c);
+      });
+      console.log(typeof(total));
+      console.log(total);
+      return Number((total).toFixed(2)).toLocaleString();
+    };
+    /**
      * Get the schedule amount summary
      */
     get amountTotal() {
@@ -109,6 +127,7 @@ export default class DepositPage extends LightningElement {
           Deposit_Received__c: false
         }
       ]
+      this.handleDataUpdate();
     }
 
     /**
@@ -123,6 +142,7 @@ export default class DepositPage extends LightningElement {
       switch (action.name) {
         case 'delete':
           this.data = this.deleteRow(row, this.data);
+          this.handleDataUpdate();
           // deleteId - Handle delete logic
           break;
 
@@ -146,5 +166,16 @@ export default class DepositPage extends LightningElement {
           .slice(0, index)
           .concat(data.slice(index + 1));
       }
+    }
+
+    handleDataUpdate(){
+      let rowAddEvent = new CustomEvent('updatedata',{
+        detail: {
+          depositdata: this.data 
+        },
+        bubbles: true,
+        composed: false
+      });
+      this.dispatchEvent(rowAddEvent);
     }
 }

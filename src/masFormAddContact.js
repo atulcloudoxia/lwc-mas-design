@@ -48,4 +48,7 @@ export default class AddContactForm extends LightningElement {
     this.role = e.detail.value;
      
   }
+  get displayCorporation(){
+    return this.role!=undefined && this.role.includes('corporation');
+  }
 }

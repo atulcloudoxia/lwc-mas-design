@@ -294,4 +294,15 @@ export default class Mas extends LightningElement {
       };
     }
   }
+  handleDataUpdate(e) {
+    const { pageIdx, error, completed, warning, message, contactdata, parkingdata, extradata, depositdata, variadata, changeorderdata} = e.detail;
+
+    if(parkingdata!=undefined) this.parkingData = parkingdata;
+    if(extradata!=undefined) this.extraData = extradata;
+    if(contactdata!=undefined) this.contactList = contactdata;
+    if(depositdata!=undefined) this.depositData = depositdata;
+    if(variadata!=undefined) this.variaData = variadata;
+    if(changeorderdata!=undefined) this.changeOrderData = changeorderdata;
+  }
+  
 }

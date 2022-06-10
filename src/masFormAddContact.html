@@ -28,11 +28,13 @@
             <lightning-combobox name="role" label="Role" placeholder="Select Role" options={roleOptions}
                 onchange={handleRoleChange} value={role}></lightning-combobox>
           </div>
-          <div class="mt-10">
-            <lightning-input name="search-corpo" label="Search Corporation" type="search" variant="label-hidden"
-              placeholder="Search corporations...">
-            </lightning-input>
-          </div>
+          <template if:true={displayCorporation}>
+            <div class="mt-10">
+              <lightning-input name="search-corpo" label="Search Corporation" type="search" variant="label-hidden"
+                placeholder="Search corporations...">
+              </lightning-input>
+            </div>
+          </template>
         </div>
         <div class="slds-modal__footer slds-modal__footer_directional">
           <div class="modal__container__actions">

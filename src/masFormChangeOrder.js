@@ -1,7 +1,7 @@
 import { LightningElement, api, track } from 'lwc';
 
 export default class AddChangeOrderForm extends LightningElement {
-
+    @track changeOrderText;
     /**
      * Handle Submit
      *
@@ -9,7 +9,9 @@ export default class AddChangeOrderForm extends LightningElement {
      */
     handleSubmit(e) {
       e.preventDefault();
-      
+      this.dispatchEvent(
+        new CustomEvent("save", { detail: {changeordertext: this.changeOrderText} })
+      );
     }
 
     /**
@@ -23,5 +25,8 @@ export default class AddChangeOrderForm extends LightningElement {
       this.dispatchEvent(
         new CustomEvent("close")
       );
+    }
+    handleChange(e){
+      this.changeOrderText = e.detail.value;
     }
 }

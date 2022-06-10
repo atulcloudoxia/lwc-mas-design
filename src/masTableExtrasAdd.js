@@ -64,36 +64,11 @@ const columns = [
 export default class BasicDatatable extends LightningElement {
     columns = columns;
 
-    @track data = [
-      {
-          id: 1,
-          Quantity__c: 3,
-          name: 'Extra 1',
-          Description_ENG__c: 'lorem ipsum',
-          Room_Type__c: 'Upper',
-          Price__c: '87272'
-      },
-      {
-          id: 1,
-          Quantity__c: 3,
-          name: 'Extra 1',
-          Description_ENG__c: 'lorem ipsum',
-          Room_Type__c: 'Bathroom',
-          Price__c: '87272'
-      },
-      {
-          id: 1,
-          Quantity__c: 3,
-          name: 'Extra 1',
-          Description_ENG__c: 'lorem ipsum',
-          Room_Type__c: 'Ground',
-          Price__c: '87272'
-      },
-    ];
+    @api availableExtras;
     @api
     addRowAfterDelete() {
       console.log('addRowAfterDelete');
-      //this.data;
+      //this.availableExtras;
     }
     /**
      * Row actions
@@ -114,10 +89,10 @@ export default class BasicDatatable extends LightningElement {
       const { id } = row;
       const index = this.findRowById(id);
       if (index !== -1) {
-        console.log('// '+this.data[index]);
+        console.log('// '+this.availableExtras[index]);
         let rowAddEvent = new CustomEvent('rowadd',{
           detail: {
-            row:this.data[index]
+            row:this.availableExtras[index]
           },
           bubbles: true,
           composed: false
@@ -134,9 +109,9 @@ export default class BasicDatatable extends LightningElement {
       const index = this.findRowById(id);
 
       if (index !== -1) {
-        this.data = this.data
+        this.availableExtras = this.availableExtras
           .slice(0, index)
-          .concat(this.data.slice(index + 1));
+          .concat(this.availableExtras.slice(index + 1));
 
         // Nhan, handle delete logic here
       }
@@ -144,7 +119,7 @@ export default class BasicDatatable extends LightningElement {
 
     findRowById(id) {
       let ret = -1;
-      this.data.some((row, index) => {
+      this.availableExtras.some((row, index) => {
         if (row.id === id) {
           ret = index;
           return true;

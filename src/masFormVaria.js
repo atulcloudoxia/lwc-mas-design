@@ -1,7 +1,7 @@
 import { LightningElement, api, track } from 'lwc';
 
 export default class AddVariaForm extends LightningElement {
-
+    @track variaText;
     /**
      * Handle Submit
      *
@@ -9,7 +9,10 @@ export default class AddVariaForm extends LightningElement {
      */
     handleSubmit(e) {
       e.preventDefault();
-
+      console.log(this.variaText);
+      this.dispatchEvent(
+        new CustomEvent("save", { detail: {variatext: this.variaText} })
+      );
     }
 
     /**
@@ -23,5 +26,9 @@ export default class AddVariaForm extends LightningElement {
       this.dispatchEvent(
         new CustomEvent("close")
       );
+    }
+
+    handleChange(e){
+      this.variaText = e.detail.value;
     }
 }

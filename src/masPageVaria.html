@@ -5,10 +5,10 @@
     </div>
     <hr />
     <div class="mt-30">
-      <lightning-tabset active-tab-value="varias">
+      <lightning-tabset active-tab-value="varias" >
 
         <!-- Varia Tab Start -->
-        <lightning-tab label="Varias" value="varias">
+        <lightning-tab label="Varias" value="varias" onactive={handleActive}>
           <div>
             <lightning-input
             name="enter-search" label="Search" type="search" variant="label-hidden">
@@ -33,7 +33,7 @@
         <!-- Varia Tab End -->
 
         <!-- Change Order Tab Start -->
-        <lightning-tab label="Change Orders" value="change-orders">
+        <lightning-tab label="Change Orders" value="change-orders" onactive={handleActive}>
           <div>
             <lightning-input name="enter-search" label="Search" type="search" variant="label-hidden">
             </lightning-input>
@@ -61,12 +61,12 @@
 
   <!-- Add Varia Form -->
   <template if:true={addVaria}>
-    <c-mas-form-varia onclose={handleCloseForm}></c-mas-form-varia>
+    <c-mas-form-varia onclose={handleCloseForm} onsave={handleSaveForm}></c-mas-form-varia>
   </template>
 
   <!-- Modal Add Varia Start -->
   <template if:true={addChangeOrder}>
-    <c-mas-form-change-order onclose={handleCloseForm}></c-mas-form-change-order>
+    <c-mas-form-change-order onclose={handleCloseForm} onsave={handleSaveForm}></c-mas-form-change-order>
   </template>
   <!-- Modal Add Varia End -->
 

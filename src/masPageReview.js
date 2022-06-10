@@ -6,10 +6,30 @@ export default class ReviewPage extends LightningElement {
   @api contactslist;
   @api depositsdata;
   @api asset;
+  @api extradata;
+  @api parkingdata;
 
   contactsColumns = REVIEW_CONTACTS_COLUMNS;
   depositsColumns = REVIEW_DEPOSITS_COLUMNS;
 
+  /**
+     * Get the total line item
+     */
+   get amountTotalLineItem() {
+    let total= parseFloat(this.asset.Condo_Price__c);
+    
+    console.log(total);
+    this.parkingdata.forEach((item) => {
+      total += parseFloat(item.Price__c);
+    });
+    console.log(total);
+    this.extradata.forEach((item) => {
+      total += parseFloat(item.Price__c);
+    });
+    console.log(typeof(total));
+    console.log(total);
+    return Number((total).toFixed(2)).toLocaleString();
+  };
   /**
    * Modify a contact
    *

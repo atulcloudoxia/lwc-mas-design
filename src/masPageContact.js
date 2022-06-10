@@ -102,6 +102,16 @@ export default class ContactPage extends LightningElement {
       data.splice(this.data.length+1,0,contact);
       this.data = data;
     }
-   
+    this.handleDataUpdate();
+  }
+  handleDataUpdate(){
+    let rowAddEvent = new CustomEvent('updatedata',{
+      detail: {
+        contactdata: this.data 
+      },
+      bubbles: true,
+      composed: false
+    });
+    this.dispatchEvent(rowAddEvent);
   }
 }

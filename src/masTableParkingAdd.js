@@ -34,60 +34,11 @@ const columns = [
 export default class masTableParkingAdd extends LightningElement {
     columns = columns;
     
-    @track data = [
-    {
-        id: 1,
-        Type__c: 'Locker Standard',
-        Assigned_Spot__c: 'Side by Side',
-        Price__c: '30933',
-    },
-    {
-        id: 2,
-        Type__c: 'Locker Standard',
-        Assigned_Spot__c: 'Side by Side',
-        Price__c: '30933',
-    },
-    {
-        id: 3,
-        Type__c: 'Locker Standard',
-        Assigned_Spot__c: 'Side by Side',
-        Price__c: '30933',
-    },
-    {
-        id: 4,
-        Type__c: 'Locker Standard',
-        Assigned_Spot__c: 'Side by Side',
-        Price__c: '30933',
-    },
-    {
-        id: 5,
-        Type__c: 'Locker Standard',
-        Assigned_Spot__c: 'Side by Side',
-        Price__c: '30933',
-    },
-    {
-        id: 6,
-        Type__c: 'Parking Standard',
-        Assigned_Spot__c: 'Side by Side',
-        Price__c: '36933',
-    },
-    {
-        id: 7,
-        Type__c: 'Parking Standard',
-        Assigned_Spot__c: 'Side by Side',
-        Price__c: '36933',
-    },
-    {
-        id: 8,
-        Type__c: 'Parking Standard',
-        Assigned_Spot__c: 'Side by Side',
-        Price__c: '36933',
-    },
-  ]
+  @api availableParkings;
   @api
   addRowAfterDelete() {
     console.log('addRowAfterDelete');
-    //this.data;
+    //this.availableParkings;
   }
   
   /**
@@ -109,10 +60,10 @@ export default class masTableParkingAdd extends LightningElement {
     const { id } = row;
     const index = this.findRowById(id);
     if (index !== -1) {
-      console.log('// '+this.data[index]);
+      console.log('// '+this.availableParkings[index]);
       let rowAddEvent = new CustomEvent('rowadd',{
         detail: {
-          row:this.data[index]
+          row:this.availableParkings[index]
         },
         bubbles: true,
         composed: false
@@ -129,16 +80,16 @@ export default class masTableParkingAdd extends LightningElement {
     const index = this.findRowById(id);
 
     if (index !== -1) {
-      this.data = this.data
+      this.availableParkings = this.availableParkings
         .slice(0, index)
-        .concat(this.data.slice(index + 1));
+        .concat(this.availableParkings.slice(index + 1));
 
       // Nhan, handle delete logic here
     }
   }
   findRowById(id) {
     let ret = -1;
-    this.data.some((row, index) => {
+    this.availableParkings.some((row, index) => {
       if (row.id === id) {
         ret = index;
         return true;

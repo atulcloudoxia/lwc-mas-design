@@ -24,15 +24,29 @@
         </div>
       </div>
 
-      <!-- Example line-item start (not sure how data is managed)-->
-      <div class="line_item">
-        <div>
-          Parking Standard
+      <!-- Example parking line-item start (not sure how data is managed)-->
+      <template for:each={parkingdata} for:item="parking">
+        <div key={parking.id} class="line_item">
+          <div>
+            {parking.Type__c}
+          </div>
+          <div>
+            {parking.Price__c}
+          </div>
         </div>
-        <div>
-          $59,500.00
+      </template>
+      <!-- Example parking line-item end -->
+      <!-- Example extras line-item start (not sure how data is managed)-->
+      <template for:each={extradata} for:item="extra">
+        <div key={extra.id} class="line_item">
+          <div>
+            {extra.name}
+          </div>
+          <div>
+            {extra.Price__c}
+          </div>
         </div>
-      </div>
+      </template>
       <!-- Example line-item end -->
 
       <!-- Discounts Start -->
@@ -63,7 +77,7 @@
           Total
         </div>
         <div>
-          {asset.Total_Price__c}
+          {amountTotalLineItem}<!--{asset.Total_Price__c}-->
         </div>
       </div>
     </div>

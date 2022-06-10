@@ -48,7 +48,7 @@
           <div class="mt-30">
             <h2>Add Parking</h2>
             <hr />
-            <c-mas-table-parking-add onrowadd={handleParkingRowAdd}></c-mas-table-parking-add>
+            <c-mas-table-parking-add available-parkings = {availableParkings} onrowadd={handleParkingRowAdd}></c-mas-table-parking-add>
           </div>
         </lightning-tab>
 
@@ -65,7 +65,7 @@
           <div class="mt-30">
             <h2>Add Extra</h2>
             <hr />
-            <c-mas-table-extras-add onrowadd={handleExtraRowAdd}></c-mas-table-extras-add>
+            <c-mas-table-extras-add available-extras = {availableExtras} onrowadd={handleExtraRowAdd}></c-mas-table-extras-add>
           </div>
         </lightning-tab>
       </lightning-tabset>
