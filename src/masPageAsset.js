@@ -1,6 +1,6 @@
 import { track, api, LightningElement } from 'lwc';
 import { COLUMNS_PARKING, COLUMNS_EXTRAS } from './constants';
-import { findRowById } from './utils';
+import { findRowById,formatcurrencytoNumber,formatNumbertocurrency } from './utils';
 
 export default class PageAsset extends LightningElement {
 
@@ -93,6 +93,10 @@ export default class PageAsset extends LightningElement {
 
   @track addAsset=false;
 
+  connectedCallback(){
+    this.asset = JSON.parse(JSON.stringify(this.asset));
+    this.asset.Condo_Price__c = formatNumbertocurrency(this.asset.Condo_Price__c);
+  }
   /**
    * Shows modal to edit asset details
    *

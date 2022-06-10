@@ -1,6 +1,6 @@
 import { LightningElement, track, api } from 'lwc';
 import { COLUMNS_DEPOSIT } from './constants';
-import { findRowById } from './utils';
+import { findRowById,formatcurrencytoNumber,formatNumbertocurrency  } from './utils';
 
 export default class DepositPage extends LightningElement {
 
@@ -13,11 +13,16 @@ export default class DepositPage extends LightningElement {
     @track addDiscount = false;
 
     optionsSchedule = [{ }]; // Options for "Select Deposit Schedule"
-
+    connectedCallback(){
+      this.asset = JSON.parse(JSON.stringify(this.asset));
+    console.log(this.asset);
+     //this.asset.Condo_Price__c = formatNumbertocurrency(this.asset.Condo_Price__c);
+    }
     /**
      * Get the total line item
      */
      get amountTotalLineItem() {
+       
       let total= parseFloat(this.asset.Condo_Price__c);
       
       console.log(total);
@@ -30,7 +35,7 @@ export default class DepositPage extends LightningElement {
       });
       console.log(typeof(total));
       console.log(total);
-      return Number((total).toFixed(2)).toLocaleString();
+      return formatNumbertocurrency(total);
     };
     /**
      * Get the schedule amount summary
@@ -42,7 +47,7 @@ export default class DepositPage extends LightningElement {
         total += parseFloat(item.Deposit_Amount__c);
       });
 
-      return Number((total).toFixed(2)).toLocaleString();
+      return formatNumbertocurrency(total);
     };
 
     /**

@@ -9,14 +9,9 @@
         <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
           <div>
             <label>Asset</label>
-            <div>
-              <lightning-input name="search-contact" label="Search Contact" variant="label-hidden"
-                value={asset.name}>
-              </lightning-input>
-            </div>
             <div class="mt-10">
               <lightning-input name="search-contact" label="Search Contact" variant="label-hidden"
-                value={asset.name}>
+                value={asset.Name}>
               </lightning-input>
             </div>
           </div>
@@ -24,27 +19,34 @@
             <label>Contract Date</label>
             <div class="mt-10">
               <lightning-input type="date" name="contract-date" variant="label-hidden" label="Date"
-                value={asset.contractDate}></lightning-input>
+                value={closingdetail.Preliminary_Contract_Signed_D__c}></lightning-input>
             </div>
           </div>
           <div class="mt-20">
             <label>Sales Representative</label>
             <div class="mt-10">
-              <lightning-input name="sales-rep" label="Sales Rep" variant="label-hidden" value={asset.salesRep}>
+              <lightning-input name="sales-rep" label="Sales Rep" variant="label-hidden" value={closingdetail.Sales_Representative__r.Name}>
               </lightning-input>
             </div>
           </div>
           <div class="mt-20">
             <label>Is this a developer sale?</label>
             <div class="mt-10">
-              <lightning-input name="dev-sale" label="Developer Sale" variant="label-hidden" value={developerSale}>
-              </lightning-input>
+              <!--<lightning-input name="dev-sale" label="Developer Sale" variant="label-hidden" value={closingdetail.Developer_Deal__c}>
+              </lightning-input>-->
+              {closingdetail.Developer_Deal__c}
+              <lightning-combobox variant="label-hidden"
+                                  name="progress"
+                                  value={closingdetail.Developer_Deal__c}
+                                  placeholder="Select Progress"
+                                  options={developerDealOptions}
+                                  onchange={handleDeveloperDealChange} ></lightning-combobox>
             </div>
           </div>
           <div class="mt-20">
             <label>Is this a reservation?</label>
             <div class="mt-10">
-              <lightning-input name="dev-sale" label="Developer Sale" variant="label-hidden" value={developerSale}>
+              <lightning-input name="dev-sale" label="Developer Sale" variant="label-hidden" value={reservation}>
               </lightning-input>
             </div>
           </div>
@@ -54,7 +56,7 @@
             <div class="modal__container__cancel" onclick={handleCancel}>
               Cancel
             </div>
-            <button class="button-primary">Continue</button>
+            <button class="button-primary" >Continue</button>
           </div>
         </div>
       </div>

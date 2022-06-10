@@ -20,7 +20,7 @@
           {asset.Name}
         </div>
         <div>
-          {asset.Condo_Price__c}
+          <lightning-formatted-number value={asset.Condo_Price__c} format-style="currency" currency-code="USD"></lightning-formatted-number>
         </div>
       </div>
 
@@ -31,7 +31,7 @@
             {parking.Type__c}
           </div>
           <div>
-            {parking.Price__c}
+            <lightning-formatted-number value={parking.Price__c} format-style="currency" currency-code="USD"></lightning-formatted-number>
           </div>
         </div>
       </template>
@@ -43,7 +43,7 @@
             {extra.name}
           </div>
           <div>
-            {extra.Price__c}
+            <lightning-formatted-number value={extra.Price__c} format-style="currency" currency-code="USD"></lightning-formatted-number>
           </div>
         </div>
       </template>
@@ -123,7 +123,7 @@
         </c-mas-custom-table>
       </div>
       <div class="table-footer">
-        Summary: <span class="table-footer__total">${amountTotal} ({percentTotal}%)</span>
+        Summary: <span class="table-footer__total">{amountTotal} ({percentTotal}%)</span>
       </div>
     </div>
 

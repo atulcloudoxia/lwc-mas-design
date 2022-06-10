@@ -3,7 +3,7 @@
 
     <!-- Heading -->
     <div class="heading">
-      <h1><span>Review /</span> {asset.name}</h1>
+      <h1><span>Review /</span> {asset.Name}</h1>
     </div>
 
     <!-- Summary -->
@@ -13,7 +13,7 @@
           {asset.Name}
         </div>
         <div>
-          {asset.Condo_Price__c}
+          <lightning-formatted-number value={asset.Condo_Price__c} format-style="currency" currency-code="USD"></lightning-formatted-number>
         </div>
       </div>
       <!-- Example parking line-item start (not sure how data is managed)-->
@@ -23,7 +23,7 @@
             {parking.Type__c}
           </div>
           <div>
-            {parking.Price__c}
+            <lightning-formatted-number value={parking.Price__c} format-style="currency" currency-code="USD"></lightning-formatted-number>
           </div>
         </div>
       </template>
@@ -35,7 +35,7 @@
             {extra.name}
           </div>
           <div>
-            {extra.Price__c}
+            <lightning-formatted-number value={extra.Price__c} format-style="currency" currency-code="USD"></lightning-formatted-number>
           </div>
         </div>
       </template>
@@ -45,7 +45,7 @@
           Total
         </div>
         <div>
-          {amountTotalLineItem}
+          <lightning-formatted-number value={amountTotalLineItem} format-style="currency" currency-code="USD"></lightning-formatted-number>
         </div>
       </div>
     </div>

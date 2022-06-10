@@ -16,6 +16,7 @@ export default class ReviewPage extends LightningElement {
      * Get the total line item
      */
    get amountTotalLineItem() {
+     console.log(this.asset);
     let total= parseFloat(this.asset.Condo_Price__c);
     
     console.log(total);

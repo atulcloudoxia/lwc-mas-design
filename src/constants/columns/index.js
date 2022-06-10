@@ -176,6 +176,7 @@ const COLUMNS_DEPOSIT = [
   {
     label: 'Amount',
     fieldName: 'Deposit_Amount__c',
+    type: 'currency',
     editable: true
   },
   {
@@ -340,6 +341,7 @@ const REVIEW_DEPOSITS_COLUMNS = [
   {
     label: 'Amount',
     fieldName: 'Deposit_Amount__c',
+    type: 'currency',
     editable: false
   },
   {
