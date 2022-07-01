@@ -46,6 +46,8 @@ export default class PageAsset extends LightningElement {
   handleSalesRepSelect(event) {
       var selectedSalesRepId = event.detail.recordId;
       console.log('selectedSalesRepId: '+selectedSalesRepId);
-      this.closingdetail.Sales_Representative__c = selectedSalesRepId;
+      var closingDetail = JSON.parse(JSON.stringify(this.closingdetail));
+      closingDetail.Sales_Representative__c = selectedSalesRepId;
+      this.closingDetail = closingDetail;
   }
 }
