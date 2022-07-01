@@ -39,13 +39,13 @@ export default class PageAsset extends LightningElement {
       this.closingdetail = closingdetail;
   }
   handleAssetSelect(event) {
-    var selectedAssetId = event.detail.recordId;
-    console.log('selectedAssetId: '+selectedAssetId);
-    this.asset =  event.detail.record;
+      var selectedAssetId = event.detail.recordId;
+      console.log('selectedAssetId: '+selectedAssetId);
+      this.asset =  event.detail.record;
   }
   handleSalesRepSelect(event) {
-    var selectedSalesRepId = event.detail.recordId;
-    console.log('selectedSalesRepId: '+selectedSalesRepId);
-    this.closingdetail.Sales_Representative__c = selectedSalesRepId;
+      var selectedSalesRepId = event.detail.recordId;
+      console.log('selectedSalesRepId: '+selectedSalesRepId);
+      this.closingdetail.Sales_Representative__c = selectedSalesRepId;
   }
 }
