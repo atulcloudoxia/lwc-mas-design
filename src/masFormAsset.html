@@ -8,11 +8,22 @@
         </div>
         <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
           <div>
-            <label>Asset</label>
+            <!-- <label>Asset</label> -->
             <div class="mt-10">
-              <lightning-input name="search-contact" label="Search Contact" variant="label-hidden"
+              <!--<lightning-input name="search-contact" label="Search Contact" variant="label-hidden"
                 value={asset.Name}>
-              </lightning-input>
+              </lightning-input>-->
+              <c-mas-custom-lookup 
+                  placeholder="Search Asset"
+                  iconname="standard:home" 
+                  object-name="Asset" 
+                  searchfield="Name" 
+                  fieldstoquery="" 
+                  data-index={index} 
+                  onselectedrec={handleAssetSelect}
+                  filter-conditions=""
+                  blank="true">
+              </c-mas-custom-lookup>
             </div>
           </div>
           <div class="mt-20">
@@ -25,8 +36,19 @@
           <div class="mt-20">
             <label>Sales Representative</label>
             <div class="mt-10">
-              <lightning-input name="sales-rep" label="Sales Rep" variant="label-hidden" value={closingdetail.Sales_Representative__r.Name}>
-              </lightning-input>
+              <!--<lightning-input name="sales-rep" label="Sales Rep" variant="label-hidden" value={closingdetail.Sales_Representative__r.Name}>
+              </lightning-input>-->
+              <c-mas-custom-lookup 
+                  placeholder="Search Sales Rep"
+                  iconname="standard:service_resource" 
+                  object-name="User" 
+                  searchfield="Name" 
+                  fieldstoquery="Email, Phone" 
+                  data-index={index} 
+                  onselectedrec={handleSalesRepSelect}
+                  filter-conditions=""
+                  blank="true">
+              </c-mas-custom-lookup>
             </div>
           </div>
           <div class="mt-20">

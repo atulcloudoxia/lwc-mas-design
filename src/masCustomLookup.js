@@ -170,7 +170,7 @@ export default class CustomLookup extends LightningElement {
             "selectedrec",
             {
                 //detail : selectedRecordId
-                detail : { recordId : selectedRecordId, index : this.index, relationshipfield : this.relationshipfield}
+                detail : { recordId : selectedRecordId, index : this.index, relationshipfield : this.relationshipfield, record:result[this.index]}
             }
         );
         this.dispatchEvent(selectedRecordEvent);

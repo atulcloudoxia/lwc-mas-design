@@ -38,4 +38,14 @@ export default class PageAsset extends LightningElement {
       closingdetail.Developer_Deal__c = event.detail.value;
       this.closingdetail = closingdetail;
   }
+  handleAssetSelect(event) {
+    var selectedAssetId = event.detail.recordId;
+    console.log('selectedAssetId: '+selectedAssetId);
+    this.asset =  event.detail.record;
+  }
+  handleSalesRepSelect(event) {
+    var selectedSalesRepId = event.detail.recordId;
+    console.log('selectedSalesRepId: '+selectedSalesRepId);
+    this.closingdetail.Sales_Representative__c = selectedSalesRepId;
+  }
 }

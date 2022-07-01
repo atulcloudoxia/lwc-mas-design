@@ -43,7 +43,9 @@
             data={parkingdata}
             columns={columns}
             onrowaction={handleRowAction}
-            hide-checkbox-column>
+            hide-checkbox-column
+            onsave={handleParkingSave}
+            draft-values={draftParkingValues}>
           </c-mas-custom-table>
           <div class="mt-30">
             <h2>Add Parking</h2>
@@ -60,7 +62,9 @@
             data={extradata}
             columns={columnsExtras}
             onrowaction={handleRowAction}
-            hide-checkbox-column>
+            hide-checkbox-column
+            onsave={handleExtrasSave}
+            draft-values={draftExtrasValues}>
           </c-mas-custom-table>
           <div class="mt-30">
             <h2>Add Extra</h2>

@@ -302,4 +302,52 @@ export default class PageAsset extends LightningElement {
     else if(this.activeTab=='parking')
     this.handleRefresh('parkings');
   }
+
+
+  @track draftParkingValues = [];
+  handleParkingSave(event){
+    //console.log(event.detail.draftValues);
+    const recordInputs =  event.detail.draftValues.slice().map(draft => {
+        const fields = Object.assign({}, draft);
+        return { fields };
+    });
+    //console.log(recordInputs);
+    var parkingdata = JSON.parse(JSON.stringify(this.parkingdata));
+    parkingdata.forEach(element => {
+      recordInputs.forEach(draft => {
+        if(draft.fields.id==element.id) {
+          for (const [key, value] of Object.entries(draft.fields)) {
+            element[key] = value;
+          }
+        }
+        
+      });
+    });
+    this.draftParkingValues = [];
+    this.parkingdata = parkingdata;
+     
+  }
+  @track draftExtrasValues = [];
+  handleExtraSave(event){
+    //console.log(event.detail.draftValues);
+    const recordInputs =  event.detail.draftValues.slice().map(draft => {
+        const fields = Object.assign({}, draft);
+        return { fields };
+    });
+    //console.log(recordInputs);
+    var extradata = JSON.parse(JSON.stringify(this.extradata));
+    extradata.forEach(element => {
+      recordInputs.forEach(draft => {
+        if(draft.fields.id==element.id) {
+          for (const [key, value] of Object.entries(draft.fields)) {
+            element[key] = value;
+          }
+        }
+        
+      });
+    });
+    this.draftExtrasValues = [];
+    this.extradata = extradata;
+     
+  }
 }

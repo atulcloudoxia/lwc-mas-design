@@ -183,4 +183,27 @@ export default class DepositPage extends LightningElement {
       });
       this.dispatchEvent(rowAddEvent);
     }
+    @track draftDepositValues = [];
+    handleDepositSave(event){
+      //console.log(event.detail.draftValues);
+      const recordInputs =  event.detail.draftValues.slice().map(draft => {
+          const fields = Object.assign({}, draft);
+          return { fields };
+      });
+      //console.log(recordInputs);
+      var data = JSON.parse(JSON.stringify(this.data));
+      data.forEach(element => {
+        recordInputs.forEach(draft => {
+          if(draft.fields.id==element.id) {
+            for (const [key, value] of Object.entries(draft.fields)) {
+              element[key] = value;
+            }
+          }
+          
+        });
+      });
+      this.draftDepositValues = [];
+      this.data = data;
+      
+    }
 }
