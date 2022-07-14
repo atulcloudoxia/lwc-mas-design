@@ -1,0 +1,10 @@
+<template>
+  <template if:false={typeAttributes.status}>
+    <lightning-badge label="Missing Information" icon-name="utility:warning" class="slds-theme_warning">
+    </lightning-badge>
+  </template>
+  <template if:true={typeAttributes.status}>
+    <lightning-icon icon-name="utility:success" alternative-text="Missing Information" variant="success"
+      title="Complete" size="x-small"></lightning-icon>
+  </template>
+</template>

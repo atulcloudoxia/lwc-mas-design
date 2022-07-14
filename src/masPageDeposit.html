@@ -104,6 +104,7 @@
           placeholder="Select Schedule"
           variant="label-hidden"
           options={optionsSchedule}
+          value={selectedDepositScheduleValue}
           onchange={handleScheduleChange}>
         </lightning-combobox>
       </div>
@@ -120,7 +121,7 @@
       <hr />
       <div class="mt-10">
         <c-mas-custom-table 
-        key-field="id" 
+        key-field="Id" 
         data={data} 
         columns={columns} 
         onrowaction={handleRowAction} 

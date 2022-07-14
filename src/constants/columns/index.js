@@ -127,7 +127,7 @@ const COLUMNS_EXTRAS = [
     label: 'Price',
     fieldName: 'Price__c',
     type: 'currency',
-    editable: false,
+    editable: true,
     hideDefaultActions:true,
     sortable:true
   },
@@ -167,7 +167,23 @@ const COLUMNS_DEPOSIT = [
     fieldName: 'Deposit_To__c',
     type:'select',
     editable: true
+    
   },
+  /* {
+    label: 'Deposit To', 
+    fieldName: 'Deposit_To__c', 
+    type: 'picklist', 
+    typeAttributes: {
+        placeholder: 'Deposit To', options: [
+            { label: 'Hot', value: 'Hot' },
+            { label: 'Warm', value: 'Warm' },
+            { label: 'Cold', value: 'Cold' },
+        ] // list of all picklist options
+        , value: { fieldName: 'Deposit_To__c' } // default value for picklist
+        , context: { fieldName: 'd' } // binding account Id with context variable to be returned back
+    },
+    editable: true
+}, */
   {
     label: 'Deposit For',
     fieldName: 'Deposit_For__c',

@@ -325,7 +325,7 @@ export default class PageAsset extends LightningElement {
     });
     this.draftParkingValues = [];
     this.parkingdata = parkingdata;
-     
+    this.handleDataUpdate();
   }
   @track draftExtrasValues = [];
   handleExtraSave(event){
@@ -348,6 +348,6 @@ export default class PageAsset extends LightningElement {
     });
     this.draftExtrasValues = [];
     this.extradata = extradata;
-     
+    this.handleDataUpdate();
   }
 }
