@@ -17,8 +17,12 @@ export default class DepositPage extends LightningElement {
     @track selectedDepositSchedule;
     @track selectedDepositScheduleValue;
     
+    handleEligibleCheckbox(e){
+        this.closingdetail.Eligible_for_tax_rebate__c= e.target.checked;  
+        this.handleDataUpdate(); 
+    }
     connectedCallback(){
-        this.closingdetail = JSON.parse(JSON.stringify(this.closingdetail));
+        this.closingdetail  = JSON.parse(JSON.stringify(this.closingdetail));
         console.log('closingdetail');
         console.log(this.closingdetail);
       this.asset = JSON.parse(JSON.stringify(this.asset));
@@ -127,7 +131,7 @@ export default class DepositPage extends LightningElement {
       depositScheduleNamePicklist.forEach(function(depositScheduleName){
         console.log(depositScheduleName);
         if(depositScheduleName.value == depositSchedule){
-            selectedDepositSchedule = depositScheduleName;
+            selectedDepositSchedule = JSON.parse(JSON.stringify(depositScheduleName));
             
         }
       });
@@ -135,14 +139,14 @@ export default class DepositPage extends LightningElement {
       console.log(selectedDepositSchedule);
       if(selectedDepositSchedule) {
         this.selectedDepositScheduleValue = selectedDepositSchedule.value;
-          var closingDetail = this.closingdetail;
+          var closingDetail = JSON.parse(JSON.stringify(this.closingdetail));
           closingDetail.Primary_Usage__c = 'Primary Residence';//REVIEW THIS LINE (selectedDepositSchedule!=undefined && selectedDepositSchedule!=null?selectedDepositSchedule.Primary_Usage_Type__c:null);
 
           if(closingDetail.Primary_Usage__c != "Primary Residence") {
               selectedDepositSchedule.Eligible_for_Tax_Rebates__c = false;
           }
           closingDetail.Eligible_for_tax_rebate__c = selectedDepositSchedule.Eligible_for_Tax_Rebates__c;
-          this.closingdetail.Deposit_Schedule__c = selectedDepositSchedule.value;
+          closingDetail.Deposit_Schedule__c = selectedDepositSchedule.value;
           this.closingdetail = closingDetail;
           this.selectedDepositSchedule = selectedDepositSchedule;
           console.log('Calling Update Old Deposit');
@@ -231,6 +235,7 @@ export default class DepositPage extends LightningElement {
     }
 
     handleDataUpdate(){
+        console.log(JSON.parse(JSON.stringify(this.closingdetail)));
       let rowAddEvent = new CustomEvent('updatedata',{
         detail: {
           depositdata: this.data,
@@ -252,6 +257,8 @@ export default class DepositPage extends LightningElement {
       //console.log(recordInputs);
       var data = JSON.parse(JSON.stringify(this.data));
       var i = 0;
+      var needToUpdatePercent = false;
+      var needToUpdateAmount = false;
       data.forEach(element => {
           
         recordInputs.forEach(draft => {
@@ -268,7 +275,15 @@ export default class DepositPage extends LightningElement {
             if((draft.fields.Id!=undefined && element.Id!=undefined && draft.fields.Id==element.Id) || i == index) {
         
                 for (const [key, value] of Object.entries(draft.fields)) {
-                    if(key!='Id')
+                    if(key=='Deposit_Amount__c'){
+                        element[key] = value;
+                        needToUpdateAmount=true;
+                    }
+                    else if(key=='Percent__c'){
+                        element['depositPerJS'] = parseFloat(value)*100;
+                        element[key] = parseFloat(value) ;
+                        needToUpdatePercent=true;
+                    }else if(key!='Id')
                     element[key] = value;
                 }
     
@@ -279,6 +294,15 @@ export default class DepositPage extends LightningElement {
       this.draftDepositValues = [];
       console.table(data);
       this.data = data;
+
+      
+      if(needToUpdateAmount || needToUpdatePercent){
+        if(needToUpdateAmount )this.updateDepositAmount();
+        if(needToUpdatePercent)this.updateDepositPercent();
+        this.calculatePercentage();
+      }
+      
+
       this.saveDeposits();
       //this.handleDataUpdate();
     }
@@ -289,7 +313,7 @@ export default class DepositPage extends LightningElement {
       var selectedDepositSchedule = JSON.parse(JSON.stringify(this.selectedDepositSchedule));
       var asset = this.asset;
       console.log("MakeASaleDeposit.getDepositReferencePrice | asset " + JSON.stringify(asset));
-console.log(selectedDepositSchedule);
+        console.log(selectedDepositSchedule);
       var referencePrice = 0;
       if (selectedDepositSchedule.Calculate_On_Asset_Only__c) {
           console.log('MakeASaleDeposit.getDepositReferencePrice | Calculate_On_Asset_Only__c is true');
@@ -310,8 +334,9 @@ console.log(selectedDepositSchedule);
   @track depositPercent;
   @track isContainsQuebec;
   updateDepositAmount(){
+      console.log('-----Start updateDepositAmount----');
       var referencePrice = this.getDepositReferencePrice();
-      var depositList = this.data;
+      var depositList = JSON.parse(JSON.stringify(this.data));
       var depositSum = 0;
       for (var i = 0; i < depositList.length; i++) {
           var deposit = depositList[i];
@@ -322,12 +347,14 @@ console.log(selectedDepositSchedule);
               deposit.depositPerJS = Number(deposit.Deposit_Amount__c/referencePrice * 100).toFixed(6);
               depositSum = depositSum + deposit.Deposit_Amount__c;
           }
+          console.log(deposit);
       }
       this.depositSum = depositSum;
       this.data = depositList;
 
       var depositPercent = Number(depositSum/referencePrice * 100).toFixed(6);
       this.depositPercent = " (" + depositPercent + "%)";
+      console.log('-----End updateDepositAmount----');
   }
 
   @track showDepositComplianceIssue = false;
@@ -370,17 +397,19 @@ console.log(selectedDepositSchedule);
               deposit.Deposit_Amount__c = parseFloat((deposit.depositPerJS * referencePrice)/100).toFixed(6);
               depositSum = parseFloat(depositSum) + parseFloat(deposit.Deposit_Amount__c);
           }
+          console.log(deposit);
       }
       this.depositSum = depositSum;
       this.data = depositList;
       var depositPercent = Number(depositSum/referencePrice * 100).toFixed(6);
       this.depositPercent= "(" + depositPercent + "%)";
+
   }
 
   calculatePercentage() {
       var referencePrice = this.getDepositReferencePrice();
 
-      var depositList = this.data;
+      var depositList = JSON.parse(JSON.stringify(this.data));
       for(var i=0 ; i < depositList.length; i++){
           depositList[i].depositPerJS = Number((depositList[i].Deposit_Amount__c/referencePrice) * 100).toFixed(6);
       }
