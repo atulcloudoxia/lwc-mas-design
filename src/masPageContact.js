@@ -69,7 +69,7 @@ export default class ContactPage extends LightningElement {
    */
   editRow(row) {
     const { id } = row;
-
+console.table(row);
     this.selectedRow = row;
     this.isCorporation = row.role === 'corporation';
     this.editContact = true;
@@ -113,5 +113,25 @@ export default class ContactPage extends LightningElement {
       composed: false
     });
     this.dispatchEvent(rowAddEvent);
+  }
+  handleEditFormSave(event){
+    
+    
+    if(event.detail.contact!=null){
+      var contact = event.detail.contact;
+      console.table(contact);
+      contact.Name = contact.FirstName +' '+contact.LastName;
+      var contactList = [...this.data];
+      var index = contactList.findIndex(x => x.Id ===contact.Id);
+
+      console.log(index);
+      
+      contactList.splice(index,1,contact);
+      this.data = contactList;
+      console.table(JSON.parse(JSON.stringify(this.data)));
+      this.handleCloseForm();
+      this.handleDataUpdate();
+    }
+    
   }
 }

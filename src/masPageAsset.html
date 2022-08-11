@@ -43,12 +43,18 @@
             data={parkingdata}
             columns={columns}
             onrowaction={handleRowAction}
-            hide-checkbox-column>
+            hide-checkbox-column
+            onsave={handleParkingSave}
+            draft-values={draftParkingValues}>
           </c-mas-custom-table>
           <div class="mt-30">
             <h2>Add Parking</h2>
             <hr />
-            <c-mas-table-parking-add available-parkings = {availableParkings} onrowadd={handleParkingRowAdd}></c-mas-table-parking-add>
+            <c-mas-table-parking-add asset = {asset} 
+                          closing-detail = {closingdetail} 
+                          total-max-parkings = {totalMaxParkings} 
+                          total-max-lockers = {totalMaxLockers} 
+                          available-parkings = {availableParkings} onrowadd={handleParkingRowAdd}></c-mas-table-parking-add>
           </div>
         </lightning-tab>
 
@@ -60,12 +66,18 @@
             data={extradata}
             columns={columnsExtras}
             onrowaction={handleRowAction}
-            hide-checkbox-column>
+            hide-checkbox-column
+            onsave={handleExtrasSave}
+            draft-values={draftExtrasValues}>
           </c-mas-custom-table>
           <div class="mt-30">
             <h2>Add Extra</h2>
             <hr />
-            <c-mas-table-extras-add available-extras = {availableExtras} onrowadd={handleExtraRowAdd}></c-mas-table-extras-add>
+            <c-mas-table-extras-add 
+                      asset = {asset} 
+                      closing-detail = {closingdetail} 
+                       
+                      available-extras = {availableExtras} onrowadd={handleExtraRowAdd}></c-mas-table-extras-add>
           </div>
         </lightning-tab>
       </lightning-tabset>
@@ -75,7 +87,7 @@
 
   <!-- Add/Edit Asset Form -->
   <template if:true={addAsset}>
-    <c-mas-form-asset asset={asset} closingdetail={closingdetail} onclose={handleCloseForm}></c-mas-form-asset>
+    <c-mas-form-asset asset={asset} closingdetail={closingdetail} onclose={handleCloseForm} onupdatedata={handleSubmitAssetForm}></c-mas-form-asset>
   </template>
 
 </template>

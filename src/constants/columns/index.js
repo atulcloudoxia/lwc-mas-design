@@ -1,36 +1,36 @@
 const COLUMNS_CONTACTS = [
   {
     label: 'Role',
-    fieldName: 'role',
+    fieldName: 'Role',
     hideDefaultActions: true,
     sortable: true
   },
   {
     label: 'Name',
-    fieldName: 'name',
+    fieldName: 'Name',
     hideDefaultActions: true,
     sortable: true
   },
   {
     label: 'Email',
-    fieldName: 'email',
+    fieldName: 'Email',
     type: 'email',
     hideDefaultActions: true,
     sortable: true
   },
   {
     label: 'Phone',
-    fieldName: 'phone',
+    fieldName: 'Phone',
     hideDefaultActions: true,
     sortable: true
   },
   {
     label: 'Status',
-    fieldName: 'status',
+    fieldName: 'Status',
     type: 'customStatus',
     typeAttributes: {
       status: {
-        fieldName: 'isComplete'
+        fieldName: 'IsComplete'
       }
     },
   },
@@ -127,7 +127,7 @@ const COLUMNS_EXTRAS = [
     label: 'Price',
     fieldName: 'Price__c',
     type: 'currency',
-    editable: false,
+    editable: true,
     hideDefaultActions:true,
     sortable:true
   },
@@ -167,7 +167,23 @@ const COLUMNS_DEPOSIT = [
     fieldName: 'Deposit_To__c',
     type:'select',
     editable: true
+    
   },
+  /* {
+    label: 'Deposit To', 
+    fieldName: 'Deposit_To__c', 
+    type: 'picklist', 
+    typeAttributes: {
+        placeholder: 'Deposit To', options: [
+            { label: 'Hot', value: 'Hot' },
+            { label: 'Warm', value: 'Warm' },
+            { label: 'Cold', value: 'Cold' },
+        ] // list of all picklist options
+        , value: { fieldName: 'Deposit_To__c' } // default value for picklist
+        , context: { fieldName: 'd' } // binding account Id with context variable to be returned back
+    },
+    editable: true
+}, */
   {
     label: 'Deposit For',
     fieldName: 'Deposit_For__c',

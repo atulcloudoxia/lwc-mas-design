@@ -3,7 +3,7 @@ import { LightningElement, track, api } from 'lwc';
 export default class CustomLookup extends LightningElement {
     
     @track records;
-    @track result=[{"Id":"0035x000005BMvoAAG","Name":"Andrew Hamilton"},{"Id":"0035x000005BMsfAAG","Name":"Tao Nguyen"},{"Id":"0035x000005BModAAG","Name":"Test Contact 1"},{"Id":"0035x000005BMqtAAG","Name":"a1s5x000005BMqt"},{"Id":"0035x000005BNa8AAG","Name":"Contact Test 2"},{"Id":"0035x000005BNa9AAG","Name":"Test 3"},{"Id":"0035x000005BNsWAAW","Name":"Contact1"},{"Id":"0035x000005BNslAAG","Name":"Andrew"},{"Id":"0035x000005BNuXAAW","Name":"Testing 123"},{"Id":"0035x000004hboRAAQ","Name":"Test POST 2"},{"Id":"0035x000005BLejAAG","Name":"Contact 1"}];
+    @track result=[{"Id":"0035x000005BMvoAAG","Name":"Andrew Hamilton"},{"Id":"0035x000005BMsfAAG","Name":"Tao Nguyen"},{"Id":"0035x000005BModAAG","Name":"Test Contact 1"},{"Id":"0035x000005BMqtAAG","Name":"a1s5x000005BMqt"},{"Id":"0035x000005BNa8AAG","Name":"Contact Test 2"},{"Id":"0035x000005BNa9AAG","Name":"Test 3"},{"Id":"0035x000005BNsWAAW","Name":"Contact1"},{"Id":"0035x000005BNslAAG","Name":"Andrew"},{"Id":"0035x000005BNuXAAW","Name":"Testing 123"},{"Id":"0035x000004hboRAAQ","Name":"Test POST 2"},{"Id":"0035x000005BLejAAG","Name":"Contact 1"},{"Id":"005AAAAAAAAAAAAP","Name":"Tao Nhan"}];
     @track error;
     @track selectedRecord;
     @api displayOnLoad;
@@ -23,6 +23,7 @@ export default class CustomLookup extends LightningElement {
         return this.selectedRecord;
     }
     set selectedRecordId(value) {
+        this.records = this.result;
         if(this.records)
         this.selectedRecord = this.records.find( record => record.Id === value);
     }
@@ -170,7 +171,7 @@ export default class CustomLookup extends LightningElement {
             "selectedrec",
             {
                 //detail : selectedRecordId
-                detail : { recordId : selectedRecordId, index : this.index, relationshipfield : this.relationshipfield}
+                detail : { recordId : selectedRecordId, index : this.index, relationshipfield : this.relationshipfield, record:this.selectedRecord}
             }
         );
         this.dispatchEvent(selectedRecordEvent);
