@@ -1,0 +1,79 @@
+<template>
+  <div class="page-container">
+
+    <!-- Heading -->
+    <div class="heading">
+      <h1><span>Asset /</span> {asset.name}</h1>
+      <div class="heading__actions">
+        <button class="button-secondary" onclick={handleEditAsset}>Edit</button>
+      </div>
+    </div>
+
+    <!-- Summary Table -->
+    <div class="table__items mt-10">
+      <div>
+        <span>
+         <b>Sales Representative</b><br/>
+         {asset.salesRep}
+        </span>
+        <span>
+         <b>Lease Start Date</b><br/>
+         {asset.leastStartDate}
+        </span>
+        <span>
+         <b>Term (months)</b><br/>
+         {asset.term}
+        </span>
+        <span>
+         <b>Monthly Rate</b><br/>
+         {asset.rate}
+        </span>
+      </div>
+    </div>
+
+    <div class="mt-30">
+      <lightning-tabset active-tab-value="inclusions">
+
+        <!-- Extras Table -->
+        <lightning-tab label="Inclusions" value="inclusions">
+          <c-mas-custom-table
+            key-field="id"
+            data={inclusionsdata}
+            columns={columnsInclusions}
+            onrowaction={handleRowAction}
+            hide-checkbox-column>
+          </c-mas-custom-table>
+          <div class="mt-30">
+            <h2>Add Inclusion</h2>
+            <hr />
+            <c-mas-table-inclusions-add></c-mas-table-inclusions-add>
+          </div>
+        </lightning-tab>
+
+
+        <!-- Extras Table -->
+        <lightning-tab label="Services" value="services">
+          <c-mas-custom-table
+            key-field="id"
+            data={servicesdata}
+            columns={columnsServices}
+            onrowaction={handleRowAction}
+            hide-checkbox-column>
+          </c-mas-custom-table>
+          <div class="mt-30">
+            <h2>Add Service</h2>
+            <hr />
+            <c-mas-table-services-add></c-mas-table-services-add>
+          </div>
+        </lightning-tab>
+      </lightning-tabset>
+
+    </div>
+  </div>
+
+  <!-- Add/Edit Asset Form -->
+  <template if:true={addAsset}>
+    <c-mas-form-rental-asset asset={asset} onclose={handleCloseForm}></c-mas-form-rental-asset>
+  </template>
+
+</template>

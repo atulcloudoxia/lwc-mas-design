@@ -1,6 +1,6 @@
 import { track, api, LightningElement } from 'lwc';
 
-export default class FormAsset extends LightningElement {
+export default class FormRentalAsset extends LightningElement {
 
   @api asset;
 

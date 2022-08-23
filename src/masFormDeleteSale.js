@@ -4,7 +4,7 @@ import {
 } from './constants';
 
 
-export default class DeleteSaleForm extends LightningElement {
+export default class FormDeleteSale extends LightningElement {
 
   @api data;
   @api iscorporation;

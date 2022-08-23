@@ -1,6 +1,6 @@
 import { LightningElement, track, api } from 'lwc';
 
-export default class AddContactForm extends LightningElement {
+export default class FormAddContact extends LightningElement {
 
   /**
    * Handle add contact form

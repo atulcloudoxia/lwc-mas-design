@@ -61,7 +61,7 @@ const columns = [
     }
 ];
 
-export default class BasicDatatable extends LightningElement {
+export default class TableExtrasAdd extends LightningElement {
     columns = columns;
 
     @track data = [

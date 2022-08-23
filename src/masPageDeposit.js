@@ -2,7 +2,7 @@ import { LightningElement, track, api } from 'lwc';
 import { COLUMNS_DEPOSIT } from './constants';
 import { findRowById } from './utils';
 
-export default class DepositPage extends LightningElement {
+export default class PageDeposit extends LightningElement {
 
     columns = COLUMNS_DEPOSIT;
 

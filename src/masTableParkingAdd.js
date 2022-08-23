@@ -1,16 +1,13 @@
 import { LightningElement, track } from 'lwc';
 
-const rowActions = [
-  {
-    label: 'Delete Varia',
-    name: 'delete'
-  }
-];
-
 const columns = [
-  { label: 'Type', fieldName: 'type'},
-  { label: 'Assigned Spot', fieldName: 'assigned' },
-  { label: 'Asset Price', fieldName: 'price', type: 'currency'},
+  { label: 'Type', fieldName: 'type', hideDefaultActions:true },
+  { label: 'Assigned Spot', fieldName: 'assigned', hideDefaultActions:true },
+  { label: 'Price', fieldName: 'price', type: 'currency', hideDefaultActions:true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
   {
     type: "button-icon",
     typeAttributes: {
@@ -31,7 +28,7 @@ const columns = [
   }
 ];
 
-export default class masTableParkingAdd extends LightningElement {
+export default class TableParkingAdd extends LightningElement {
     columns = columns;
 
     @track data = [

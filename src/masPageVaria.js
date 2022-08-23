@@ -3,7 +3,7 @@ import { COLUMNS_VARIA, COLUMNS_CHANGE_ORDERS } from './constants';
 import { findRowById } from './utils';
 
 
-export default class VariaPage extends LightningElement {
+export default class PageVaria extends LightningElement {
 
   columnsVaria = COLUMNS_VARIA;
   columnsChangeOrders = COLUMNS_CHANGE_ORDERS;
@@ -11,9 +11,14 @@ export default class VariaPage extends LightningElement {
   @api variadata;
   @api changeorderdata;
   @api asset;
+  @api type;
 
   @track addVaria=false;
   @track addChangeOrder=false;
+
+  get isRental() {
+    return this.type === 'rental';
+  }
 
   /**
    * Search varia

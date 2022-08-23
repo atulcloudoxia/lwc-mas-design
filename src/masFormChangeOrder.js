@@ -1,6 +1,6 @@
 import { LightningElement, api, track } from 'lwc';
 
-export default class AddChangeOrderForm extends LightningElement {
+export default class FormAddChangeOrder extends LightningElement {
 
     /**
      * Handle Submit
@@ -9,7 +9,7 @@ export default class AddChangeOrderForm extends LightningElement {
      */
     handleSubmit(e) {
       e.preventDefault();
-      
+
     }
 
     /**

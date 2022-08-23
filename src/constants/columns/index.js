@@ -72,7 +72,10 @@ const COLUMNS_PARKING = [
     type: 'currency',
     editable: true,
     hideDefaultActions:true,
-    sortable:true
+    sortable:true,
+    cellAttributes: {
+      alignment: 'left',
+    },
   },
   {
     type: "button-icon",
@@ -88,6 +91,237 @@ const COLUMNS_PARKING = [
       alignment: 'right',
     },
   },
+];
+
+const COLUMNS_SERVICES = [
+  {
+    label: 'Name',
+    fieldName: 'name',
+    editable: true,
+    hideDefaultActions:true
+  },
+  {
+    label: 'Contact Name',
+    fieldName: 'contact_name',
+    editable: true,
+    hideDefaultActions:true
+  },
+  {
+    label: 'Description',
+    fieldName: 'description',
+    editable: true,
+    hideDefaultActions:true
+  },
+  {
+    label: 'Monthly Fee',
+    fieldName: 'fee',
+    type: 'currency',
+    hideDefaultActions:true,
+    editable: true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
+  {
+    type: "button-icon",
+    typeAttributes: {
+      label: 'Remove',
+      name: 'delete',
+      title: 'Remove',
+      disabled: false,
+      value: 'delete',
+      iconName: 'utility:delete'
+    },
+    cellAttributes: {
+      alignment: 'right',
+    },
+  },
+];
+
+const REVIEW_SERVICES_COLUMNS = [
+  {
+    label: 'Name',
+    fieldName: 'name',
+    editable: true,
+    hideDefaultActions:true
+  },
+  {
+    label: 'Contact Name',
+    fieldName: 'contact_name',
+    editable: true,
+    hideDefaultActions:true
+  },
+  {
+    label: 'Description',
+    fieldName: 'description',
+    editable: true,
+    hideDefaultActions:true
+  },
+  {
+    label: 'Monthly Fee',
+    fieldName: 'fee',
+    type: 'currency',
+    hideDefaultActions:true,
+    editable: true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  }
+];
+
+const COLUMNS_ADD_SERVICE = [
+  {
+    label: 'Name',
+    fieldName: 'name',
+    hideDefaultActions:true
+  },
+  {
+    label: 'Contact Name',
+    fieldName: 'contact_name',
+    hideDefaultActions:true
+  },
+  {
+    label: 'Description',
+    fieldName: 'description',
+    hideDefaultActions:true
+  },
+  {
+    label: 'Monthly Fee',
+    fieldName: 'fee',
+    type: 'currency',
+    hideDefaultActions:true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
+  {
+    type: "button-icon",
+    typeAttributes: {
+      label: 'Add',
+      name: 'add',
+      title: 'Add',
+      disabled: false,
+      value: 'add',
+      iconPosition: 'left',
+      iconName: 'utility:add',
+      variant: 'success',
+      class:'addbutton',
+      iconClass: 'addbutton__icon'
+    },
+    cellAttributes: {
+      alignment: 'right',
+    },
+  }
+];
+
+const REVIEW_INCLUSIONS_COLUMNS = [
+  {
+    label: 'Type',
+    fieldName: 'type',
+    editable: false,
+    hideDefaultActions:true,
+    sortable:true
+  },
+  {
+    label: 'Assigned Spot',
+    fieldName: 'assigned',
+    editable: true,
+    hideDefaultActions:true,
+    sortable:true
+  },
+  {
+    label: 'Monthly Rent',
+    fieldName: 'price',
+    type: 'currency',
+    editable: true,
+    hideDefaultActions:true,
+    sortable:true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  }
+];
+
+const COLUMNS_INCLUSIONS = [
+  {
+    label: 'Type',
+    fieldName: 'type',
+    editable: false,
+    hideDefaultActions:true,
+    sortable:true
+  },
+  {
+    label: 'Assigned Spot',
+    fieldName: 'assigned',
+    editable: true,
+    hideDefaultActions:true,
+    sortable:true
+  },
+  {
+    label: 'Monthly Rent',
+    fieldName: 'price',
+    type: 'currency',
+    editable: true,
+    hideDefaultActions:true,
+    sortable:true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
+  {
+    type: "button-icon",
+    typeAttributes: {
+      label: 'Remove',
+      name: 'delete',
+      title: 'Remove',
+      disabled: false,
+      value: 'delete',
+      iconName: 'utility:delete'
+    },
+    cellAttributes: {
+      alignment: 'right',
+    },
+  },
+];
+
+const COLUMNS_ADD_INCLUSION = [
+  {
+    label: 'Type',
+    fieldName: 'type',
+    hideDefaultActions:true
+  },
+  {
+    label: 'Assigned Spot',
+    fieldName: 'assigned',
+    hideDefaultActions:true
+  },
+  {
+    label: 'Monthly Rent',
+    fieldName: 'price',
+    type: 'currency',
+    hideDefaultActions:true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
+  {
+    type: "button-icon",
+    typeAttributes: {
+      label: 'Add',
+      name: 'add',
+      title: 'Add',
+      disabled: false,
+      value: 'add',
+      iconPosition: 'left',
+      iconName: 'utility:add',
+      variant: 'success',
+      class:'addbutton',
+      iconClass: 'addbutton__icon'
+    },
+    cellAttributes: {
+      alignment: 'right',
+    },
+  }
 ];
 
 const COLUMNS_EXTRAS = [
@@ -145,6 +379,47 @@ const COLUMNS_EXTRAS = [
       alignment: 'right',
     },
   },
+];
+
+const COLUMNS_RENTAL_DEPOSIT = [
+  {
+    label: 'Due Date',
+    fieldName: 'date',
+    type: 'date',
+    editable: true,
+    hideDefaultActions:true,
+  },
+  {
+    label: 'Rent',
+    fieldName: 'subtotal',
+    type: 'currency',
+    editable: true,
+    hideDefaultActions:true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
+  {
+    label: 'Discount',
+    fieldName: 'discount',
+    type: 'currency',
+    editable: true,
+    hideDefaultActions:true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
+  {
+    label: 'Total',
+    fieldName: 'total',
+    type: 'currency',
+    editable: true,
+    hideDefaultActions:true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
+
 ];
 
 const COLUMNS_DEPOSIT = [
@@ -363,10 +638,17 @@ const REVIEW_DEPOSITS_COLUMNS = [
 export {
   COLUMNS_CONTACTS,
   COLUMNS_PARKING,
+  COLUMNS_SERVICES,
+  COLUMNS_ADD_SERVICE,
+  COLUMNS_INCLUSIONS,
+  COLUMNS_ADD_INCLUSION,
   COLUMNS_EXTRAS,
   COLUMNS_DEPOSIT,
+  COLUMNS_RENTAL_DEPOSIT,
   COLUMNS_VARIA,
   COLUMNS_CHANGE_ORDERS,
+  REVIEW_INCLUSIONS_COLUMNS,
+  REVIEW_SERVICES_COLUMNS,
   REVIEW_CONTACTS_COLUMNS,
   REVIEW_DEPOSITS_COLUMNS
 };
