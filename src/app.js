@@ -4,14 +4,23 @@ import {
   WARNING,
   PROCESSING,
   MOCK_PARKING,
+  MOCK_INCLUSIONS,
   MOCK_ASSET,
   MOCK_CLOSING_DETAIL,
+  MOCK_RENTAL_ASSET,
   MOCK_EXTRAS,
+  MOCK_SERVICES,
   MOCK_DEPOSIT,
+  MOCK_RENTAL_DEPOSIT,
   MOCK_VARIA,
   MOCK_CHANGE_ORDERS,
   MOCK_CONTACTS
 } from './constants';
+
+const TYPES = {
+  sale: 'sale',
+  rental: 'rental'
+};
 
 // State machine
 const defaults = {
@@ -31,6 +40,8 @@ let pageContact = {
   ...defaults,
   selected:true,
   should_recompute: false
+  warning: true,
+  message: "There is no bank approval."
 };
 
 const pageAsset = {
@@ -40,6 +51,50 @@ const pageAsset = {
   enabled: true,
   ...defaults,
   completed:true
+};
+
+const pageRentalAsset = {
+  id: "rental_asset",
+  step: 2,
+  label: "Asset",
+  enabled: true,
+  ...defaults,
+  completed:true
+};
+
+const pageRentalVaria = {
+  id: "rental_varia",
+  step: 2,
+  label: "Varia",
+  enabled: true,
+  ...defaults,
+}
+
+const pageInclusions = {
+  id: "inclusions",
+  step: 4,
+  label: "Inclusions",
+  enabled: true,
+  ...defaults,
+  completed:true
+};
+
+const pageServices = {
+  id: "services",
+  step: 5,
+  label: "Services",
+  enabled: true,
+  ...defaults,
+  completed:true
+};
+
+const pageRentalDeposit = {
+  id: "rental_deposit",
+  step: 6,
+  label: "Rent",
+  enabled: true,
+  ...defaults,
+  warning:false,
 };
 
 const pageDeposit = {
@@ -77,9 +132,21 @@ const pageReview = {
   processing:true
 }
 
+const pageRentalReview = {
+  id: "rental_review",
+  step: 8,
+  label: "Review",
+  enabled: true,
+  ...defaults,
+}
+
 export default class Mas extends LightningElement {
 
-  // @api recordId;
+    constructor() {
+        super();
+        this.setType(TYPES.rental);
+    }
+    // @api recordId;
 
   // Common Data
   @track opportunity = {};
@@ -114,62 +181,57 @@ export default class Mas extends LightningElement {
     pageReview
   ];
 
-  /**
-   * Reservation mode
-   *
-   * @param (Boolean) isReservation
-   */
-  setReservation(isReservation) {
-    if (isReservation) {
-      this.pages = [
-        {
-          ...pageAsset,
-          ...{
-            selected:true
-          }
-        },
-        pageDeposit,
-        pageReview
-      ];
-    } else {
-      this.pages = [
-        pageContact,
-        pageAsset,
-        pageDeposit,
-        pageVaria,
-        pageFiles,
-        pageReview
-      ];
-    }
-
-    for (let i=0; i < this.pages.length; i++) {
-      this.pages[i].step = i + 1;
-    }
+  get assetData() {
+    return this.type === 'rental' ? this.rentalAsset : this.asset;
   }
 
   get showContactPage() {
     return this.findSelectedById('contact');
-  };
+  }
 
   get showAssetPage() {
     return this.findSelectedById('asset');
-  };
+  }
+
+  get showRentalAssetPage() {
+    return this.findSelectedById('rental_asset');
+  }
+
+  get showInclusionsPage() {
+    return this.findSelectedById('inclusions');
+  }
+
+  get showServicesPage() {
+    return this.findSelectedById('services');
+  }
+
+  get showRentalDepositPage() {
+    return this.findSelectedById('rental_deposit');
+  }
+
+  get showRentalVariaPage() {
+    return this.findSelectedById('rental_varia');
+  }
+
+  get showRentalReviewPage() {
+    return this.findSelectedById('rental_review');
+  }
 
   get showDepositPage() {
     return this.findSelectedById('deposit');
-  };
+  }
 
   get showVariaPage() {
     return this.findSelectedById('varia');
-  };
+  }
 
   get showFilesPage() {
     return this.findSelectedById('files');
-  };
+  }
 
   get showReviewPage() {
     return this.findSelectedById('review');
-  };
+  }
 
   get hasPageMessage() {
     let currentPage = this.currentPage()[0];
@@ -197,10 +259,83 @@ export default class Mas extends LightningElement {
     }
   }
 
+  /**
+   * Reservation mode
+   *
+   * @param (Boolean) isReservation
+   */
+  setReservation(isReservation) {
+    if (isReservation) {
+      this.pages = [
+        { ...pageAsset, ...{ selected:true } },
+        pageDeposit,
+        pageReview
+      ];
+
+    } else {
+      this.pages = [
+        pageContact,
+        pageAsset,
+        pageDeposit,
+        pageVaria,
+        pageFiles,
+        pageReview
+      ];
+    }
+
+    this.reorderSteps();
+  }
+
+  /**
+   * Swap between rental pages and sale pages
+   *
+   * @param (String) type
+   */
+  setType(type) {
+    if (type === TYPES.sale) {
+      this.pages = [
+        { ...pageContact, ...{ selected:true } },
+        pageAsset,
+        pageDeposit,
+        pageVaria,
+        pageFiles,
+        pageReview
+      ];
+
+    } else if (TYPES.rental) {
+      this.pages = [
+        { ...pageContact, ...{ selected:true } },
+        pageRentalAsset,
+        pageVaria,
+        pageRentalDeposit,
+        pageFiles,
+        pageRentalReview
+      ];
+    }
+
+    this.type = type;
+    this.reorderSteps();
+  }
+
+  /**
+   * Re-assign page step numbers
+   */
+  reorderSteps() {
+    for (let i=0; i < this.pages.length; i++) {
+      this.pages[i].step = i + 1;
+    }
+  }
+
+  /**
+   * Get current page
+   */
   currentPage() {
     return this.pages.filter((page) => page.selected == true);
   }
 
+  /**
+   * Get current page index
+   */
   currentPageIndex() {
     for(let i=0; i < this.pages.length; i++) {
       if (this.pages[i].selected) {

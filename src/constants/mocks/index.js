@@ -178,6 +178,21 @@ var MOCK_CONTACTS = [{
   }
 ];
 
+const MOCK_INCLUSIONS = [
+  {
+    id: 1,
+    type: 'Locker Standard',
+    assigned: 'Side by Side',
+    price: '30933'
+  },
+  {
+    id: 2,
+    type: 'Parking Standard',
+    assigned: 'Side by Side',
+    price: '36933'
+  },
+];
+
 const MOCK_PARKING = [
   {
     id: 1,
@@ -259,6 +274,78 @@ const MOCK_CLOSING_DETAIL = {
   "Opportunity__r":{"Id":"0065x000026bwDgAAI"}
 };
 
+const MOCK_RENTAL_ASSET = {
+  id: 1,
+  name: 'Kingsway Crescent 401',
+  salesRep: 'Baker Real Estate',
+  leastStartDate: '2020-09-07',
+  leastEndDate: '2021-09-07',
+  term: 12,
+  rate: '1309000.00',
+  rentalIncreasePercent: 5,
+  rentalIncreaseFrequencyMonths: 12,
+  securityDeposit: '5000.00'
+};
+
+const MOCK_RENTAL_DEPOSIT = [
+ {
+   id: 1,
+   date: '01/01/2022',
+   total: 1850,
+   subtotal: 2000,
+   discount: 150,
+ },
+ {
+    id: 2,
+    date: '02/01/2022',
+    total: 1850,
+    subtotal: 2000,
+    discount: 150,
+ },
+ {
+    id: 3,
+    date: '03/01/2022',
+    total: 1850,
+    subtotal: 2000,
+    discount: 150,
+ },
+ {
+    id: 4,
+    date: '04/01/2022',
+    total: 1850,
+    subtotal: 2000,
+    discount: 150,
+ },
+ {
+    id: 5,
+    date: '05/01/2022',
+    total: 1850,
+    subtotal: 2000,
+    discount: 150,
+ },
+ {
+    id: 6,
+    date: '06/01/2022',
+    total: 1850,
+    subtotal: 2000,
+    discount: 150,
+ },
+ {
+    id: 7,
+    date: '07/01/2022',
+    total: 1850,
+    subtotal: 2000,
+    discount: 150,
+ },
+ {
+    id: 8,
+    date: '08/01/2022',
+    total: 1850,
+    subtotal: 2000,
+    discount: 150,
+ },
+];
+
 const MOCK_DEPOSIT = [
  {
      Id: 1,
@@ -319,6 +406,37 @@ const MOCK_DEPOSIT = [
      Deposit_Amount__c: "2000",
      Percent__c: "1",
      Deposit_Received__c: false
+ },
+];
+
+const MOCK_SERVICES = [
+ {
+     id: 1,
+     name: 'SERV-0000232',
+     contact_name: 'Andrew Hamilton',
+     description: 'My test asset',
+     fee: '400.99',
+ },
+ {
+     id: 2,
+     name: 'SERV-0000233',
+     contact_name: 'Andrew Hamilton',
+     description: 'My test asset',
+     fee: '400.99',
+ },
+ {
+     id: 3,
+     name: 'SERV-0000234',
+     contact_name: 'Andrew Hamilton',
+     description: 'My test asset',
+     fee: '400.99',
+ },
+ {
+     id: 4,
+     name: 'SERV-0000235',
+     contact_name: 'Andrew Hamilton',
+     description: 'My test asset',
+     fee: '400.99',
  },
 ];
 

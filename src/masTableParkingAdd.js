@@ -8,9 +8,13 @@ const rowActions = [
 ];
 
 const columns = [
-  { label: 'Type', fieldName: 'Type__c'},
-  { label: 'Assigned Spot', fieldName: 'Assigned_Spot__c' },
-  { label: 'Asset Price', fieldName: 'Price__c', type: 'currency'},
+  { label: 'Type', fieldName: 'Type__c', hideDefaultActions:true },
+  { label: 'Assigned Spot', fieldName: 'Assigned_Spot__c', hideDefaultActions:true },
+  { label: 'Price', fieldName: 'Price__c', type: 'currency', hideDefaultActions:true,
+    cellAttributes: {
+      alignment: 'left',
+    },
+  },
   {
     type: "button-icon",
     typeAttributes: {
@@ -31,7 +35,7 @@ const columns = [
   }
 ];
 
-export default class masTableParkingAdd extends LightningElement {
+export default class TableParkingAdd extends LightningElement {
     columns = columns;
     @api asset;
     @api closingDetail;
