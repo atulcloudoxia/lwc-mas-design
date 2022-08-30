@@ -17,10 +17,6 @@ export default class PageDeposit extends LightningElement {
     @track selectedDepositSchedule;
     @track selectedDepositScheduleValue;
 
-    handleTaxExemptCheckbox(e){
-      // Add handler logic here
-    }
-
     handleEligibleCheckbox(e){
         this.closingdetail= {...this.closingdetail};
         this.closingdetail.Eligible_for_tax_rebate__c = e.target.checked;

@@ -5,34 +5,17 @@ export default class FormAsset extends LightningElement {
 
   @api asset;
   @api closingdetail;
-
-  get assetPriceOptions() {
-      return [
-          { label: '$873,340', value: '873340.00' },
-          { label: '$973,340', value: '973340.00' },
-      ];
-  }
-
-  /**
-   * When a asset price is changed
-   *
-   * @param (Event) e
-   */
-  handleAssetPriceChange(event) {
-
-  }
-  
   /**
    * Assets form submit
    *
    * @param (Event) e
    */
+
   handleFormInputChange(event){
     var closingDetail = {...this.closingdetail};
     closingDetail[event.target.name] = event.target.value;
     this.closingdetail = closingDetail;
   }
-
   handleSubmit(e) {
     e.preventDefault();
     // Nhan, handle "edit" logic here
