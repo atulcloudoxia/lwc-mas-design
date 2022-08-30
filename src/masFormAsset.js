@@ -1,25 +1,61 @@
 import { track, api, LightningElement } from 'lwc';
 //import timeZone from @salesforce/i18n/timeZone
 
-export default class FormAsset extends LightningElement {
+export default class PageAsset extends LightningElement {
 
   @api asset;
   @api closingdetail;
+
+  @track hasLot=false;
+  @track isLotPurposeType=false;
+
+  get houseLotOptions() {
+      return [
+          { label: 'Option 1', value: '1' },
+          { label: 'Option 2', value: '2' }
+      ];
+  }
+
+ get assetPriceOptions() {
+      return [
+          { label: '$873,340', value: '873340.00' },
+          { label: '$973,340', value: '973340.00' },
+      ];
+  }
+
+  /**
+   * When a house lot option is selected
+   *
+   * @param (Event) e
+   */
+  handleLotChange(event) {
+      this.hasLot = true;
+  }
+
+  /**
+   * When a asset price is changed
+   *
+   * @param (Event) e
+   */
+  handleAssetPriceChange(event) {
+
+  }
+
   /**
    * Assets form submit
    *
    * @param (Event) e
    */
-
   handleFormInputChange(event){
     var closingDetail = {...this.closingdetail};
     closingDetail[event.target.name] = event.target.value;
     this.closingdetail = closingDetail;
   }
+
   handleSubmit(e) {
     e.preventDefault();
     // Nhan, handle "edit" logic here
-    var item = {...this.asset};  
+    var item = {...this.asset};
     console.log(this.asset);
     // Data Validation
     if (item == null || item.Id == null) {
@@ -37,12 +73,12 @@ export default class FormAsset extends LightningElement {
       alert('Please select Sales Rep'/* $A.get('$Label.c.MAS_Select_Sales_Rep') */);
       return;
     }
-    
+
     if(!priContractDate){
       alert('MAS_Fill_Transaction_Date' /* $A.get('$Label.c.MAS_Fill_Transaction_Date') */);
         return;
     }
-    
+
 
     // Data Validation
     var project = this.closingdetail.Project_Lookup__c;
@@ -92,7 +128,7 @@ export default class FormAsset extends LightningElement {
                 lhm = [];
                 lhm.push(LotHouseModelList[0]);
             }
-            
+
         }
         /* var duplicateFound = false;
         for (var i = 0; i < selectedAssetList.length; i++) {
@@ -122,7 +158,7 @@ export default class FormAsset extends LightningElement {
         let rowAddEvent = new CustomEvent('updatedata',{
           detail: {
             closingdetail: this.closingdetail
-            
+
           },
           bubbles: true,
           composed: true
@@ -164,9 +200,10 @@ export default class FormAsset extends LightningElement {
   }
   handleAssetSelect(event) {
       var selectedAssetId = event.detail.recordId;
-      console.log('selectedAssetId: '+selectedAssetId);
-      console.log('selectedAssetId: '+event.detail.record);
+      console.log('selectedAssetId: ', selectedAssetId);
+      console.log('selectedAssetId: ', event.detail.record);
       this.asset =  event.detail.record;
+      this.isLotPurposeType=true;
   }
   handleSalesRepSelect(event) {
       var selectedSalesRepId = event.detail.recordId;
@@ -202,7 +239,7 @@ export default class FormAsset extends LightningElement {
         var state = response.getState();
         if (component.isValid() && state === "SUCCESS") { */
             var obj = JSON.parse('{"assetPriceEditMode":"Price History","disableAssetEdit":false,"disallowModelPriceEdit":false,"priceListVersionsSteps":3,"selectedAssetList":[],"selectedProject":{"Id":"a065x00000gHQYmAAO","Name":"Kingsway Cres"}}');//response.getReturnValue();
-            
+
             console.log("MASAssetHelper.getCurrentData : " + JSON.stringify(obj));
             console.log("MASAssetHelper.getCurrentData selectedProject : " + JSON.stringify(obj.selectedProject));
             this.selectedProject  =  obj.selectedProject
@@ -212,7 +249,7 @@ export default class FormAsset extends LightningElement {
             this.priceListVersionsSteps  =  obj.priceListVersionsSteps
             this.disallowModelPriceEdit  =  obj.disallowModelPriceEdit
 
-            
+
            /*  if (obj.selectedProject == null || obj.selectedProject == undefined) {
                 mHelper.setSpinnerVisibility(component, false);
                 console.log("MASAssetHelper.getCurrentData selectedProject is null ");
@@ -247,7 +284,7 @@ export default class FormAsset extends LightningElement {
   @track LotHouseModelList;
   @track containsLot;
   fetchLotHouseModelList(phase, lotwidth, iseditbutton) {
-    //HOPEFULLY we don't need the contains lot variable because we will now only have one asset record. 
+    //HOPEFULLY we don't need the contains lot variable because we will now only have one asset record.
 
     /*helper.setSpinnerVisibility(component, true);
 
@@ -308,7 +345,7 @@ export default class FormAsset extends LightningElement {
   }
 
   createLotHouse(lotHouseModelId, assetId){
-     
+
 /*     var action = component.get("c.createLotHouse");
     action.setParam("lotHouseModelId", lotHouseModelId);
     action.setParam("assetId", assetId);
@@ -319,7 +356,7 @@ export default class FormAsset extends LightningElement {
             var astList = this.selectedAsset; // result
             astList.Lot_House__r = obj;
             this.asset = astList;
-             
+
        /*  }
         else{
             console.error('Error fetchLotHouseModelList ==> ' + JSON.stringify(response.getError()));
@@ -333,7 +370,7 @@ updateLotHouse(lotHouseList){
     var action = component.get("c.updateLotHouse");
     action.setParam("lotHouseList", lotHouseList);
 
-    action.setCallback(this,function(response){ 
+    action.setCallback(this,function(response){
         if(response.getState() === "SUCCESS"){
             var obj = response.getReturnValue();
 
@@ -352,7 +389,7 @@ deleteLotHouse(lotHouseList){
     action.setParam("lotHouseList", lotHouseList);
 
     action.setCallback(this,function(response){
-        if(response.getState() === "SUCCESS"){  
+        if(response.getState() === "SUCCESS"){
             var obj = response.getReturnValue();
 
             helper.setSpinnerVisibility(component, false);
@@ -365,7 +402,7 @@ deleteLotHouse(lotHouseList){
 }
 editLotHouseModel(){
 
-  
+
   let selectedAsset = {...this.asset};
   var LotHouseModelListDetail = this.LotHouseModelListDetail;
 
