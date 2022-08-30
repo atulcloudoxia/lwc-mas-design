@@ -16,12 +16,16 @@ export default class PageDeposit extends LightningElement {
     optionsSchedule = [{ }]; // Options for "Select Deposit Schedule"
     @track selectedDepositSchedule;
     @track selectedDepositScheduleValue;
-    
+
+    handleTaxExemptCheckbox(e){
+      // Add handler logic here
+    }
+
     handleEligibleCheckbox(e){
-        this.closingdetail= {...this.closingdetail};  
+        this.closingdetail= {...this.closingdetail};
         this.closingdetail.Eligible_for_tax_rebate__c = e.target.checked;
-        this.handleDataUpdate();  
-        
+        this.handleDataUpdate();
+
     }
     connectedCallback(){
         this.closingdetail  = {...this.closingdetail} ;
@@ -30,15 +34,15 @@ export default class PageDeposit extends LightningElement {
       this.asset = JSON.parse(JSON.stringify(this.asset));
       console.log(this.asset);
      //this.asset.Condo_Price__c = formatNumbertocurrency(this.asset.Condo_Price__c);
-      
-      
+
+
      var optionsSchedule = [];
 
       MOCK_DEPOSIT_SCHEDULE.forEach(object => {
         const option = {};
         option['value']= object.Id;
         option['label']= object.Name;
-    
+
         optionsSchedule.push(option);
       });
       this.optionsSchedule = optionsSchedule;
@@ -49,9 +53,9 @@ export default class PageDeposit extends LightningElement {
      * Get the total line item
      */
      get amountTotalLineItem() {
-       
+
       let total= parseFloat(this.asset.Condo_Price__c);
-      
+
       console.log(total);
       this.parkingdata.forEach((item) => {
         total += parseFloat(item.Price__c);
@@ -134,7 +138,7 @@ export default class PageDeposit extends LightningElement {
         console.log(depositScheduleName);
         if(depositScheduleName.value == depositSchedule){
             selectedDepositSchedule = JSON.parse(JSON.stringify(depositScheduleName));
-            
+
         }
       });
       console.log('selectedDepositSchedule');
@@ -157,9 +161,9 @@ export default class PageDeposit extends LightningElement {
           this.updateOldDeposit();
           this.handleDataUpdate();
       }else{
-           
+
       }
-      
+
     }
 
     /**
@@ -262,7 +266,7 @@ export default class PageDeposit extends LightningElement {
       var needToUpdatePercent = false;
       var needToUpdateAmount = false;
       data.forEach(element => {
-          
+
         recordInputs.forEach(draft => {
             console.log(draft.fields.Id);
             console.log(element);
@@ -273,9 +277,9 @@ export default class PageDeposit extends LightningElement {
                 index= undefined;
             }
             console.log(index);
-            
+
             if((draft.fields.Id!=undefined && element.Id!=undefined && draft.fields.Id==element.Id) || i == index) {
-        
+
                 for (const [key, value] of Object.entries(draft.fields)) {
                     if(key=='Deposit_Amount__c'){
                         element[key] = value;
@@ -288,7 +292,7 @@ export default class PageDeposit extends LightningElement {
                     }else if(key!='Id')
                     element[key] = value;
                 }
-    
+
             }
         });
         i++;
@@ -297,13 +301,13 @@ export default class PageDeposit extends LightningElement {
       console.table(data);
       this.data = data;
 
-      
+
       if(needToUpdateAmount || needToUpdatePercent){
         if(needToUpdateAmount )this.updateDepositAmount();
         if(needToUpdatePercent)this.updateDepositPercent();
         this.calculatePercentage();
       }
-      
+
 
       this.saveDeposits();
       //this.handleDataUpdate();
@@ -324,7 +328,7 @@ export default class PageDeposit extends LightningElement {
             price = price + asset.Lot_House__r.Price__c;
           }
           if (price != null) referencePrice = referencePrice + price;
-          
+
       }
       else {
           referencePrice =  closingDetail.Net_Condo_Price__c;
@@ -523,7 +527,7 @@ export default class PageDeposit extends LightningElement {
   @track depositScheduleItemList;
   //do tax calculations, deposit schedule calculations and calculate deposit percentage
   updateTaxInfo(callbackFun) {
-      
+
       var mHelper = this;
 
      /* var apexAction = component.get("c.updateTaxData");
@@ -834,7 +838,7 @@ console.log(closingDetail);
   @track depositSaved;
   @track vipList = [];
   @track vipApplied;
-   
+
   updateOldDeposit() {
       //helper.setSpinnerVisibility(component, false);
       console.log('Is deposit schedule change? '+ (this.initialDepositScheduleId!=this.closingdetail.Deposit_Schedule__c));
@@ -1119,10 +1123,10 @@ console.log(closingDetail);
           this.updateDepositAmount();
       }
   }
- 
- 
 
-   
+
+
+
   saveDeposits() {
       // Data Validation
       var opportunity = this.opportunity;
@@ -1187,7 +1191,7 @@ console.log(closingDetail);
 
       // To prevent multiple fileUploadClicked events
       //component.set("v.depositSaved", true);
-      
+
       this.handleDataUpdate();
       return true;
   }
