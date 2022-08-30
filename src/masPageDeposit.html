@@ -4,8 +4,12 @@
     <div class="heading">
       <h1><span>Deposit /</span> {asset.Name}</h1>
       <div class="heading__actions">
-        <lightning-button-icon icon-name="utility:settings" alternative-text="Settings" class="slds-m-left_xx-small"
-          onclick={handleAddDiscount} title="Settings">
+        <lightning-button-icon
+          icon-name="utility:settings"
+          alternative-text="Settings"
+          class="slds-m-left_xx-small"
+          onclick={handleAddDiscount}
+          title="Settings">
         </lightning-button-icon>
       </div>
     </div>
@@ -33,6 +37,15 @@
         </div>
       </div>
 
+      <div class="line_item">
+        <div>
+          {asset.Name}
+        </div>
+        <div>
+          <lightning-formatted-number value={asset.Condo_Price__c} format-style="currency" currency-code="USD"></lightning-formatted-number>
+        </div>
+      </div>
+
       <!-- Example parking line-item start (not sure how data is managed)-->
       <template for:each={parkingdata} for:item="parking">
         <div key={parking.id} class="line_item">
@@ -40,8 +53,7 @@
             {parking.Type__c}
           </div>
           <div>
-            <lightning-formatted-number value={parking.Price__c} format-style="currency" currency-code="USD">
-            </lightning-formatted-number>
+            <lightning-formatted-number value={parking.Price__c} format-style="currency" currency-code="USD"></lightning-formatted-number>
           </div>
         </div>
       </template>
@@ -53,8 +65,7 @@
             {extra.name}
           </div>
           <div>
-            <lightning-formatted-number value={extra.Price__c} format-style="currency" currency-code="USD">
-            </lightning-formatted-number>
+            <lightning-formatted-number value={extra.Price__c} format-style="currency" currency-code="USD"></lightning-formatted-number>
           </div>
         </div>
       </template>
@@ -64,8 +75,13 @@
       <template for:each={discounts} for:item="item" for:index="index">
         <div key={item.id} class="line_item">
           <div class="line_item__discount_button">
-            <lightning-button-icon icon-name="utility:delete" alternative-text="Delete" class="slds-m-left_xx-small"
-              data-discount-id={item.id} onclick={handleRemoveDiscount} title="Delete">
+            <lightning-button-icon
+              icon-name="utility:delete"
+              alternative-text="Delete"
+              class="slds-m-left_xx-small"
+              data-discount-id={item.id}
+              onclick={handleRemoveDiscount}
+              title="Delete">
             </lightning-button-icon>
             <div>
               Discount: {item.name}
@@ -83,8 +99,7 @@
           Total
         </div>
         <div>
-          {amountTotalLineItem}
-          <!--{asset.Total_Price__c}-->
+          {amountTotalLineItem}<!--{asset.Total_Price__c}-->
         </div>
       </div>
     </div>
@@ -95,16 +110,27 @@
           <h2>Select Deposit Schedule</h2>
         </div>
         <div>
-          <lightning-input type="checkbox" label="Eligible for tax rebate" name="tax-rebate"
-            checked={closingdetail.Eligible_for_tax_rebate__c} onchange={handleEligibleCheckbox}>
+          <lightning-input
+            type="checkbox"
+            label="Eligible for tax rebate"
+            name="tax-rebate"
+            checked={closingdetail.Eligible_for_tax_rebate__c}
+            onchange={handleEligibleCheckbox}
+            >
           </lightning-input>
 
         </div>
       </div>
       <hr />
       <div>
-        <lightning-combobox name="progress" label="Status" placeholder="Select Schedule" variant="label-hidden"
-          options={optionsSchedule} value={selectedDepositScheduleValue} onchange={handleScheduleChange}>
+        <lightning-combobox
+          name="progress"
+          label="Status"
+          placeholder="Select Schedule"
+          variant="label-hidden"
+          options={optionsSchedule}
+          value={selectedDepositScheduleValue}
+          onchange={handleScheduleChange}>
         </lightning-combobox>
       </div>
     </div>
@@ -119,8 +145,14 @@
       </div>
       <hr />
       <div class="mt-10">
-        <c-mas-custom-table key-field="Id" data={data} columns={columns} onrowaction={handleRowAction}
-          hide-checkbox-column draft-values={draftDepositValues} onsave={handleDepositSave}>
+        <c-mas-custom-table
+        key-field="Id"
+        data={data}
+        columns={columns}
+        onrowaction={handleRowAction}
+        hide-checkbox-column
+        draft-values={draftDepositValues}
+        onsave={handleDepositSave} >
         </c-mas-custom-table>
       </div>
       <div class="table-footer">

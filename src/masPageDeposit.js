@@ -2,7 +2,7 @@ import { LightningElement, track, api } from 'lwc';
 import { COLUMNS_DEPOSIT, MOCK_DEPOSIT_SCHEDULE } from './constants';
 import { findRowById,formatcurrencytoNumber,formatNumbertocurrency  } from './utils';
 
-export default class DepositPage extends LightningElement {
+export default class PageDeposit extends LightningElement {
 
     columns = COLUMNS_DEPOSIT;
     @api closingdetail;
@@ -16,18 +16,17 @@ export default class DepositPage extends LightningElement {
     optionsSchedule = [{ }]; // Options for "Select Deposit Schedule"
     @track selectedDepositSchedule;
     @track selectedDepositScheduleValue;
-    @track isCorporation = true;
+
+    handleTaxExemptCheckbox(e){
+      // Add handler logic here
+    }
 
     handleEligibleCheckbox(e){
         this.closingdetail= {...this.closingdetail};
         this.closingdetail.Eligible_for_tax_rebate__c = e.target.checked;
         this.handleDataUpdate();
-    }
 
-    handleTaxExemptCheckbox(e){
-        // Add handler logic here
     }
-
     connectedCallback(){
         this.closingdetail  = {...this.closingdetail} ;
         console.log('closingdetail');
