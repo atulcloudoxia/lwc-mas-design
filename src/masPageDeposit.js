@@ -16,6 +16,16 @@ export default class PageDeposit extends LightningElement {
     optionsSchedule = [{ }]; // Options for "Select Deposit Schedule"
     @track selectedDepositSchedule;
     @track selectedDepositScheduleValue;
+    @track checkAssetPayment = true;
+
+    /**
+     * Handle check asset payment close
+     *
+     * @param (Event) e
+     */
+    handleCheckClose(e){
+        this.checkAssetPayment = false;
+    }
 
     handleEligibleCheckbox(e){
         this.closingdetail= {...this.closingdetail};
