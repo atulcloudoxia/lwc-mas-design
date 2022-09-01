@@ -21,19 +21,39 @@
 		<template if:true={showAssetPage}>
 			<c-mas-page-asset parkingdata={parkingData} extradata={extraData} asset={asset} closingdetail={closingdetail} onupdatedata={handleDataUpdate}></c-mas-page-asset>
 		</template>
+		<template if:true={showRentalAssetPage}>
+			<c-mas-page-rental-asset
+				parkingdata={parkingData}
+				servicesdata={servicesData}
+				inclusionsdata={inclusionsData}
+				asset={assetData}>
+			</c-mas-page-rental-asset>
+		</template>
+		<template if:true={showInclusionsPage}>
+			<c-mas-page-inclusions data={parkingData} asset={assetData}></c-mas-page-inclusions>
+		</template>
 		<template if:true={showDepositPage}>
 			<c-mas-page-deposit  data={depositData} contact-role-list={contactList} asset={asset} extradata={extraData} parkingdata={parkingData} closingdetail={closingdetail} onupdatedata={handleDataUpdate}></c-mas-page-deposit>
+		</template>
+		<template if:true={showRentalReviewPage}>
+			<c-mas-page-rental-review inclusionsdata={parkingData} servicesdata={servicesData} asset={assetData} onpage={handleStepChange}></c-mas-page-rental-review>
+		</template>
+		<template if:true={showServicesPage}>
+			<c-mas-page-services data={servicesData}  asset={assetData}></c-mas-page-services>
+		</template>
+		<template if:true={showDepositPage}>
+			<c-mas-page-deposit data={depositData} asset={assetData}></c-mas-page-deposit>
 		</template>
 		<template if:true={showVariaPage}>
 			<c-mas-page-varia variadata={variaData} changeorderdata={changeOrderData} asset={asset} onupdatedata={handleDataUpdate}></c-mas-page-varia>
 		</template>
 		<template if:true={showFilesPage}>
-			<c-mas-page-files asset={asset}></c-mas-page-files>
+			<c-mas-page-files asset={assetData}></c-mas-page-files>
 		</template>
 		<template if:true={showReviewPage}>
 			<c-mas-page-review contactslist={contactList} depositsdata={depositData} onpage={handleStepChange} asset={asset} extradata={extraData} parkingdata={parkingData}></c-mas-page-review>
 		</template>
 
-		<c-mas-footer-bar ondelete={handleDeleteSale} onnext={handleNextPage} onprevious={handlePreviousPage}></c-mas-footer-bar>
+		<c-mas-footer-bar type={type} ondelete={handleDeleteSale} onnext={handleNextPage} onprevious={handlePreviousPage}></c-mas-footer-bar>
 	</div>
 </template>

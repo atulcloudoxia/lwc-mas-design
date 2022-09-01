@@ -14,7 +14,7 @@ const discounts = [
 ];
 
 
-export default class DiscountForm extends LightningElement {
+export default class FormDiscount extends LightningElement {
 
   optionsDiscounts = discounts;// Options for discounts
 

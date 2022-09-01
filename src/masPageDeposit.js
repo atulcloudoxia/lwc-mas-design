@@ -2,7 +2,7 @@ import { LightningElement, track, api } from 'lwc';
 import { COLUMNS_DEPOSIT, MOCK_DEPOSIT_SCHEDULE } from './constants';
 import { findRowById,formatcurrencytoNumber,formatNumbertocurrency  } from './utils';
 
-export default class DepositPage extends LightningElement {
+export default class PageDeposit extends LightningElement {
 
     columns = COLUMNS_DEPOSIT;
     @api closingdetail;

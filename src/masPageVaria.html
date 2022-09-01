@@ -5,10 +5,9 @@
     </div>
     <hr />
     <div class="mt-30">
-      <lightning-tabset active-tab-value="varias" >
 
-        <!-- Varia Tab Start -->
-        <lightning-tab label="Varias" value="varias" onactive={handleActive}>
+        <!-- RENTAL VIEW START -->
+        <template if:true={isRental}>
           <div>
             <lightning-input
             name="enter-search" label="Search" type="search" variant="label-hidden">
@@ -31,35 +30,65 @@
               </lightning-button>
             </div>
           </div>
-        </lightning-tab>
-        <!-- Varia Tab End -->
+        </template>
+        <!-- RENTAL VIEW END -->
 
-        <!-- Change Order Tab Start -->
-        <lightning-tab label="Change Orders" value="change-orders" onactive={handleActive}>
-          <div>
-            <lightning-input name="enter-search" label="Search" type="search" variant="label-hidden">
-            </lightning-input>
-            <div class="mt-10">
-              <lightning-datatable
-                key-field="id"
-                data={changeorderdata}
-                columns={columnsChangeOrders}
-                onrowaction={handleRowAction}
-                hide-checkbox-column
-                max-column-width="2000"
-                onsave={handleChangeOrderSave}
-                draft-values={draftChangeOrderValues}>
-              </lightning-datatable>
-            </div>
-            <div class="mt-10">
-              <lightning-button label="Add Change Order" icon-name="utility:add" icon-position="left" onclick={handleAddChangeOrder}>
-              </lightning-button>
-            </div>
-          </div>
-        </lightning-tab>
-        <!-- Change Order Tab End -->
+        <!-- SALE VIEW START -->
+        <template if:false={isRental}>
+          <lightning-tabset active-tab-value="varias">
 
-      </lightning-tabset>
+            <!-- Varia Tab Start -->
+            <lightning-tab label="Varias" value="varias">
+              <div>
+                <lightning-input
+                name="enter-search" label="Search" type="search" variant="label-hidden">
+                </lightning-input>
+                <div class="mt-10">
+                  <c-mas-custom-table
+                    key-field="id"
+                    data={variadata}
+                    columns={columnsVaria}
+                    onrowaction={handleRowAction}
+                    hide-checkbox-column
+                    max-column-width="2000">
+                  </c-mas-custom-table>
+                </div>
+                <div class="mt-10">
+                  <lightning-button label="Add Varia" title="Begins the task" icon-name="utility:add" icon-position="left"
+                    onclick={handleAdd}>
+                  </lightning-button>
+                </div>
+              </div>
+            </lightning-tab>
+            <!-- Varia Tab End -->
+
+            <!-- Change Order Tab Start -->
+            <lightning-tab label="Change Orders" value="change-orders">
+              <div>
+                <lightning-input name="enter-search" label="Search" type="search" variant="label-hidden">
+                </lightning-input>
+                <div class="mt-10">
+                  <lightning-datatable
+                    key-field="id"
+                    data={changeorderdata}
+                    columns={columnsChangeOrders}
+                    onrowaction={handleRowAction}
+                    hide-checkbox-column
+                    max-column-width="2000">
+                  </lightning-datatable>
+                </div>
+                <div class="mt-10">
+                  <lightning-button label="Add Change Order" icon-name="utility:add" icon-position="left" onclick={handleAddChangeOrder}>
+                  </lightning-button>
+                </div>
+              </div>
+            </lightning-tab>
+            <!-- Change Order Tab End -->
+
+          </lightning-tabset>
+        </template>
+        <!-- SALE VIEW END -->
+
     </div>
   </div>
 

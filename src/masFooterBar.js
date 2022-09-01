@@ -1,9 +1,9 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement, track, api } from 'lwc';
 
 export default class FooterBar extends LightningElement {
 
-  @track
-  showDeletePrompt=false;
+  @api type;
+  @track showDeletePrompt=false;
 
   /**
    * Prompt to delete sale
