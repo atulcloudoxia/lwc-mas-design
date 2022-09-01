@@ -38,7 +38,7 @@
           <lightning-tabset active-tab-value="varias">
 
             <!-- Varia Tab Start -->
-            <lightning-tab label="Varias" value="varias">
+            <lightning-tab label="Varias" value="varias" onactive={handleActive}>
               <div>
                 <lightning-input
                 name="enter-search" label="Search" type="search" variant="label-hidden">
@@ -50,7 +50,9 @@
                     columns={columnsVaria}
                     onrowaction={handleRowAction}
                     hide-checkbox-column
-                    max-column-width="2000">
+                    max-column-width="2000"
+                    onsave={handleVariaSave}
+                    draft-values={draftVariaValues}>
                   </c-mas-custom-table>
                 </div>
                 <div class="mt-10">
@@ -63,7 +65,7 @@
             <!-- Varia Tab End -->
 
             <!-- Change Order Tab Start -->
-            <lightning-tab label="Change Orders" value="change-orders">
+            <lightning-tab label="Change Orders" value="change-orders" onactive={handleActive}>
               <div>
                 <lightning-input name="enter-search" label="Search" type="search" variant="label-hidden">
                 </lightning-input>
@@ -74,7 +76,9 @@
                     columns={columnsChangeOrders}
                     onrowaction={handleRowAction}
                     hide-checkbox-column
-                    max-column-width="2000">
+                    max-column-width="2000"
+                    onsave={handleChangeOrderSave}
+                    draft-values={draftChangeOrderValues}>
                   </lightning-datatable>
                 </div>
                 <div class="mt-10">
