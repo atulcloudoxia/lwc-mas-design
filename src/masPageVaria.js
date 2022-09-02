@@ -3,7 +3,7 @@ import { COLUMNS_VARIA, COLUMNS_CHANGE_ORDERS } from './constants';
 import { findRowById } from './utils';
 
 
-export default class VariaPage extends LightningElement {
+export default class PageVaria extends LightningElement {
 
   columnsVaria = COLUMNS_VARIA;
   columnsChangeOrders = COLUMNS_CHANGE_ORDERS;
@@ -11,12 +11,18 @@ export default class VariaPage extends LightningElement {
   @api variadata;
   @api changeorderdata;
   @api asset;
+  @api type;
 
   @track addVaria=false;
   @track addChangeOrder=false;
   @track activeTab;
   @track draftVariaValues= [];
   @track draftChangeOrderValues= [];
+
+  get isRental() {
+    return this.type === 'rental';
+  }
+
   /**
    * Search varia
    *
@@ -107,7 +113,7 @@ export default class VariaPage extends LightningElement {
             let variadata= this.variadata;
             console.log(index);
             this.variadata = variadata.slice(0, index).concat(variadata.slice(index + 1));
-             
+
             // Nhan, handle delete logic here
           }
       }else if(this.activeTab=='change-orders'){
@@ -116,10 +122,10 @@ export default class VariaPage extends LightningElement {
             this.changeorderdata = this.changeorderdata
               .slice(0, index)
               .concat(this.changeorderdata.slice(index + 1));
-             
+
             // Nhan, handle delete logic here
           }
-      }   
+      }
       this.handleDataUpdate();
   }
 
@@ -137,12 +143,12 @@ export default class VariaPage extends LightningElement {
     this.handleCloseForm(event);
     this.handleDataUpdate();
   }
-  
+
   handleDataUpdate(){
     let rowAddEvent = new CustomEvent('updatedata',{
       detail: {
         changeorderdata: this.changeorderdata,
-        variadata: this.variadata 
+        variadata: this.variadata
       },
       bubbles: true,
       composed: false
@@ -170,7 +176,7 @@ export default class VariaPage extends LightningElement {
             element[key] = value;
           }
         }
-        
+
       });
     });
     this.draftVariaValues = [];
@@ -192,7 +198,7 @@ export default class VariaPage extends LightningElement {
             element[key] = value;
           }
         }
-        
+
       });
     });
     this.draftChangeOrderValues = [];

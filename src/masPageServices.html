@@ -1,0 +1,27 @@
+<template>
+  <div class="page-container">
+
+    <!-- Heading -->
+    <div class="heading">
+      <h1><span>Services /</span> {asset.name}</h1>
+    </div>
+
+    <div class="mt-30">
+
+      <!-- Table -->
+      <c-mas-custom-table
+        key-field="id"
+        data={data}
+        columns={columns}
+        onrowaction={handleRowAction}
+        hide-checkbox-column>
+      </c-mas-custom-table>
+
+      <div class="mt-30">
+        <h2>Add Service</h2>
+        <hr />
+        <c-mas-table-services-add></c-mas-table-services-add>
+      </div>
+    </div>
+  </div>
+</template>

@@ -178,6 +178,21 @@ var MOCK_CONTACTS = [{
   }
 ];
 
+const MOCK_INCLUSIONS = [
+  {
+    id: 1,
+    type: 'Locker Standard',
+    assigned: 'Side by Side',
+    price: '30933'
+  },
+  {
+    id: 2,
+    type: 'Parking Standard',
+    assigned: 'Side by Side',
+    price: '36933'
+  },
+];
+
 const MOCK_PARKING = [
   {
     id: 1,
@@ -225,7 +240,7 @@ const MOCK_ASSET = {
   Name: 'Kingsway Crescent 401',
   Condo_Price__c: '1309001.00',
   Total_Price__c: '1454400.00',
-   
+
 };
 
 const MOCK_CLOSING_DETAIL = {
@@ -258,6 +273,78 @@ const MOCK_CLOSING_DETAIL = {
   "Tax_Rebate_Percent__c":100,
   "Opportunity__r":{"Id":"0065x000026bwDgAAI"}
 };
+
+const MOCK_RENTAL_ASSET = {
+  id: 1,
+  name: 'Kingsway Crescent 401',
+  salesRep: 'Baker Real Estate',
+  leastStartDate: '2020-09-07',
+  leastEndDate: '2021-09-07',
+  term: 12,
+  rate: '1309000.00',
+  rentalIncreasePercent: 5,
+  rentalIncreaseFrequencyMonths: 12,
+  securityDeposit: '5000.00'
+};
+
+const MOCK_RENTAL_DEPOSIT = [
+ {
+   id: 1,
+   date: '01/01/2022',
+   total: 1850,
+   subtotal: 2000,
+   discount: 150,
+ },
+ {
+    id: 2,
+    date: '02/01/2022',
+    total: 1850,
+    subtotal: 2000,
+    discount: 150,
+ },
+ {
+    id: 3,
+    date: '03/01/2022',
+    total: 1850,
+    subtotal: 2000,
+    discount: 150,
+ },
+ {
+    id: 4,
+    date: '04/01/2022',
+    total: 1850,
+    subtotal: 2000,
+    discount: 150,
+ },
+ {
+    id: 5,
+    date: '05/01/2022',
+    total: 1850,
+    subtotal: 2000,
+    discount: 150,
+ },
+ {
+    id: 6,
+    date: '06/01/2022',
+    total: 1850,
+    subtotal: 2000,
+    discount: 150,
+ },
+ {
+    id: 7,
+    date: '07/01/2022',
+    total: 1850,
+    subtotal: 2000,
+    discount: 150,
+ },
+ {
+    id: 8,
+    date: '08/01/2022',
+    total: 1850,
+    subtotal: 2000,
+    discount: 150,
+ },
+];
 
 const MOCK_DEPOSIT = [
  {
@@ -322,6 +409,37 @@ const MOCK_DEPOSIT = [
  },
 ];
 
+const MOCK_SERVICES = [
+ {
+     id: 1,
+     name: 'SERV-0000232',
+     contact_name: 'Andrew Hamilton',
+     description: 'My test asset',
+     fee: '400.99',
+ },
+ {
+     id: 2,
+     name: 'SERV-0000233',
+     contact_name: 'Andrew Hamilton',
+     description: 'My test asset',
+     fee: '400.99',
+ },
+ {
+     id: 3,
+     name: 'SERV-0000234',
+     contact_name: 'Andrew Hamilton',
+     description: 'My test asset',
+     fee: '400.99',
+ },
+ {
+     id: 4,
+     name: 'SERV-0000235',
+     contact_name: 'Andrew Hamilton',
+     description: 'My test asset',
+     fee: '400.99',
+ },
+];
+
 const MOCK_VARIA = [
   {
     id: 1,
@@ -364,4 +482,4 @@ const MOCK_DEPOSIT_SCHEDULE = [
   {"Id":"a0Df200000YpP48EAF","Name":"Deposit Schedule Project 1 (Primary Residence) KC P1","Project__c":"a065x00000gHQYmAAO","Primary_Usage_Type__c":"Primary Residence","Eligible_for_Tax_Rebates__c":true,"Calculate_On_Asset_Only__c":false},{"Id":"a0D5x00000mLhU7EAK","Name":"DS-00000001 Kingsway Cres Phases 12345","Project__c":"a065x00000gHQYmAAO","Primary_Usage_Type__c":"Primary Residence","Eligible_for_Tax_Rebates__c":true,"Calculate_On_Asset_Only__c":false},{"Id":"a0D5x00000mLhUCEA0","Name":"DS-00000002 - Kingsway Cres Phase 1","Project__c":"a065x00000gHQYmAAO","Primary_Usage_Type__c":"Primary Residence","Eligible_for_Tax_Rebates__c":true,"Calculate_On_Asset_Only__c":false},{"Id":"a0D5x00000mZ1esEAC","Name":"M City 4 - Local - copied","Project__c":"a065x00000gHQYmAAO","Primary_Usage_Type__c":"Primary Residence","Eligible_for_Tax_Rebates__c":true,"Calculate_On_Asset_Only__c":false}
 ];
 
-export { MOCK_CONTACTS_DATA, MOCK_CONTACTS, MOCK_PARKING, MOCK_ASSET, MOCK_CLOSING_DETAIL, MOCK_EXTRAS, MOCK_DEPOSIT, MOCK_VARIA, MOCK_CHANGE_ORDERS, MOCK_DEPOSIT_SCHEDULE };
+export { MOCK_CONTACTS_DATA, MOCK_INCLUSIONS, MOCK_RENTAL_ASSET, MOCK_SERVICES, MOCK_CONTACTS, MOCK_PARKING, MOCK_ASSET, MOCK_CLOSING_DETAIL, MOCK_EXTRAS, MOCK_RENTAL_DEPOSIT, MOCK_DEPOSIT, MOCK_VARIA, MOCK_CHANGE_ORDERS, MOCK_DEPOSIT_SCHEDULE };

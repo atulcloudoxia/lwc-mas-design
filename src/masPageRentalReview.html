@@ -1,0 +1,125 @@
+<template>
+  <div class="page-container">
+
+    <!-- Heading -->
+    <div class="heading">
+      <h1><span>Review /</span> {asset.name}</h1>
+      <div class="heading__actions">
+        <button class="button-secondary" onclick={handleModifyAsset}>Modify</button>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="table__items columns mt-10">
+      <!-- Example line-item start (not sure how data is managed)-->
+      <div class="line_item">
+        <div>
+          Lease Start Date
+        </div>
+        <div>
+          {asset.leastStartDate}
+        </div>
+      </div>
+      <div class="line_item">
+        <div>
+          Lease End Date
+        </div>
+        <div>
+          {asset.leastEndDate}
+        </div>
+      </div>
+      <div class="line_item">
+        <div>
+          Term (months)
+        </div>
+        <div>
+          {asset.term}
+        </div>
+      </div>
+      <div class="line_item">
+        <div>
+          Monthly Rate
+        </div>
+        <div>
+          {asset.rate}
+        </div>
+      </div>
+      <div class="line_item">
+        <div>
+          Rent Increase
+        </div>
+        <div>
+          {asset.rentalIncreasePercent}
+        </div>
+      </div>
+      <div class="line_item">
+        <div>
+          Rent Increase Frequency (months)
+        </div>
+        <div>
+          {asset.rentalIncreaseFrequencyMonths}
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Contacts Summary -->
+    <div class="mt-30">
+      <div class="sub-heading">
+        <h2>Inclusions</h2>
+        <div class="sub-heading__actions">
+          <button class="button-secondary" onclick={handleModifyInclusions}>Modify</button>
+        </div>
+      </div>
+      <hr />
+      <div>
+        <c-mas-custom-table
+          key-field="id"
+          data={inclusionsdata}
+          columns={inclusionsColumns}
+          hide-checkbox-column>
+        </c-mas-custom-table>
+      </div>
+    </div>
+
+    <!-- Deposit Schedule Summary -->
+    <div class="mt-30">
+      <div class="sub-heading">
+        <h2>Services</h2>
+        <div class="sub-heading__actions">
+          <button class="button-secondary" onclick={handleModifyServices}>Modify</button>
+        </div>
+      </div>
+      <hr />
+      <div class="mt-10">
+        <c-mas-custom-table
+          key-field="id"
+          data={servicesdata}
+          columns={servicesColumns}
+          hide-checkbox-column>
+        </c-mas-custom-table>
+      </div>
+    </div>
+
+    <!-- TOTAL -->
+    <div class="table__items columns mt-30">
+      <div class="line_item total">
+        <div>
+          Total Monthly Rent
+        </div>
+        <div>
+          $4,050.00
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10">
+      <div class="sub-heading">
+        <div class="sub-heading__actions">
+          <button class="button-primary" onclick={handleComplete}>Complete</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</template>

@@ -1,17 +1,21 @@
 import { LightningElement, track, api } from 'lwc';
 import {
-  OPTIONS_DELETE_SALE,
+  OPTIONS_ROLES,
+  OPTIONS_LANGUAGES,
+  OPTIONS_SALUTATIONS
 } from './constants';
 
 
-export default class FormDeleteSale extends LightningElement {
+export default class FormContact extends LightningElement {
 
   @api data;
   @api iscorporation;
 
   @track isCorporation = this.iscorporation;
 
-  cancelReasons = OPTIONS_DELETE_SALE;
+  languageOptions = OPTIONS_LANGUAGES;
+  salutationOptions = OPTIONS_SALUTATIONS;
+  roleOptions = OPTIONS_ROLES;
 
   /**
    * Handle contact form
@@ -21,13 +25,7 @@ export default class FormDeleteSale extends LightningElement {
   handleSubmit(e) {
     e.preventDefault();
 
-    this.dispatchEvent(
-      new CustomEvent("submit", {
-        payload: {
-          event: e
-        }
-      })
-    )
+    // Submit logic
   }
 
   /**
@@ -48,7 +46,9 @@ export default class FormDeleteSale extends LightningElement {
    *
    * @param (Event) e
    */
-  handleReasonChange(e) {
-    let reason = e.detail.value;
+  handleRoleChange(e) {
+    let role = e.detail.value;
+
+    this.isCorporation = role === 'corporation';
   }
 }
