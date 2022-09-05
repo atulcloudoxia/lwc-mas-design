@@ -21,7 +21,7 @@
 
         <!-- Edit Contact Form -->
         <template if:true={editContact}>
-          <c-mas-form-edit-contact data={selectedRow} onclose={handleCloseForm}></c-mas-form-edit-contact>
+          <c-mas-form-edit-contact data={selectedRow} onclose={handleCloseForm} onsave={handleEditFormSave}></c-mas-form-edit-contact>
         </template>
 
       </div>

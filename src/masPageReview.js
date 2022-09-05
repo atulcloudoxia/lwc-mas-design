@@ -29,7 +29,7 @@ export default class ReviewPage extends LightningElement {
     });
     console.log(typeof(total));
     console.log(total);
-    return Number((total).toFixed(2)).toLocaleString();
+    return Number((total).toFixed(2));
   };
   /**
    * Modify a contact

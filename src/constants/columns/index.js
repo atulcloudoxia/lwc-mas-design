@@ -1,32 +1,32 @@
 const COLUMNS_CONTACTS = [
   {
     label: 'Role',
-    fieldName: 'role',
+    fieldName: 'Role',
     hideDefaultActions: true,
     sortable: true
   },
   {
     label: 'Name',
-    fieldName: 'name',
+    fieldName: 'Name',
     hideDefaultActions: true,
     sortable: true
   },
   {
     label: 'Email',
-    fieldName: 'email',
+    fieldName: 'Email',
     type: 'email',
     hideDefaultActions: true,
     sortable: true
   },
   {
     label: 'Phone',
-    fieldName: 'phone',
+    fieldName: 'Phone',
     hideDefaultActions: true,
     sortable: true
   },
   {
     label: 'Status',
-    fieldName: 'status',
+    fieldName: 'Status',
     type: 'customStatus',
     typeAttributes: {
       status: {
@@ -273,32 +273,32 @@ const COLUMNS_CHANGE_ORDERS = [
 const REVIEW_CONTACTS_COLUMNS = [
   {
     label: 'Role',
-    fieldName: 'role',
+    fieldName: 'Role',
     hideDefaultActions: true,
     sortable: false
   },
   {
     label: 'Name',
-    fieldName: 'name',
+    fieldName: 'Name',
     hideDefaultActions: true,
     sortable: false
   },
   {
     label: 'Email',
-    fieldName: 'email',
+    fieldName: 'Email',
     type: 'email',
     hideDefaultActions: true,
     sortable: false
   },
   {
     label: 'Phone',
-    fieldName: 'phone',
+    fieldName: 'Phone',
     hideDefaultActions: true,
     sortable: false
   },
   {
     label: 'Status',
-    fieldName: 'status',
+    fieldName: 'Status',
     type: 'customStatus',
     typeAttributes: {
       status: {

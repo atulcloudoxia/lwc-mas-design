@@ -12,7 +12,8 @@ var MOCK_CONTACTS_DATA = [{
   mailingcity: 'Montreal',
   mailingstate: 'qc',
   mailingpostalcode: '221002',
-  mailingcountry: 'ca'
+  mailingcountry: 'ca',
+  Account:{}
 },
 {
   id: "0035x000005BMsfAAG",
@@ -24,6 +25,7 @@ var MOCK_CONTACTS_DATA = [{
   salutation: 'mr',
   email: 'tao@onyxtech.ca',
   phone: '514-555-5555',
+  Account:{}
 },
 {
   id: "0035x000005BModAAG",
@@ -34,7 +36,8 @@ var MOCK_CONTACTS_DATA = [{
   birthdate: '1852-10-09',
   salutation: 'mr',
   email: 'chuck@norris.ca',
-  phone: '514-555-5555'
+  phone: '514-555-5555',
+  Account:{}
 },
 {
   id: "0035x000005BMqtAAG",
@@ -45,7 +48,8 @@ var MOCK_CONTACTS_DATA = [{
   birthdate: '1852-10-09',
   salutation: 'mr',
   email: 'chuck@norris.ca',
-  phone: '514-555-5555'
+  phone: '514-555-5555',
+  Account:{}
 },
 {
   id: "0035x000005BNa8AAG",
@@ -56,7 +60,8 @@ var MOCK_CONTACTS_DATA = [{
   birthdate: '1852-10-09',
   salutation: 'mr',
   email: 'chuck@norris.ca',
-  phone: '514-555-5555'
+  phone: '514-555-5555',
+  Account:{}
 },
 {
   id: "0035x000005BNa9AAG",
@@ -67,7 +72,8 @@ var MOCK_CONTACTS_DATA = [{
   birthdate: '1852-10-09',
   salutation: 'mr',
   email: 'chuck@norris.ca',
-  phone: '514-555-5555'
+  phone: '514-555-5555',
+  Account:{}
 },
 {
   id: "0035x000005BNsWAAW",
@@ -78,7 +84,8 @@ var MOCK_CONTACTS_DATA = [{
   birthdate: '1852-10-09',
   salutation: 'mr',
   email: 'chuck@norris.ca',
-  phone: '514-555-5555'
+  phone: '514-555-5555',
+  Account:{}
 },
 {
   id: "0035x000005BNslAAG",
@@ -89,7 +96,8 @@ var MOCK_CONTACTS_DATA = [{
   birthdate: '1852-10-09',
   salutation: 'mr',
   email: 'chuck@norris.ca',
-  phone: '514-555-5555'
+  phone: '514-555-5555',
+  Account:{}
 },
 {
   id: "0035x000005BNuXAAW",
@@ -100,7 +108,8 @@ var MOCK_CONTACTS_DATA = [{
   birthdate: '1852-10-09',
   salutation: 'mr',
   email: 'chuck@norris.ca',
-  phone: '514-555-5555'
+  phone: '514-555-5555',
+  Account:{}
 },
 {
   id: "0035x000004hboRAAQ",
@@ -111,7 +120,8 @@ var MOCK_CONTACTS_DATA = [{
   birthdate: '1852-10-09',
   salutation: 'mr',
   email: 'chuck@norris.ca',
-  phone: '514-555-5555'
+  phone: '514-555-5555',
+  Account:{}
 },
 {
   id: "0035x000005BLejAAG",
@@ -122,59 +132,63 @@ var MOCK_CONTACTS_DATA = [{
   birthdate: '1852-10-09',
   salutation: 'mr',
   email: 'chuck@norris.ca',
-  phone: '514-555-5555'
+  phone: '514-555-5555',
+  Account:{}
 }
 
 ];
 var MOCK_CONTACTS = [{
-    id: 1,
-    name: 'Andrew Hamilton Static',
-    firstname: 'Andrew',
-    lastname: 'Hamilton',
-    language__c: 'en',
-    birthdate: '1978-10-29',
-    salutation: 'mr',
-    sin: '123123123',
-    role: 'Buyer 1',
-    email: 'andrew@lucidlive.com',
-    phone: '514-555-5555',
-    mailingaddress: '123 Main Street',
-    mailingcity: 'Montreal',
-    mailingstate: 'qc',
-    mailingpostalcode: '221002',
-    mailingcountry: 'ca',
-    status: 'Complete',
-    isComplete: true,
+    Id: '0035x000037f2SDAAY',
+    Name: 'Andrew Hamilton Static',
+    FirstName: 'Andrew',
+    LastName: 'Hamilton',
+    Language__c: 'en',
+    Birthdate: '1978-10-29',
+    Salutation: 'mr',
+    Sin: '123123123',
+    Role: 'Buyer 1',
+    Email: 'andrew@lucidlive.com',
+    Phone: '514-555-5555',
+    MailingAddress: '123 Main Street',
+    MailingCity: 'Montreal',
+    MailingState: 'qc',
+    MailingPostalCode: '221002',
+    MailingCountry: 'ca',
+    Status: 'Complete',
+    IsComplete: true,
+    Account:{}
   },
   {
-    id: 2,
-    name: 'Tao-Nhan Nguyen',
-    firstname: 'Tao-Nhan',
-    lastname: 'Nguyen',
-    language__c: 'fr',
-    birthdate: '1942-10-09',
-    salutation: 'mr',
-    sin: '123123123',
-    role: 'Buyer 2',
-    email: 'tao@onyxtech.ca',
-    phone: '514-555-5555',
-    status: 'Missing Information',
-    isComplete: false,
+    Id: 2,
+    Name: 'Tao-Nhan Nguyen',
+    FirstName: 'Tao-Nhan',
+    LastName: 'Nguyen',
+    Language__c: 'fr',
+    Birthdate: '1942-10-09',
+    Salutation: 'mr',
+    Sin: '123123123',
+    Role: 'Buyer 2',
+    Email: 'tao@onyxtech.ca',
+    Phone: '514-555-5555',
+    Status: 'Missing Information',
+    IsComplete: false,
+    Account:{}
   },
   {
-    id: 3,
-    name: 'Chuck Norris',
-    firstname: 'Chuck',
-    lastname: 'Norris',
-    language__c: 'ch',
-    birthdate: '1852-10-09',
-    salutation: 'mr',
-    sin: '123123123',
-    role: 'corporation',
-    email: 'chuck@norris.ca',
-    phone: '514-555-5555',
-    status: 'Complete',
-    isComplete: true,
+    Id: 3,
+    Name: 'Chuck Norris',
+    FirstName: 'Chuck',
+    LastName: 'Norris',
+    Language__c: 'ch',
+    Birthdate: '1852-10-09',
+    Salutation: 'mr',
+    Sin: '123123123',
+    Role: 'corporation',
+    Email: 'chuck@norris.ca',
+    Phone: '514-555-5555',
+    Status: 'Complete',
+    IsComplete: true,
+    Account:{}
   }
 ];
 
@@ -232,14 +246,36 @@ const MOCK_CLOSING_DETAIL = {
 
   id: 1,
   Name: 'CCD-0145',
+  Sales_Representative__c:"005AAAAAAAAAAAA",
   Sales_Representative__r:{Id:"005AAAAAAAAAAAA", Name:"Tao Nhan"},
   Preliminary_Contract_Signed_D__c: '2020-09-07',
   Developer_Deal__c: true,
+  Primary_Usage__c :"Primary Residence" ,
+  Opportunity__c :"0065x000026bwDgAAI",
+  Project_Lookup__c:"a065x00000gHQYmAAO",
+  "Eligible_for_tax_rebate__c":true,
+  "TPS_Amount__c":0,
+  "TPS_Paid__c":0,
+  "TPS_Refund__c":0,
+  "TVQ_Amount__c":0,
+  "TVQ_Refund__c":0,
+  "TVQ_Paid__c":0,
+  "Total_Price_Sum__c":116702,
+  "Discount_On_Total__c":0,
+  "Total_Price_Discounted__c":116702,
+  "Vip_Amount__c":0,
+  "Net_Condo_Price__c":120436.464,
+  "Preliminary_Contract_Signed_D__c":"2022-07-14",
+  "Is_Demo__c":false,
+  //"Deposit_Schedule__c":"a0D5x00000mLhUCEA0",
+  "Tax_Exempt__c":false,
+  "Tax_Rebate_Percent__c":100,
+  "Opportunity__r":{"Id":"0065x000026bwDgAAI"}
 };
 
 const MOCK_DEPOSIT = [
  {
-     id: 1,
+     Id: 1,
      Deposit_Number__c: 1,
      Reception_Date__c: '09/01/2022',
      Deposit_To__c: 'notary',
@@ -249,7 +285,7 @@ const MOCK_DEPOSIT = [
      Deposit_Received__c: true
  },
  {
-     id: 2,
+     Id: 2,
      Deposit_Number__c: 2,
      Reception_Date__c: '10/01/2022',
      Deposit_To__c: 'notary',
@@ -259,7 +295,7 @@ const MOCK_DEPOSIT = [
      Deposit_Received__c: false
  },
  {
-     id: 3,
+     Id: 3,
      Deposit_Number__c: 3,
      Reception_Date__c: '11/01/2022',
      Deposit_To__c: 'notary',
@@ -269,7 +305,7 @@ const MOCK_DEPOSIT = [
      Deposit_Received__c: false
  },
  {
-     id: 4,
+     Id: 4,
      Deposit_Number__c: 4,
      Reception_Date__c: '11/01/2022',
      Deposit_To__c: 'notary',
@@ -279,7 +315,7 @@ const MOCK_DEPOSIT = [
      Deposit_Received__c: false
  },
  {
-     id: 5,
+     Id: 5,
      Deposit_Number__c: 5,
      Reception_Date__c: '11/01/2022',
      Deposit_To__c: 'notary',
@@ -289,7 +325,7 @@ const MOCK_DEPOSIT = [
      Deposit_Received__c: false
  },
  {
-     id: 6,
+     Id: 6,
      Deposit_Number__c: 6,
      Reception_Date__c: '11/01/2022',
      Deposit_To__c: 'notary',
@@ -338,4 +374,8 @@ const MOCK_CHANGE_ORDERS = [
   }
 ];
 
-export { MOCK_CONTACTS_DATA, MOCK_CONTACTS, MOCK_PARKING, MOCK_ASSET, MOCK_CLOSING_DETAIL, MOCK_EXTRAS, MOCK_DEPOSIT, MOCK_VARIA, MOCK_CHANGE_ORDERS };
+const MOCK_DEPOSIT_SCHEDULE = [
+  {"Id":"a0Df200000YpP48EAF","Name":"Deposit Schedule Project 1 (Primary Residence) KC P1","Project__c":"a065x00000gHQYmAAO","Primary_Usage_Type__c":"Primary Residence","Eligible_for_Tax_Rebates__c":true,"Calculate_On_Asset_Only__c":false},{"Id":"a0D5x00000mLhU7EAK","Name":"DS-00000001 Kingsway Cres Phases 12345","Project__c":"a065x00000gHQYmAAO","Primary_Usage_Type__c":"Primary Residence","Eligible_for_Tax_Rebates__c":true,"Calculate_On_Asset_Only__c":false},{"Id":"a0D5x00000mLhUCEA0","Name":"DS-00000002 - Kingsway Cres Phase 1","Project__c":"a065x00000gHQYmAAO","Primary_Usage_Type__c":"Primary Residence","Eligible_for_Tax_Rebates__c":true,"Calculate_On_Asset_Only__c":false},{"Id":"a0D5x00000mZ1esEAC","Name":"M City 4 - Local - copied","Project__c":"a065x00000gHQYmAAO","Primary_Usage_Type__c":"Primary Residence","Eligible_for_Tax_Rebates__c":true,"Calculate_On_Asset_Only__c":false}
+];
+
+export { MOCK_CONTACTS_DATA, MOCK_CONTACTS, MOCK_PARKING, MOCK_ASSET, MOCK_CLOSING_DETAIL, MOCK_EXTRAS, MOCK_DEPOSIT, MOCK_VARIA, MOCK_CHANGE_ORDERS, MOCK_DEPOSIT_SCHEDULE };

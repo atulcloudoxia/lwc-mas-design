@@ -14,30 +14,30 @@
           </div>
           <div class="grid__span2">
             <div class="mt-10">
-              <lightning-combobox name="role" label="Role" placeholder="Select Role" options={roleOptions}
-                onchange={handleRoleChange} value={data.role}></lightning-combobox>
+              <lightning-combobox name="Role" label="Role" placeholder="Select Role" options={roleOptions}
+                onchange={handleRoleChange} value={data.Role} ></lightning-combobox>
             </div>
             <div class="mt-10">
-              <lightning-combobox name="salutation" label="Saluation" placeholder="Select Salutation"
-                options={salutationOptions} value={data.salutation}></lightning-combobox>
+              <lightning-combobox name="Salutation" label="Saluation" placeholder="Select Salutation"
+                options={salutationOptions} value={data.Salutation} data-id="reqField" required onchange={handleFormInputChange}></lightning-combobox>
             </div>
             <div class="mt-10">
-              <lightning-input value={data.firstname} name="firstname" label="First Name">
+              <lightning-input value={data.FirstName} name="FirstName" label="First Name" data-id="reqField" required onchange={handleFormInputChange}>
               </lightning-input>
             </div>
             <div class="mt-10">
-              <lightning-input value={data.lastname} name="lastname" label="Last Name">
+              <lightning-input value={data.LastName} name="LastName" label="Last Name" data-id="reqField" required onchange={handleFormInputChange}>
               </lightning-input>
             </div>
             <div class="mt-10">
-              <lightning-input value={data.birthdate} type="date" name="dob" label="Date of Birth"></lightning-input>
+              <lightning-input value={data.Birthdate} type="date" name="Birthdate" label="Date of Birth" data-id="dobReqField" onchange={handleFormInputChange}></lightning-input>
             </div>
             <div class="mt-10">
-              <lightning-combobox name="language" label="Language" placeholder="Select Language"
-                options={languageOptions} value={data.language__c}></lightning-combobox>
+              <lightning-combobox name="Language__c" label="Language" placeholder="Select Language"
+                options={languageOptions} value={data.Language__c} data-id="reqField" required onchange={handleFormInputChange}></lightning-combobox>
             </div>
             <div class="mt-10">
-              <lightning-input value={data.sin} name="sin" label="Social Insurance Number">
+              <lightning-input value={data.Sin} name="Sin" label="Social Insurance Number" onchange={handleFormInputChange}>
               </lightning-input>
             </div>
           </div>
@@ -56,47 +56,47 @@
               <label>Corporate Information</label>
             </div>
             <div class="grid__span2 mt-10">
-              <lightning-input name="corporation-name" label="Corporation Name">
+              <lightning-input name="Account.Name" label="Corporation Name" value={data.Account.Name} data-id="reqField" required onchange={handleFormInputChange}>
               </lightning-input>
             </div>
             <div class="mt-10">
-              <lightning-input name="corporation-gst" label="GST Number">
+              <lightning-input name="Account.GST__c" label="GST Number"  value={data.Account.GST__c} data-id="reqField" required onchange={handleFormInputChange}>
               </lightning-input>
             </div>
             <div class="mt-10">
-              <lightning-input name="corporation-pst" label="PST Number">
+              <lightning-input name="Account.PST__c" label="PST Number"  value={data.Account.PST__c} data-id="reqField" required onchange={handleFormInputChange}>
               </lightning-input>
             </div>
             <div class="grid__span2 mt-10">
-              <lightning-input name="corporation-address" label="Address">
+              <lightning-input name="Account.BillingStreet" label="Address"  value={data.Account.BillingStreet} data-id="reqField" required onchange={handleFormInputChange}>
               </lightning-input>
             </div>
             <div class="grid__span2 mt-10">
-              <lightning-input name="corporation-city" label="City">
+              <lightning-input name="Account.BillingCity" label="City"  value={data.Account.BillingCity} data-id="reqField" required onchange={handleFormInputChange}>
               </lightning-input>
             </div>
             <div class="mt-10">
-              <lightning-input name="corporation-province-state" label="Province / State">
+              <lightning-input name="Account.BillingState" label="Province / State"  value={data.Account.BillingState} data-id="reqField" required onchange={handleFormInputChange}>
               </lightning-input>
             </div>
             <div class="mt-10">
-              <lightning-input name="corporation-country" label="Country">
+              <lightning-input name="Account.BillingCountry" label="Country" value={data.Account.BillingCountry} data-id="reqField" required onchange={handleFormInputChange}>
               </lightning-input>
             </div>
             <div class="grid__span2 mt-10">
-              <lightning-input name="corporation-nature" label="Nature of principal business">
+              <lightning-input name="Account.Nature_of_Principal_Business__c" label="Nature of principal business" value={data.Account.Nature_of_Principal_Business__c} data-id="reqField" required onchange={handleFormInputChange}>
               </lightning-input>
             </div>
             <div class="grid__span2 mt-10">
-              <lightning-input name="corporation-source" label="Source of verification records">
+              <lightning-input name="Account.Source_of_Verification_Records__c" label="Source of verification records" value={data.Account.Source_of_Verification_Records__c}  data-id="reqField" required onchange={handleFormInputChange}>
               </lightning-input>
             </div>
             <div class="grid__span2 mt-10">
-              <lightning-input name="corporation-number" label="Corporation registration number">
+              <lightning-input name="Account.Corporation_Registration_Number__c" label="Corporation registration number"  value={data.Account.Corporation_Registration_Number__c}   data-id="reqField" required onchange={handleFormInputChange}>
               </lightning-input>
             </div>
             <div class="grid__span2 mt-10">
-              <lightning-input name="corporation-fintrac" label="Fintrac Notes">
+              <lightning-input name="Account.Fintrac_Notes__c" label="Fintrac Notes" value={data.Account.Fintrac_Notes__c} data-id="reqField" required onchange={handleFormInputChange}>
               </lightning-input>
             </div>
           </template>
@@ -106,19 +106,19 @@
             <label>Contact Information</label>
           </div>
           <div class="mt-10">
-            <lightning-input value={data.email} name="email" label="Email " type="email">
+            <lightning-input value={data.Email} name="Email" label="Email " type="email" onchange={handleFormInputChange}>
             </lightning-input>
           </div>
           <div class="mt-10">
-            <lightning-input value={data.phone} name="phone" label="Phone" type="tel">
+            <lightning-input value={data.Phone} data-id="phoneField" name="Phone" label="Phone" type="tel" onchange={handleFormInputChange}>
             </lightning-input>
           </div>
           <div class="mt-10">
-            <lightning-input value={data.phone_ext} name="phone-ext" label="Phone ext.">
+            <lightning-input value={data.Phone_Ext__c} name="Phone_Ext__c" label="Phone ext." onchange={handleFormInputChange}>
             </lightning-input>
           </div>
           <div class="mt-10">
-            <lightning-input value={data.mobile} name="mobile" label="Mobile" type="tel">
+            <lightning-input value={data.Mobile} name="Mobile" data-id="mobileField" label="Mobile" type="tel" onchange={handleFormInputChange}>
             </lightning-input>
           </div>
 
@@ -127,23 +127,23 @@
             <label>Address</label>
           </div>
           <div class="grid__span2 mt-10">
-            <lightning-input value={data.mailingaddress} name="Address" label="Address">
+            <lightning-input value={data.MailingAddress} name="Address" label="Address" onchange={handleFormInputChange}>
             </lightning-input>
           </div>
           <div class="grid__span2 mt-10">
-            <lightning-input value={data.mailingcity} name="city" label="City">
+            <lightning-input value={data.MailingCity} name="city" label="City" onchange={handleFormInputChange}>
             </lightning-input>
           </div>
           <div class="mt-10">
-            <lightning-input value={data.mailingstate} name="province-state" label="Province / State">
+            <lightning-input value={data.MailingState} name="province-state" label="Province / State" onchange={handleFormInputChange}>
             </lightning-input>
           </div>
           <div class="mt-10">
-            <lightning-input value={data.mailingpostalcode} name="postal-zip" label="Postal / Zip Code">
+            <lightning-input value={data.MailingPostalCode} name="postal-zip" label="Postal / Zip Code" onchange={handleFormInputChange}>
             </lightning-input>
           </div>
           <div class="mt-10">
-            <lightning-input value={data.mailingcountry} name="country" label="Country">
+            <lightning-input value={data.MailingCountry} name="country" label="Country" data-id="mailingcountry-req" onchange={handleFormInputChange}>
             </lightning-input>
           </div>
 
@@ -156,20 +156,21 @@
             </lightning-input>
           </div>
           <div class="mt-10">
-            <lightning-input name="id-expiration-date" label="ID Expiration Date">
+            <lightning-input name="id-expiration-date" label="ID Expiration Date" data-id="expDateReqField">
             </lightning-input>
           </div>
           <div class="mt-10">
-            <lightning-input name="id-country" label="ID Country">
-            </lightning-input>
+            <lightning-combobox name="id-country" label="ID Country" placeholder="ID Country"
+            options={JusrisdictionCountryPicklistItems} value={idInformation.Id_Jusrisdiction_Country__c} data-id="reqField" required></lightning-combobox>
           </div>
           <div class="mt-10">
-            <lightning-input name="id-province" label="ID Province">
-            </lightning-input>
+            <lightning-combobox name="id-province" label="ID Province" placeholder="ID Province"
+            options={JusrisdictionStatesPicklistItems} value={idInformation.Id_Jusrisdiction_State_Province__c} data-id="reqField" required></lightning-combobox>
+             
           </div>
           <div class="mt-10">
-            <lightning-input name="type" label="Type">
-            </lightning-input>
+            <lightning-combobox name="type" label="Type" placeholder="Type"
+            options={IdTypePicklistItems} value={idInformation.ID_Type__c} data-id="reqField" required></lightning-combobox>
           </div>
         </div>
 
@@ -178,7 +179,7 @@
             <div class="modal__container__cancel" onclick={handleCancel}>
               Cancel
             </div>
-            <button class="button-primary">Save</button>
+            <button class="button-primary" onclick={saveContactRole}>Save</button>
           </div>
         </div>
       </div>
