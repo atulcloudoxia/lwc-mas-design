@@ -96,6 +96,8 @@ export default class PageAsset extends LightningElement {
   connectedCallback(){
     this.asset = JSON.parse(JSON.stringify(this.asset));
     this.asset.Condo_Price__c = formatNumbertocurrency(this.asset.Condo_Price__c);
+    this.handleParkingLoad();
+    this.handleExtraLoad();
   }
   /**
    * Shows modal to edit asset details
@@ -189,11 +191,17 @@ export default class PageAsset extends LightningElement {
     this.parkingdata = [...this.parkingdata,event.detail.row];
     this.handleDataUpdate();
   }
+  handleSubmitAssetForm(event) {
+    
+    this.closingdetail = event.detail.closingdetail;
+    this.handleDataUpdate();
+  }
   handleDataUpdate(){
     let rowAddEvent = new CustomEvent('updatedata',{
       detail: {
         parkingdata: this.parkingdata,
-        extradata: this.extradata
+        extradata: this.extradata,
+        closingdetail:this.closingdetail
       },
       bubbles: true,
       composed: false
@@ -302,4 +310,173 @@ export default class PageAsset extends LightningElement {
     else if(this.activeTab=='parking')
     this.handleRefresh('parkings');
   }
+
+
+  @track draftParkingValues = [];
+  handleParkingSave(event){
+    //console.log(event.detail.draftValues);
+    const recordInputs =  event.detail.draftValues.slice().map(draft => {
+        const fields = Object.assign({}, draft);
+        return { fields };
+    });
+    //console.log(recordInputs);
+    var parkingdata = JSON.parse(JSON.stringify(this.parkingdata));
+    parkingdata.forEach(element => {
+      recordInputs.forEach(draft => {
+        if(draft.fields.id==element.id) {
+          for (const [key, value] of Object.entries(draft.fields)) {
+            element[key] = value;
+          }
+        }
+        
+      });
+    });
+    this.draftParkingValues = [];
+    this.parkingdata = parkingdata;
+    this.handleDataUpdate();
+  }
+  @track draftExtrasValues = [];
+  handleExtraSave(event){
+    //console.log(event.detail.draftValues);
+    const recordInputs =  event.detail.draftValues.slice().map(draft => {
+        const fields = Object.assign({}, draft);
+        return { fields };
+    });
+    //console.log(recordInputs);
+    var extradata = JSON.parse(JSON.stringify(this.extradata));
+    extradata.forEach(element => {
+      recordInputs.forEach(draft => {
+        if(draft.fields.id==element.id) {
+          for (const [key, value] of Object.entries(draft.fields)) {
+            element[key] = value;
+          }
+        }
+        
+      });
+    });
+    this.draftExtrasValues = [];
+    this.extradata = extradata;
+    this.handleDataUpdate();
+  }
+  @track disableParkingLockerEdit;
+  @track totalMaxParkings;
+  @track totalMaxLockers;
+  
+  handleParkingLoad  () {
+    console.log("---------------------------------");
+    var mHelper = this;
+     
+
+    console.log("MASParkingController.doInit - Fetching parking and lockers");
+
+   /* var assetList = component.get("v.assetList");
+
+    if(assetList.length == 1){
+        component.set("v.selectedAsset", assetList[0]);
+        component.set("v.selectedAssetLabel", assetList[0].Name);
+    }
+
+    // Build phase list
+    var phasesChoices = new Array();
+    for (var i = 0; i < assetList.length; i++) {
+        var item = assetList[i];
+        if (phasesChoices.includes(item.Phase__c) == false) phasesChoices.push(item.Phase__c);
+    }
+
+    // Build list of possible assets for each phase
+    var assetChoices = new Array();
+
+    for (var i = 0; i < phasesChoices.length; i++) {
+        var assetListMap = new Map();
+
+        var phase = phasesChoices[i];
+        assetListMap['phase'] = phase;
+
+        var assetsForPhase = new Array();
+        for (var j = 0; j < assetList.length; j++) {
+            var asset = assetList[j];
+            if (asset.Phase__c == phase) assetsForPhase.push(asset);
+        }
+        assetListMap['assetList'] = assetsForPhase;
+
+        assetChoices.push(assetListMap);
+    }
+
+    component.set("v.assetChoicesForPhaseList", assetChoices);*/
+
+    // Build parking data
+    /* var apexAction = component.get("c.getCurrentData");
+    apexAction.setParams({
+      assetListString: JSON.stringify(assetList),
+      closingDetailId: component.get("v.closingDetail").Id
+    });
+    apexAction.setCallback(this, function(response) {
+        var state = response.getState();
+        if (component.isValid() && state === "SUCCESS") { */
+            var container = {"availableParkings":[{"Id":"a05f200000pCLKvAAO","Name":"P&L 000018","Available_For_Phases__c":"1;1A;2;2A","Phase__c":"2","Price__c":4500,"Project_Lookup__c":"a065x00000gHQYmAAO","Status__c":"Available","Asset__c":"02if200000WFTQzAAP","Type__c":"Locker - Concrete","Project_Lookup__r":{"Id":"a065x00000gHQYmAAO"},"Asset__r":{"Id":"02if200000WFTQzAAP","Name":"DevMcGill"}}],"currentParkings":[],"disableParkingLockerEdit":false,
+                            "totalMaxLockers":2,
+                            "totalMaxParkings":2};//response.getReturnValue();
+            console.log("MASParkingController.getCurrentData currentParkings " + JSON.stringify(container.currentParkings));
+            //console.log("MASParkingController.getCurrentData availableParkings " + JSON.stringify(container.availableParkings));
+
+            //component.set("v.selectedParkingList", container.currentParkings);
+            this.disableParkingLockerEdit = container.disableParkingLockerEdit;
+
+            /* var selectedParkingList = component.get("v.selectedParkingList");
+            for(let parking of selectedParkingList){
+                if(!$A.util.isEmpty(parking.Related_Asset__c) && parking.Related_Asset__c == parking.Asset__c){
+                    parking.isDisabled = true;
+                }
+            }
+            component.set("v.selectedParkingList", selectedParkingList); */
+
+            this.totalMaxParkings = container.totalMaxParkings;
+            this.totalMaxLockers = container.totalMaxLockers;
+            /* component.set("v.availableParkings", container.availableParkings) */;
+            /* helper.refreshParkingPicklist(component, event, helper); */
+
+            /* mHelper.setSpinnerVisibility(component, false); */
+        /* }
+        else {
+            console.log("MASContactRolesController.doInit | Apex Callback error ", JSON.stringify(response.getError()) + " state " + state);
+        }
+    });
+    $A.enqueueAction(apexAction); */
+
+  }
+  @track roomTypePicklistItems;
+  handleExtraLoad() {
+
+    var closingDetailId = this.closingdetail.Id;
+    console.log("MASExtraController.doInit - fetching extras for closingDetail id " + closingDetailId);
+    /* var assetList = component.get('v.assetList');
+    var apexAction = component.get("c.getCurrentData");
+    apexAction.setParams({
+        "closingDetailId" : closingDetailId,
+        "ProjectId": (assetList.length!=0?assetList[0].Project_lookup__c:null)
+    });
+    apexAction.setCallback(this, function(response) {
+        var state = response.getState();
+        if (component.isValid() && state === "SUCCESS") { */
+
+            var container = {"roomTypePicklistItems":[{}]}//response.getReturnValue();
+            //console.log(container.extraList);
+            //component.set('v.selectedExtraList', container.extraList);
+            //component.set('v.extraCatalogList', container.extraCatalog);
+            this.roomTypePicklistItems= container.roomTypePicklistItems;
+
+            console.log("MASExtraController.doInit | selectedExtraList", JSON.stringify(container.extraList));
+
+            /* if( !$A.util.isEmpty(component.get('v.value')) && !isCallback) {
+                helper.searchRecordsHelper( component, event, helper, component.get('v.value') );
+            }
+            helper.setSpinnerVisibility(component, false);
+        }
+        else {
+            console.log("MASExtraController.doInit | Apex Callback error ", JSON.stringify(response.getError()) + " state " + state);
+        }
+    });
+    $A.enqueueAction(apexAction); */
+  }
+
 }

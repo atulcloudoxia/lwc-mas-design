@@ -92,8 +92,11 @@
             type="checkbox"
             label="Eligible for tax rebate"
             name="tax-rebate"
+            checked={closingdetail.Eligible_for_tax_rebate__c}
+            onchange={handleEligibleCheckbox}
             >
           </lightning-input>
+         
         </div>
       </div>
       <hr />
@@ -104,6 +107,7 @@
           placeholder="Select Schedule"
           variant="label-hidden"
           options={optionsSchedule}
+          value={selectedDepositScheduleValue}
           onchange={handleScheduleChange}>
         </lightning-combobox>
       </div>
@@ -119,7 +123,14 @@
       </div>
       <hr />
       <div class="mt-10">
-        <c-mas-custom-table key-field="id" data={data} columns={columns} onrowaction={handleRowAction} hide-checkbox-column>
+        <c-mas-custom-table 
+        key-field="Id" 
+        data={data} 
+        columns={columns} 
+        onrowaction={handleRowAction} 
+        hide-checkbox-column 
+        draft-values={draftDepositValues}
+        onsave={handleDepositSave} >
         </c-mas-custom-table>
       </div>
       <div class="table-footer">

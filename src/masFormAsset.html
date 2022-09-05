@@ -8,25 +8,48 @@
         </div>
         <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
           <div>
-            <label>Asset</label>
+            <!-- <label>Asset</label> -->
             <div class="mt-10">
-              <lightning-input name="search-contact" label="Search Contact" variant="label-hidden"
+              <!--<lightning-input name="search-contact" label="Search Contact" variant="label-hidden"
                 value={asset.Name}>
-              </lightning-input>
+              </lightning-input>-->
+                <c-mas-custom-lookup 
+                    placeholder="Search Asset"
+                    iconname="standard:home" 
+                    object-name="Asset" 
+                    searchfield="Name" 
+                    fieldstoquery="" 
+                    data-index={index} 
+                    onselectedrec={handleAssetSelect}
+                    filter-conditions=""
+                    blank="true">
+                </c-mas-custom-lookup>
             </div>
           </div>
           <div class="mt-20">
             <label>Contract Date</label>
             <div class="mt-10">
-              <lightning-input type="date" name="contract-date" variant="label-hidden" label="Date"
-                value={closingdetail.Preliminary_Contract_Signed_D__c}></lightning-input>
+              <lightning-input type="date" name="Preliminary_Contract_Signed_D__c" variant="label-hidden" label="Date" data-id="contract-date"
+                value={closingdetail.Preliminary_Contract_Signed_D__c} onchange={handleFormInputChange}></lightning-input>
             </div>
           </div>
           <div class="mt-20">
             <label>Sales Representative</label>
             <div class="mt-10">
-              <lightning-input name="sales-rep" label="Sales Rep" variant="label-hidden" value={closingdetail.Sales_Representative__r.Name}>
-              </lightning-input>
+              <!--<lightning-input name="sales-rep" label="Sales Rep" variant="label-hidden" value={closingdetail.Sales_Representative__r.Name}>
+              </lightning-input>-->
+                <c-mas-custom-lookup 
+                    placeholder="Search Sales Rep"
+                    iconname="standard:service_resource" 
+                    object-name="User" 
+                    searchfield="Name" 
+                    fieldstoquery="Email, Phone" 
+                    data-index={index} 
+                    onselectedrec={handleSalesRepSelect}
+                    filter-conditions=""
+                    blank="false"
+                    selected-record-id={closingdetail.Sales_Representative__c}>
+                </c-mas-custom-lookup>
             </div>
           </div>
           <div class="mt-20">
@@ -34,20 +57,24 @@
             <div class="mt-10">
               <!--<lightning-input name="dev-sale" label="Developer Sale" variant="label-hidden" value={closingdetail.Developer_Deal__c}>
               </lightning-input>-->
-              {closingdetail.Developer_Deal__c}
+              
               <lightning-combobox variant="label-hidden"
-                                  name="progress"
+                                  name="Developer_Deal__c"
                                   value={closingdetail.Developer_Deal__c}
                                   placeholder="Select Progress"
                                   options={developerDealOptions}
-                                  onchange={handleDeveloperDealChange} ></lightning-combobox>
+                                  onchange={handleDeveloperDealChange}></lightning-combobox>
             </div>
           </div>
           <div class="mt-20">
             <label>Is this a reservation?</label>
             <div class="mt-10">
-              <lightning-input name="dev-sale" label="Developer Sale" variant="label-hidden" value={reservation}>
-              </lightning-input>
+              <lightning-combobox variant="label-hidden"
+                                  name="Is_Reservation__c"
+                                  value={closingdetail.Is_Reservation__c}
+                                  placeholder="Is this a reservation?"
+                                  options={developerDealOptions}
+                                  onchange={handleReservationChange}></lightning-combobox>
             </div>
           </div>
         </div>
@@ -56,7 +83,7 @@
             <div class="modal__container__cancel" onclick={handleCancel}>
               Cancel
             </div>
-            <button class="button-primary" >Continue</button>
+            <button class="button-primary"  onclick={handleSubmit}>Continue</button>
           </div>
         </div>
       </div>
