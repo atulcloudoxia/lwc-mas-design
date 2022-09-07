@@ -7,6 +7,25 @@
           <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Edit Asset</h1>
         </div>
         <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+          <div>
+            <!-- <label>Asset</label> -->
+            <div class="mt-10">
+              <!--<lightning-input name="search-contact" label="Search Contact" variant="label-hidden"
+                value={asset.Name}>
+              </lightning-input>-->
+                <c-mas-custom-lookup
+                    placeholder="Search Asset"
+                    iconname="standard:home"
+                    object-name="Asset"
+                    searchfield="Name"
+                    fieldstoquery=""
+                    data-index={index}
+                    onselectedrec={handleAssetSelect}
+                    filter-conditions=""
+                    blank="true">
+                </c-mas-custom-lookup>
+            </div>
+          </div>
           <div class="mt-10">
             <label>Sales Representative</label>
             <div class="mt-10">
