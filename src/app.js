@@ -17,6 +17,11 @@ import {
   MOCK_CONTACTS
 } from './constants';
 
+const TYPES = {
+  sale: 'sale',
+  rental: 'rental'
+};
+
 // State machine
 const defaults = {
   selected:false,         // Page is in view
