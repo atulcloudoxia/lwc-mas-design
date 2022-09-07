@@ -42,7 +42,7 @@
 			<c-mas-page-services data={servicesData}  asset={assetData}></c-mas-page-services>
 		</template>
 		<template if:true={showDepositPage}>
-			<c-mas-page-deposit data={depositData} asset={assetData} parkingdata={parkingData}></c-mas-page-deposit>
+			<c-mas-page-deposit data={depositData} asset={assetData} parkingdata={parkingData} extradata={extradata}></c-mas-page-deposit>
 		</template>
 		<template if:true={showVariaPage}>
 			<c-mas-page-varia variadata={variaData} changeorderdata={changeOrderData} asset={asset} onupdatedata={handleDataUpdate}></c-mas-page-varia>
