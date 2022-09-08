@@ -167,4 +167,9 @@
     <c-mas-form-discount onclose={handleDiscountClose}></c-mas-form-discount>
   </template>
 
+  <!-- Add Check Asset Payment Window -->
+  <template if:true={checkAssetPayment}>
+    <c-mas-form-check onclose={handleCheckClose}></c-mas-form-check>
+  </template>
+
 </template>
