@@ -16,7 +16,8 @@ export default class PageDeposit extends LightningElement {
     optionsSchedule = [{ }]; // Options for "Select Deposit Schedule"
     @track selectedDepositSchedule;
     @track selectedDepositScheduleValue;
-    @track checkAssetPayment = true;
+    @track checkAssetPayment = false;
+    @track showComplianceWindow = true;
 
     /**
      * Handle check asset payment close
@@ -26,7 +27,16 @@ export default class PageDeposit extends LightningElement {
     handleCheckClose(e){
         this.checkAssetPayment = false;
     }
-    
+
+    /**
+     * Handle check asset payment close
+     *
+     * @param (Event) e
+     */
+    handleCloseComplianceWindow(e){
+        this.showComplianceWindow = false;
+    }
+
     handleTaxExemptCheckbox(e){
       // Add handler logic here
     }
@@ -73,7 +83,7 @@ export default class PageDeposit extends LightningElement {
       });
       console.log(total);
       console.log(this.extradata);
-      
+
       this.extradata.forEach((item) => {
         total += parseFloat(item.Price__c);
       });
