@@ -53,7 +53,8 @@ export default class PageContact extends LightningElement {
          break;
 
        case 'delete':
-         this.data = this.deleteRow(row, this.data);
+         this.data = this.deleteRow(row, [...this.data]);
+         this.handleDataUpdate();
          // deleteId - Handle delete logic
          break;
 
@@ -69,7 +70,7 @@ export default class PageContact extends LightningElement {
    */
   editRow(row) {
     const { id } = row;
-console.table(row);
+    console.table(row);
     this.selectedRow = row;
     this.isCorporation = row.role === 'corporation';
     this.editContact = true;
@@ -82,9 +83,12 @@ console.table(row);
    * @param (Array)   data
    */
   deleteRow(row, data) {
-    const { id } = row;
-    const index = findRowById(id, data);
-
+    const { Id } = row;
+    console.log( JSON.stringify(Id));
+    console.log(JSON.parse(JSON.stringify(data)));
+    
+    const index = findRowById(Id, data);
+    console.log(index);
     if (index !== -1) {
       return data
         .slice(0, index)
@@ -105,6 +109,39 @@ console.table(row);
     this.handleDataUpdate();
   }
   handleDataUpdate(){
+
+    var buyer1Found = false;
+    var buyer2Found= false;
+    var corporationFound= false;
+    console.log( this.data );
+    for(let conRole of [...this.data] ){
+      console.log('===conRole===');
+      console.log(conRole);
+        if(conRole.Role == 'Buyer 1' || conRole.Role == 'buyer-1'){
+            buyer1Found = true;
+        }
+        if(conRole.Role == 'Buyer 2' || conRole.Role == 'buyer-2'){
+            buyer2Found = true;
+        }
+        if(conRole.Role == 'Corporation' || conRole.Role == 'corporation'){
+            corporationFound = true;
+        }
+    }
+
+      if (corporationFound == true) {
+        if (buyer2Found == true || buyer1Found == true) {
+            //alert($A.get('$Label.c.MAS_Corporation_Role_Error'));
+            alert('MAS_Corporation_Role_Error');
+            return;
+        }
+    }
+    else if(buyer1Found == false){
+        //alert($A.get('$Label.c.MAS_Buyer_Required_Error'));
+        alert('MAS_Buyer_Required_Error');
+        return;
+    }  
+    
+
     let rowAddEvent = new CustomEvent('updatedata',{
       detail: {
         contactdata: this.data 

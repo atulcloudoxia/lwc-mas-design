@@ -39,7 +39,7 @@ let pageContact = {
   enabled: true,
   ...defaults,
   selected:true,
-  should_recompute: false
+  should_recompute: false,
   warning: true,
   message: "There is no bank approval."
 };
@@ -142,11 +142,12 @@ const pageRentalReview = {
 
 export default class Mas extends LightningElement {
 
-    constructor() {
-        super();
-        this.setType(TYPES.rental);
-    }
-    // @api recordId;
+  constructor() {
+    super();
+    this.setType(TYPES.sale);
+  }
+
+  // @api recordId;
 
   // Common Data
   @track opportunity = {};
@@ -171,8 +172,20 @@ export default class Mas extends LightningElement {
   // Other
   @track isLoading=false;
 
-  @track
-  pages = [
+  @track type; // rental or sale
+  @track contactsData = MOCK_CONTACTS;
+  @track parkingData = MOCK_PARKING;
+  @track extraData = MOCK_EXTRAS;
+  @track asset = MOCK_ASSET;
+  @track rentalAsset = MOCK_RENTAL_ASSET;
+  @track servicesData = MOCK_SERVICES;
+  @track inclusionsData = MOCK_INCLUSIONS;
+  @track depositData = MOCK_DEPOSIT;
+  @track rentalDepositData = MOCK_RENTAL_DEPOSIT;
+  @track variaData = MOCK_VARIA;
+  @track changeOrderData = MOCK_CHANGE_ORDERS;
+  @track isLoading=false;
+  @track pages = [
     pageContact,
     pageAsset,
     pageDeposit,
@@ -440,5 +453,5 @@ export default class Mas extends LightningElement {
     if(variadata!=undefined) this.variaData = variadata;
     if(changeorderdata!=undefined) this.changeOrderData = changeorderdata;
   }
-  
+
 }
