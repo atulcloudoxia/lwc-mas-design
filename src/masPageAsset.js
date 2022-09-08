@@ -7,7 +7,7 @@ export default class PageAsset extends LightningElement {
   @api parkingdata;
   @track availableExtras = [
     {
-        id: 1,
+        Id: 1,
         Quantity__c: 3,
         name: 'Extra 1',
         Description_ENG__c: 'lorem ipsum',
@@ -15,7 +15,7 @@ export default class PageAsset extends LightningElement {
         Price__c: '87270'
     },
     {
-        id: 2,
+        Id: 2,
         Quantity__c: 3,
         name: 'Extra 1',
         Description_ENG__c: 'lorem ipsum',
@@ -23,7 +23,7 @@ export default class PageAsset extends LightningElement {
         Price__c: '87271'
     },
     {
-        id: 3,
+        Id: 3,
         Quantity__c: 3,
         name: 'Extra 1',
         Description_ENG__c: 'lorem ipsum',
@@ -33,49 +33,49 @@ export default class PageAsset extends LightningElement {
   ];
   @track availableParkings = [
     {
-        id: 1,
+        Id: 1,
         Type__c: 'Locker Standard',
         Assigned_Spot__c: 'Side by Side',
         Price__c: '30930',
     },
     {
-        id: 2,
+        Id: 2,
         Type__c: 'Locker Standard',
         Assigned_Spot__c: 'Side by Side',
         Price__c: '30931',
     },
     {
-        id: 3,
+        Id: 3,
         Type__c: 'Locker Standard',
         Assigned_Spot__c: 'Side by Side',
         Price__c: '30932',
     },
     {
-        id: 4,
+        Id: 4,
         Type__c: 'Locker Standard',
         Assigned_Spot__c: 'Side by Side',
         Price__c: '30933',
     },
     {
-        id: 5,
+        Id: 5,
         Type__c: 'Locker Standard',
         Assigned_Spot__c: 'Side by Side',
         Price__c: '30934',
     },
     {
-        id: 6,
+        Id: 6,
         Type__c: 'Parking Standard',
         Assigned_Spot__c: 'Side by Side',
         Price__c: '36935',
     },
     {
-        id: 7,
+        Id: 7,
         Type__c: 'Parking Standard',
         Assigned_Spot__c: 'Side by Side',
         Price__c: '36936',
     },
     {
-        id: 8,
+        Id: 8,
         Type__c: 'Parking Standard',
         Assigned_Spot__c: 'Side by Side',
         Price__c: '36937',
@@ -144,10 +144,13 @@ export default class PageAsset extends LightningElement {
    * @param (object) row
    */
   deleteRow(row) {
-    const { id } = row;
+    console.log(row);
+    console.log(this.activeTab);
+    const { Id } = row;
     var index;
     if(this.activeTab=='parking'){
-        index = findRowById(id, this.parkingdata);
+        index = findRowById(Id, this.parkingdata);
+        console.log(index);
         if (index !== -1) {
           let parkingdata= this.parkingdata;
           console.log(index);
@@ -156,7 +159,7 @@ export default class PageAsset extends LightningElement {
           // Nhan, handle delete logic here
         }
     }else if(this.activeTab=='extras'){
-        index = findRowById(id, this.extradata);
+        index = findRowById(Id, this.extradata);
         if (index !== -1) {
           this.extradata = this.extradata
             .slice(0, index)
@@ -168,14 +171,14 @@ export default class PageAsset extends LightningElement {
   }
   /*addRow(row) {
     console.log('this.activeTab: '+this.activeTab);
-    const { id } = row;
+    const { Id } = row;
     if(this.activeTab=='parking'){
-      const index = findRowById(id, this.parkingdata);
+      const index = findRowById(Id, this.parkingdata);
       console.log(index);
       this.handleRefresh('parkings');
        
     }else if(this.activeTab=='extras'){
-      const index = findRowById(id, this.extradata);
+      const index = findRowById(Id, this.extradata);
       this.handleRefresh('extras');
        
     }
@@ -210,11 +213,11 @@ export default class PageAsset extends LightningElement {
   }
 
   handleRefresh(objectName){
-    //call apex to sort by id
+    //call apex to sort by Id
     if(objectName=='extras'){
      let availableExtras = [
         {
-            id: 1,
+            Id: 1,
             Quantity__c: 3,
             name: 'Extra 1',
             Description_ENG__c: 'lorem ipsum',
@@ -222,7 +225,7 @@ export default class PageAsset extends LightningElement {
             Price__c: '87270'
         },
         {
-            id: 2,
+            Id: 2,
             Quantity__c: 3,
             name: 'Extra 1',
             Description_ENG__c: 'lorem ipsum',
@@ -230,7 +233,7 @@ export default class PageAsset extends LightningElement {
             Price__c: '87271'
         },
         {
-            id: 3,
+            Id: 3,
             Quantity__c: 3,
             name: 'Extra 1',
             Description_ENG__c: 'lorem ipsum',
@@ -240,55 +243,55 @@ export default class PageAsset extends LightningElement {
       ];
       let extradata = this.extradata;
       this.availableExtras = availableExtras.filter(function (e) {
-        let found = extradata.find(p => p.id == e.id);
+        let found = extradata.find(p => p.Id == e.Id);
         return found==undefined ;
       });
     }else if(objectName=='parkings'){
       let availableParkings = [
         {
-            id: 1,
+            Id: 1,
             Type__c: 'Locker Standard',
             Assigned_Spot__c: 'Side by Side',
             Price__c: '30930',
         },
         {
-            id: 2,
+            Id: 2,
             Type__c: 'Locker Standard',
             Assigned_Spot__c: 'Side by Side',
             Price__c: '30931',
         },
         {
-            id: 3,
+            Id: 3,
             Type__c: 'Locker Standard',
             Assigned_Spot__c: 'Side by Side',
             Price__c: '30932',
         },
         {
-            id: 4,
+            Id: 4,
             Type__c: 'Locker Standard',
             Assigned_Spot__c: 'Side by Side',
             Price__c: '30933',
         },
         {
-            id: 5,
+            Id: 5,
             Type__c: 'Locker Standard',
             Assigned_Spot__c: 'Side by Side',
             Price__c: '30934',
         },
         {
-            id: 6,
+            Id: 6,
             Type__c: 'Parking Standard',
             Assigned_Spot__c: 'Side by Side',
             Price__c: '36935',
         },
         {
-            id: 7,
+            Id: 7,
             Type__c: 'Parking Standard',
             Assigned_Spot__c: 'Side by Side',
             Price__c: '36936',
         },
         {
-            id: 8,
+            Id: 8,
             Type__c: 'Parking Standard',
             Assigned_Spot__c: 'Side by Side',
             Price__c: '36937',
@@ -296,7 +299,7 @@ export default class PageAsset extends LightningElement {
       ];
       let parkingdata = this.parkingdata;
       this.availableParkings = availableParkings.filter(function (e) {
-        let found = parkingdata.find(p => p.id == e.id);
+        let found = parkingdata.find(p => p.Id == e.Id);
         return found==undefined ;
       });
     }
@@ -323,7 +326,7 @@ export default class PageAsset extends LightningElement {
     var parkingdata = JSON.parse(JSON.stringify(this.parkingdata));
     parkingdata.forEach(element => {
       recordInputs.forEach(draft => {
-        if(draft.fields.id==element.id) {
+        if(draft.fields.Id==element.Id) {
           for (const [key, value] of Object.entries(draft.fields)) {
             element[key] = value;
           }
@@ -346,7 +349,7 @@ export default class PageAsset extends LightningElement {
     var extradata = JSON.parse(JSON.stringify(this.extradata));
     extradata.forEach(element => {
       recordInputs.forEach(draft => {
-        if(draft.fields.id==element.id) {
+        if(draft.fields.Id==element.Id) {
           for (const [key, value] of Object.entries(draft.fields)) {
             element[key] = value;
           }
@@ -448,7 +451,7 @@ export default class PageAsset extends LightningElement {
   handleExtraLoad() {
 
     var closingDetailId = this.closingdetail.Id;
-    console.log("MASExtraController.doInit - fetching extras for closingDetail id " + closingDetailId);
+    console.log("MASExtraController.doInit - fetching extras for closingDetail Id " + closingDetailId);
     /* var assetList = component.get('v.assetList');
     var apexAction = component.get("c.getCurrentData");
     apexAction.setParams({

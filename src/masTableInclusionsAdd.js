@@ -7,49 +7,49 @@ export default class TableInclusionsAdd extends LightningElement {
 
     @track data = [
       {
-          id: 1,
+          Id: 1,
           type: 'Locker Standard',
           assigned: 'Side by Side',
           price: '30933',
       },
       {
-          id: 2,
+          Id: 2,
           type: 'Locker Standard',
           assigned: 'Side by Side',
           price: '30933',
       },
       {
-          id: 3,
+          Id: 3,
           type: 'Locker Standard',
           assigned: 'Side by Side',
           price: '30933',
       },
       {
-          id: 4,
+          Id: 4,
           type: 'Locker Standard',
           assigned: 'Side by Side',
           price: '30933',
       },
       {
-          id: 5,
+          Id: 5,
           type: 'Locker Standard',
           assigned: 'Side by Side',
           price: '30933',
       },
       {
-          id: 6,
+          Id: 6,
           type: 'Parking Standard',
           assigned: 'Side by Side',
           price: '36933',
       },
       {
-          id: 7,
+          Id: 7,
           type: 'Parking Standard',
           assigned: 'Side by Side',
           price: '36933',
       },
       {
-          id: 8,
+          Id: 8,
           type: 'Parking Standard',
           assigned: 'Side by Side',
           price: '36933',

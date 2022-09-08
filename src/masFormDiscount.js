@@ -2,12 +2,12 @@ import { LightningElement, track, api } from 'lwc';
 
 const discounts = [
   {
-    id: 1,
+    Id: 1,
     name: "Free Locker",
     discount: 5000
   },
   {
-    id: 2,
+    Id: 2,
     name: "Free Parking",
     discount: 15000
   },
