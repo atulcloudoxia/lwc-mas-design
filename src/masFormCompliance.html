@@ -1,0 +1,31 @@
+<template>
+  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+    class="slds-modal slds-fade-in-open">
+    <div class="slds-modal__container">
+      <div class="slds-modal__header">
+        <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Compliance Error</h1>
+      </div>
+      <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+        <div class="mt-20">
+          For CMHC-insured mortgage loans, you must have the following:
+          <ul class="list">
+            <li>5% down payment for the purchase price portion up to and including $500,000</li>
+            <li>10% down payment for the purchase price portion between $500,000 and $1,000,000</li>
+            <li>20% down payment if the purchase price is $1,000,000 or more</li>
+          </ul>
+          The minimum down payment required is $100,000.
+        </div>
+      </div>
+      <div class="slds-modal__footer slds-modal__footer_directional">
+        <div class="modal__container__actions">
+          <lightning-button-group>
+            <lightning-button label="Option 1"></lightning-button>
+            <lightning-button label="Option 2"></lightning-button>
+            <lightning-button label="Option 3"></lightning-button>
+          </lightning-button-group>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</template>

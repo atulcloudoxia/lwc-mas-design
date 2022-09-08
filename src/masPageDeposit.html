@@ -172,4 +172,9 @@
     <c-mas-form-check onclose={handleCheckClose}></c-mas-form-check>
   </template>
 
+  <!-- Compliance Error -->
+  <template if:true={showComplianceWindow}>
+    <c-mas-form-compliance onclose={handleCloseComplianceWindow}></c-mas-form-compliance>
+  </template>
+
 </template>
