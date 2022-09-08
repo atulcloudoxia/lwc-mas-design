@@ -32,6 +32,7 @@
 		<template if:true={showInclusionsPage}>
 			<c-mas-page-inclusions data={parkingData} asset={assetData}></c-mas-page-inclusions>
 		</template>
+<<<<<<< HEAD
 		<template if:true={showRentalDepositPage}>
 			<c-mas-page-rental-deposit data={rentalDepositData} asset={assetData}></c-mas-page-rental-deposit>
 		</template>
@@ -41,8 +42,16 @@
 		<template if:true={showServicesPage}>
 			<c-mas-page-services data={servicesData}  asset={assetData}></c-mas-page-services>
 		</template>
+=======
+>>>>>>> master
 		<template if:true={showDepositPage}>
 			<c-mas-page-deposit  data={depositData} contact-role-list={contactList} asset={asset} extradata={extraData} parkingdata={parkingData} closingdetail={closingdetail} onupdatedata={handleDataUpdate}></c-mas-page-deposit>
+		</template>
+		<template if:true={showRentalReviewPage}>
+			<c-mas-page-rental-review inclusionsdata={parkingData} servicesdata={servicesData} asset={assetData} onpage={handleStepChange}></c-mas-page-rental-review>
+		</template>
+		<template if:true={showServicesPage}>
+			<c-mas-page-services data={servicesData}  asset={assetData}></c-mas-page-services>
 		</template>
 		<template if:true={showVariaPage}>
 			<c-mas-page-varia type={type} variadata={variaData} changeorderdata={changeOrderData} asset={asset} onupdatedata={handleDataUpdate}></c-mas-page-varia>

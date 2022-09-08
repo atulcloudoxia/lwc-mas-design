@@ -7,7 +7,7 @@ const findRowById = (id, data) => {
   let ret = -1;
 
   data.some((row, index) => {
-    if (row.id === id) {
+    if (row.Id === id) {
       ret = index;
       return true;
     }

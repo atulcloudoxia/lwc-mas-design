@@ -1,7 +1,8 @@
 import { LightningElement, api, track } from 'lwc';
 
-export default class AddVariaForm extends LightningElement {
+export default class FormAddVaria extends LightningElement {
     @track variaText;
+
     /**
      * Handle Submit
      *

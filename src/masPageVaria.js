@@ -113,7 +113,7 @@ export default class PageVaria extends LightningElement {
             let variadata= this.variadata;
             console.log(index);
             this.variadata = variadata.slice(0, index).concat(variadata.slice(index + 1));
-             
+
             // Nhan, handle delete logic here
           }
       }else if(this.activeTab=='change-orders'){
@@ -122,10 +122,10 @@ export default class PageVaria extends LightningElement {
             this.changeorderdata = this.changeorderdata
               .slice(0, index)
               .concat(this.changeorderdata.slice(index + 1));
-             
+
             // Nhan, handle delete logic here
           }
-      }   
+      }
       this.handleDataUpdate();
   }
 
@@ -143,12 +143,12 @@ export default class PageVaria extends LightningElement {
     this.handleCloseForm(event);
     this.handleDataUpdate();
   }
-  
+
   handleDataUpdate(){
     let rowAddEvent = new CustomEvent('updatedata',{
       detail: {
         changeorderdata: this.changeorderdata,
-        variadata: this.variadata 
+        variadata: this.variadata
       },
       bubbles: true,
       composed: false
@@ -176,7 +176,7 @@ export default class PageVaria extends LightningElement {
             element[key] = value;
           }
         }
-        
+
       });
     });
     this.draftVariaValues = [];
@@ -198,7 +198,7 @@ export default class PageVaria extends LightningElement {
             element[key] = value;
           }
         }
-        
+
       });
     });
     this.draftChangeOrderValues = [];

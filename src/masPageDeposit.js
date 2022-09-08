@@ -26,6 +26,10 @@ export default class PageDeposit extends LightningElement {
     handleCheckClose(e){
         this.checkAssetPayment = false;
     }
+    
+    handleTaxExemptCheckbox(e){
+      // Add handler logic here
+    }
 
     handleEligibleCheckbox(e){
         this.closingdetail= {...this.closingdetail};
@@ -37,6 +41,7 @@ export default class PageDeposit extends LightningElement {
         this.closingdetail  = {...this.closingdetail} ;
         console.log('closingdetail');
         console.log(this.closingdetail);
+        console.log(this.data);
       this.asset = JSON.parse(JSON.stringify(this.asset));
       console.log(this.asset);
      //this.asset.Condo_Price__c = formatNumbertocurrency(this.asset.Condo_Price__c);
@@ -67,6 +72,8 @@ export default class PageDeposit extends LightningElement {
         total += parseFloat(item.Price__c);
       });
       console.log(total);
+      console.log(this.extradata);
+      
       this.extradata.forEach((item) => {
         total += parseFloat(item.Price__c);
       });
