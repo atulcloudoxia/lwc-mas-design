@@ -17,6 +17,28 @@
     <div class="table__items columns mt-10">
       <div class="line_item">
         <div>
+          <h2>Summary</h2>
+        </div>
+        <template if:true={isCorporation}>
+          <div>
+            <lightning-input type="checkbox" label="Tax exempt" name="tax-exempt" checked={closingdetail.Tax_Exempt__c}
+              onchange={handleTaxExemptCheckbox}>
+            </lightning-input>
+          </div>
+        </template>
+      </div>
+      <div class="line_item">
+        <div>
+          {asset.Name}
+        </div>
+        <div>
+          <lightning-formatted-number value={asset.Condo_Price__c} format-style="currency" currency-code="USD">
+          </lightning-formatted-number>
+        </div>
+      </div>
+
+      <div class="line_item">
+        <div>
           {asset.Name}
         </div>
         <div>
@@ -96,7 +118,7 @@
             onchange={handleEligibleCheckbox}
             >
           </lightning-input>
-         
+
         </div>
       </div>
       <hr />
@@ -123,12 +145,12 @@
       </div>
       <hr />
       <div class="mt-10">
-        <c-mas-custom-table 
-        key-field="Id" 
-        data={data} 
-        columns={columns} 
-        onrowaction={handleRowAction} 
-        hide-checkbox-column 
+        <c-mas-custom-table
+        key-field="Id"
+        data={data}
+        columns={columns}
+        onrowaction={handleRowAction}
+        hide-checkbox-column
         draft-values={draftDepositValues}
         onsave={handleDepositSave} >
         </c-mas-custom-table>

@@ -10,9 +10,7 @@ export default class FormAddChangeOrder extends LightningElement {
      */
     handleSubmit(e) {
       e.preventDefault();
-      this.dispatchEvent(
-        new CustomEvent("save", { detail: {changeordertext: this.changeOrderText} })
-      );
+
     }
 
     /**

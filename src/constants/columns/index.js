@@ -442,12 +442,12 @@ const COLUMNS_DEPOSIT = [
     fieldName: 'Deposit_To__c',
     type:'select',
     editable: true
-    
+
   },
   /* {
-    label: 'Deposit To', 
-    fieldName: 'Deposit_To__c', 
-    type: 'picklist', 
+    label: 'Deposit To',
+    fieldName: 'Deposit_To__c',
+    type: 'picklist',
     typeAttributes: {
         placeholder: 'Deposit To', options: [
             { label: 'Hot', value: 'Hot' },
