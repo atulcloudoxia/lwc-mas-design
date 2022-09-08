@@ -145,6 +145,7 @@ export default class Mas extends LightningElement {
   constructor() {
     super();
     this.setType(TYPES.rental);
+    // this.setType(TYPES.sale);
   }
 
   // @api recordId;
