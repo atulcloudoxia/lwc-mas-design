@@ -47,7 +47,7 @@ export default class TableParkingAdd extends LightningElement {
     console.log('addRowAfterDelete');
     //this.availableParkings;
   }
-  
+
   /**
      * Row actions
      */
@@ -74,7 +74,7 @@ export default class TableParkingAdd extends LightningElement {
         console.log("MASParkingController.addParking - no value selected");
         return;
       }
-      var asset = {...this.asset}; 
+      var asset = {...this.asset};
       var isLockerItem = false;
       if(item.Type__c.includes('Locker') || item.Type__c.includes('locker')){
           isLockerItem = true;
@@ -185,5 +185,5 @@ export default class TableParkingAdd extends LightningElement {
     return ret;
   }
 
-  
+
 }

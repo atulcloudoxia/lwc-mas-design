@@ -1,7 +1,8 @@
 import { LightningElement, api, track } from 'lwc';
 
-export default class AddChangeOrderForm extends LightningElement {
+export default class FormAddChangeOrder extends LightningElement {
     @track changeOrderText;
+
     /**
      * Handle Submit
      *

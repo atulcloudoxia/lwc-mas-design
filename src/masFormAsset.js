@@ -1,7 +1,7 @@
 import { track, api, LightningElement } from 'lwc';
 //import timeZone from @salesforce/i18n/timeZone
 
-export default class PageAsset extends LightningElement {
+export default class FormAsset extends LightningElement {
 
   @api asset;
   @api closingdetail;

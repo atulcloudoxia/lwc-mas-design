@@ -442,12 +442,12 @@ const COLUMNS_DEPOSIT = [
     fieldName: 'Deposit_To__c',
     type:'select',
     editable: true
-    
+
   },
   /* {
-    label: 'Deposit To', 
-    fieldName: 'Deposit_To__c', 
-    type: 'picklist', 
+    label: 'Deposit To',
+    fieldName: 'Deposit_To__c',
+    type: 'picklist',
     typeAttributes: {
         placeholder: 'Deposit To', options: [
             { label: 'Hot', value: 'Hot' },
@@ -564,32 +564,32 @@ const COLUMNS_CHANGE_ORDERS = [
 const REVIEW_CONTACTS_COLUMNS = [
   {
     label: 'Role',
-    fieldName: 'role',
+    fieldName: 'Role',
     hideDefaultActions: true,
     sortable: false
   },
   {
     label: 'Name',
-    fieldName: 'name',
+    fieldName: 'Name',
     hideDefaultActions: true,
     sortable: false
   },
   {
     label: 'Email',
-    fieldName: 'email',
+    fieldName: 'Email',
     type: 'email',
     hideDefaultActions: true,
     sortable: false
   },
   {
     label: 'Phone',
-    fieldName: 'phone',
+    fieldName: 'Phone',
     hideDefaultActions: true,
     sortable: false
   },
   {
     label: 'Status',
-    fieldName: 'status',
+    fieldName: 'Status',
     type: 'customStatus',
     typeAttributes: {
       status: {

@@ -4,11 +4,12 @@ import {
   OPTIONS_ROLES
 } from './constants';
 
-export default class AddContactForm extends LightningElement {
-   @track selectedContact;
-   roleOptions = OPTIONS_ROLES;
-   @track contactList = MOCK_CONTACTS_DATA;
-   @track role;
+export default class FormAddContact extends LightningElement {
+  @track selectedContact;
+  roleOptions = OPTIONS_ROLES;
+  @track contactList = MOCK_CONTACTS_DATA;
+  @track role;
+
   /**
    * Handle add contact form
    *
@@ -42,11 +43,11 @@ export default class AddContactForm extends LightningElement {
       console.log(e.id);
       return selectedContactId == e.id;
     });
-    
+
   }
   handleRoleChange(e){
     this.role = e.detail.value;
-     
+
   }
   get displayCorporation(){
     return this.role!=undefined && this.role.includes('corporation');
