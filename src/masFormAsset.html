@@ -13,24 +13,38 @@
               <!--<lightning-input name="search-contact" label="Search Contact" variant="label-hidden"
                 value={asset.Name}>
               </lightning-input>-->
-                <c-mas-custom-lookup
-                    placeholder="Search Asset"
-                    iconname="standard:home"
-                    object-name="Asset"
-                    searchfield="Name"
-                    fieldstoquery=""
-                    data-index={index}
-                    onselectedrec={handleAssetSelect}
-                    filter-conditions=""
-                    blank="true">
-                </c-mas-custom-lookup>
+              <c-mas-custom-lookup placeholder="Search Asset" iconname="standard:home" object-name="Asset"
+                searchfield="Name" fieldstoquery="" data-index={index} onselectedrec={handleAssetSelect}
+                filter-conditions="" blank="true">
+              </c-mas-custom-lookup>
+              <template if:true={isLotPurposeType}>
+                <div class="mt-10">
+                  <lightning-combobox variant="label-hidden" name="Lot_House_Model__c" value={}
+                    placeholder="Lot House Model" options={houseLotOptions} onchange={handleLotChange}>
+                  </lightning-combobox>
+                </div>
+              </template>
+              <template if:true={hasLot}>
+                <div class="mt-20">
+                  <label>Model</label>
+                  <div class="mt-10">
+                    <lightning-input type="text" name="Lot_House_Model_Name__c" label="Model Name"
+                      onchange={handleFormInputChange}></lightning-input>
+                  </div>
+                  <div class="mt-10">
+                    <lightning-input type="text" name="Lot_House_Model_Price__c" label="Model Price"
+                      onchange={handleFormInputChange}></lightning-input>
+                  </div>
+                </div>
+              </template>
             </div>
           </div>
           <div class="mt-20">
             <label>Contract Date</label>
             <div class="mt-10">
-              <lightning-input type="date" name="Preliminary_Contract_Signed_D__c" variant="label-hidden" label="Date" data-id="contract-date"
-                value={closingdetail.Preliminary_Contract_Signed_D__c} onchange={handleFormInputChange}></lightning-input>
+              <lightning-input type="date" name="Preliminary_Contract_Signed_D__c" variant="label-hidden" label="Date"
+                data-id="contract-date" value={closingdetail.Preliminary_Contract_Signed_D__c}
+                onchange={handleFormInputChange}></lightning-input>
             </div>
           </div>
           <div class="mt-20">
@@ -77,12 +91,9 @@
           <div class="mt-20">
             <label>Is this a reservation?</label>
             <div class="mt-10">
-              <lightning-combobox variant="label-hidden"
-                                  name="Is_Reservation__c"
-                                  value={closingdetail.Is_Reservation__c}
-                                  placeholder="Is this a reservation?"
-                                  options={developerDealOptions}
-                                  onchange={handleReservationChange}></lightning-combobox>
+              <lightning-combobox variant="label-hidden" name="Is_Reservation__c"
+                value={closingdetail.Is_Reservation__c} placeholder="Is this a reservation?"
+                options={developerDealOptions} onchange={handleReservationChange}></lightning-combobox>
             </div>
           </div>
         </div>

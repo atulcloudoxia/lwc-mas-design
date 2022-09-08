@@ -22,6 +22,26 @@ export default class FormAsset extends LightningElement {
 
   }
 
+
+  @track hasLot=false;
+  @track isLotPurposeType=false;
+
+  get houseLotOptions() {
+      return [
+          { label: 'Option 1', value: '1' },
+          { label: 'Option 2', value: '2' }
+      ];
+  }
+
+  /**
+   * When a house lot option is selected
+   *
+   * @param (Event) e
+   */
+  handleLotChange(event) {
+      this.hasLot = true;
+  }
+
   /**
    * Assets form submit
    *
@@ -181,9 +201,10 @@ export default class FormAsset extends LightningElement {
   }
   handleAssetSelect(event) {
       var selectedAssetId = event.detail.recordId;
-      console.log('selectedAssetId: '+selectedAssetId);
-      console.log('selectedAssetId: '+event.detail.record);
+      console.log('selectedAssetId: ', selectedAssetId);
+      console.log('selectedAssetId: ', event.detail.record);
       this.asset =  event.detail.record;
+      this.isLotPurposeType=true;
   }
   handleSalesRepSelect(event) {
       var selectedSalesRepId = event.detail.recordId;
