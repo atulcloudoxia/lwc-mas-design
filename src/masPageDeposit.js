@@ -1218,4 +1218,16 @@ console.log(closingDetail);
       this.handleDataUpdate();
       return true;
   }
+
+  get corporationExists(){
+    var contactRoleList = this.contactRoleList;
+     
+    for (var i = 0; i < contactRoleList.length; i++) {
+        var item = contactRoleList[i];
+        if (item && (item.Role == "Corporation" ||  item.Role == "corporation" )) {
+            return true;
+        }
+    }
+    
+  }
 }

@@ -110,6 +110,7 @@
           <h2>Select Deposit Schedule</h2>
         </div>
         <div>
+          <template if:true={corporationExists}>
           <lightning-input
             type="checkbox"
             label="Eligible for tax rebate"
@@ -118,7 +119,7 @@
             onchange={handleEligibleCheckbox}
             >
           </lightning-input>
-
+        </template>
         </div>
       </div>
       <hr />
